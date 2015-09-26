@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="RegisterService" baseurl="register">
+
+
+
+		<!-- A register service which is used to register a user to the app -->
+		
+		<interface url="register-user" name="registerUser" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.RegisterUser"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.RegisterUserResponse"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+	</service>
+</schema>

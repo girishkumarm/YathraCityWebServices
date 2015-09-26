@@ -1,0 +1,27 @@
+*:focus {
+    outline: 0;
+}
+
+body{margin: 0px; padding: 0px; background:#fff;  overflow: auto; font-family: arial, verdana, Helvetica, Sans-serif, serif; font-size: 14px; min-width:1200px;}
+p,h1,h2,h3,h4,h5,h6{margin: 0; padding: 0; font-weight: normal;}
+input{padding: 7px; border: 1px solid #b9b6b5; font-size: 14px; font-family: arial;}
+ul{margin: 0; padding: 0;}
+a{text-decoration: none;}
+ul li{list-style: none; margin: 0; padding: 0;}
+img{border: none;}
+button{border: none; background: none; cursor: pointer; font-family: arial;}
+select{font-size: 12px; font-family: arial;}
+
+/*::: commonly used class :::*/
+
+.fleft{float:left;}
+.fright{float: right;}
+.clearall{clear:both;}
+.width-container{width: 1200px; margin: auto;}
+.dis-none{display: none;}
+.txtarea {background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #B9B6B5; border-radius: 4px 4px 4px 4px; box-shadow: 3px 6px 2px 0 #EEEEEE inset; color: #7F7F7F; font-family: arial; font-size: 12px; margin-top: 10px; padding: 7px; resize: none; width: 93%; }
+.green-btn{   background: #BADD4F;border: 1px solid #84817A;box-shadow: 0 2px 0 #76862E;color: #72833C;font-size: 14px;font-weight: bold;height: 39px;margin-top: 11px;width: 100px;margin-right: 30px;}
+.dark-gray-btn{background: #7d7d7d; border: 1px solid #545453; box-shadow: none; color:#fff;}
+.light-gray-btn{background: #c3c3c3; border: 1px solid #929292; color:#5b5b5b; box-shadow: none;}
+input[type="checkbox"] {  font-size: 11px; margin-top: 15px;  }
+.checkbox-label { font-size: 11px; color: #7F7F7F; vertical-align: text-top; margin-right: 5px; }

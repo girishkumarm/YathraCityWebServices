@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<schema package="com.inblox.core" name="Core Package">
+	<Class name="AddOrRemoveLabelsInput" description="Input to add/remove label for specified Emails"
+		displayorder="0">
+		<property name="emailId" type="String"
+			description="mailId to which mails to be fetched" />
+		<array name="ids" valueClass="StringClass" description="CassandraIds of the required mail" />
+		<property name="label" type="String"
+			description="label to be applied for the emails" />
+		<property name="action" type="String"
+			description="add/remove label action to be performed" />
+
+	</Class>
+
+</schema>
+	

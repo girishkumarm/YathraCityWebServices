@@ -1,0 +1,4 @@
+var session = {
+	username : "",
+	sessionId : ""
+};

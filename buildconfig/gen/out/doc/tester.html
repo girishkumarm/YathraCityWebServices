@@ -1,0 +1,279 @@
+<HEAD>
+<link href="global.css" media="screen" rel="stylesheet" type="text/css">    
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$("#endpoint").val(window.location.href.replace("tester.html","rest").replace('\/fulldoc',""));
+	var id = -1;
+	$("#sb").val(id);
+	$("#output").val("");
+	$("#sb").live("change",function()
+	{
+		$("#output").val("");
+		var txt = "";
+		id = $(this).val();
+		var urli = $("#urlinputs_"+id).html().split(",");
+		for (var i=0;i<urli.length;i++ ) if (urli[i] !== "")
+		{
+			txt += "<i>"+urli[i]+"</i><br/>";
+			txt += "<input style=\"width:200px\"  class=\"urlinput\" type=\"text\" id=\"input_"+i+"\" /><br/><br/>";
+		}
+		$("#urlinput").html(txt);
+		var type =  $("#type_"+id).html();
+		var ptxt = "";
+		if (type !== "GET")
+		{
+			var jtxt =  $("#postinput_"+id+" pre").html();
+			if (jtxt !== "")
+				ptxt = "<textarea id=\"jtxt\" style=\"width:400px;height:200px\">" + jtxt + "</textarea>";
+		}
+		$("#jsoninput").html(ptxt);
+	});
+	$("#submitreq").live("click", function()
+	{
+		var reqtype =  $("#type_"+id).html();
+		var requrl =  $("#endpoint").val()+"/"+$("#url_"+id).html();
+		$(".urlinput").each(function(index, inp) {
+			   requrl += "/" +$(inp).val();
+		});
+		var jsoninput = $("#jtxt").val();
+		if (reqtype == "GET")
+		{
+			$.ajax({
+				type : reqtype,
+				url : requrl,
+				success : function(ret) {
+					handler.success(ret);
+				},
+				error : function(err) {
+					handler.failure(err);
+				}
+			});									
+		} else
+		{
+			$.ajax({
+				type : reqtype,
+				url : requrl,
+				data : jsoninput,
+				dataType : "json",
+				contentType : "application/json; charset=utf-8",
+				success : function(ret) {
+					handler.success(ret);
+				},
+				error : function(err) {
+					handler.failure(err);
+				}
+			});
+			
+		}	
+	});
+	
+	$("#clearOutput").live('click',function(){
+		$("#output").val("");
+	})
+	$("#formatText").live('click',function(){
+		FormatTextarea();
+	})
+
+});
+
+function FormatTextarea() {
+  var sJSON = $("#output").val();
+  if (sJSON.length > 0) {
+    try {
+      var oJSON = JSON.parse(sJSON);
+      $("#output").val( FormatJSON(oJSON) );
+    } catch(sError) {
+      $("#output").val("You are attempting to parse invalid JSON.")
+    }
+  } else {
+    $("#output").val("I still haven't found what I'm looking for");
+  }
+}
+function RealTypeOf(v) {
+  if (typeof(v) == "object") {
+    if (v === null) return "null";
+    if (v.constructor == (new Array).constructor) return "array";
+    if (v.constructor == (new Date).constructor) return "date";
+    if (v.constructor == (new RegExp).constructor) return "regex";
+    return "object";
+  }
+  return typeof(v);
+}
+function FormatJSON(oData, sIndent) {
+  if (arguments.length < 2) {
+    var sIndent = "";
+  }
+  var sIndentStyle = "    ";
+  var sDataType = RealTypeOf(oData);
+
+  // open object
+  if (sDataType == "array") {
+    if (oData.length == 0) {
+      return "[]";
+    }
+    var sHTML = "[";
+  } else {
+    var iCount = 0;
+    $.each(oData, function() {
+      iCount++;
+      return;
+    });
+    if (iCount == 0) { // object is empty
+      return "{}";
+    }
+    var sHTML = "{";
+  }
+
+  // loop through items
+  var iCount = 0;
+  $.each(oData, function(sKey, vValue) {
+    if (iCount > 0) {
+      sHTML += ",";
+    }
+    if (sDataType == "array") {
+      sHTML += ("\n" + sIndent + sIndentStyle);
+    } else {
+      sHTML += ("\n" + sIndent + sIndentStyle + "\"" + sKey + "\"" + ": ");
+    }
+
+    // display relevant data type
+    switch (RealTypeOf(vValue)) {
+      case "array":
+      case "object":
+        sHTML += FormatJSON(vValue, (sIndent + sIndentStyle));
+        break;
+      case "boolean":
+      case "number":
+        sHTML += vValue.toString();
+        break;
+      case "null":
+        sHTML += "null";
+        break;
+      case "string":
+        sHTML += ("\"" + vValue + "\"");
+        break;
+      default:
+        sHTML += ("TYPEOF: " + typeof(vValue));                                                                                              }
+        // loop
+        iCount++;
+    }
+  )
+
+  // close object
+  if (sDataType == "array") {
+    sHTML += ("\n" + sIndent + "]");
+  } else {
+    sHTML += ("\n" + sIndent + "}");
+  }
+
+  // return
+  return sHTML;
+}
+var handler = {
+	success:function(res){
+		$("#output").val(JSON.stringify(res));		
+	},
+	failure:function(err){
+		$("#output").val(JSON.stringify(err));		
+	}
+}
+</script>
+</HEAD>
+<BODY>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; ">
+<tr>
+<td colspan="2"> 
+<h1>InBlox API </h1>
+</td>
+</tr>
+<tr>
+<td width="200" valign="top"> <div >
+<br/><br/>
+<a href="home.html">Home</a><br/>
+<a href="commons.html">Commons</a><br/>
+<a href="constructs.html">Constructs</a><br/>
+<a href="errorcodes.html">Error Codes</a><br/>
+<b>Tester</b><BR/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="RegisterServicesvc.html">RegisterService</a><br/>
+<a href="YathraServicesvc.html">YathraService</a><br/>
+
+</div>
+</td>
+<td valign="top">
+<!--BEGIN CONTENT AREA-->
+<table width="100%" height="100%" style="border:0"><tr><td valign="top" width="50%"  style="border:0">
+<h1>API Tester</h1> <br/><br/>
+<b>Endpoint</b><br/>
+<input id="endpoint" type="text" style="width:400px" value="" /><br/><br/>
+<b>Select Service </b><br/>
+<select id="sb"> <option value="-1">Select</option><OPTION value="0">LoginService:loginUser</OPTION><OPTION value="1">RegisterService:registerUser</OPTION><OPTION value="2">YathraService:registerCar</OPTION><OPTION value="3">YathraService:bookCar</OPTION><OPTION value="4">YathraService:checkCarAvailability</OPTION><OPTION value="5">YathraService:getCarDetails</OPTION></select>
+<br/><br/>
+<div id="urlinput"> </div>
+<div id="jsoninput"> </div><br/><br/>
+<div><span id="clearOutput" style="background:#ccc;border:1px solid black;padding:2px;float:right;cursor:pointer">clearOutput</span>&nbsp;&nbsp;<span id="formatText" style="background:#ccc;border:1px solid black;padding:2px;float:right;cursor:pointer">formatOutput</span>&nbsp;&nbsp;<span id="submitreq" style="background:#ccc;border:1px solid black;padding:2px;float:right;cursor:pointer">Submit</span></div>
+
+</td><td valign="top" width="50%"  style="border:0">
+<b>OUTPUT</b><br/>
+<textarea style="width:400px;height:400px" id="output">
+</textarea>
+</td></tr></table>
+</td></tr></table>
+</BODY>
+<div id="servicecontent" style="display:none"><div id="url_0">login/login-user</div><div id="type_0">POST</div><div id="urlinputs_0"></div><div id="postinput_0"><pre>{
+   "id":442140091,
+   "yathraCityUserId":"?",
+   "userAccountId":"?",
+   "password":"?"
+}
+</pre></div><div id="url_1">register/register-user</div><div id="type_1">POST</div><div id="urlinputs_1"></div><div id="postinput_1"><pre>{
+   "id":2147483647,
+   "userName":"?",
+   "phoneNumber":"?",
+   "userAccountId":"?",
+   "password":"?"
+}
+</pre></div><div id="url_2">register/register-car</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
+   "id":2147483647,
+   "carName":"?",
+   "registered":?,
+   "carAvailability":?,
+   "carModel":"?",
+   "carNumber":"?",
+   "carOwner":"?",
+   "carCapacity":?,
+   "carRegisteredAt":"?",
+   "pricePerKilometer":?,
+   "ownerLicenseNumber":"?",
+   "minimunDistancePerDay":"?",
+   "contactNumber":"?"
+}
+</pre></div><div id="url_3">register/book-car</div><div id="type_3">POST</div><div id="urlinputs_3"></div><div id="postinput_3"><pre>{
+   "id":2147483647,
+   "userName":"?",
+   "emailId":"?",
+   "phoneNumber":?,
+   "numberOfPeoples":"?",
+   "bookedCarName":"?",
+   "carBookedAt":?,
+   "pickUpPoint":?,
+   "destination":"?",
+   "numberOfDays":?,
+   "bookedCarNumber":"?",
+   "bookedCarOwner":"?",
+   "discountOffered":?,
+   "bookingConfirmation":?
+}
+</pre></div><div id="url_4">register/check-car-availability</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
+   "id":891499887,
+   "carNumber":"?",
+   "carRegisteredAt":"?",
+   "carCapacity":?,
+   "pricePerKilometer":?,
+   "ownerLicenseNumber":"?",
+   "minimunDistancePerDay":"?"
+}
+</pre></div><div id="url_5">register/get-car-details</div><div id="type_5">GET</div><div id="urlinputs_5">pickUpPoint,capacity,</div><div id="postinput_5"><pre></pre></div></div>
+</HTML>

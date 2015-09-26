@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.core" name="Core Package">
+	<Class name="LogInput" description="input to log" displayorder="0">
+		<property name="inbloxUserId" type="String" description="inblox User ID" />
+		<property name="userAccountId" type="String" description="user Account Id" />
+		<property name="action" type="String" description="action performed" />
+		<array name="requestObject" valueClass="RequestObject"
+			description="request object" />
+		<property name="status" type="String" description="status of the service call" />
+		<property name="message" type="String"
+			description="error message if service failed" />
+		<property name="startTime" type="String" description="start time of service call" />
+		<property name="endTime" type="String" description="end time of service call" />
+	</Class>
+
+	<Class name="LogInputList" description="input to log"
+		displayorder="0">
+		<array name="logInput" valueClass="LogInput" description="request object" />
+	</Class>
+
+	<Class name="RequestObject" description="request fields"
+		displayorder="0">
+		<property name="subject" type="String" description="action performed" />
+		<property name="messageUid" type="Long" description="message uid" />
+	</Class>
+
+</schema>
+	

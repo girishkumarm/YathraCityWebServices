@@ -1,0 +1,18 @@
+//To create a keyspace execute the following code in cassandra
+CREATE KEYSPACE yathra
+WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+
+
+//user table
+
+CREATE TABLE Users(
+user_account_id text,
+user_name text,
+password text,
+phone_number text,
+PRIMARY KEY (user_account_id) )
+WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
+AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 
+AND speculative_retry = '100ms' 
+AND bloom_filter_fp_chance = 0.1 
+AND caching = 'keys_only';

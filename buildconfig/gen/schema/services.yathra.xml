@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="YathraService" baseurl="register">
+
+		<!-- A register service which is used to register a car to the app -->
+
+		<interface url="register-car" name="registerCar" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.RegisterCarInput"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+
+		<!-- A register service which is used to register a booking of an user 
+			to the app -->
+
+		<interface url="book-car" name="bookCar" type="POST" mode="READWRITE"
+			availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.RegisterBookingInput"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+
+		<!-- check car availability after confirming the booking -->
+
+		<interface url="check-car-availability" name="checkCarAvailability" type="POST" mode="READWRITE"
+			availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.CheckAvailabilityInput"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+
+		<!-- get all cars available to book -->
+		<interface url="get-car-details" name="getCarDetails" type="GET"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<urlinput>
+				<property name="pickUpPoint" type="String" description="pickUpPoint" />
+			</urlinput>
+			<urlinput>
+				<property name="capacity" type="String" description="capacity of car" />
+			</urlinput>
+			<output name="message" class="com.yathraCity.core.ListOfAvailableCars"
+				description="success/unsuccess" />
+			<description> <![CDATA[ ]]>
+			</description>
+			<developernotes>
+				<notes> <![CDATA[ ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+
+	</service>
+</schema>

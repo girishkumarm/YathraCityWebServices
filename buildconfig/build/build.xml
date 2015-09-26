@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="InBlox" default="shortbuild" basedir="../..">
+
+	<description>This is the primary Adonme build file</description>
+	<property environment="env" />
+	<import file="common.xml" />
+	<import file="build_main.xml" />
+
+	<property name="local.user.properties" value="buildconfig/build/local/local.properties.${env.RZTUSER}" />
+	<property name="local.mode.properties" value="buildconfig/build/local/local.properties.${MODE}" />
+	<property name="build.properties" value="buildconfig/build/build.properties" />
+	<echo message="War name is ${warname}" />
+
+	<target name="shortbuild" depends="init" if="${props.found}">
+		<property file="${local.properties}" />
+		<property file="${build.properties}" />
+		<antcall target="clean_build_directories" />
+		<antcall target="clean_old_webapp" />
+		<antcall target="deploy${warname}" />
+	</target>
+
+	<target name="fullbuild" depends="init" if="${props.found}">
+		<property file="${local.properties}" />
+		<property file="${build.properties}" />
+		<antcall target="clean_build_directories" />
+		<antcall target="deploy${warname}" />
+	</target>
+</project>

@@ -1,0 +1,76 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<id>bundle</id>
+	<formats>
+		<format>war</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+
+		<!--To include the html pages related to slack and their dependency-->
+		<fileSet>
+			<directory>${basedir}/resources/ws/local/client/</directory>
+			<outputDirectory></outputDirectory>
+			<fileMode>777</fileMode>
+		</fileSet>
+
+		<!--To include all the dependencies of the project-->
+		<fileSet>
+			<directory>target/warfile/</directory>
+			<outputDirectory>WEB-INF/lib/</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+		
+		<!--To include all the dependencies of the project-->
+		<fileSet>
+			<directory>target/classes/</directory>
+			<outputDirectory>WEB-INF/classes/</outputDirectory>
+		</fileSet>
+		
+		<!--To include the web.xml file-->
+		<fileSet>
+			<directory>${basedir}/resources/ws/local/</directory>
+			<outputDirectory>WEB-INF/</outputDirectory>
+			<includes>
+				<include>web.xml/</include>
+			</includes>
+		</fileSet>
+		
+		<!--To include the local lib files-->
+		<fileSet>
+			<directory>${basedir}/resources/lib/</directory>
+			<outputDirectory>WEB-INF/lib/</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+		
+		<!--To include the logback.xml file-->
+		<fileSet>
+			<directory>${basedir}/resources/ws/local/</directory>
+			<outputDirectory>WEB-INF/classes/</outputDirectory>
+			<includes>
+				<include>logback.xml</include>
+			</includes>
+		</fileSet>
+
+
+		<!--To include the certificates-->
+		<fileSet>
+			<directory>${basedir}/resources/certificates/</directory>
+			<outputDirectory>WEB-INF/classes/</outputDirectory>
+			<fileMode>777</fileMode>
+		</fileSet>
+
+		<!--To include particular properties-->
+		<fileSet>
+			<directory>${basedir}/resources/config/local</directory>
+			<outputDirectory>WEB-INF/classes/</outputDirectory>
+			<fileMode>777</fileMode>
+		</fileSet>
+	</fileSets>
+</assembly>

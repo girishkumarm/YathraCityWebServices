@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<project name="common" basedir="../..">
+
+	<description>This is the build file that does the www and webservice
+		deployments</description>
+	
+	<target name="clean_build_directories">
+		<delete dir="${web}" />
+		<delete dir="${dummyfolder}" />
+		<mkdir dir="${web}" />
+		<mkdir dir="${web}/WEB-INF/classes" />
+		<mkdir dir="${web}/WEB-INF/lib" />
+		<mkdir dir="${dummyfolder}" />
+	</target>
+
+	<target name="clean_old_webapp">
+		<delete dir="${webapp}/${warname}_${serverType}" />
+		<delete file="${webapp}/@{warfilename}" />
+	</target>
+
+	<path id="toolslib">
+		<!-- this path element is necessary for locating the hbm.xml files -->
+		<pathelement path="buildconfig/out/hbm" />
+		<fileset dir="buildconfig/build/lib" includes="**/*.jar" />
+	</path>
+	<path id="javac.lib">
+		<fileset dir="modules/lib">
+			<include name="*.jar" />
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<taskdef name="init" classname="com.razorthink.process.ant.Init" classpathref="toolslib" />
+		<init />
+	</target>
+
+	<macrodef name="buildwar">
+		<attribute name="warfilename" />
+		<attribute name="folder" />
+		<element name="srcfileset" />
+		<attribute name="projectname" default="[Specify Project Name]" />
+		<attribute name="checkUIErrors" default="true" />
+		<attribute name="doctag" default="" />
+		<element name="libfileset" />
+		<element name="clientfileset" />
+		<sequential>
+			<echo message="Building environment ${buildEnv}..." />
+			<taskdef name="export" classname="com.razorthink.process.ant.Export" classpathref="toolslib" />
+			<taskdef name="uiexport" classname="com.razorthink.process.ant.UIExport" classpathref="toolslib" />
+			<export classPath="toolslib" domainPath="modules/domain" projectName="@{projectname}" tag="@{doctag}" />
+			<uiexport folder="@{folder}" checkErrors="@{checkUIErrors}" />
+			<javac debug="on" destdir="${web}/WEB-INF/classes">
+				<src path="@{folder}/src" />
+				<src path="modules/domain" />
+				<src path="modules/cassandra" />
+				<src path="modules/app" />
+				<srcfileset />
+				<classpath refid="javac.lib" />
+			</javac>
+			<copy todir="${web}/WEB-INF/classes">
+				<fileset dir="modules/domain" excludes="**/*.java" />
+			</copy>
+			<copy todir="${web}/WEB-INF/classes" file="buildconfig/gen/out/hibernate.cfg.xml" />
+			<copy todir="${web}/WEB-INF/classes" file="@{folder}/logback.xml" />
+			<copy todir="${web}/WEB-INF/classes" file="resources/config/${buildEnv}/store.properties" />
+			<copy todir="${web}/WEB-INF/classes" file="resources/certificates/Inbloxkey.p12" />
+			<copy todir="${web}/WEB-INF/lib">
+				<libfileset />
+			</copy>
+			<copy todir="${web}">
+				<fileset dir="@{folder}/client" excludes="live/" />
+				<clientfileset />
+			</copy>
+			<echo message="--------- Copied app bundle ----------" />
+			<war destfile="${webapp}/@{warfilename}" webxml="@{folder}/web.xml">
+				<fileset dir="${web}" />
+			</war>
+			<empty-and-delete-dir target="${basedir}/target/dummyfolder" />
+			<empty-and-delete-dir target="${basedir}/target/web" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="empty-and-delete-dir">
+		<attribute name="target" />
+		<sequential>
+			<delete dir="@{target}" includeEmptyDirs="true" failonerror="false">
+				<fileset dir="@{target}">
+					<include name="**/*" />
+				</fileset>
+			</delete>
+		</sequential>
+	</macrodef>
+</project>

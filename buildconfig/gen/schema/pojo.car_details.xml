@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.core" name="Core Package">
+	<Class name="RegisterCarInput" description="input to register car details"
+		displayorder="0">
+		<property name="carName" type="String" description="carname" />
+		<property name="registered" type="boolean"
+			description="whether the car is registered or not" />
+		<property name="carAvailability" type="boolean"
+			description="whether the car is available or not" />
+		<property name="carModel" type="String" description="carModel" />
+		<property name="carNumber" type="String" description="carNumber" />
+		<property name="carOwner" type="String" description="carOwner name" />
+		<property name="carCapacity" type="int"
+			description="capacity of the car in number" />
+		<property name="carRegisteredAt" type="String"
+			description="carRegisteredAt the name of the city" />
+		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
+		<property name="ownerLicenseNumber" type="String"
+			description="ownerLicenseNumber" />
+		<property name="minimunDistancePerDay" type="String"
+			description="minimunDistancePerDay" />
+		<property name="contactNumber" type="String" description="contactNumber" />
+	</Class>
+
+	<Class name="AvailableCars" description="input to register car details"
+		displayorder="0">
+		<property name="carName" type="String" description="carname" />
+		<property name="carAvailability" type="boolean"
+			description="whether the car is available or not" />
+		<property name="carNumber" type="String" description="carNumber" />
+		<property name="carOwner" type="String" description="carOwner name" />
+		<property name="carCapacity" type="int"
+			description="capacity of the car in number" />
+		<property name="carRegisteredAt" type="String"
+			description="carRegisteredAt the name of the city" />
+		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
+		<property name="ownerLicenseNumber" type="String"
+			description="ownerLicenseNumber" />
+		<property name="minimunDistancePerDay" type="String"
+			description="minimunDistancePerDay" />
+		<property name="contactNumber" type="String" description="contactNumber" />
+	</Class>
+
+	<Class name="ListOfAvailableCars" description="AvailableCars"
+		displayorder="0">
+		<array name="car" valueClass="AvailableCars" description="AvailableCar" />
+
+	</Class>
+
+	<Class name="CheckAvailabilityInput" description="input to register car details"
+		displayorder="0">
+		<property name="carNumber" type="String" description="carNumber" />
+		<property name="carRegisteredAt" type="String" description="carRegisteredAt" />
+		<property name="carCapacity" type="int"
+			description="capacity of the car in number" />
+		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
+		<property name="ownerLicenseNumber" type="String"
+			description="ownerLicenseNumber" />
+		<property name="minimunDistancePerDay" type="String"
+			description="minimunDistancePerDay" />
+	</Class>
+
+
+</schema>
+	

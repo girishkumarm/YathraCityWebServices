@@ -1,0 +1,19 @@
+body{background: #ffffff;}
+.login-container{   background: #ffffff; border-radius: 16px 16px 16px 16px;  bottom: 400;    height: 500px;    left: 0;    margin: auto;       position: absolute;    right: 0;    top: 0;    width: 424px;}
+.login-container .login-btm{background: url(../images/login-bottom.jpg) no-repeat center bottom; bottom: 0;  height: 99px;    left: -12px;    margin: auto;    position: absolute;    width: 499px;}
+.login-container .form-container{padding: 35px 60px 0; }
+.circular {
+	width: 120px;
+	height: 120px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url(../images/circularImage.jpg) no-repeat;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+	
+.login-container-register{   background: #ffffff; border-radius: 16px 16px 16px 16px;  bottom: 400;    height: 650px;    left: 0;    margin: auto;       position: absolute;    right: 0;    top: 0;    width: 424px;}
+.login-container-register .login-btm{background: url(../images/login-bottom.jpg) no-repeat center bottom; bottom: 0;  height: 99px;    left: -12px;    margin: auto;    position: absolute;    width: 499px;}
+.login-container-register .form-container{padding: 35px 60px 0; }
