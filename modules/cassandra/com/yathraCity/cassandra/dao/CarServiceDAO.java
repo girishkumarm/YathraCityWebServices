@@ -46,18 +46,21 @@ public class CarServiceDAO
 		try
 		{
 			Statement insert = QueryBuilder.insertInto( keyspace, TableNames.CARS )
-					.value( CarColumns.CAONTACT_NUMBER, carDetails.getContactNumber() )
-					.value( CarColumns.CAR_AVAILABILITY, carDetails.getCarCapacity() )
+					.value( CarColumns.CONTACT_NUMBER, carDetails.getContactNumber() )
+					.value( CarColumns.CAR_AVAILABILITY, carDetails.isCarAvailability() )
 					.value( CarColumns.CAR_MODEL, carDetails.getCarModel() )
+					.value( CarColumns.CAR_NAME, carDetails.getCarName() )
+					.value( CarColumns.CAR_CAPACITY, carDetails.getCarCapacity() )
 					.value( CarColumns.CAR_NUMBER, carDetails.getCarNumber() )
 					.value( CarColumns.CAR_OWNER, carDetails.getCarOwner() )
 					.value( CarColumns.CAR_REGISTERED_AT, carDetails.getCarRegisteredAt() )
+					.value( CarColumns.CAR_REGISTERED, carDetails.isRegistered() )
 					.value( CarColumns.MINIMUM_DISTANCE_PER_DAY, carDetails.getMinimunDistancePerDay() )
 					.value( CarColumns.OWNER_LICENSE_NUMBER, carDetails.getOwnerLicenseNumber() )
 					.value( CarColumns.PRICE_PER_KILOMETER, carDetails.getPricePerKilometer() )
-					.value( CarColumns.REGISTERED, "false" ).setConsistencyLevel( ConsistencyLevel.QUORUM )
+					.setConsistencyLevel( ConsistencyLevel.QUORUM )
 					.enableTracing();
-			System.out.println( insert.toString() );
+			//System.out.println( insert.toString() );
 			cassQuery.executeFuture( insert );
 			result = true;
 		}
@@ -70,17 +73,18 @@ public class CarServiceDAO
 
 	}
 
-	public List<CarDetails> fetchAvailableCarsOfCity( String pickUpPoint, String capacity )
+	public List<CarDetails> fetchAvailableCarsOfCity( String pickUpPoint, int capacity )
 	{
 		List<CarDetails> cars = null;
 		try
 		{
-			Statement get = QueryBuilder.select().all().from( keyspace, TableNames.CARS )
+			Statement get = QueryBuilder.select().all().from( keyspace, TableNames.CARS ).allowFiltering()
 					.where( QueryBuilder.eq( CarColumns.CAR_REGISTERED_AT, pickUpPoint ) )
 					.and( QueryBuilder.eq( CarColumns.CAR_CAPACITY, capacity ) )
 					.and( QueryBuilder.eq( CarColumns.CAR_AVAILABILITY, true ) )
-					.and( QueryBuilder.eq( CarColumns.REGISTERED, true ) )
+					.and( QueryBuilder.eq( CarColumns.CAR_REGISTERED, true ) )
 					.setConsistencyLevel( ConsistencyLevel.QUORUM ).enableTracing();
+			System.out.println( get.toString() );
 			ResultSetFuture results = cassQuery.executeFuture( get );
 			cars = processCarEntity( results );
 		}
@@ -153,7 +157,7 @@ public class CarServiceDAO
 			carDetails.setCarName( r.getString( CarColumns.CAR_NAME ) );
 			carDetails.setCarAvailability( r.getBool( CarColumns.CAR_AVAILABILITY ) );
 			carDetails.setCarCapacity( r.getInt( CarColumns.CAR_CAPACITY ) );
-			carDetails.setContactNumber( r.getString( CarColumns.CAONTACT_NUMBER ) );
+			carDetails.setContactNumber( r.getString( CarColumns.CONTACT_NUMBER ) );
 			carDetails.setCarModel( r.getString( CarColumns.CAR_MODEL ) );
 			carDetails.setCarNumber( r.getString( CarColumns.CAR_NUMBER ) );
 			carDetails.setCarOwner( r.getString( CarColumns.CAR_OWNER ) );

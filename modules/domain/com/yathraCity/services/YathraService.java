@@ -20,7 +20,7 @@ import javax.xml.ws.handler.MessageContext;
 import javax.ws.rs.WebApplicationException;
 import com.razorthink.runtime.*;
 import defaultpkg.*;
-@Path("/register")
+@Path("/yathra")
 public class YathraService{
 	@Context
 	HttpServletRequest request;
@@ -136,6 +136,66 @@ public class YathraService{
 			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
 			resp =  intfc.getCarDetails(context,pickUpPoint,capacity);
+			SessionUtils.clear(request);
+			return resp;
+		} catch (ExecException ee)
+		{
+			ee.printStackTrace(); // needs to be logged
+			request.setAttribute("WS_ERROR_MSG", ee.toJson());
+			throw ee;
+		} catch (Exception e)
+		{
+			e.printStackTrace(); // needs to be logged
+			ExecException ee = new ExecException(ErrorCodes.APPLICATION_ERROR,e,"Application Error");
+			request.setAttribute("WS_ERROR_MSG", ee.toJson());
+			throw ee;
+		}
+	}
+
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/get-otp/{phoneNumber}")
+	public com.yathraCity.core.ResponseMessage getOTP(@PathParam("phoneNumber") String phoneNumber){
+		com.yathraCity.core.ResponseMessage resp=null;
+		SessionUtils.clear(request);
+		ServiceExecutionContext context=null;
+		try
+		{
+			context = new ServiceExecutionContext(request);
+			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
+			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
+			resp =  intfc.getOTP(context,phoneNumber);
+			SessionUtils.clear(request);
+			return resp;
+		} catch (ExecException ee)
+		{
+			ee.printStackTrace(); // needs to be logged
+			request.setAttribute("WS_ERROR_MSG", ee.toJson());
+			throw ee;
+		} catch (Exception e)
+		{
+			e.printStackTrace(); // needs to be logged
+			ExecException ee = new ExecException(ErrorCodes.APPLICATION_ERROR,e,"Application Error");
+			request.setAttribute("WS_ERROR_MSG", ee.toJson());
+			throw ee;
+		}
+	}
+
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/get-otp-match-response/{phoneNumber}/{otp}")
+	public com.yathraCity.core.ResponseMessage getOTPMatchResponse(@PathParam("phoneNumber") String phoneNumber,@PathParam("otp") String otp){
+		com.yathraCity.core.ResponseMessage resp=null;
+		SessionUtils.clear(request);
+		ServiceExecutionContext context=null;
+		try
+		{
+			context = new ServiceExecutionContext(request);
+			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
+			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
+			resp =  intfc.getOTPMatchResponse(context,phoneNumber,otp);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)

@@ -209,7 +209,7 @@ var handler = {
 <b>Endpoint</b><br/>
 <input id="endpoint" type="text" style="width:400px" value="" /><br/><br/>
 <b>Select Service </b><br/>
-<select id="sb"> <option value="-1">Select</option><OPTION value="0">LoginService:loginUser</OPTION><OPTION value="1">RegisterService:registerUser</OPTION><OPTION value="2">YathraService:registerCar</OPTION><OPTION value="3">YathraService:bookCar</OPTION><OPTION value="4">YathraService:checkCarAvailability</OPTION><OPTION value="5">YathraService:getCarDetails</OPTION></select>
+<select id="sb"> <option value="-1">Select</option><OPTION value="0">LoginService:loginUser</OPTION><OPTION value="1">RegisterService:registerUser</OPTION><OPTION value="2">YathraService:registerCar</OPTION><OPTION value="3">YathraService:bookCar</OPTION><OPTION value="4">YathraService:checkCarAvailability</OPTION><OPTION value="5">YathraService:getCarDetails</OPTION><OPTION value="6">YathraService:getOTP</OPTION><OPTION value="7">YathraService:getOTPMatchResponse</OPTION></select>
 <br/><br/>
 <div id="urlinput"> </div>
 <div id="jsoninput"> </div><br/><br/>
@@ -223,7 +223,7 @@ var handler = {
 </td></tr></table>
 </BODY>
 <div id="servicecontent" style="display:none"><div id="url_0">login/login-user</div><div id="type_0">POST</div><div id="urlinputs_0"></div><div id="postinput_0"><pre>{
-   "id":442140091,
+   "id":2147483647,
    "yathraCityUserId":"?",
    "userAccountId":"?",
    "password":"?"
@@ -235,8 +235,8 @@ var handler = {
    "userAccountId":"?",
    "password":"?"
 }
-</pre></div><div id="url_2">register/register-car</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
-   "id":2147483647,
+</pre></div><div id="url_2">yathra/register-car</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
+   "id":304700035,
    "carName":"?",
    "registered":?,
    "carAvailability":?,
@@ -247,10 +247,10 @@ var handler = {
    "carRegisteredAt":"?",
    "pricePerKilometer":?,
    "ownerLicenseNumber":"?",
-   "minimunDistancePerDay":"?",
+   "minimunDistancePerDay":?,
    "contactNumber":"?"
 }
-</pre></div><div id="url_3">register/book-car</div><div id="type_3">POST</div><div id="urlinputs_3"></div><div id="postinput_3"><pre>{
+</pre></div><div id="url_3">yathra/book-car</div><div id="type_3">POST</div><div id="urlinputs_3"></div><div id="postinput_3"><pre>{
    "id":2147483647,
    "userName":"?",
    "emailId":"?",
@@ -266,8 +266,8 @@ var handler = {
    "discountOffered":?,
    "bookingConfirmation":?
 }
-</pre></div><div id="url_4">register/check-car-availability</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
-   "id":891499887,
+</pre></div><div id="url_4">yathra/check-car-availability</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
+   "id":2147483647,
    "carNumber":"?",
    "carRegisteredAt":"?",
    "carCapacity":?,
@@ -275,5 +275,5 @@ var handler = {
    "ownerLicenseNumber":"?",
    "minimunDistancePerDay":"?"
 }
-</pre></div><div id="url_5">register/get-car-details</div><div id="type_5">GET</div><div id="urlinputs_5">pickUpPoint,capacity,</div><div id="postinput_5"><pre></pre></div></div>
+</pre></div><div id="url_5">yathra/get-car-details</div><div id="type_5">GET</div><div id="urlinputs_5">pickUpPoint,capacity,</div><div id="postinput_5"><pre></pre></div><div id="url_6">yathra/get-otp</div><div id="type_6">GET</div><div id="urlinputs_6">phoneNumber,</div><div id="postinput_6"><pre></pre></div><div id="url_7">yathra/get-otp-match-response</div><div id="type_7">GET</div><div id="urlinputs_7">phoneNumber,otp,</div><div id="postinput_7"><pre></pre></div></div>
 </HTML>

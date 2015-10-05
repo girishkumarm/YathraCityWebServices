@@ -17,7 +17,7 @@
 		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
 		<property name="ownerLicenseNumber" type="String"
 			description="ownerLicenseNumber" />
-		<property name="minimunDistancePerDay" type="String"
+		<property name="minimunDistancePerDay" type="int"
 			description="minimunDistancePerDay" />
 		<property name="contactNumber" type="String" description="contactNumber" />
 	</Class>

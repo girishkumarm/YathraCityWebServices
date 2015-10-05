@@ -14,4 +14,10 @@ public interface YathraServiceInterface{
 	public com.yathraCity.core.ListOfAvailableCars getCarDetails(ServiceExecutionContext ctx,String pickUpPoint,String capacity) throws ExecException;
 
 
+	public com.yathraCity.core.ResponseMessage getOTP(ServiceExecutionContext ctx,String phoneNumber) throws ExecException;
+
+
+	public com.yathraCity.core.ResponseMessage getOTPMatchResponse(ServiceExecutionContext ctx,String phoneNumber,String otp) throws ExecException;
+
+
 }

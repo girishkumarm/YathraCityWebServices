@@ -33,7 +33,7 @@ public class CarService
 					|| carDetails.getCarOwner().trim().isEmpty() || carDetails.getCarRegisteredAt() == null
 					|| carDetails.getCarRegisteredAt().trim().isEmpty() || carDetails.getContactNumber() == null
 					|| carDetails.getContactNumber().trim().isEmpty() || carDetails.getMinimunDistancePerDay() == null
-					|| carDetails.getMinimunDistancePerDay().trim().isEmpty()
+					|| carDetails.getMinimunDistancePerDay()==0
 					|| carDetails.getOwnerLicenseNumber() == null
 					|| carDetails.getOwnerLicenseNumber().trim().isEmpty() || carDetails.getPricePerKilometer() == null
 					|| carDetails.getPricePerKilometer() == 0 )
@@ -53,13 +53,13 @@ public class CarService
 
 	}
 
-	public List<CarDetails> getAvailableCars( String pickUpPoint, String capacity )
+	public List<CarDetails> getAvailableCars( String pickUpPoint, int capacity )
 	{
 		List<CarDetails> result = null;
 		try
 		{
 			// checking for all the mandatory fields required in the service
-			if( pickUpPoint == null || pickUpPoint.trim().isEmpty() || capacity == null || capacity.trim().isEmpty() )
+			if( pickUpPoint == null || pickUpPoint.trim().isEmpty() || capacity == 0)
 			{
 				throw new Exception( "Mandatory fields are missing to book the car" );
 			}

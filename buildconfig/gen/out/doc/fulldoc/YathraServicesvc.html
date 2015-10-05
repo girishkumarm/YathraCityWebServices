@@ -33,7 +33,7 @@
 </p><div id="toc" class="toc">
            <div id="toctitle" class="toc-title">Contents </div>
            <div id="toccontents" class="toc-contents"><ul>
-		   			<li>1 <a href="#registerCar"> registerCar POST Interface </a></li><li>2 <a href="#bookCar"> bookCar POST Interface </a></li><li>3 <a href="#checkCarAvailability"> checkCarAvailability POST Interface </a></li><li>4 <a href="#getCarDetails"> getCarDetails GET Interface </a></li>
+		   			<li>1 <a href="#registerCar"> registerCar POST Interface </a></li><li>2 <a href="#bookCar"> bookCar POST Interface </a></li><li>3 <a href="#checkCarAvailability"> checkCarAvailability POST Interface </a></li><li>4 <a href="#getCarDetails"> getCarDetails GET Interface </a></li><li>5 <a href="#getOTP"> getOTP GET Interface </a></li><li>6 <a href="#getOTPMatchResponse"> getOTPMatchResponse GET Interface </a></li>
 </ul></div>
          </div>
 <h1><a name="registerCar"></a> registerCar POST Interface </h1><p>
@@ -42,7 +42,7 @@
 			<b>Developer Notes </b> <br/>
   		  
     		 
-				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> register/register-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>RegisterCarInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">REGISTERCAR 
+				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> yathra/register-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>RegisterCarInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">REGISTERCAR 
 Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
@@ -58,7 +58,7 @@ Content-Type : nnn
    "carRegisteredAt":"?",
    "pricePerKilometer":?,
    "ownerLicenseNumber":"?",
-   "minimunDistancePerDay":"?",
+   "minimunDistancePerDay":?,
    "contactNumber":"?"
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
@@ -72,12 +72,12 @@ Content-Type : nnn
 			<b>Developer Notes </b> <br/>
   		  
     		 
-				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> register/book-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>RegisterBookingInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">BOOKCAR 
+				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> yathra/book-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>RegisterBookingInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">BOOKCAR 
 Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
 {
-   "id":428067721,
+   "id":2147483647,
    "userName":"?",
    "emailId":"?",
    "phoneNumber":?,
@@ -93,7 +93,7 @@ Content-Type : nnn
    "bookingConfirmation":?
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":1392365979,
+   "id":2147483647,
    "status":"?",
    "message":"?"
 }
@@ -103,12 +103,12 @@ Content-Type : nnn
 			<b>Developer Notes </b> <br/>
   		  
     		 
-				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> register/check-car-availability</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>CheckAvailabilityInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">CHECKCARAVAILABILITY 
+				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> yathra/check-car-availability</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>CheckAvailabilityInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">CHECKCARAVAILABILITY 
 Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
 {
-   "id":1991431981,
+   "id":2147483647,
    "carNumber":"?",
    "carRegisteredAt":"?",
    "carCapacity":?,
@@ -117,13 +117,13 @@ Content-Type : nnn
    "minimunDistancePerDay":"?"
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":1619591199,
+   "id":922678931,
    "status":"?",
    "message":"?"
 }
 </pre><h1><a name="getCarDetails"></a> getCarDetails GET Interface </h1><p>  
 			<b>Developer Notes </b> <br/>  
-				<br/></p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> register/get-car-details/<i>pick-up-point</i>/<i>capacity</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ListOfAvailableCars</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+				<br/></p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-car-details/<i>pick-up-point</i>/<i>capacity</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ListOfAvailableCars</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
    "id":2147483647,
    "car":[
       {
@@ -139,6 +139,20 @@ Content-Type : nnn
          "minimunDistancePerDay":"?",
          "contactNumber":"?"
       }   ]
+}
+</pre><h1><a name="getOTP"></a> getOTP GET Interface </h1><p>  
+			<b>Developer Notes </b> <br/>  
+				<br/></p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp/<i>phone-number</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":2147483647,
+   "status":"?",
+   "message":"?"
+}
+</pre><h1><a name="getOTPMatchResponse"></a> getOTPMatchResponse GET Interface </h1><p>  
+			<b>Developer Notes </b> <br/>  
+				<br/></p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp-match-response/<i>phone-number</i>/<i>otp</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":1002273401,
+   "status":"?",
+   "message":"?"
 }
 </pre>
 </div>

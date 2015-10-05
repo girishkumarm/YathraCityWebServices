@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 25 Sep, 2015 10:02:33 AM by Hibernate Tools 3.2.0.CR1
+// Generated 4 Oct, 2015 1:21:43 PM by Hibernate Tools 3.2.0.CR1
 
 
 
@@ -23,13 +23,13 @@ public class RegisterCarInput  implements java.io.Serializable {
      private String carRegisteredAt;
      private Integer pricePerKilometer;
      private String ownerLicenseNumber;
-     private String minimunDistancePerDay;
+     private Integer minimunDistancePerDay;
      private String contactNumber;
 
     public RegisterCarInput() {
     }
 
-    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carModel, String carNumber, String carOwner, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, String ownerLicenseNumber, String minimunDistancePerDay, String contactNumber) {
+    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carModel, String carNumber, String carOwner, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, String ownerLicenseNumber, Integer minimunDistancePerDay, String contactNumber) {
        this.carName = carName;
        this.registered = registered;
        this.carAvailability = carAvailability;
@@ -121,11 +121,11 @@ public class RegisterCarInput  implements java.io.Serializable {
     public void setOwnerLicenseNumber(String ownerLicenseNumber) {
         this.ownerLicenseNumber = ownerLicenseNumber;
     }
-    public String getMinimunDistancePerDay() {
+    public Integer getMinimunDistancePerDay() {
         return this.minimunDistancePerDay;
     }
     
-    public void setMinimunDistancePerDay(String minimunDistancePerDay) {
+    public void setMinimunDistancePerDay(Integer minimunDistancePerDay) {
         this.minimunDistancePerDay = minimunDistancePerDay;
     }
     public String getContactNumber() {

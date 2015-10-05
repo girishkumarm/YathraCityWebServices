@@ -1,4 +1,0 @@
-var session = {
-	username : "",
-	sessionId : ""
-};

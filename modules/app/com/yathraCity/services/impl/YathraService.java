@@ -3,12 +3,12 @@ package com.yathraCity.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.services.BookingService;
 import com.yathraCity.cassandra.services.CarService;
+import com.yathraCity.cassandra.services.UserOTPServices;
 import com.yathraCity.core.AvailableCars;
 import com.yathraCity.core.CheckAvailabilityInput;
 import com.yathraCity.core.ListOfAvailableCars;
@@ -17,11 +17,12 @@ import com.yathraCity.core.RegisterCarInput;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.YathraServiceInterface;
 
-public class YathraServices implements YathraServiceInterface
+public class YathraService implements YathraServiceInterface
 {
 
 	private BookingService bookingService = new BookingService();
 	private CarService carBookingService = new CarService();
+	private UserOTPServices otpServices = new UserOTPServices();
 
 	@Override
 	public ResponseMessage registerCar( ServiceExecutionContext ctx, RegisterCarInput input ) throws ExecException
@@ -38,7 +39,7 @@ public class YathraServices implements YathraServiceInterface
 					|| input.getCarOwner().trim().isEmpty() || input.getCarRegisteredAt() == null
 					|| input.getCarRegisteredAt().trim().isEmpty() || input.getContactNumber() == null
 					|| input.getContactNumber().trim().isEmpty() || input.getMinimunDistancePerDay() == null
-					|| input.getMinimunDistancePerDay().trim().isEmpty() || input.getOwnerLicenseNumber() == null
+					|| input.getMinimunDistancePerDay()==0 || input.getOwnerLicenseNumber() == null
 					|| input.getOwnerLicenseNumber().trim().isEmpty() || input.getPricePerKilometer() == null
 					|| input.getPricePerKilometer() == 0 )
 			{
@@ -126,7 +127,7 @@ public class YathraServices implements YathraServiceInterface
 			{
 				throw new Exception( "Mandatory fields are missing to book the car" );
 			}
-			carDetails = carBookingService.getAvailableCars( pickUpPoint, capacity );
+			carDetails = carBookingService.getAvailableCars( pickUpPoint, Integer.parseInt(capacity ));
 			if( carDetails != null )
 			{
 				for( CarDetails c : carDetails )
@@ -158,5 +159,63 @@ public class YathraServices implements YathraServiceInterface
 			e.printStackTrace();
 		}
 		return availableCars;
+	}
+
+	@Override
+	public ResponseMessage getOTP(ServiceExecutionContext ctx,String phoneNumber) throws ExecException 
+	{
+		ResponseMessage response = new ResponseMessage();
+		response.setStatus( "500" );
+		response.setMessage( "Generating otp failed" );
+		try
+		{
+			if( phoneNumber == null || phoneNumber.trim().isEmpty() || phoneNumber.trim().length()>10 || phoneNumber.trim().length()<10 )
+			{
+				throw new Exception( "Mandatory fields are missing to get OTP" );
+			}
+			
+			String otp=otpServices.generateOTP(phoneNumber);
+			
+			if( otp != null )
+			{
+				response.setStatus( "200" );
+				response.setMessage( "success" );
+			}
+			
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+		}
+		return response;
+	}
+
+	@Override
+	public ResponseMessage getOTPMatchResponse(ServiceExecutionContext ctx, String phoneNumber, String otp) throws ExecException 
+	{
+		ResponseMessage response = new ResponseMessage();
+		response.setStatus( "500" );
+		response.setMessage( "failed" );
+		try
+		{
+			if( phoneNumber == null || phoneNumber.trim().isEmpty() || phoneNumber.trim().length()>10 || phoneNumber.trim().length()<10 )
+			{
+				throw new Exception( "Mandatory fields are missing to get OTP" );
+			}
+			
+			String otpPresent=otpServices.fetchOtpForPhoneNumber(phoneNumber);
+			
+			if( otp.equals(otpPresent) )
+			{
+				response.setStatus( "200" );
+				response.setMessage( "success" );
+			}
+			
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+		}
+		return response;
 	}
 }

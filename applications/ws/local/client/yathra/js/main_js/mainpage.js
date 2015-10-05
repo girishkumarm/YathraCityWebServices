@@ -7,7 +7,7 @@ $(document).ready(
 						var dateOfTravelling = "";
 						var number0fPeoples = "";
 						pickUpPoint = document.getElementById("pick_up_point").value;
-						dateOfTravelling = document.getElementById("booking_date").value;
+						dateOfTravelling = document.getElementById("from_date").value;
 						number0fPeoples = document.getElementById("count_peoples").value;
 							if (pickUpPoint.trim()) {
 								//console.log(pickUpPoint);

@@ -67,30 +67,27 @@
                            <label>
                               <select
                                  name="type1" id="from">
-                                 <option value="1">Indica</option>
-                                 <option value="0">Safari</option>
-                                 <option value="1">Swift</option>
-                                 <option value="2">Tata Sumo</option>
+								 <option value="All">All</option>
+                                 <option value="Indica">Indica</option>
+                                 <option value="Safari">Safari</option>
+                                 <option value="Swift">Swift</option>
+                                 <option value="Tata Sumo">Tata Sumo</option>
                               </select>
                            </label>
                            <br/><br/>
                         </div>
                         <div class="table-responsive" id="car_matched">
-                           <table class="table"  cellspacing="10" width="100%">
+                           <table class="table table-hover" id="carsAvailable"  cellspacing="10" width="100%">
                               <thead color="blue">
                                  <tr>
-                                    <th>Agency Name</p></th>
+                                    <th>Agency Name</th>
+									<th>Car </th>
                                     <th>Price/km</th>
                                     <th>Min Distance/Day</th>
                                     <th>Ratings</th>
                                  </tr>
                               </thead>
                               <tbody id="mytbody" class="rowData">
-                                 <tr>
-                                    <td colspan="4">
-                                       <h4>No Cars Found</h4>
-                                    </td>
-                                 </tr>
                               </tbody>
                            </table>
                            <br/>
@@ -173,6 +170,7 @@
          })
       </script>
       <script src="js/jquery.min.js"></script>
+	   <script src="js/main_js/selectCar.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
       <script type="text/javascript" language="javascript" src="js/jquery.js"></script>

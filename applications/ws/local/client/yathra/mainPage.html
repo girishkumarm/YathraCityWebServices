@@ -14,6 +14,18 @@
       <link rel="stylesheet" type="text/css" href="css/login-lyt.css">
       <link href="css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
       <link href="css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
+	  <style>
+		table > thead > tr > th,
+		table > tbody > tr > th,
+		table > tfoot > tr > th,
+		table > thead > tr > td,
+		table > tbody > tr > td,
+		table > tfoot > tr > td {
+		padding: 8px;
+		line-height: 1.42857143;
+		vertical-align: top;
+		}
+	  </style>
    </head>
    <body>
       <div id="wrapper">
@@ -64,35 +76,49 @@
                         <table class=""  style="border: none !important;">
                            <tr>
                               <td>
-                                 <p><font size="4" color="black" >From:</font></p>
+                                 <p><font size="4" color="black" >Pick Up City:</font></p>
                               </td>
                               <td>
                                  <label>
                                     <select
                                        name="select_pick_up_point" id="pick_up_point">
-                                       <option value="1">Bangalore</option>
-                                       <option value="2">Mysore</option>
-                                       <option value="3">Madekeri</option>
-                                       <option value="4">Shimoga</option>
-                                       <option value="5">Hospete</option>
-                                       <option value="6">Gadag</option>
-                                       <option value="7">Hassan</option>
-                                       <option value="8">Bellari</option>
+                                       <option value="Bangalore">Bangalore</option>
+                                       <option value="Mysore">Mysore</option>
+                                       <option value="Madekeri">Madekeri</option>
+                                       <option value="Shimoga">Shimoga</option>
+                                       <option value="Hospete">Hospete</option>
+                                       <option value="Gadag">Gadag</option>
+                                       <option value="Hassan">Hassan</option>
+                                       <option value="Bellari">Bellari</option>
                                     </select>
                                  </label>
                               </td>
                            </tr>
-                           <br/><br/>
+                           <tr/><tr/> <tr/><tr/> <tr/><tr/>
                            <tr>
                               <td>
                                  <p><font size="4" color="black">Booking date:</font></p>
                               </td>
+                           </tr>
+						   <tr>
+                              <td>
+                                 <p><font size="4" color="black">From:</font></p>
+                              </td>
                               <td>
                                  <label>
-                                    <input type="text" id="booking_date"
+                                    <input type="text" id="from_date"
+                                       name="booking date" autocomplete="on" />
+                              </td>
+							  <td>
+                                 <p><font size="4" color="black">To:</font></p>
+                              </td>
+                              <td>
+                                 <label>
+                                    <input type="text" id="to_date"
                                        name="booking date" autocomplete="on" />
                               </td>
                            </tr>
+						    <tr/><tr/> <tr/><tr/> <tr/><tr/>
                            <tr>
                            <td>
                            <p><font size="4" color="black">Number of Peoples:</font></p>
@@ -198,7 +224,18 @@
          $("#to").selectric();
          
          $(function() {
-         $("#booking_date").datepicker({
+         $("#from_date").datepicker({
+         defaultDate : "+1w",
+         changeMonth : true,
+         numberOfMonths : 1,
+         onClose : function(selectedDate) {
+         $("#to").datepicker("option", "minDate", selectedDate);
+         }
+         });
+         
+         });
+		 $(function() {
+         $("#to_date").datepicker({
          defaultDate : "+1w",
          changeMonth : true,
          numberOfMonths : 1,

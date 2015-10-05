@@ -20,22 +20,32 @@ public class TestFacade  {
 	}
 
 	public static com.yathraCity.core.ResponseMessage YathraService_registerCar(com.yathraCity.core.RegisterCarInput input) throws Exception{
-		String url = BASEURL + "register" + "/" + "register-car" ;
+		String url = BASEURL + "yathra" + "/" + "register-car" ;
 		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, input, com.yathraCity.core.ResponseMessage.class, "POST");
 	}
 
 	public static com.yathraCity.core.ResponseMessage YathraService_bookCar(com.yathraCity.core.RegisterBookingInput input) throws Exception{
-		String url = BASEURL + "register" + "/" + "book-car" ;
+		String url = BASEURL + "yathra" + "/" + "book-car" ;
 		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, input, com.yathraCity.core.ResponseMessage.class, "POST");
 	}
 
 	public static com.yathraCity.core.ResponseMessage YathraService_checkCarAvailability(com.yathraCity.core.CheckAvailabilityInput input) throws Exception{
-		String url = BASEURL + "register" + "/" + "check-car-availability" ;
+		String url = BASEURL + "yathra" + "/" + "check-car-availability" ;
 		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, input, com.yathraCity.core.ResponseMessage.class, "POST");
 	}
 
 	public static com.yathraCity.core.ListOfAvailableCars YathraService_getCarDetails(String pickUpPoint,String capacity) throws Exception{
-		String url = BASEURL + "register" + "/" + "get-car-details"  + "/" + pickUpPoint + "/" + capacity;
+		String url = BASEURL + "yathra" + "/" + "get-car-details"  + "/" + pickUpPoint + "/" + capacity;
 		return (com.yathraCity.core.ListOfAvailableCars) WebServiceTester.test(url, null, com.yathraCity.core.ListOfAvailableCars.class, "GET");
+	}
+
+	public static com.yathraCity.core.ResponseMessage YathraService_getOTP(String phoneNumber) throws Exception{
+		String url = BASEURL + "yathra" + "/" + "get-otp"  + "/" + phoneNumber;
+		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, null, com.yathraCity.core.ResponseMessage.class, "GET");
+	}
+
+	public static com.yathraCity.core.ResponseMessage YathraService_getOTPMatchResponse(String phoneNumber,String otp) throws Exception{
+		String url = BASEURL + "yathra" + "/" + "get-otp-match-response"  + "/" + phoneNumber + "/" + otp;
+		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, null, com.yathraCity.core.ResponseMessage.class, "GET");
 	}
 }
