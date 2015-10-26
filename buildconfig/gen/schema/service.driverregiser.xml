@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="RegisterDriver" baseurl="driverregistration">
+
+
+
+		<!-- A login service which is used to login a user to the app -->
+		
+		<interface url="register-driver" name="registerdriver" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="registerDriver" class="com.yathraCity.core.RegisterCarDetails"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.RegisterCarResponse"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+	</service>
+</schema>

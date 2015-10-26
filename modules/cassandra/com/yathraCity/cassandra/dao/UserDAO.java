@@ -75,7 +75,7 @@ public class UserDAO
 					.and( QueryBuilder.eq( UserColumns.PASSWORD, user.getPassword() ) )
 					.setConsistencyLevel( ConsistencyLevel.QUORUM ).enableTracing();
 			ResultSetFuture results = cassQuery.executeFuture( get );
-			u = processMonitorEntity( results ).get( 0 );
+			u = processEntity( results ).get( 0 );
 		}
 		catch( Exception e )
 		{
@@ -88,7 +88,7 @@ public class UserDAO
 			return null;
 	}
 
-	private List<User> processMonitorEntity( ResultSetFuture results )
+	private List<User> processEntity( ResultSetFuture results )
 	{
 		List<User> monitorEntityList = new ArrayList<User>();
 		for( Row r : results.getUninterruptibly() )

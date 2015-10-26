@@ -22,7 +22,6 @@ public class LoginService implements LoginServiceInterface {
 		response.setMessage("Failed to execute loginUser service");
 		try
 		{
-			// checking for all the mandatory fields required in the service
 			if( input == null || input.getUserAccountId() == null || input.getUserAccountId().isEmpty()
 					|| input.getPassword() == null || input.getPassword().isEmpty() )
 			{
