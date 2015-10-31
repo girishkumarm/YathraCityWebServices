@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 <schema package="com.yathraCity.services" name="Core Package">
-	<service name="EnterCoupens" baseurl="coupens">
-
-
-
-		<!-- A login service which is used to login a user to the app -->
-		
+	<service name="Coupens" baseurl="coupens">
+	
 		<interface url="coupens-of-tab" name="coupens" type="POST"
 			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
@@ -25,8 +21,8 @@
 			</developernotes>
 		</interface>
 
-	</service>
-	<service name="ListOfCoupensInTab" baseurl="getlistofcoupens">
+	<!-- </service>
+	<service name="ListOfCoupensInTab" baseurl="getlistofcoupens"> -->
 	<interface url="get-list-of-cupons" name="getallthecupons"
 			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
@@ -40,8 +36,8 @@
 				</notes>
 			</developernotes>
 		</interface>
-		</service>
-	<service name="UpdateCoupens" baseurl="updateCoupens">
+	<!-- 	</service>
+	<service name="UpdateCoupens" baseurl="updateCoupens"> -->
 	<interface url="update-coupens" name="updateCoupen"
 			type="POST" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
@@ -56,13 +52,17 @@
 				</notes>
 			</developernotes>
 		</interface>
-		</service>
-	<service name="DeleteCoupensExpired" baseurl="deletecoupens">
+	<!-- 	</service>
+	<service name="DeleteCoupensExpired" baseurl="deletecoupens"> -->
 	<interface url="delete-coupens" name="deleteCoupens"
 			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<urlinput>
+				<property name="couponName" type="String" description="coupon name"/>
+			</urlinput>
 			<output name="message" class="com.yathraCity.core.RegisterCarResponse"
 				description="success/unsuccess" />
+	
 			<description> <![CDATA[ ]]>
 			</description>
 			
@@ -73,3 +73,6 @@
 		</interface>
 		</service>
 </schema>
+
+ 
+ 
