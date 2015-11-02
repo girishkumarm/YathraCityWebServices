@@ -9,10 +9,16 @@ import com.yathraCity.services.LoginServiceInterface;
 
 import defaultpkg.ErrorCodes;
 
+/**
+ * login service
+ * @author ashwing
+ * param user credentials
+ */
 public class LoginService implements LoginServiceInterface {
 
 	private UserService loginUserService = new UserService();
 
+	//Authanticating the user by entering the crediantials
 	@Override
 	public LoginResponse loginUser( ServiceExecutionContext ctx, LoginInput input ) throws ExecException
 	{

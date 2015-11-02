@@ -27,6 +27,7 @@ public class CarServiceDAO
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
+	//initlization of the keyspace and session
 	public CarServiceDAO ()
 	{
 		try
@@ -40,6 +41,7 @@ public class CarServiceDAO
 		}
 	}
 
+	//Car details
 	public boolean addCarDetails( RegisterCarInput carDetails )
 	{
 		boolean result = false;
@@ -73,6 +75,7 @@ public class CarServiceDAO
 
 	}
 
+	//list of cars avaliable to take trip
 	public List<CarDetails> fetchAvailableCarsOfCity( String pickUpPoint, int capacity )
 	{
 		List<CarDetails> cars = null;
@@ -96,6 +99,7 @@ public class CarServiceDAO
 		return cars;
 	}
 
+	//Checking the car avaliablity
 	public boolean checkCarAavailability( CheckAvailabilityInput input )
 	{
 		boolean result = false;
@@ -122,6 +126,7 @@ public class CarServiceDAO
 		return result;
 	}
 
+	//Updating the car avaliablity
 	public boolean updateCarAavailability( CheckAvailabilityInput input )
 	{
 		boolean result = false;
@@ -148,6 +153,7 @@ public class CarServiceDAO
 		return result;
 	}
 
+	//adding the avaliable car to the list
 	private List<CarDetails> processCarEntity( ResultSetFuture results )
 	{
 		List<CarDetails> cars = new ArrayList<CarDetails>();

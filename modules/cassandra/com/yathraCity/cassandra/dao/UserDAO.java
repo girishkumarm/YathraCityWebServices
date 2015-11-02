@@ -21,6 +21,11 @@ import com.yathraCity.core.RegisterUser;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * Adding the new users
+ * @author ashwing
+ * param user details
+ */
 public class UserDAO
 {
 
@@ -28,6 +33,7 @@ public class UserDAO
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
+	//initlizing the keyspace and session
 	public UserDAO ()
 	{
 		try
@@ -41,6 +47,7 @@ public class UserDAO
 		}
 	}
 
+	//adding the new users
 	public boolean addUser( RegisterUser user )
 	{
 		boolean result = false;
@@ -65,6 +72,7 @@ public class UserDAO
 
 	}
 
+	//fetching the user from the db
 	public User fetchUser( LoginInput user )
 	{
 		User u = new User();

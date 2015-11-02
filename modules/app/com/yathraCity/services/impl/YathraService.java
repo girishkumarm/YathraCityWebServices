@@ -17,6 +17,11 @@ import com.yathraCity.core.RegisterCarInput;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.YathraServiceInterface;
 
+/**
+ * Car registration with the details
+ * @author ashwing
+ * param registration of the car
+ */
 public class YathraService implements YathraServiceInterface
 {
 
@@ -48,7 +53,7 @@ public class YathraService implements YathraServiceInterface
 			if( carBookingService.addCarDetails( input ) )
 			{
 				response.setStatus( "200" );
-				response.setMessage( "Booking confirmed" );
+				response.setMessage( "car registred" );
 			}
 		}
 		catch( Exception e )

@@ -10,11 +10,17 @@ import com.yathraCity.services.RegisterServiceInterface;
 
 import defaultpkg.ErrorCodes;
 
+/**
+ * Registration of new user by entering the details
+ * @author ashwing
+ * param register user details
+ */
 public class RegisterService implements RegisterServiceInterface
 {
 
 	private UserService registerUserService = new UserService();
-
+	
+	//registartion of new user
 	@Override
 	public RegisterUserResponse registerUser( ServiceExecutionContext ctx, RegisterUser input ) throws ExecException
 	{

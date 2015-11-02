@@ -20,13 +20,19 @@ import com.yathraCity.core.RegisterUser;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * Registration of the car
+ * @author ashwing
+ * Car details
+ */
 public class CarDetailsDAO 
 {
 
 		private static Logger logger = LoggerFactory.getLogger( UserDAO.class );
 		private static CassandraQuery cassQuery = null;
 		private String keyspace;
-
+		
+		//initilization of the keyspace and the session
 		public CarDetailsDAO ()
 		{
 			try
@@ -40,6 +46,7 @@ public class CarDetailsDAO
 			}
 		}
 
+		//storing the car details in DB
 		public boolean addCar( RegisterCarDetails car )
 		{
 			boolean result = false;

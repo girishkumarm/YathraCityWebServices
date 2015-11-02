@@ -5,11 +5,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
+/**
+ * sending the confirmation mail
+ * @author ashwing
+ *
+ */
 public class SendMail
 {
 	public static void main( String[] args )
 	{
+		//sending the confirmation mail after registration
 		try
 		{
 			String recipient = "+919738769973";

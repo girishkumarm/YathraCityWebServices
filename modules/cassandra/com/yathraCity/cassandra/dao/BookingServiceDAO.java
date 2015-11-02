@@ -13,7 +13,11 @@ import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.core.RegisterBookingInput;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
-
+/**
+ * Booking a car
+ * @author ashwing
+ * param details of the cardetails and the customer details
+ */
 public class BookingServiceDAO
 {
 	private static Logger logger = LoggerFactory.getLogger( UserDAO.class );
@@ -33,11 +37,13 @@ public class BookingServiceDAO
 		}
 	}
 
+	//storing the details of the booking
 	public boolean addBookingDetails( RegisterBookingInput bookingInput )
 	{
 		boolean result = false;
 		try
 		{
+			//Query to store the details of the booking
 			Statement insert = QueryBuilder.insertInto( keyspace, TableNames.CAR_BOOKING )
 					.value( BookingColumns.BOOKED_CAR_NAME, bookingInput.getBookedCarName() )
 					.value( BookingColumns.BOOKED_CAR_NUMBER, bookingInput.getBookedCarNumber() )

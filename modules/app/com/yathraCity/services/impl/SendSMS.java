@@ -9,7 +9,11 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+/**
+ * sending the otp to the recipiant
+ * @author ashwing
+ *
+ */
 public class SendSMS
 {
 	public SendSMS ()

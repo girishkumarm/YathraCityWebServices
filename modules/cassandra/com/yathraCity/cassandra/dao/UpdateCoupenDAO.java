@@ -9,10 +9,16 @@ import com.yathraCity.core.CoupenDeails;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * Update coupon details
+ * @author ashwing
+ * param coupon details
+ */
 public class UpdateCoupenDAO 
 {
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	//initlization of the keyspace and session
 	public UpdateCoupenDAO()
 	{
 		try
@@ -29,6 +35,7 @@ public class UpdateCoupenDAO
 	public boolean updateCoupensMeth(CoupenDeails coupenDetails)
 	{
 		boolean msg=false;
+		//query to update the coupon details
 		try
 		{
 		Statement update=QueryBuilder.update(keyspace, TableNames.COUPEN_DETAILS)

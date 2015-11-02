@@ -13,10 +13,16 @@ import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * getting all the coupons from the DB
+ * @author ashwing
+ * 
+ */
 public class AllCoupensDetails 
 {
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	//initilizing the session and keyspace
 	public AllCoupensDetails()
 	{
 		try
@@ -29,14 +35,16 @@ public class AllCoupensDetails
 			e.printStackTrace();
 		}
 	}
-	
+	//getting all the coupons from the DB
 	public List<CoupensPojo> listOfAllCoupenDetails()
 	{
+		//query for getting the coupons
 		List<CoupensPojo> allCoupens=new ArrayList<CoupensPojo>();
 		Statement getCoupens=QueryBuilder.select().all().from(keyspace, TableNames.COUPEN_DETAILS);
 		ResultSetFuture result=null;
 		try
 		{
+			//executing the query
 			result = cassQuery.executeFuture(getCoupens);
 		}
 		catch( Exception e )
@@ -44,12 +52,14 @@ public class AllCoupensDetails
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//initlizing the list of the coupons
 		allCoupens=getAllCoupens(result);
 		return allCoupens;
 	}
 	
 	public static List<CoupensPojo> getAllCoupens(ResultSetFuture result)
 	{
+		//adding the coupons to the list
 		List<CoupensPojo> myAllCoupen=new ArrayList<CoupensPojo>();
 		for(Row r:result.getUninterruptibly())
 		{

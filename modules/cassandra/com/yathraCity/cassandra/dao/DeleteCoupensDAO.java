@@ -10,12 +10,18 @@ import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * Deleting the coupons
+ * @author ashwing
+ *	param couponName
+ */
 public class DeleteCoupensDAO 
 {
 	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
+	//initlizing the keyspace and session 
 	public DeleteCoupensDAO()
 	{
 		try
@@ -29,6 +35,7 @@ public class DeleteCoupensDAO
 		}
 	}
 
+	//deleting the coupons in the DB
 	public boolean deleteCoupens(String coupenName)
 	{
 		boolean msg=false;

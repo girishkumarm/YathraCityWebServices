@@ -11,12 +11,17 @@ import com.yathraCity.core.CoupenDeails;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
+/**
+ * Adding coupons and its details in DB
+ * @author ashwing
+ * param coupon details
+ */
 public class AddCoupensDetailsDAO {
 
 	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
-
+	//initlizing the session and keyspace
 	public AddCoupensDetailsDAO()
 	{
 		try
@@ -30,12 +35,14 @@ public class AddCoupensDetailsDAO {
 		}
 	}
 
+	//adding the coupons in DB
 	public boolean addCoupens(CoupenDeails myCoupen)
 	{
 		boolean coupen=false;
 		
 		try
 		{
+			//query for adding the coupon in the DB
 		Statement addingCoupen=QueryBuilder.insertInto(keyspace,TableNames.COUPEN_DETAILS)
 				.value(CoupenDetailsColumn.COUPEN_NAME,myCoupen.getCoupen())
 				.value(CoupenDetailsColumn.VALIDITY_FROM, myCoupen.getFromDate())
