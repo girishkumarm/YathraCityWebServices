@@ -28,6 +28,7 @@ AND speculative_retry = '100ms'
 AND bloom_filter_fp_chance = 0.1 
 AND caching = 'keys_only';
 
+INSERT INTO otps (otp, phone_number) VALUES ('OTP','PHONE_NUMBER') USING TTL 300;
 
 //car table
 CREATE TABLE cars(
@@ -55,3 +56,9 @@ CREATE INDEX is_car_available_index ON yathra.cars( car_availability);
 
 //Create indexes for car_registered 
 CREATE INDEX is_car_registered_index ON yathra.cars( car_registered);
+
+
+CREATE TABLE counter_table( counter_value counter, url text,primary key(url) );
+
+
+CREATE TABLE coupen_details( coupen_name text,valid_from text,valid_to text,primary key(coupen_name,valid_to));
