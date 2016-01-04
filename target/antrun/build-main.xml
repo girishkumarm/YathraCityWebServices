@@ -5,7 +5,7 @@
   <property name="serverType" value="inblox_local"/>
   <property name="buildEnv" value="local"/>
   <property name="env.RZTUSER" value="dev"/>
-  <property name="env.DEST_WAR_PATH" value="C:/apache-tomcat-8.0.14/webapps/"/>
-  <ant antfile="F:\myProject\YathraCityWebServices/buildconfig/build/build.xml" target="shortbuild"/>
+  <property name="env.DEST_WAR_PATH" value="/home/girish/Softwares/apache-tomcat-8.0.30/webapps"/>
+  <ant antfile="/home/girish/git/YathraCityWebServices/buildconfig/build/build.xml" target="shortbuild"/>
 </target>
 </project>

@@ -9,14 +9,49 @@ public class TestFacade  {
 		return (com.razorthink.runtime.query.Result) WebServiceTester.test(url, query, com.razorthink.runtime.query.Result.class, "POST");
 	}
 
-	public static com.yathraCity.core.LoginResponse LoginService_loginUser(com.yathraCity.core.LoginInput input) throws Exception{
-		String url = BASEURL + "login" + "/" + "login-user" ;
-		return (com.yathraCity.core.LoginResponse) WebServiceTester.test(url, input, com.yathraCity.core.LoginResponse.class, "POST");
-	}
-
 	public static com.yathraCity.core.RegisterUserResponse RegisterService_registerUser(com.yathraCity.core.RegisterUser input) throws Exception{
 		String url = BASEURL + "register" + "/" + "register-user" ;
 		return (com.yathraCity.core.RegisterUserResponse) WebServiceTester.test(url, input, com.yathraCity.core.RegisterUserResponse.class, "POST");
+	}
+
+	public static com.yathraCity.core.Message CountingService_countNumberOfUsers() throws Exception{
+		String url = BASEURL + "counting" + "/" + "count-number-users" ;
+		return (com.yathraCity.core.Message) WebServiceTester.test(url, null, com.yathraCity.core.Message.class, "GET");
+	}
+
+	public static com.yathraCity.core.TotalNumberOfUsers NumberOfUsers_getNumberOfUsers() throws Exception{
+		String url = BASEURL + "getnumberofusers" + "/" + "get-number-of-users" ;
+		return (com.yathraCity.core.TotalNumberOfUsers) WebServiceTester.test(url, null, com.yathraCity.core.TotalNumberOfUsers.class, "GET");
+	}
+
+	public static com.yathraCity.core.RegisterCarResponse RegisterDriver_registerdriver(com.yathraCity.core.RegisterCarDetails registerDriver) throws Exception{
+		String url = BASEURL + "driverregistration" + "/" + "register-driver" ;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, registerDriver, com.yathraCity.core.RegisterCarResponse.class, "POST");
+	}
+
+	public static com.yathraCity.core.RegisterCarResponse Coupens_coupens(com.yathraCity.core.CoupenDeails coupensDetails) throws Exception{
+		String url = BASEURL + "coupens" + "/" + "coupens-of-tab" ;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, coupensDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
+	}
+
+	public static com.yathraCity.core.ListOfCoupensUsed Coupens_getallthecupons() throws Exception{
+		String url = BASEURL + "coupens" + "/" + "get-list-of-cupons" ;
+		return (com.yathraCity.core.ListOfCoupensUsed) WebServiceTester.test(url, null, com.yathraCity.core.ListOfCoupensUsed.class, "GET");
+	}
+
+	public static com.yathraCity.core.RegisterCarResponse Coupens_updateCoupen(com.yathraCity.core.CoupenDeails coupensDetails) throws Exception{
+		String url = BASEURL + "coupens" + "/" + "update-coupens" ;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, coupensDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
+	}
+
+	public static com.yathraCity.core.RegisterCarResponse Coupens_deleteCoupens(String couponName) throws Exception{
+		String url = BASEURL + "coupens" + "/" + "delete-coupens"  + "/" + couponName;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, null, com.yathraCity.core.RegisterCarResponse.class, "GET");
+	}
+
+	public static com.yathraCity.core.LoginResponse LoginService_loginUser(com.yathraCity.core.LoginInput input) throws Exception{
+		String url = BASEURL + "login" + "/" + "login-user" ;
+		return (com.yathraCity.core.LoginResponse) WebServiceTester.test(url, input, com.yathraCity.core.LoginResponse.class, "POST");
 	}
 
 	public static com.yathraCity.core.ResponseMessage YathraService_registerCar(com.yathraCity.core.RegisterCarInput input) throws Exception{

@@ -1,0 +1,78 @@
+<HEAD>
+<link href="global.css" media="screen" rel="stylesheet" type="text/css">    
+</HEAD>
+<BODY>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; ">
+<tr>
+<td colspan="2"> 
+<h1>InBlox API </h1>
+</td>
+</tr>
+<tr>
+<td width="200" valign="top"> <div >
+<br/><br/>
+<a href="home.html">Home</a><br/>
+<a href="commons.html">Commons</a><br/>
+<a href="constructs.html">Constructs</a><br/>
+<a href="schema.html">Schema</a><br/>
+<a href="errorcodes.html">Error Codes</a><br/>
+<a href="tester.html">Tester</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
+<a href="CountingServicesvc.html">CountingService</a><br/>
+<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
+<b>RegisterDriver</b><BR/>
+<a href="Coupenssvc.html">Coupens</a><br/>
+<a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="YathraServicesvc.html">YathraService</a><br/>
+
+</div>
+</td>
+<td>
+<!--BEGIN CONTENT AREA-->
+<div class="contentPadding">
+      <div class="wikiMainBody"><h1>InBlox API Specification - RegisterDriver Services</h1>
+
+<p>The requests documented in this section are directed to <i> RegisterDriver</i> resources, which represent  .
+
+</p><div id="toc" class="toc">
+           <div id="toctitle" class="toc-title">Contents </div>
+           <div id="toccontents" class="toc-contents"><ul>
+		   			<li>1 <a href="#registerdriver"> registerdriver POST Interface </a></li>
+</ul></div>
+         </div>
+<h1><a name="registerdriver"></a> registerdriver POST Interface </h1><p>
+   		 
+   			 
+			<b>Developer Notes </b> <br/>
+  		  
+    		 
+				<br/></p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> driverregistration/register-driver</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>registerDriver</td><td>RegisterCarDetails</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>RegisterCarResponse</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">REGISTERDRIVER 
+Host: example.com
+Authorization: Basic xxxxxxxxxxxxxxxxxxx
+Content-Type : nnn
+{
+   "id":1304339426,
+   "carName":"?",
+   "carModel":"?",
+   "carNumber":"?",
+   "maximumPeople":?,
+   "driverName":"?",
+   "phoneNumber":?,
+   "cityName":"?",
+   "minimumDistance":?,
+   "pricePerKm":?,
+   "driverLicence":"?"
+}
+</pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":2147483647,
+   "message":"?"
+}
+</pre>
+</div>
+<div class="clear"></div>
+</div>
+
+            <!--END CONTENT AREA-->
+</td></tr></table>
+</BODY>
+</HTML>
