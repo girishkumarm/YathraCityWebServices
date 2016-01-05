@@ -178,7 +178,10 @@ public class YathraService implements YathraServiceInterface
 			{
 				throw new Exception( "Mandatory fields are missing to get OTP" );
 			}
+			//before generating fetch for the otp
+			//if exist send the same otp
 			
+			//else generate as given below
 			String otp=otpServices.generateOTP(phoneNumber);
 			
 			if( otp != null )

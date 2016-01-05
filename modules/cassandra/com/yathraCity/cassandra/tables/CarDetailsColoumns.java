@@ -13,4 +13,9 @@ public class CarDetailsColoumns
 	public static final String MINIMUM_DISTANCE="minimum_distance";
 	public static final String PRICE_PERKM="minimum_price_per_km";
 	public static final String DRIVER_LICENCE="driver_licence_no"; 
+	
+	//extra fields to be added in the table car details in version 2
+	public static final String CAR_TYPE="car_type"; 
+	public static final String CREATED_AT="created_at"; 
+	public static final String AVAILABILITY="availability"; 
 }
