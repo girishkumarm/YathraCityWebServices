@@ -29,23 +29,23 @@ public class TestFacade  {
 		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, registerDriver, com.yathraCity.core.RegisterCarResponse.class, "POST");
 	}
 
-	public static com.yathraCity.core.RegisterCarResponse Coupens_coupens(com.yathraCity.core.CoupenDeails coupensDetails) throws Exception{
-		String url = BASEURL + "coupens" + "/" + "coupens-of-tab" ;
-		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, coupensDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
+	public static com.yathraCity.core.RegisterCarResponse Coupons_coupons(com.yathraCity.core.CouponDetails couponsDetails) throws Exception{
+		String url = BASEURL + "coupons" + "/" + "coupons-of-tab" ;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, couponsDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
 	}
 
-	public static com.yathraCity.core.ListOfCoupensUsed Coupens_getallthecupons() throws Exception{
-		String url = BASEURL + "coupens" + "/" + "get-list-of-cupons" ;
-		return (com.yathraCity.core.ListOfCoupensUsed) WebServiceTester.test(url, null, com.yathraCity.core.ListOfCoupensUsed.class, "GET");
+	public static com.yathraCity.core.ListOfCouponsUsed Coupons_getalltheCoupons() throws Exception{
+		String url = BASEURL + "coupons" + "/" + "get-list-of-coupons" ;
+		return (com.yathraCity.core.ListOfCouponsUsed) WebServiceTester.test(url, null, com.yathraCity.core.ListOfCouponsUsed.class, "GET");
 	}
 
-	public static com.yathraCity.core.RegisterCarResponse Coupens_updateCoupen(com.yathraCity.core.CoupenDeails coupensDetails) throws Exception{
-		String url = BASEURL + "coupens" + "/" + "update-coupens" ;
-		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, coupensDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
+	public static com.yathraCity.core.RegisterCarResponse Coupons_updateCoupon(com.yathraCity.core.CouponDetails couponsDetails) throws Exception{
+		String url = BASEURL + "coupons" + "/" + "update-coupons" ;
+		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, couponsDetails, com.yathraCity.core.RegisterCarResponse.class, "POST");
 	}
 
-	public static com.yathraCity.core.RegisterCarResponse Coupens_deleteCoupens(String couponName) throws Exception{
-		String url = BASEURL + "coupens" + "/" + "delete-coupens"  + "/" + couponName;
+	public static com.yathraCity.core.RegisterCarResponse Coupons_deleteCoupons(String couponName) throws Exception{
+		String url = BASEURL + "coupons" + "/" + "delete-coupons"  + "/" + couponName;
 		return (com.yathraCity.core.RegisterCarResponse) WebServiceTester.test(url, null, com.yathraCity.core.RegisterCarResponse.class, "GET");
 	}
 

@@ -1,0 +1,98 @@
+<HEAD>
+<link href="global.css" media="screen" rel="stylesheet" type="text/css">    
+</HEAD>
+<BODY>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; ">
+<tr>
+<td colspan="2"> 
+<h1>InBlox API </h1>
+</td>
+</tr>
+<tr>
+<td width="200" valign="top"> <div >
+<br/><br/>
+<a href="home.html">Home</a><br/>
+<a href="commons.html">Commons</a><br/>
+<a href="constructs.html">Constructs</a><br/>
+<a href="errorcodes.html">Error Codes</a><br/>
+<a href="tester.html">Tester</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
+<a href="CountingServicesvc.html">CountingService</a><br/>
+<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
+<a href="RegisterDriversvc.html">RegisterDriver</a><br/>
+<b>Coupons</b><BR/>
+<a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="YathraServicesvc.html">YathraService</a><br/>
+
+</div>
+</td>
+<td>
+<!--BEGIN CONTENT AREA-->
+<div class="contentPadding">
+      <div class="wikiMainBody"><h1>InBlox API Specification - Coupons Services</h1>
+
+<p>The requests documented in this section are directed to <i> Coupons</i> resources, which represent  .
+
+</p><div id="toc" class="toc">
+           <div id="toctitle" class="toc-title">Contents </div>
+           <div id="toccontents" class="toc-contents"><ul>
+		   			<li>1 <a href="#coupons"> coupons POST Interface </a></li><li>2 <a href="#getalltheCoupons"> getalltheCoupons GET Interface </a></li><li>3 <a href="#updateCoupon"> updateCoupon POST Interface </a></li><li>4 <a href="#deleteCoupons"> deleteCoupons GET Interface </a></li>
+</ul></div>
+         </div>
+<h1><a name="coupons"></a> coupons POST Interface </h1><p>
+   		 
+   			 
+			</p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> coupons/coupons-of-tab</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>couponsDetails</td><td>CouponDetails</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>RegisterCarResponse</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">COUPONS 
+Host: example.com
+Authorization: Basic xxxxxxxxxxxxxxxxxxx
+Content-Type : nnn
+{
+   "id":1686349812,
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
+}
+</pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":2147483647,
+   "message":"?"
+}
+</pre><h1><a name="getalltheCoupons"></a> getalltheCoupons GET Interface </h1><p>  
+			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> coupons/get-list-of-coupons</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>count</td><td>ListOfCouponsUsed</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":2147483647,
+   "listOfCoupons":[
+      {
+         "id":2147483647,
+         "coupon":"?",
+         "fromDate":"?",
+         "toDate":"?"
+      }   ]
+}
+</pre><h1><a name="updateCoupon"></a> updateCoupon POST Interface </h1><p>  
+			</p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> coupons/update-coupons</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>couponsDetails</td><td>CouponDetails</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>RegisterCarResponse</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">UPDATECOUPON 
+Host: example.com
+Authorization: Basic xxxxxxxxxxxxxxxxxxx
+Content-Type : nnn
+{
+   "id":2147483647,
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
+}
+</pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":2147483647,
+   "message":"?"
+}
+</pre><h1><a name="deleteCoupons"></a> deleteCoupons GET Interface </h1><p>  
+			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> coupons/delete-coupons/<i>coupon-name</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>RegisterCarResponse</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
+   "id":125992811,
+   "message":"?"
+}
+</pre>
+</div>
+<div class="clear"></div>
+</div>
+
+            <!--END CONTENT AREA-->
+</td></tr></table>
+</BODY>
+</HTML>

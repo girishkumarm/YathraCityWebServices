@@ -20,8 +20,8 @@ import javax.xml.ws.handler.MessageContext;
 import javax.ws.rs.WebApplicationException;
 import com.razorthink.runtime.*;
 import defaultpkg.*;
-@Path("/coupens")
-public class Coupens{
+@Path("/coupons")
+public class Coupons{
 	@Context
 	HttpServletRequest request;
 
@@ -33,17 +33,17 @@ public class Coupens{
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/coupens-of-tab")
-	public com.yathraCity.core.RegisterCarResponse coupens(com.yathraCity.core.CoupenDeails coupensDetails){
+	@Path("/coupons-of-tab")
+	public com.yathraCity.core.RegisterCarResponse coupons(com.yathraCity.core.CouponDetails couponsDetails){
 		com.yathraCity.core.RegisterCarResponse resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			CoupensInterface intfc =  (CoupensInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupens"));
+			CouponsInterface intfc =  (CouponsInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupons"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.coupens(context,coupensDetails);
+			resp =  intfc.coupons(context,couponsDetails);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)
@@ -63,17 +63,17 @@ public class Coupens{
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/get-list-of-cupons")
-	public com.yathraCity.core.ListOfCoupensUsed getallthecupons(){
-		com.yathraCity.core.ListOfCoupensUsed resp=null;
+	@Path("/get-list-of-coupons")
+	public com.yathraCity.core.ListOfCouponsUsed getalltheCoupons(){
+		com.yathraCity.core.ListOfCouponsUsed resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			CoupensInterface intfc =  (CoupensInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupens"));
+			CouponsInterface intfc =  (CouponsInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupons"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.getallthecupons(context);
+			resp =  intfc.getalltheCoupons(context);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)
@@ -94,17 +94,17 @@ public class Coupens{
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/update-coupens")
-	public com.yathraCity.core.RegisterCarResponse updateCoupen(com.yathraCity.core.CoupenDeails coupensDetails){
+	@Path("/update-coupons")
+	public com.yathraCity.core.RegisterCarResponse updateCoupon(com.yathraCity.core.CouponDetails couponsDetails){
 		com.yathraCity.core.RegisterCarResponse resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			CoupensInterface intfc =  (CoupensInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupens"));
+			CouponsInterface intfc =  (CouponsInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupons"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.updateCoupen(context,coupensDetails);
+			resp =  intfc.updateCoupon(context,couponsDetails);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)
@@ -124,17 +124,17 @@ public class Coupens{
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/delete-coupens/{couponName}")
-	public com.yathraCity.core.RegisterCarResponse deleteCoupens(@PathParam("couponName") String couponName){
+	@Path("/delete-coupons/{couponName}")
+	public com.yathraCity.core.RegisterCarResponse deleteCoupons(@PathParam("couponName") String couponName){
 		com.yathraCity.core.RegisterCarResponse resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			CoupensInterface intfc =  (CoupensInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupens"));
+			CouponsInterface intfc =  (CouponsInterface) (ServiceParser.getImpl("com.yathraCity.services.Coupons"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.deleteCoupens(context,couponName);
+			resp =  intfc.deleteCoupons(context,couponName);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)

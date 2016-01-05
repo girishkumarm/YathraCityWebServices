@@ -14,6 +14,9 @@ LogInput.startTime
 LogInput.endTime
 RequestObject.subject
 RequestObject.messageUid
+CouponDetails.coupon
+CouponDetails.fromDate
+CouponDetails.toDate
 RegisterBookingInput.userName
 RegisterBookingInput.emailId
 RegisterBookingInput.phoneNumber
@@ -33,9 +36,6 @@ RegisterUser.userAccountId
 RegisterUser.password
 RegisterUserResponse.flag
 RegisterUserResponse.message
-CoupenDeails.coupen
-CoupenDeails.fromDate
-CoupenDeails.toDate
 RegisterCarInput.carName
 RegisterCarInput.registered
 RegisterCarInput.carAvailability
@@ -89,6 +89,9 @@ startTime
 endTime
 subject
 messageUid
+coupon
+fromDate
+toDate
 userName
 emailId
 phoneNumber
@@ -102,9 +105,6 @@ bookedCarNumber
 bookedCarOwner
 discountOffered
 bookingConfirmation
-coupen
-fromDate
-toDate
 carName
 registered
 carAvailability

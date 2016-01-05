@@ -1,7 +1,7 @@
 package com.yathraCity.cassandra.pojo;
 
 
-public class CoupensPojo 
+public class CouponsPojo 
 {
 	private String coupenName;
 	private String validFrom;

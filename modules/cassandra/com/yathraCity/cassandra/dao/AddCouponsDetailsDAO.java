@@ -7,22 +7,24 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CoupenDetailsColumn;
 import com.yathraCity.cassandra.tables.TableNames;
-import com.yathraCity.core.CoupenDeails;
+import com.yathraCity.core.CouponDetails;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
 
 /**
  * Adding coupons and its details in DB
+ * 
  * @author ashwing
- * param coupon details
+ *         param coupon details
  */
-public class AddCoupensDetailsDAO {
+public class AddCouponsDetailsDAO {
 
 	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
-	//initlizing the session and keyspace
-	public AddCoupensDetailsDAO()
+
+	// initlizing the session and keyspace
+	public AddCouponsDetailsDAO()
 	{
 		try
 		{
@@ -35,26 +37,26 @@ public class AddCoupensDetailsDAO {
 		}
 	}
 
-	//adding the coupons in DB
-	public boolean addCoupens(CoupenDeails myCoupen)
+	// adding the coupons in DB
+	public boolean addCoupons( CouponDetails myCoupen )
 	{
-		boolean coupen=false;
-		
+		boolean coupen = false;
+
 		try
 		{
-			//query for adding the coupon in the DB
-		Statement addingCoupen=QueryBuilder.insertInto(keyspace,TableNames.COUPEN_DETAILS)
-				.value(CoupenDetailsColumn.COUPEN_NAME,myCoupen.getCoupen())
-				.value(CoupenDetailsColumn.VALIDITY_FROM, myCoupen.getFromDate())
-				.value(CoupenDetailsColumn.VALID_TO, myCoupen.getToDate());
-		cassQuery.executeFuture(addingCoupen);
-		coupen=true;
+			// query for adding the coupon in the DB
+			Statement addingCoupen = QueryBuilder.insertInto(keyspace, TableNames.COUPEN_DETAILS)
+					.value(CoupenDetailsColumn.COUPEN_NAME, myCoupen.getCoupon())
+					.value(CoupenDetailsColumn.VALIDITY_FROM, myCoupen.getFromDate())
+					.value(CoupenDetailsColumn.VALID_TO, myCoupen.getToDate());
+			cassQuery.executeFuture(addingCoupen);
+			coupen = true;
 		}
-		catch(Exception e)
+		catch( Exception e )
 		{
 			e.printStackTrace();
 		}
-		if(coupen==true)
+		if( coupen == true )
 		{
 			return coupen;
 		}

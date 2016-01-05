@@ -15,14 +15,14 @@ import com.yathraCity.services.config.Configurator;
  * @author ashwing
  *	param couponName
  */
-public class DeleteCoupensDAO 
+public class DeleteCouponsDAO 
 {
 	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
 	//initlizing the keyspace and session 
-	public DeleteCoupensDAO()
+	public DeleteCouponsDAO()
 	{
 		try
 		{

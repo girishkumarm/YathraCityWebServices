@@ -1,15 +1,15 @@
 package com.yathraCity.cassandra.services;
 
-import com.yathraCity.cassandra.dao.UpdateCoupenDAO;
-import com.yathraCity.core.CoupenDeails;
+import com.yathraCity.cassandra.dao.UpdateCouponDAO;
+import com.yathraCity.core.CouponDetails;
 
-public class UpdateCoupensService 
+public class UpdateCouponsService 
 {
-	public boolean updateCoupnesMethod(CoupenDeails coupenDetails)
+	public boolean updateCoupnesMethod(CouponDetails coupenDetails)
 	{
 		boolean msg=false;
-		UpdateCoupenDAO update=new UpdateCoupenDAO();
-		msg=update.updateCoupensMeth(coupenDetails);
+		UpdateCouponDAO update=new UpdateCouponDAO();
+		msg=update.updateCouponsMeth(coupenDetails);
 		return msg;
 		
 	}

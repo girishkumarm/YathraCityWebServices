@@ -1,6 +1,6 @@
 package com.yathraCity.cassandra.services;
 
-import com.yathraCity.cassandra.dao.DeleteCoupensDAO;
+import com.yathraCity.cassandra.dao.DeleteCouponsDAO;
 
 public class DeleteCouponesExpireService 
 {
@@ -9,7 +9,7 @@ public class DeleteCouponesExpireService
 		boolean msg=false;
 		try
 		{
-			DeleteCoupensDAO delete=new DeleteCoupensDAO();
+			DeleteCouponsDAO delete=new DeleteCouponsDAO();
 			msg=delete.deleteCoupens(coupenName);
 			return msg;
 		}

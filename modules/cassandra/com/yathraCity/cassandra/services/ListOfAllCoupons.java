@@ -3,13 +3,13 @@ package com.yathraCity.cassandra.services;
 import java.util.ArrayList;
 import java.util.List;
 import com.yathraCity.cassandra.dao.AllCoupensDetails;
-import com.yathraCity.cassandra.pojo.CoupensPojo;
+import com.yathraCity.cassandra.pojo.CouponsPojo;
 
-public class ListOfAllCoupens 
+public class ListOfAllCoupons 
 {
-	public List<CoupensPojo> coupenListMeth()
+	public List<CouponsPojo> couponListMeth()
 	{
-		List<CoupensPojo> listOfCup=new ArrayList<CoupensPojo>();
+		List<CouponsPojo> listOfCup=new ArrayList<CouponsPojo>();
 		try
 		{
 			AllCoupensDetails allCoupons=new AllCoupensDetails();

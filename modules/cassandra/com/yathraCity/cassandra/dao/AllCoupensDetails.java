@@ -6,7 +6,7 @@ import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.yathraCity.cassandra.pojo.CoupensPojo;
+import com.yathraCity.cassandra.pojo.CouponsPojo;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CoupenDetailsColumn;
 import com.yathraCity.cassandra.tables.TableNames;
@@ -36,10 +36,10 @@ public class AllCoupensDetails
 		}
 	}
 	//getting all the coupons from the DB
-	public List<CoupensPojo> listOfAllCoupenDetails()
+	public List<CouponsPojo> listOfAllCoupenDetails()
 	{
 		//query for getting the coupons
-		List<CoupensPojo> allCoupens=new ArrayList<CoupensPojo>();
+		List<CouponsPojo> allCoupens=new ArrayList<CouponsPojo>();
 		Statement getCoupens=QueryBuilder.select().all().from(keyspace, TableNames.COUPEN_DETAILS);
 		ResultSetFuture result=null;
 		try
@@ -57,13 +57,13 @@ public class AllCoupensDetails
 		return allCoupens;
 	}
 	
-	public static List<CoupensPojo> getAllCoupens(ResultSetFuture result)
+	public static List<CouponsPojo> getAllCoupens(ResultSetFuture result)
 	{
 		//adding the coupons to the list
-		List<CoupensPojo> myAllCoupen=new ArrayList<CoupensPojo>();
+		List<CouponsPojo> myAllCoupen=new ArrayList<CouponsPojo>();
 		for(Row r:result.getUninterruptibly())
 		{
-			CoupensPojo coupens=new CoupensPojo();
+			CouponsPojo coupens=new CouponsPojo();
 			System.out.println("inserting");
 			coupens.setCoupenName(r.getString(CoupenDetailsColumn.COUPEN_NAME));
 			System.out.println(r.getString(CoupenDetailsColumn.COUPEN_NAME));

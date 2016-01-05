@@ -1,22 +1,21 @@
 package com.yathraCity.cassandra.services;
 
-import com.yathraCity.cassandra.dao.AddCoupensDetailsDAO;
-import com.yathraCity.core.CoupenDeails;
+import com.yathraCity.cassandra.dao.AddCouponsDetailsDAO;
 
-public class CoupenDetails 
-{
-	public boolean addingCoupensToDB(CoupenDeails mycoupen)
+public class CouponDetails {
+
+	public boolean addingCouponsToDB( com.yathraCity.core.CouponDetails mycoupen )
 	{
-		boolean cupon=false;
+		boolean cupon = false;
 		try
 		{
-		
-			AddCoupensDetailsDAO adding=new AddCoupensDetailsDAO();
-			if(mycoupen.getCoupen()!=null || mycoupen.getCoupen().trim()!=" "
-					|| mycoupen.getFromDate()!=null || mycoupen.getFromDate().trim()!=" "
-					|| mycoupen.getToDate()!=null || mycoupen.getToDate().trim()!= " ")
+
+			AddCouponsDetailsDAO adding = new AddCouponsDetailsDAO();
+			if( mycoupen.getCoupon() != null || mycoupen.getCoupon().trim() != " " || mycoupen.getFromDate() != null
+					|| mycoupen.getFromDate().trim() != " " || mycoupen.getToDate() != null
+					|| mycoupen.getToDate().trim() != " " )
 			{
-				cupon=adding.addCoupens(mycoupen);
+				cupon = adding.addCoupons(mycoupen);
 			}
 			else
 			{
@@ -24,7 +23,7 @@ public class CoupenDetails
 			}
 			return cupon;
 		}
-		catch(Exception e)
+		catch( Exception e )
 		{
 			e.printStackTrace();
 			return cupon;

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <schema package="com.yathraCity.core" name="Core Package">
 
-	<Class name="CoupenDeails"
+	<Class name="CouponDetails"
 		description="car avaliable on that particular day"
 		displayorder="0">
-		<property name="coupen" type="string" description="coupens name" />
+		<property name="coupon" type="string" description="coupens name" />
 		<property name="fromDate" type="string" description="valid from" />
 		<property name="toDate" type="string" description="to from" />
 	</Class>
 	
-	<Class name="ListOfCoupensUsed"
+	<Class name="ListOfCouponsUsed"
 		description="LoginResponse which describes the user is real or not"
 		displayorder="0">
-		<Array name="listOfCoupens" valueClass="CoupenDeails" description="list of coupens" />
+		<Array name="listOfCoupons" valueClass="CouponDetails" description="list of coupens" />
 	</Class>
 </schema>
