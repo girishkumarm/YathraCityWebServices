@@ -7,19 +7,16 @@
 			description="whether the car is registered or not" />
 		<property name="carAvailability" type="boolean"
 			description="whether the car is available or not" />
-		<property name="carModel" type="String" description="carModel" />
 		<property name="carNumber" type="String" description="carNumber" />
-		<property name="carOwner" type="String" description="carOwner name" />
 		<property name="carCapacity" type="int"
 			description="capacity of the car in number" />
 		<property name="carRegisteredAt" type="String"
 			description="carRegisteredAt the name of the city" />
 		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
-		<property name="ownerLicenseNumber" type="String"
-			description="ownerLicenseNumber" />
 		<property name="minimunDistancePerDay" type="int"
 			description="minimunDistancePerDay" />
-		<property name="contactNumber" type="String" description="contactNumber" />
+		<property name="carType" type="String" description="type of car (sean/hatchback/xuv)"></property>
+		<property name="carID" type="String" description="a unique id which links to the rdriver of the car"/>
 	</Class>
 
 	<Class name="AvailableCars" description="input to register car details"

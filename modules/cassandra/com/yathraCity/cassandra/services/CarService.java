@@ -26,17 +26,16 @@ public class CarService
 		try
 		{
 			// checking for all the mandatory fields required in the service
-			if( carDetails == null || carDetails.getCarCapacity() == 0 || carDetails.getCarModel() == null
-					|| carDetails.getCarModel().trim().isEmpty() || carDetails.getCarName() == null
+			if( carDetails == null || carDetails.getCarCapacity() == 0 || carDetails.getCarName() == null
 					|| carDetails.getCarName().trim().isEmpty() || carDetails.getCarNumber() == null
-					|| carDetails.getCarNumber().trim().isEmpty() || carDetails.getCarOwner() == null
-					|| carDetails.getCarOwner().trim().isEmpty() || carDetails.getCarRegisteredAt() == null
-					|| carDetails.getCarRegisteredAt().trim().isEmpty() || carDetails.getContactNumber() == null
-					|| carDetails.getContactNumber().trim().isEmpty() || carDetails.getMinimunDistancePerDay() == null
+					|| carDetails.getCarNumber().trim().isEmpty() 
+					|| carDetails.getCarRegisteredAt() == null
+					|| carDetails.getCarRegisteredAt().trim().isEmpty() 
+					|| carDetails.getMinimunDistancePerDay() == null
 					|| carDetails.getMinimunDistancePerDay()==0
-					|| carDetails.getOwnerLicenseNumber() == null
-					|| carDetails.getOwnerLicenseNumber().trim().isEmpty() || carDetails.getPricePerKilometer() == null
-					|| carDetails.getPricePerKilometer() == 0 )
+					|| carDetails.getPricePerKilometer() == null
+					|| carDetails.getPricePerKilometer() == 0 
+					|| carDetails.getCarType() == null || carDetails.getCarType().trim().isEmpty())
 			{
 				throw new Exception( "Mandatory fields are missing to register the car" );
 			}

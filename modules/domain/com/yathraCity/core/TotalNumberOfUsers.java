@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 5 Jan, 2016 10:28:01 AM by Hibernate Tools 3.2.0.CR1
+// Generated 7 Jan, 2016 11:13:43 PM by Hibernate Tools 3.2.0.CR1
 
 
 

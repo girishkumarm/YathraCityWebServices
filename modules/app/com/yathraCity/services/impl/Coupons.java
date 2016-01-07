@@ -10,7 +10,7 @@ import com.yathraCity.cassandra.services.ListOfAllCoupons;
 import com.yathraCity.cassandra.services.UpdateCouponsService;
 import com.yathraCity.core.CouponDetails;
 import com.yathraCity.core.ListOfCouponsUsed;
-import com.yathraCity.core.RegisterCarResponse;
+import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CouponsInterface;
 import defaultpkg.ErrorCodes;
 
@@ -27,10 +27,10 @@ public class Coupons implements CouponsInterface {
 
 	// Adding the new coupon by giving the coupon details
 	@Override
-	public RegisterCarResponse coupons( ServiceExecutionContext ctx, CouponDetails couponsDetails ) throws ExecException
+	public ResponseMessage coupons( ServiceExecutionContext ctx, CouponDetails couponsDetails ) throws ExecException
 	{
 		com.yathraCity.cassandra.services.CouponDetails newCoupon = new com.yathraCity.cassandra.services.CouponDetails();
-		RegisterCarResponse response = new RegisterCarResponse();
+		ResponseMessage response = new ResponseMessage();
 		response.setMessage("could not add the new coupon");
 		try
 		{
@@ -97,10 +97,10 @@ public class Coupons implements CouponsInterface {
 
 	// Update coupon details by passing the coupon details
 	@Override
-	public RegisterCarResponse updateCoupon( ServiceExecutionContext ctx, CouponDetails couponsDetails )
+	public ResponseMessage updateCoupon( ServiceExecutionContext ctx, CouponDetails couponsDetails )
 			throws ExecException
 	{
-		RegisterCarResponse response = new RegisterCarResponse();
+		ResponseMessage response = new ResponseMessage();
 		response.setMessage("didnt get updated");
 
 		UpdateCouponsService update = new UpdateCouponsService();
@@ -136,10 +136,10 @@ public class Coupons implements CouponsInterface {
 
 	// deleting the coupon name by its name
 	@Override
-	public RegisterCarResponse deleteCoupons( ServiceExecutionContext ctx, String couponName ) throws ExecException
+	public ResponseMessage deleteCoupons( ServiceExecutionContext ctx, String couponName ) throws ExecException
 	{
 		boolean msg = false;
-		RegisterCarResponse response = new RegisterCarResponse();
+		ResponseMessage response = new ResponseMessage();
 		DeleteCouponesExpireService delete = new DeleteCouponesExpireService();
 		try
 		{

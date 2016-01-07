@@ -3,7 +3,7 @@ package com.yathraCity.cassandra.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +12,7 @@ import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CarColumns;
@@ -26,6 +27,7 @@ public class CarServiceDAO
 	private static Logger logger = LoggerFactory.getLogger( UserDAO.class );
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	static private String uniqueID;
 
 	//initlization of the keyspace and session
 	public CarServiceDAO ()
@@ -41,25 +43,23 @@ public class CarServiceDAO
 		}
 	}
 
-	//Car details
+	//Car details storing in DB
 	public boolean addCarDetails( RegisterCarInput carDetails )
 	{
 		boolean result = false;
 		try
 		{
+			setUniqueID();
 			Statement insert = QueryBuilder.insertInto( keyspace, TableNames.CARS )
-					.value( CarColumns.CONTACT_NUMBER, carDetails.getContactNumber() )
 					.value( CarColumns.CAR_AVAILABILITY, carDetails.isCarAvailability() )
-					.value( CarColumns.CAR_MODEL, carDetails.getCarModel() )
 					.value( CarColumns.CAR_NAME, carDetails.getCarName() )
-					.value( CarColumns.CAR_CAPACITY, carDetails.getCarCapacity() )
 					.value( CarColumns.CAR_NUMBER, carDetails.getCarNumber() )
-					.value( CarColumns.CAR_OWNER, carDetails.getCarOwner() )
 					.value( CarColumns.CAR_REGISTERED_AT, carDetails.getCarRegisteredAt() )
 					.value( CarColumns.CAR_REGISTERED, carDetails.isRegistered() )
 					.value( CarColumns.MINIMUM_DISTANCE_PER_DAY, carDetails.getMinimunDistancePerDay() )
-					.value( CarColumns.OWNER_LICENSE_NUMBER, carDetails.getOwnerLicenseNumber() )
 					.value( CarColumns.PRICE_PER_KILOMETER, carDetails.getPricePerKilometer() )
+					.value( CarColumns.CAR_TYPE, carDetails.getCarType())
+					.value( CarColumns.UUID, getUniqueID())
 					.setConsistencyLevel( ConsistencyLevel.QUORUM )
 					.enableTracing();
 			//System.out.println( insert.toString() );
@@ -175,5 +175,15 @@ public class CarServiceDAO
 		}
 		return cars;
 	}
-
+	
+	
+	public static String getUniqueID()
+	{
+		return uniqueID;
+	}
+	
+	public void setUniqueID()
+	{
+		this.uniqueID = (UUID.randomUUID()).toString();
+	}
 }

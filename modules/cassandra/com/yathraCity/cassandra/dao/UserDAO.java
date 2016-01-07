@@ -62,6 +62,7 @@ public class UserDAO
 			System.out.println( insert.toString() );
 			cassQuery.executeFuture( insert );
 			result = true;
+			return result;
 		}
 		catch( Exception e )
 		{
@@ -90,10 +91,12 @@ public class UserDAO
 			logger.error( "Error while inserting the user data into the cassandra db while registering user--->"
 					+ e.getMessage() );
 		}
-		if( u != null )
-			return u;
-		else
+		if( u.getPassword() ==null || u.getPassword().trim().isEmpty() 
+				|| u.getUserAccountId() == null || u.getUserAccountId().trim().isEmpty()
+				|| u.getUserName()== null || u.getUserName().trim().isEmpty())
 			return null;
+		else
+			return u;
 	}
 
 	private List<User> processEntity( ResultSetFuture results )

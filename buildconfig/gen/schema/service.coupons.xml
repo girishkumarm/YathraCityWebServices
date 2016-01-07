@@ -7,7 +7,7 @@
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
 			<postInput name="couponsDetails" class="com.yathraCity.core.CouponDetails"
 				description="Input" />
-			<output name="message" class="com.yathraCity.core.RegisterCarResponse"
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
 				description="success/error message" />
 			<description>
    		 <![CDATA[
@@ -25,7 +25,7 @@
 			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
 			<output name="count" class="com.yathraCity.core.ListOfCouponsUsed"
-				description="success/unsuccess" />
+				description="list of all the coupons" />
 			<description> <![CDATA[ ]]>
 			</description>
 
@@ -40,7 +40,7 @@
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
 			<postInput name="couponsDetails" class="com.yathraCity.core.CouponDetails"
 				description="Input" />
-			<output name="message" class="com.yathraCity.core.RegisterCarResponse"
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
 				description="success/unsuccess" />
 			<description> <![CDATA[ ]]>
 			</description>
@@ -56,7 +56,7 @@
 			<urlinput>
 				<property name="couponName" type="String" description="coupon name" />
 			</urlinput>
-			<output name="message" class="com.yathraCity.core.RegisterCarResponse"
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
 				description="success/unsuccess" />
 
 			<description> <![CDATA[ ]]>

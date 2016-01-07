@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 5 Jan, 2016 10:28:01 AM by Hibernate Tools 3.2.0.CR1
+// Generated 7 Jan, 2016 11:13:43 PM by Hibernate Tools 3.2.0.CR1
 
 
 
@@ -16,32 +16,28 @@ public class RegisterCarInput  implements java.io.Serializable {
      private String carName;
      private boolean registered;
      private boolean carAvailability;
-     private String carModel;
      private String carNumber;
-     private String carOwner;
      private Integer carCapacity;
      private String carRegisteredAt;
      private Integer pricePerKilometer;
-     private String ownerLicenseNumber;
      private Integer minimunDistancePerDay;
-     private String contactNumber;
+     private String carType;
+     private String carID;
 
     public RegisterCarInput() {
     }
 
-    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carModel, String carNumber, String carOwner, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, String ownerLicenseNumber, Integer minimunDistancePerDay, String contactNumber) {
+    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carNumber, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, Integer minimunDistancePerDay, String carType, String carID) {
        this.carName = carName;
        this.registered = registered;
        this.carAvailability = carAvailability;
-       this.carModel = carModel;
        this.carNumber = carNumber;
-       this.carOwner = carOwner;
        this.carCapacity = carCapacity;
        this.carRegisteredAt = carRegisteredAt;
        this.pricePerKilometer = pricePerKilometer;
-       this.ownerLicenseNumber = ownerLicenseNumber;
        this.minimunDistancePerDay = minimunDistancePerDay;
-       this.contactNumber = contactNumber;
+       this.carType = carType;
+       this.carID = carID;
     }
    
     public Integer getId() {
@@ -72,26 +68,12 @@ public class RegisterCarInput  implements java.io.Serializable {
     public void setCarAvailability(boolean carAvailability) {
         this.carAvailability = carAvailability;
     }
-    public String getCarModel() {
-        return this.carModel;
-    }
-    
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
-    }
     public String getCarNumber() {
         return this.carNumber;
     }
     
     public void setCarNumber(String carNumber) {
         this.carNumber = carNumber;
-    }
-    public String getCarOwner() {
-        return this.carOwner;
-    }
-    
-    public void setCarOwner(String carOwner) {
-        this.carOwner = carOwner;
     }
     public Integer getCarCapacity() {
         return this.carCapacity;
@@ -114,13 +96,6 @@ public class RegisterCarInput  implements java.io.Serializable {
     public void setPricePerKilometer(Integer pricePerKilometer) {
         this.pricePerKilometer = pricePerKilometer;
     }
-    public String getOwnerLicenseNumber() {
-        return this.ownerLicenseNumber;
-    }
-    
-    public void setOwnerLicenseNumber(String ownerLicenseNumber) {
-        this.ownerLicenseNumber = ownerLicenseNumber;
-    }
     public Integer getMinimunDistancePerDay() {
         return this.minimunDistancePerDay;
     }
@@ -128,12 +103,19 @@ public class RegisterCarInput  implements java.io.Serializable {
     public void setMinimunDistancePerDay(Integer minimunDistancePerDay) {
         this.minimunDistancePerDay = minimunDistancePerDay;
     }
-    public String getContactNumber() {
-        return this.contactNumber;
+    public String getCarType() {
+        return this.carType;
     }
     
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setCarType(String carType) {
+        this.carType = carType;
+    }
+    public String getCarID() {
+        return this.carID;
+    }
+    
+    public void setCarID(String carID) {
+        this.carID = carID;
     }
 
 

@@ -16,12 +16,12 @@
 <a href="constructs.html">Constructs</a><br/>
 <a href="errorcodes.html">Error Codes</a><br/>
 <a href="tester.html">Tester</a><br/>
-<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
-<a href="CountingServicesvc.html">CountingService</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="CountingServicesvc.html">CountingService</a><br/>
 <a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
-<a href="RegisterDriversvc.html">RegisterDriver</a><br/>
 <a href="Couponssvc.html">Coupons</a><br/>
+<a href="RegisterDriversvc.html">RegisterDriver</a><br/>
 <a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="RegisterServicesvc.html">RegisterService</a><br/>
 <b>YathraService</b><BR/>
 
 </div>
@@ -51,18 +51,16 @@ Content-Type : nnn
    "carName":"?",
    "registered":?,
    "carAvailability":?,
-   "carModel":"?",
    "carNumber":"?",
-   "carOwner":"?",
    "carCapacity":?,
    "carRegisteredAt":"?",
    "pricePerKilometer":?,
-   "ownerLicenseNumber":"?",
    "minimunDistancePerDay":?,
-   "contactNumber":"?"
+   "carType":"?",
+   "carID":"?"
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":1290990429,
+   "id":2147483647,
    "status":"?",
    "message":"?"
 }
@@ -74,7 +72,7 @@ Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
 {
-   "id":1871395658,
+   "id":2147483647,
    "userName":"?",
    "emailId":"?",
    "phoneNumber":?,
@@ -102,7 +100,7 @@ Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
 {
-   "id":2147483647,
+   "id":727134173,
    "carNumber":"?",
    "carRegisteredAt":"?",
    "carCapacity":?,
@@ -111,16 +109,16 @@ Content-Type : nnn
    "minimunDistancePerDay":"?"
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":1108483021,
+   "id":1183370929,
    "status":"?",
    "message":"?"
 }
 </pre><h1><a name="getCarDetails"></a> getCarDetails GET Interface </h1><p>  
 			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-car-details/<i>pick-up-point</i>/<i>capacity</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ListOfAvailableCars</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":2147483647,
+   "id":1828843724,
    "car":[
       {
-         "id":2147483647,
+         "id":1351734001,
          "carName":"?",
          "carAvailability":?,
          "carNumber":"?",
@@ -135,13 +133,13 @@ Content-Type : nnn
 }
 </pre><h1><a name="getOTP"></a> getOTP GET Interface </h1><p>  
 			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp/<i>phone-number</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":2147483647,
+   "id":2052261355,
    "status":"?",
    "message":"?"
 }
 </pre><h1><a name="getOTPMatchResponse"></a> getOTPMatchResponse GET Interface </h1><p>  
 			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp-match-response/<i>phone-number</i>/<i>otp</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":408543648,
+   "id":2147483647,
    "status":"?",
    "message":"?"
 }

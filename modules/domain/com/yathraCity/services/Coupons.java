@@ -34,8 +34,8 @@ public class Coupons{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/coupons-of-tab")
-	public com.yathraCity.core.RegisterCarResponse coupons(com.yathraCity.core.CouponDetails couponsDetails){
-		com.yathraCity.core.RegisterCarResponse resp=null;
+	public com.yathraCity.core.ResponseMessage coupons(com.yathraCity.core.CouponDetails couponsDetails){
+		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
@@ -95,8 +95,8 @@ public class Coupons{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update-coupons")
-	public com.yathraCity.core.RegisterCarResponse updateCoupon(com.yathraCity.core.CouponDetails couponsDetails){
-		com.yathraCity.core.RegisterCarResponse resp=null;
+	public com.yathraCity.core.ResponseMessage updateCoupon(com.yathraCity.core.CouponDetails couponsDetails){
+		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
@@ -125,8 +125,8 @@ public class Coupons{
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete-coupons/{couponName}")
-	public com.yathraCity.core.RegisterCarResponse deleteCoupons(@PathParam("couponName") String couponName){
-		com.yathraCity.core.RegisterCarResponse resp=null;
+	public com.yathraCity.core.ResponseMessage deleteCoupons(@PathParam("couponName") String couponName){
+		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try

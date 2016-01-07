@@ -47,14 +47,21 @@ public class LoginService implements LoginServiceInterface {
 			if( result == true )
 			{
 				response.setFlag("true");
-				response.setMessage("Successfully executed loginUser service");
+				response.setMessage("Successfully logged in");
+				return response;
+			}
+			else
+			{
+				response.setFlag("false");
+				response.setMessage("not logged-in");
+				return response;
 			}
 		}
 		catch( Exception e )
 		{
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 }

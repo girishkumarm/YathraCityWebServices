@@ -20,7 +20,7 @@ import com.yathraCity.services.YathraServiceInterface;
 /**
  * Car registration with the details
  * @author ashwing
- * param registration of the car
+ * param registration of the car,booking the car
  */
 public class YathraService implements YathraServiceInterface
 {
@@ -28,7 +28,7 @@ public class YathraService implements YathraServiceInterface
 	private BookingService bookingService = new BookingService();
 	private CarService carBookingService = new CarService();
 	private UserOTPServices otpServices = new UserOTPServices();
-
+    //service to register the car
 	@Override
 	public ResponseMessage registerCar( ServiceExecutionContext ctx, RegisterCarInput input ) throws ExecException
 	{
@@ -37,19 +37,20 @@ public class YathraService implements YathraServiceInterface
 		response.setMessage( "Booking not confirmed" );
 		try
 		{
-			if( input == null || input.getCarCapacity() == 0 || input.getCarModel() == null
-					|| input.getCarModel().trim().isEmpty() || input.getCarName() == null
+			if( input == null
+				    || input.getCarName() == null
 					|| input.getCarName().trim().isEmpty() || input.getCarNumber() == null
-					|| input.getCarNumber().trim().isEmpty() || input.getCarOwner() == null
-					|| input.getCarOwner().trim().isEmpty() || input.getCarRegisteredAt() == null
-					|| input.getCarRegisteredAt().trim().isEmpty() || input.getContactNumber() == null
-					|| input.getContactNumber().trim().isEmpty() || input.getMinimunDistancePerDay() == null
-					|| input.getMinimunDistancePerDay()==0 || input.getOwnerLicenseNumber() == null
-					|| input.getOwnerLicenseNumber().trim().isEmpty() || input.getPricePerKilometer() == null
-					|| input.getPricePerKilometer() == 0 )
+					|| input.getCarNumber().trim().isEmpty()  
+					|| input.getCarRegisteredAt() == null
+					|| input.getCarRegisteredAt().trim().isEmpty() 
+				    || input.getMinimunDistancePerDay() == null
+					|| input.getMinimunDistancePerDay()==0 ||  input.getPricePerKilometer() == null
+					|| input.getPricePerKilometer() == 0 || input.getPricePerKilometer()==null
+					|| input.getCarType() == null || input.getCarType().trim().isEmpty())
 			{
 				throw new Exception( "Mandatory fields are missing to register the car" );
 			}
+			//calling service to store in DB
 			if( carBookingService.addCarDetails( input ) )
 			{
 				response.setStatus( "200" );

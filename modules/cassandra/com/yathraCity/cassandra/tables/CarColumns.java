@@ -16,4 +16,6 @@ public class CarColumns
 	public final static String MINIMUM_DISTANCE_PER_DAY = "minimun_distance_per_day";
 	public final static String CONTACT_NUMBER = "contact_number";
 	public final static String CAR_REGISTERED = "car_registered";
+	public final static String CAR_TYPE= "car_type";
+	public final static String UUID= "uuid";
 }
