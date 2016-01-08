@@ -9,5 +9,5 @@ public class DriverDetails
     public static final String AGENCY_NAME="agency_name";
     public static final String AGENCY_PHONE_NUMBER="agency_phone_number";
     public static final String LOCATION="location";
-    public static final String UUID="uuid";
+    public static final String CAR_NUMBER="car_number";
 }

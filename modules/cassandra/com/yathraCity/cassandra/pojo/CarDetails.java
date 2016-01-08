@@ -4,7 +4,6 @@ package com.yathraCity.cassandra.pojo;
 public class CarDetails
 {
 	private String carName;
-	private String carOwner;
 	private boolean registered;
 	private boolean carAvailability;
 	private String carModel;
@@ -12,9 +11,7 @@ public class CarDetails
 	private String carNumber;
 	private String carRegisteredAt;
 	private int pricePerKilometer;
-	private String ownerLicenseNumber;
 	private int minimunDistancePerDay;
-	private String contactNumber;
 
 	public String getCarName()
 	{
@@ -85,17 +82,6 @@ public class CarDetails
 	{
 		this.pricePerKilometer = pricePerKilometer;
 	}
-
-	public String getOwnerLicenseNumber()
-	{
-		return ownerLicenseNumber;
-	}
-
-	public void setOwnerLicenseNumber( String ownerLicenseNumber )
-	{
-		this.ownerLicenseNumber = ownerLicenseNumber;
-	}
-
 	public int getMinimunDistancePerDay()
 	{
 		return minimunDistancePerDay;
@@ -105,27 +91,6 @@ public class CarDetails
 	{
 		this.minimunDistancePerDay = minimunDistancePerDay;
 	}
-
-	public String getContactNumber()
-	{
-		return contactNumber;
-	}
-
-	public void setContactNumber( String contactNumber )
-	{
-		this.contactNumber = contactNumber;
-	}
-
-	public String getCarOwner()
-	{
-		return carOwner;
-	}
-
-	public void setCarOwner( String carOwner )
-	{
-		this.carOwner = carOwner;
-	}
-
 	public boolean isRegistered()
 	{
 		return registered;

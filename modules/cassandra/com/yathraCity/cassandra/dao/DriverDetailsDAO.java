@@ -42,7 +42,7 @@ public class DriverDetailsDAO
 					.value(DriverDetails.DRIVER_NAME, details.getDriverName())
 					.value(DriverDetails.DRIVER_PHONE_NUMBER, details.getDriverPhoneNumber())
 					.value(DriverDetails.LOCATION, details.getLocation())
-					.value(DriverDetails.UUID, CarServiceDAO.getUniqueID());
+					.value(DriverDetails.CAR_NUMBER, details.getLocation());;
 			cassQuery.executeFuture(addDetails);
 			return true;
 		}

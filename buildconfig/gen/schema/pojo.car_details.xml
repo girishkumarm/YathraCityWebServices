@@ -15,11 +15,11 @@
 		<property name="pricePerKilometer" type="int" description="pricePerKilometer" />
 		<property name="minimunDistancePerDay" type="int"
 			description="minimunDistancePerDay" />
-		<property name="carType" type="String" description="type of car (sean/hatchback/xuv)"></property>
-		<property name="carID" type="String" description="a unique id which links to the rdriver of the car"/>
+		<property name="carType" type="String" description="type of car (sean/hatchback/xuv)"/>
+		<property name="carModel" type="String" description="type of car model"/>
 	</Class>
 
-	<Class name="AvailableCars" description="input to register car details"
+<!-- 	<Class name="AvailableCars" description="input to register car details"
 		displayorder="0">
 		<property name="carName" type="String" description="carname" />
 		<property name="carAvailability" type="boolean"
@@ -36,11 +36,18 @@
 		<property name="minimunDistancePerDay" type="String"
 			description="minimunDistancePerDay" />
 		<property name="contactNumber" type="String" description="contactNumber" />
-	</Class>
+	</Class> -->
 
+    <Class  name="FetchCarDetails" description ="for fetching the car details" displayorder="0">
+		<property name="registeredAt" type="String" description="location of the car"/>
+		<property name="carType" type="String" description="car type" displayorder="0"/>
+		<property name="carNumber" type="String" description="car number" displayorder="0"/>
+        <property name="carModel" type="String" description="car model of the of that cataogry" displayorder="0"/>
+    </Class>
+    
 	<Class name="ListOfAvailableCars" description="AvailableCars"
 		displayorder="0">
-		<array name="car" valueClass="AvailableCars" description="AvailableCar" />
+		<array name="car" valueClass="RegisterCarInput" description="AvailableCar" />
 
 	</Class>
 

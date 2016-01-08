@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 7 Jan, 2016 11:13:43 PM by Hibernate Tools 3.2.0.CR1
+// Generated 8 Jan, 2016 6:15:46 PM by Hibernate Tools 3.2.0.CR1
 
 
 
@@ -16,24 +16,22 @@ public class RegisterDriverDetails  implements java.io.Serializable {
      private String driverPhoneNumber;
      private String driverLicence;
      private String driverName;
-     private String carId;
      private String agencyName;
      private String agencyPhoneNumber;
      private String location;
-     private String carID;
+     private String carNuumber;
 
     public RegisterDriverDetails() {
     }
 
-    public RegisterDriverDetails(String driverPhoneNumber, String driverLicence, String driverName, String carId, String agencyName, String agencyPhoneNumber, String location, String carID) {
+    public RegisterDriverDetails(String driverPhoneNumber, String driverLicence, String driverName, String agencyName, String agencyPhoneNumber, String location, String carNuumber) {
        this.driverPhoneNumber = driverPhoneNumber;
        this.driverLicence = driverLicence;
        this.driverName = driverName;
-       this.carId = carId;
        this.agencyName = agencyName;
        this.agencyPhoneNumber = agencyPhoneNumber;
        this.location = location;
-       this.carID = carID;
+       this.carNuumber = carNuumber;
     }
    
     public Integer getId() {
@@ -64,13 +62,6 @@ public class RegisterDriverDetails  implements java.io.Serializable {
     public void setDriverName(String driverName) {
         this.driverName = driverName;
     }
-    public String getCarId() {
-        return this.carId;
-    }
-    
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
     public String getAgencyName() {
         return this.agencyName;
     }
@@ -92,12 +83,12 @@ public class RegisterDriverDetails  implements java.io.Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
-    public String getCarID() {
-        return this.carID;
+    public String getCarNuumber() {
+        return this.carNuumber;
     }
     
-    public void setCarID(String carID) {
-        this.carID = carID;
+    public void setCarNuumber(String carNuumber) {
+        this.carNuumber = carNuumber;
     }
 
 

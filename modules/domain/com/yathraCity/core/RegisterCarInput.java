@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 7 Jan, 2016 11:13:43 PM by Hibernate Tools 3.2.0.CR1
+// Generated 8 Jan, 2016 6:15:46 PM by Hibernate Tools 3.2.0.CR1
 
 
 
@@ -22,12 +22,12 @@ public class RegisterCarInput  implements java.io.Serializable {
      private Integer pricePerKilometer;
      private Integer minimunDistancePerDay;
      private String carType;
-     private String carID;
+     private String carModel;
 
     public RegisterCarInput() {
     }
 
-    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carNumber, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, Integer minimunDistancePerDay, String carType, String carID) {
+    public RegisterCarInput(String carName, boolean registered, boolean carAvailability, String carNumber, Integer carCapacity, String carRegisteredAt, Integer pricePerKilometer, Integer minimunDistancePerDay, String carType, String carModel) {
        this.carName = carName;
        this.registered = registered;
        this.carAvailability = carAvailability;
@@ -37,7 +37,7 @@ public class RegisterCarInput  implements java.io.Serializable {
        this.pricePerKilometer = pricePerKilometer;
        this.minimunDistancePerDay = minimunDistancePerDay;
        this.carType = carType;
-       this.carID = carID;
+       this.carModel = carModel;
     }
    
     public Integer getId() {
@@ -110,12 +110,12 @@ public class RegisterCarInput  implements java.io.Serializable {
     public void setCarType(String carType) {
         this.carType = carType;
     }
-    public String getCarID() {
-        return this.carID;
+    public String getCarModel() {
+        return this.carModel;
     }
     
-    public void setCarID(String carID) {
-        this.carID = carID;
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     }
 
 

@@ -70,17 +70,13 @@
 
 
 		<!-- get all cars available to book -->
-		<interface url="get-car-details" name="getCarDetails" type="GET"
+		<interface url="get-car-details" name="getCarDetails" type="POST"
 			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<urlinput>
-				<property name="pickUpPoint" type="String" description="pickUpPoint" />
-			</urlinput>
-			<urlinput>
-				<property name="capacity" type="String" description="capacity of car" />
-			</urlinput>
+			<postInput name="input"
+				class="com.yathraCity.core.FetchCarDetails" description="Input" />
 			<output name="message" class="com.yathraCity.core.ListOfAvailableCars"
-				description="success/unsuccess" />
+				description="list of the cars avaliable" />
 			<description> <![CDATA[ ]]>
 			</description>
 			<developernotes>

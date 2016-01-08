@@ -69,9 +69,9 @@ public class TestFacade  {
 		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, input, com.yathraCity.core.ResponseMessage.class, "POST");
 	}
 
-	public static com.yathraCity.core.ListOfAvailableCars YathraService_getCarDetails(String pickUpPoint,String capacity) throws Exception{
-		String url = BASEURL + "yathra" + "/" + "get-car-details"  + "/" + pickUpPoint + "/" + capacity;
-		return (com.yathraCity.core.ListOfAvailableCars) WebServiceTester.test(url, null, com.yathraCity.core.ListOfAvailableCars.class, "GET");
+	public static com.yathraCity.core.ListOfAvailableCars YathraService_getCarDetails(com.yathraCity.core.FetchCarDetails input) throws Exception{
+		String url = BASEURL + "yathra" + "/" + "get-car-details" ;
+		return (com.yathraCity.core.ListOfAvailableCars) WebServiceTester.test(url, input, com.yathraCity.core.ListOfAvailableCars.class, "POST");
 	}
 
 	public static com.yathraCity.core.ResponseMessage YathraService_getOTP(String phoneNumber) throws Exception{

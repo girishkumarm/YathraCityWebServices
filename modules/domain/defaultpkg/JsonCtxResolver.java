@@ -10,7 +10,7 @@ public class JsonCtxResolver implements ContextResolver<JAXBContext>  {
 	private Class[] types = {
 			com.yathraCity.core.RegisterBookingInput.class,
 			com.yathraCity.core.RegisterCarInput.class,
-			com.yathraCity.core.AvailableCars.class,
+			com.yathraCity.core.FetchCarDetails.class,
 			com.yathraCity.core.ListOfAvailableCars.class,
 			com.yathraCity.core.CheckAvailabilityInput.class,
 			com.yathraCity.core.TotalNumberOfUsers.class,

@@ -10,6 +10,7 @@ import com.yathraCity.cassandra.dao.CarServiceDAO;
 import com.yathraCity.cassandra.dao.UserDAO;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.core.CheckAvailabilityInput;
+import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.RegisterCarInput;
 
 // this is the api which act as an interface between the services and the dao
@@ -35,7 +36,8 @@ public class CarService
 					|| carDetails.getMinimunDistancePerDay()==0
 					|| carDetails.getPricePerKilometer() == null
 					|| carDetails.getPricePerKilometer() == 0 
-					|| carDetails.getCarType() == null || carDetails.getCarType().trim().isEmpty())
+					|| carDetails.getCarType() == null || carDetails.getCarType().trim().isEmpty()
+					|| carDetails.getCarModel() == null || carDetails.getCarModel().trim().isEmpty())
 			{
 				throw new Exception( "Mandatory fields are missing to register the car" );
 			}
@@ -52,7 +54,7 @@ public class CarService
 
 	}
 
-	public List<CarDetails> getAvailableCars( String pickUpPoint, int capacity )
+/*	public List<CarDetails> getAvailableCars( String pickUpPoint, int capacity )
 	{
 		List<CarDetails> result = null;
 		try
@@ -73,8 +75,34 @@ public class CarService
 		}
 		return result;
 
+	}*/
+	
+	public List<CarDetails> getAvailableCars( FetchCarDetails details )
+	{
+		List<CarDetails> result = null;
+		try
+		{
+			// checking for all the mandatory fields required in the service
+			if(details.getCarType() ==null || details.getRegisteredAt() ==null || details.getCarModel()==null
+					||details.getCarType().trim().isEmpty() || details.getRegisteredAt().trim().isEmpty()
+					||details.getCarModel().trim().isEmpty() )
+			{
+				throw new Exception( "Mandatory fields are missing to get OTP" );
+			}
+			CarServiceDAO fetchingCars=new CarServiceDAO();
+			result=fetchingCars.fetchAvailableCarsOfCity(details);
+		}
+		catch(Exception e)
+		{
+			
+			logger.error( "Error while inserting the user data into the cassandra db while registering user--->"
+					+ e.getMessage() );
+			return null;
+		}
+		return result;
 	}
-
+	
+	
 	public boolean checkCarAavailability( CheckAvailabilityInput input )
 	{
 		boolean result = false;
