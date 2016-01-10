@@ -196,12 +196,12 @@ var handler = {
 <a href="constructs.html">Constructs</a><br/>
 <a href="errorcodes.html">Error Codes</a><br/>
 <b>Tester</b><BR/>
-<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
-<a href="CountingServicesvc.html">CountingService</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="CountingServicesvc.html">CountingService</a><br/>
 <a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
-<a href="RegisterDriversvc.html">RegisterDriver</a><br/>
 <a href="Couponssvc.html">Coupons</a><br/>
+<a href="RegisterDriversvc.html">RegisterDriver</a><br/>
 <a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="RegisterServicesvc.html">RegisterService</a><br/>
 <a href="YathraServicesvc.html">YathraService</a><br/>
 
 </div>
@@ -213,7 +213,7 @@ var handler = {
 <b>Endpoint</b><br/>
 <input id="endpoint" type="text" style="width:400px" value="" /><br/><br/>
 <b>Select Service </b><br/>
-<select id="sb"> <option value="-1">Select</option><OPTION value="0">RegisterService:registerUser</OPTION><OPTION value="1">CountingService:countNumberOfUsers</OPTION><OPTION value="2">NumberOfUsers:getNumberOfUsers</OPTION><OPTION value="3">RegisterDriver:registerdriver</OPTION><OPTION value="4">Coupons:coupons</OPTION><OPTION value="5">Coupons:getalltheCoupons</OPTION><OPTION value="6">Coupons:updateCoupon</OPTION><OPTION value="7">Coupons:deleteCoupons</OPTION><OPTION value="8">LoginService:loginUser</OPTION><OPTION value="9">YathraService:registerCar</OPTION><OPTION value="10">YathraService:bookCar</OPTION><OPTION value="11">YathraService:checkCarAvailability</OPTION><OPTION value="12">YathraService:getCarDetails</OPTION><OPTION value="13">YathraService:getOTP</OPTION><OPTION value="14">YathraService:getOTPMatchResponse</OPTION></select>
+<select id="sb"> <option value="-1">Select</option><OPTION value="0">CountingService:countNumberOfUsers</OPTION><OPTION value="1">NumberOfUsers:getNumberOfUsers</OPTION><OPTION value="2">Coupons:coupons</OPTION><OPTION value="3">Coupons:getalltheCoupons</OPTION><OPTION value="4">Coupons:updateCoupon</OPTION><OPTION value="5">Coupons:deleteCoupons</OPTION><OPTION value="6">RegisterDriver:registerdriver</OPTION><OPTION value="7">LoginService:loginUser</OPTION><OPTION value="8">RegisterService:registerUser</OPTION><OPTION value="9">YathraService:registerCar</OPTION><OPTION value="10">YathraService:bookCar</OPTION><OPTION value="11">YathraService:checkCarAvailability</OPTION><OPTION value="12">YathraService:getCarDetails</OPTION><OPTION value="13">YathraService:getOTP</OPTION><OPTION value="14">YathraService:getOTPMatchResponse</OPTION></select>
 <br/><br/>
 <div id="urlinput"> </div>
 <div id="jsoninput"> </div><br/><br/>
@@ -226,41 +226,38 @@ var handler = {
 </td></tr></table>
 </td></tr></table>
 </BODY>
-<div id="servicecontent" style="display:none"><div id="url_0">register/register-user</div><div id="type_0">POST</div><div id="urlinputs_0"></div><div id="postinput_0"><pre>{
+<div id="servicecontent" style="display:none"><div id="url_0">counting/count-number-users</div><div id="type_0">GET</div><div id="urlinputs_0"></div><div id="postinput_0"><pre></pre></div><div id="url_1">getnumberofusers/get-number-of-users</div><div id="type_1">GET</div><div id="urlinputs_1"></div><div id="postinput_1"><pre></pre></div><div id="url_2">coupons/coupons-of-tab</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
+   "id":633569411,
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
+}
+</pre></div><div id="url_3">coupons/get-list-of-coupons</div><div id="type_3">GET</div><div id="urlinputs_3"></div><div id="postinput_3"><pre></pre></div><div id="url_4">coupons/update-coupons</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
    "id":2147483647,
-   "userName":"?",
-   "phoneNumber":"?",
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
+}
+</pre></div><div id="url_5">coupons/delete-coupons</div><div id="type_5">GET</div><div id="urlinputs_5">couponName,</div><div id="postinput_5"><pre></pre></div><div id="url_6">driverregistration/register-driver</div><div id="type_6">POST</div><div id="urlinputs_6"></div><div id="postinput_6"><pre>{
+   "id":361339471,
+   "driverPhoneNumber":"?",
+   "driverLicence":"?",
+   "driverName":"?",
+   "agencyName":"?",
+   "agencyPhoneNumber":"?",
+   "location":"?",
+   "carNuumber":"?"
+}
+</pre></div><div id="url_7">login/login-user</div><div id="type_7">POST</div><div id="urlinputs_7"></div><div id="postinput_7"><pre>{
+   "id":2147483647,
+   "yathraCityUserId":"?",
    "userAccountId":"?",
    "password":"?"
 }
-</pre></div><div id="url_1">counting/count-number-users</div><div id="type_1">GET</div><div id="urlinputs_1"></div><div id="postinput_1"><pre></pre></div><div id="url_2">getnumberofusers/get-number-of-users</div><div id="type_2">GET</div><div id="urlinputs_2"></div><div id="postinput_2"><pre></pre></div><div id="url_3">driverregistration/register-driver</div><div id="type_3">POST</div><div id="urlinputs_3"></div><div id="postinput_3"><pre>{
+</pre></div><div id="url_8">register/register-user</div><div id="type_8">POST</div><div id="urlinputs_8"></div><div id="postinput_8"><pre>{
    "id":2147483647,
-   "carName":"?",
-   "carModel":"?",
-   "carNumber":"?",
-   "maximumPeople":?,
-   "driverName":"?",
-   "phoneNumber":?,
-   "cityName":"?",
-   "minimumDistance":?,
-   "pricePerKm":?,
-   "driverLicence":"?"
-}
-</pre></div><div id="url_4">coupons/coupons-of-tab</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
-   "id":2147483647,
-   "coupon":"?",
-   "fromDate":"?",
-   "toDate":"?"
-}
-</pre></div><div id="url_5">coupons/get-list-of-coupons</div><div id="type_5">GET</div><div id="urlinputs_5"></div><div id="postinput_5"><pre></pre></div><div id="url_6">coupons/update-coupons</div><div id="type_6">POST</div><div id="urlinputs_6"></div><div id="postinput_6"><pre>{
-   "id":2147483647,
-   "coupon":"?",
-   "fromDate":"?",
-   "toDate":"?"
-}
-</pre></div><div id="url_7">coupons/delete-coupons</div><div id="type_7">GET</div><div id="urlinputs_7">couponName,</div><div id="postinput_7"><pre></pre></div><div id="url_8">login/login-user</div><div id="type_8">POST</div><div id="urlinputs_8"></div><div id="postinput_8"><pre>{
-   "id":2147483647,
-   "yathraCityUserId":"?",
+   "userName":"?",
+   "phoneNumber":"?",
    "userAccountId":"?",
    "password":"?"
 }
@@ -269,15 +266,13 @@ var handler = {
    "carName":"?",
    "registered":?,
    "carAvailability":?,
-   "carModel":"?",
    "carNumber":"?",
-   "carOwner":"?",
    "carCapacity":?,
    "carRegisteredAt":"?",
    "pricePerKilometer":?,
-   "ownerLicenseNumber":"?",
    "minimunDistancePerDay":?,
-   "contactNumber":"?"
+   "carType":"?",
+   "carModel":"?"
 }
 </pre></div><div id="url_10">yathra/book-car</div><div id="type_10">POST</div><div id="urlinputs_10"></div><div id="postinput_10"><pre>{
    "id":2147483647,
@@ -304,5 +299,12 @@ var handler = {
    "ownerLicenseNumber":"?",
    "minimunDistancePerDay":"?"
 }
-</pre></div><div id="url_12">yathra/get-car-details</div><div id="type_12">GET</div><div id="urlinputs_12">pickUpPoint,capacity,</div><div id="postinput_12"><pre></pre></div><div id="url_13">yathra/get-otp</div><div id="type_13">GET</div><div id="urlinputs_13">phoneNumber,</div><div id="postinput_13"><pre></pre></div><div id="url_14">yathra/get-otp-match-response</div><div id="type_14">GET</div><div id="urlinputs_14">phoneNumber,otp,</div><div id="postinput_14"><pre></pre></div></div>
+</pre></div><div id="url_12">yathra/get-car-details</div><div id="type_12">POST</div><div id="urlinputs_12"></div><div id="postinput_12"><pre>{
+   "id":778003705,
+   "registeredAt":"?",
+   "carType":"?",
+   "carNumber":"?",
+   "carModel":"?"
+}
+</pre></div><div id="url_13">yathra/get-otp</div><div id="type_13">GET</div><div id="urlinputs_13">phoneNumber,</div><div id="postinput_13"><pre></pre></div><div id="url_14">yathra/get-otp-match-response</div><div id="type_14">GET</div><div id="urlinputs_14">phoneNumber,otp,</div><div id="postinput_14"><pre></pre></div></div>
 </HTML>

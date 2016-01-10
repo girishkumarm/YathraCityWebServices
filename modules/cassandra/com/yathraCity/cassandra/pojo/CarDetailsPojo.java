@@ -13,7 +13,17 @@ public class CarDetailsPojo
     private Integer minimumDistance;
     private Integer pricePerKm;
     private String driverLicence;
+	private String carType;
 	
+	public String getCarType()
+	{
+		return carType;
+	}
+	
+	public void setCarType( String type )
+	{
+		this.carType = type;
+	}
 	public String getCarName()
 	{
 		return carName;

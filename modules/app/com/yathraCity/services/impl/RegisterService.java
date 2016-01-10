@@ -33,7 +33,7 @@ public class RegisterService implements RegisterServiceInterface
 			// checking for all the mandatory fields required in the service
 			if( input == null || input.getUserName() == null || input.getUserName().trim().isEmpty()
 					|| input.getUserAccountId() == null || input.getUserAccountId().trim().isEmpty()
-					|| input.getPassword() == null || input.getPassword().trim().isEmpty()
+					|| input.getPhoneNumber() == null || input.getPhoneNumber().trim().isEmpty()
 					|| input.getPassword() == null || input.getPassword().trim().isEmpty() )
 			{
 				throw new ExecException( ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing" );

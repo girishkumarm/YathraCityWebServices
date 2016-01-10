@@ -123,10 +123,11 @@ public class YathraService{
 	}
 
 
-	@GET
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/get-car-details/{pickUpPoint}/{capacity}")
-	public com.yathraCity.core.ListOfAvailableCars getCarDetails(@PathParam("pickUpPoint") String pickUpPoint,@PathParam("capacity") String capacity){
+	@Path("/get-car-details")
+	public com.yathraCity.core.ListOfAvailableCars getCarDetails(com.yathraCity.core.FetchCarDetails input){
 		com.yathraCity.core.ListOfAvailableCars resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
@@ -135,7 +136,7 @@ public class YathraService{
 			context = new ServiceExecutionContext(request);
 			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.getCarDetails(context,pickUpPoint,capacity);
+			resp =  intfc.getCarDetails(context,input);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)

@@ -44,7 +44,6 @@ public class UserService
 
 	public boolean checkUserExistence( LoginInput user )
 	{
-		boolean result = false;
 		try
 		{
 			// checking for all the mandatory fields required in the service
@@ -57,15 +56,21 @@ public class UserService
 			// call dao to fatch user and check if it is null
 			if( userDAO.fetchUser( user ) != null )
 			{
-				result = true;
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 		catch( Exception e )
 		{
+			
 			logger.error( "Error while inserting the user data into the cassandra db while registering user--->"
 					+ e.getMessage() );
+			return false;
 		}
-		return result;
+		
 	}
 
 }

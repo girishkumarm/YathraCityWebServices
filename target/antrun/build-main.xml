@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <property name="warname" value="ws"/>
+  <property name="serverType" value="inblox_local"/>
+  <property name="buildEnv" value="local"/>
+  <property name="env.RZTUSER" value="dev"/>
+  <property name="env.DEST_WAR_PATH" value="C:\Users\Ashwin\Documents\apache-tomcat-8.0.30\webapps"/>
+  <ant antfile="C:\Users\Ashwin\Documents\GitHub\YathraCityWebServices/buildconfig/build/build.xml" target="shortbuild"/>
+</target>
+</project>

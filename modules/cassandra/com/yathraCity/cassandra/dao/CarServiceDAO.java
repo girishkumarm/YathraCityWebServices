@@ -3,7 +3,7 @@ package com.yathraCity.cassandra.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,11 +12,13 @@ import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CarColumns;
 import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.core.CheckAvailabilityInput;
+import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.RegisterCarInput;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
@@ -41,28 +43,26 @@ public class CarServiceDAO
 		}
 	}
 
-	//Car details
+	//Car details storing in DB
 	public boolean addCarDetails( RegisterCarInput carDetails )
 	{
 		boolean result = false;
 		try
 		{
 			Statement insert = QueryBuilder.insertInto( keyspace, TableNames.CARS )
-					.value( CarColumns.CONTACT_NUMBER, carDetails.getContactNumber() )
 					.value( CarColumns.CAR_AVAILABILITY, carDetails.isCarAvailability() )
-					.value( CarColumns.CAR_MODEL, carDetails.getCarModel() )
 					.value( CarColumns.CAR_NAME, carDetails.getCarName() )
-					.value( CarColumns.CAR_CAPACITY, carDetails.getCarCapacity() )
 					.value( CarColumns.CAR_NUMBER, carDetails.getCarNumber() )
-					.value( CarColumns.CAR_OWNER, carDetails.getCarOwner() )
 					.value( CarColumns.CAR_REGISTERED_AT, carDetails.getCarRegisteredAt() )
 					.value( CarColumns.CAR_REGISTERED, carDetails.isRegistered() )
 					.value( CarColumns.MINIMUM_DISTANCE_PER_DAY, carDetails.getMinimunDistancePerDay() )
-					.value( CarColumns.OWNER_LICENSE_NUMBER, carDetails.getOwnerLicenseNumber() )
 					.value( CarColumns.PRICE_PER_KILOMETER, carDetails.getPricePerKilometer() )
+					.value( CarColumns.CAR_TYPE, carDetails.getCarType())
+					.value( CarColumns.CAR_MODEL, carDetails.getCarModel())
+					.value( CarColumns.CAR_CAPACITY, carDetails.getCarCapacity())
 					.setConsistencyLevel( ConsistencyLevel.QUORUM )
 					.enableTracing();
-			//System.out.println( insert.toString() );
+			System.out.println( insert.toString() );
 			cassQuery.executeFuture( insert );
 			result = true;
 		}
@@ -76,14 +76,15 @@ public class CarServiceDAO
 	}
 
 	//list of cars avaliable to take trip
-	public List<CarDetails> fetchAvailableCarsOfCity( String pickUpPoint, int capacity )
+	public List<CarDetails> fetchAvailableCarsOfCity( FetchCarDetails details )
 	{
 		List<CarDetails> cars = null;
 		try
 		{
 			Statement get = QueryBuilder.select().all().from( keyspace, TableNames.CARS ).allowFiltering()
-					.where( QueryBuilder.eq( CarColumns.CAR_REGISTERED_AT, pickUpPoint ) )
-					.and( QueryBuilder.eq( CarColumns.CAR_CAPACITY, capacity ) )
+					.where( QueryBuilder.eq( CarColumns.CAR_REGISTERED_AT, details.getRegisteredAt() ) )
+					.and( QueryBuilder.eq( CarColumns.CAR_TYPE, details.getCarType() ) )
+					.and( QueryBuilder.eq( CarColumns.CAR_MODEL, details.getCarModel() ) )
 					.and( QueryBuilder.eq( CarColumns.CAR_AVAILABILITY, true ) )
 					.and( QueryBuilder.eq( CarColumns.CAR_REGISTERED, true ) )
 					.setConsistencyLevel( ConsistencyLevel.QUORUM ).enableTracing();
@@ -161,19 +162,15 @@ public class CarServiceDAO
 		{
 			CarDetails carDetails = new CarDetails();
 			carDetails.setCarName( r.getString( CarColumns.CAR_NAME ) );
-			carDetails.setCarAvailability( r.getBool( CarColumns.CAR_AVAILABILITY ) );
 			carDetails.setCarCapacity( r.getInt( CarColumns.CAR_CAPACITY ) );
-			carDetails.setContactNumber( r.getString( CarColumns.CONTACT_NUMBER ) );
 			carDetails.setCarModel( r.getString( CarColumns.CAR_MODEL ) );
 			carDetails.setCarNumber( r.getString( CarColumns.CAR_NUMBER ) );
-			carDetails.setCarOwner( r.getString( CarColumns.CAR_OWNER ) );
 			carDetails.setCarRegisteredAt( r.getString( CarColumns.CAR_REGISTERED_AT ) );
 			carDetails.setMinimunDistancePerDay( r.getInt( CarColumns.MINIMUM_DISTANCE_PER_DAY ) );
-			carDetails.setOwnerLicenseNumber( r.getString( CarColumns.OWNER_LICENSE_NUMBER ) );
 			carDetails.setPricePerKilometer( r.getInt( CarColumns.PRICE_PER_KILOMETER ) );
 			cars.add( carDetails );
 		}
 		return cars;
 	}
-
+	
 }

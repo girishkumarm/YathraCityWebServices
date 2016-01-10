@@ -34,8 +34,8 @@ public class RegisterDriver{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/register-driver")
-	public com.yathraCity.core.RegisterCarResponse registerdriver(com.yathraCity.core.RegisterCarDetails registerDriver){
-		com.yathraCity.core.RegisterCarResponse resp=null;
+	public com.yathraCity.core.ResponseMessage registerdriver(com.yathraCity.core.RegisterDriverDetails registerDriver){
+		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try

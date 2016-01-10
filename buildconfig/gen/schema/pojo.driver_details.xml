@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.core" name="Core Package">
+	<Class name="RegisterDriverDetails"
+		description="input pojo which describes all the required information of the user"
+		displayorder="0">
+		
+		<property name="driverPhoneNumber" type="String" description="phone number of the driver"/>
+		<property name="driverLicence" type="String" description="licence of the driver"/>
+		<property name="driverName" type="String" description="driver ph number"/>
+		<property name="agencyName" type="String" description="agency name to which the driver is linked with"/>
+		<property name="agencyPhoneNumber" type="String" description="phone number of agency"/>
+		<property name="location" type="String" description="location of the driver"/>
+		<property name="carNuumber" type="String" description="car number"/>
+	</Class>
+
+</schema>
+	

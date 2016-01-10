@@ -9,8 +9,8 @@ import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.services.BookingService;
 import com.yathraCity.cassandra.services.CarService;
 import com.yathraCity.cassandra.services.UserOTPServices;
-import com.yathraCity.core.AvailableCars;
 import com.yathraCity.core.CheckAvailabilityInput;
+import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.ListOfAvailableCars;
 import com.yathraCity.core.RegisterBookingInput;
 import com.yathraCity.core.RegisterCarInput;
@@ -20,7 +20,7 @@ import com.yathraCity.services.YathraServiceInterface;
 /**
  * Car registration with the details
  * @author ashwing
- * param registration of the car
+ * param registration of the car,booking the car
  */
 public class YathraService implements YathraServiceInterface
 {
@@ -28,7 +28,7 @@ public class YathraService implements YathraServiceInterface
 	private BookingService bookingService = new BookingService();
 	private CarService carBookingService = new CarService();
 	private UserOTPServices otpServices = new UserOTPServices();
-
+    //service to register the car
 	@Override
 	public ResponseMessage registerCar( ServiceExecutionContext ctx, RegisterCarInput input ) throws ExecException
 	{
@@ -37,19 +37,21 @@ public class YathraService implements YathraServiceInterface
 		response.setMessage( "Booking not confirmed" );
 		try
 		{
-			if( input == null || input.getCarCapacity() == 0 || input.getCarModel() == null
-					|| input.getCarModel().trim().isEmpty() || input.getCarName() == null
+			if( input == null
+				    || input.getCarName() == null
 					|| input.getCarName().trim().isEmpty() || input.getCarNumber() == null
-					|| input.getCarNumber().trim().isEmpty() || input.getCarOwner() == null
-					|| input.getCarOwner().trim().isEmpty() || input.getCarRegisteredAt() == null
-					|| input.getCarRegisteredAt().trim().isEmpty() || input.getContactNumber() == null
-					|| input.getContactNumber().trim().isEmpty() || input.getMinimunDistancePerDay() == null
-					|| input.getMinimunDistancePerDay()==0 || input.getOwnerLicenseNumber() == null
-					|| input.getOwnerLicenseNumber().trim().isEmpty() || input.getPricePerKilometer() == null
-					|| input.getPricePerKilometer() == 0 )
+					|| input.getCarNumber().trim().isEmpty()  
+					|| input.getCarRegisteredAt() == null
+					|| input.getCarRegisteredAt().trim().isEmpty() 
+				    || input.getMinimunDistancePerDay() == null
+					|| input.getMinimunDistancePerDay()==0 ||  input.getPricePerKilometer() == null
+					|| input.getPricePerKilometer() == 0 || input.getPricePerKilometer()==null
+					|| input.getCarType() == null || input.getCarType().trim().isEmpty()
+					|| input.getCarModel()== null || input.getCarModel().trim().isEmpty())
 			{
 				throw new Exception( "Mandatory fields are missing to register the car" );
 			}
+			//calling service to store in DB
 			if( carBookingService.addCarDetails( input ) )
 			{
 				response.setStatus( "200" );
@@ -119,8 +121,8 @@ public class YathraService implements YathraServiceInterface
 		return response;
 	}
 
-	@Override
-	public ListOfAvailableCars getCarDetails( ServiceExecutionContext ctx, String pickUpPoint, String capacity )
+	
+/*	public ListOfAvailableCars getCarDetails( ServiceExecutionContext ctx, String pickUpPoint, String capacity )
 			throws ExecException
 	{
 		ListOfAvailableCars availableCars = new ListOfAvailableCars();
@@ -165,7 +167,7 @@ public class YathraService implements YathraServiceInterface
 		}
 		return availableCars;
 	}
-
+*/
 	@Override
 	public ResponseMessage getOTP(ServiceExecutionContext ctx,String phoneNumber) throws ExecException 
 	{
@@ -225,5 +227,44 @@ public class YathraService implements YathraServiceInterface
 			e.printStackTrace();
 		}
 		return response;
+	}
+
+	@Override
+	public ListOfAvailableCars getCarDetails( ServiceExecutionContext ctx, FetchCarDetails input ) throws ExecException
+	{
+		ListOfAvailableCars listOfAvaliableCars=new ListOfAvailableCars();
+		List<CarDetails> listOfCars=new ArrayList<CarDetails>();
+		List<RegisterCarInput> avaliableCars=new ArrayList<RegisterCarInput>();
+		try
+		{
+			if(input==null || input.getCarType()==null || input.getCarType().trim().isEmpty()
+					|| input.getRegisteredAt()==null || input.getRegisteredAt().trim().isEmpty()
+					|| input.getCarModel()==null || input.getCarModel().trim().isEmpty())
+			{
+				throw new Exception( "Mandatory fields are missing to get OTP" );
+			}
+			CarService gettingCars=new CarService();
+			listOfCars=gettingCars.getAvailableCars(input);
+			if(listOfCars !=null)
+			{
+				for(CarDetails c : listOfCars)
+				{
+					RegisterCarInput car=new RegisterCarInput();
+					car.setCarCapacity(c.getCarCapacity());
+					car.setCarName(c.getCarName());
+					car.setCarNumber(c.getCarNumber());
+					car.setCarRegisteredAt(c.getCarRegisteredAt());
+					car.setMinimunDistancePerDay(c.getMinimunDistancePerDay());
+					car.setPricePerKilometer(c.getPricePerKilometer());	
+					avaliableCars.add(car);
+				}
+			}
+			
+			    listOfAvaliableCars.setcar(avaliableCars);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listOfAvaliableCars;
 	}
 }

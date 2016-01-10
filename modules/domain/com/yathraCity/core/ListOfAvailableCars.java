@@ -1,5 +1,5 @@
 package com.yathraCity.core;
-// Generated 5 Jan, 2016 10:28:01 AM by Hibernate Tools 3.2.0.CR1
+// Generated 8 Jan, 2016 6:15:46 PM by Hibernate Tools 3.2.0.CR1
 
 
 
@@ -28,11 +28,11 @@ public class ListOfAvailableCars  implements java.io.Serializable {
 
 
 
-	private List<AvailableCars> car = new ArrayList<AvailableCars>();
+	private List<RegisterCarInput> car = new ArrayList<RegisterCarInput>();
 
 	@XmlElement
-	public List<AvailableCars> getCar(){return car;}
-	public void setcar (List<AvailableCars> arr) {this.car=arr;}
+	public List<RegisterCarInput> getCar(){return car;}
+	public void setcar (List<RegisterCarInput> arr) {this.car=arr;}
 
 
 }
