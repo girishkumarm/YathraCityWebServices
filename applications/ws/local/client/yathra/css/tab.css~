@@ -1,0 +1,13 @@
+.hide
+{
+	display:none;
+}
+
+#from.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#to.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
