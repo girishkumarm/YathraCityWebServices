@@ -10,4 +10,6 @@ public class DriverDetails
     public static final String AGENCY_PHONE_NUMBER="agency_phone_number";
     public static final String LOCATION="location";
     public static final String CAR_NUMBER="car_number";
+    public static final String CAR_TYPE="car_type";
+    public static final String AVAILABILITY="driver_avaliablity";
 }

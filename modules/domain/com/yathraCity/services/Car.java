@@ -20,8 +20,8 @@ import javax.xml.ws.handler.MessageContext;
 import javax.ws.rs.WebApplicationException;
 import com.razorthink.runtime.*;
 import defaultpkg.*;
-@Path("/yathra")
-public class YathraService{
+@Path("/cars")
+public class Car{
 	@Context
 	HttpServletRequest request;
 
@@ -33,17 +33,17 @@ public class YathraService{
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/book-car")
-	public com.yathraCity.core.ResponseMessage bookCar(com.yathraCity.core.RegisterBookingInput input){
+	@Path("/register-car")
+	public com.yathraCity.core.ResponseMessage registerCar(com.yathraCity.core.RegisterCarInput input){
 		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
+			CarInterface intfc =  (CarInterface) (ServiceParser.getImpl("com.yathraCity.services.Car"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.bookCar(context,input);
+			resp =  intfc.registerCar(context,input);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)
@@ -61,19 +61,20 @@ public class YathraService{
 	}
 
 
-	@GET
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/get-otp/{phoneNumber}")
-	public com.yathraCity.core.ResponseMessage getOTP(@PathParam("phoneNumber") String phoneNumber){
+	@Path("/check-car-availability")
+	public com.yathraCity.core.ResponseMessage checkCarAvailability(com.yathraCity.core.CheckAvailabilityInput input){
 		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
+			CarInterface intfc =  (CarInterface) (ServiceParser.getImpl("com.yathraCity.services.Car"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.getOTP(context,phoneNumber);
+			resp =  intfc.checkCarAvailability(context,input);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)
@@ -91,19 +92,20 @@ public class YathraService{
 	}
 
 
-	@GET
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/get-otp-match-response/{phoneNumber}/{otp}")
-	public com.yathraCity.core.ResponseMessage getOTPMatchResponse(@PathParam("phoneNumber") String phoneNumber,@PathParam("otp") String otp){
-		com.yathraCity.core.ResponseMessage resp=null;
+	@Path("/get-car-details")
+	public com.yathraCity.core.ListOfAvailableCars getCarDetails(com.yathraCity.core.FetchCarDetails input){
+		com.yathraCity.core.ListOfAvailableCars resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
 		try
 		{
 			context = new ServiceExecutionContext(request);
-			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
+			CarInterface intfc =  (CarInterface) (ServiceParser.getImpl("com.yathraCity.services.Car"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.getOTPMatchResponse(context,phoneNumber,otp);
+			resp =  intfc.getCarDetails(context,input);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)

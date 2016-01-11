@@ -2,12 +2,12 @@ package com.yathraCity.cassandra.services;
 
 import com.razorthink.runtime.ExecException;
 import com.yathraCity.cassandra.dao.DriverDetailsDAO;
-import com.yathraCity.core.RegisterDriverDetails;
+import com.yathraCity.core.DriverDetails;
 import defaultpkg.ErrorCodes;
 
 public class DriverDetailsService 
 {
-	public boolean driverDetailsService(RegisterDriverDetails registerDriver)
+	public boolean driverDetailsService(DriverDetails registerDriver)
 	{
 		try
 		{

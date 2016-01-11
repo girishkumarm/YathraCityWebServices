@@ -2,28 +2,6 @@
 <schema package="com.yathraCity.services" name="Core Package">
 	<service name="YathraService" baseurl="yathra">
 
-		<!-- A register service which is used to register a car to the app -->
-
-		<interface url="register-car" name="registerCar" type="POST"
-			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
-			MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<postInput name="input" class="com.yathraCity.core.RegisterCarInput"
-				description="Input" />
-			<output name="message" class="com.yathraCity.core.ResponseMessage"
-				description="success/error message" />
-			<description>
-   		 <![CDATA[
-   			 ]]>
-			</description>
-			<developernotes>
-				<notes>
-  		  <![CDATA[
-    		 ]]>
-				</notes>
-			</developernotes>
-		</interface>
-
-
 		<!-- A register service which is used to register a booking of an user 
 			to the app -->
 
@@ -48,42 +26,6 @@
 
 
 		<!-- check car availability after confirming the booking -->
-
-		<interface url="check-car-availability" name="checkCarAvailability"
-			type="POST" mode="READWRITE" availableFromInsecure="yes" authUser="no"
-			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<postInput name="input"
-				class="com.yathraCity.core.CheckAvailabilityInput" description="Input" />
-			<output name="message" class="com.yathraCity.core.ResponseMessage"
-				description="success/error message" />
-			<description>
-   		 <![CDATA[
-   			 ]]>
-			</description>
-			<developernotes>
-				<notes>
-  		  <![CDATA[
-    		 ]]>
-				</notes>
-			</developernotes>
-		</interface>
-
-
-		<!-- get all cars available to book -->
-		<interface url="get-car-details" name="getCarDetails" type="POST"
-			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
-			MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<postInput name="input"
-				class="com.yathraCity.core.FetchCarDetails" description="Input" />
-			<output name="message" class="com.yathraCity.core.ListOfAvailableCars"
-				description="list of the cars avaliable" />
-			<description> <![CDATA[ ]]>
-			</description>
-			<developernotes>
-				<notes> <![CDATA[ ]]>
-				</notes>
-			</developernotes>
-		</interface>
 
 		<!-- get OTP for an number -->
 		<interface url="get-otp" name="getOTP" type="GET" mode="READWRITE"

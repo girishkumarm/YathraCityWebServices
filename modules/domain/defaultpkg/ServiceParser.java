@@ -10,8 +10,9 @@ public class ServiceParser {
 		IMPL_MAP.put("com.yathraCity.services.Coupons","com.yathraCity.services.impl.Coupons");
 		IMPL_MAP.put("com.yathraCity.services.LoginService","com.yathraCity.services.impl.LoginService");
 		IMPL_MAP.put("com.yathraCity.services.RegisterService","com.yathraCity.services.impl.RegisterService");
+		IMPL_MAP.put("com.yathraCity.services.Driver","com.yathraCity.services.impl.Driver");
+		IMPL_MAP.put("com.yathraCity.services.Car","com.yathraCity.services.impl.Car");
 		IMPL_MAP.put("com.yathraCity.services.YathraService","com.yathraCity.services.impl.YathraService");
-		IMPL_MAP.put("com.yathraCity.services.RegisterDriver","com.yathraCity.services.impl.RegisterDriver");
 		IMPL_MAP.put("com.yathraCity.services.CountingService","com.yathraCity.services.impl.CountingService");
 		IMPL_MAP.put("com.yathraCity.services.NumberOfUsers","com.yathraCity.services.impl.NumberOfUsers");
 		inited = true;
