@@ -42,10 +42,10 @@
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                <ul class="nav navbar-nav navbar-left">
                   <li class="page-scroll">
-                     <a href="#home">HOME</a>
+                     <a href="index.html">HOME</a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#signup">SIGN UP/SIGN IN</a>
+                     <a href="userAccount.html">SIGN UP/SIGN IN</a>
                   </li>
                   <li class="page-scroll">
                      <a href="#offers">OFFERS FOR YOU</a>
@@ -56,10 +56,10 @@
                      <a href="#page-top"></a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#about">About</a>
+                     <a href="about.html">About</a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#contact">Contact</a>
+                     <a href="contact.html">Contact</a>
                   </li>
                </ul>
             </div>
@@ -70,10 +70,10 @@
       <!-- Header -->
       <header class=".tab-header">
          <div class="container ">
-		 <div class="col-sm-12">
-		    <h3>Car Details</h3>
-		 </div>
-	</div>
+            <div class="col-sm-12">
+               <h3>Car Details</h3>
+            </div>
+         </div>
       </header>
       <div class="container ">
          <div class="col-sm-12 text-center ">
@@ -83,44 +83,66 @@
                <div class="panel-body text-center">
                   <div class="row col-sm-12 ">
                      <div class="col-sm-4"></div>
-		     <div class="col-sm-4">
-                        <div href="#portfolioModal1 col-sm-6" class="" data-toggle="modal">
+                     <div class="col-sm-4">
+                        <div href="#portfolioModal1 col-md-6" class="" data-toggle="modal">
                            <img src="" class="img-responsive carimage" id="1" alt="">
                         </div>
-                        <div class="title text-primary col-sm-6">Maruti Suzuki Swift</div>
+                        <div class="title text-primary col-sm-6 carname"></div>
                      </div>
+                     <div class="col-sm-4"></div>
                   </div>
                   <div class="row col-sm-12">
-                     <table class="table text-left">
-                        <tbody>
-                           <tr>
-                              <td>PickUp From:</td>
-                              <td>Bangalore</td>
-                           </tr>
-                           <tr>
-                              <td>Car Choosen:</td>
-                              <td>Indica</td>
-                           </tr>
-                           <tr>
-                              <td>Distance Allowed Per Day:</td>
-                              <td>300</td>
-                           </tr>
-                           <tr>
-                              <td>Minimum Fare:</td>
-                              <td>3000</td>
-                           </tr>
-                        </tbody>
-                     </table>
+                     <div class="col-sm-2"></div>
+                     <div class="col-sm-8">
+                        <br/>
+                        <table class="table text-left">
+                           <tbody>
+                              <tr>
+                                 <td>Car Choosen:</td>
+                                 <td>Indica</td>
+                              </tr>
+                              <tr>
+                                 <td>Fuel Type:</td>
+                                 <td>Deisel</td>
+                              </tr>
+                              <tr>
+                                 <td>PickUp From:</td>
+                                 <td>Bangalore</td>
+                              </tr>
+                              <tr>
+                                 <td>Travelling To:</td>
+                                 <td>Mangalore	</td>
+                              </tr>
+                              <tr>
+                                 <td>Distance Allowed/Day:</td>
+                                 <td>300</td>
+                              </tr>
+                              <tr>
+                                 <td>Minimum Fare/Day:</td>
+                                 <td>3000 rs</td>
+                              </tr>
+                              <tr>
+                                 <td>Driver Bata Charges/Day:</td>
+                                 <td>300 rs</td>
+                              </tr>
+                              <tr>
+                                 <td>Coupons Applied:</td>
+                                 <td>none</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="col-sm-2"></div>
                   </div>
-		  <div class="row col-sm-12 ">
-			<button id="search_car" type="button" class="btn btn-info active ">Book Car</button>
-		  </div>
+                  <div class="row col-sm-12 ">
+                     <button id="search_car" type="button" class="btn btn-info active bookCarButton">Book Car</button>
+                  </div>
                </div>
             </div>
          </div>
       </div>
       <!-- Footer -->
-      <footer class="text-center">
+      <footer class="text-center websiteView">
          <div class="footer-above">
             <div class="container">
                <div class="row">
@@ -197,5 +219,19 @@
       <!-- MY JS -->
       <script src="js/jquery-ui.js"></script>
       <script src="js/orderDetails.js"> </script>
+      <script type="text/javascript"> 
+         var width = $(window).width();
+              if (width >= 850) {
+                  $('.websiteView').show();
+              } else {
+                  $('.websiteView').hide();
+              }
+         $(document).ready(function() {
+                  		$('.bookCarButton').click(function() {
+                  			window.location.href = "confirmBooking.html";
+                  		});
+                  	});
+         
+      </script>
    </body>
 </html>

@@ -9,19 +9,21 @@
 	localStorage.setItem("car_type", "hatchback");
 	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
+	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
-console.log(localStorage.getItem("car_image"));
      });
      $('.suvCar').click(function() {
 	localStorage.setItem("car_type", "suv");
 	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
+	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
      $('.sedanCar').click(function() {
 	localStorage.setItem("car_type", "sedan");
 	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
+	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
 

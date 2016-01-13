@@ -41,14 +41,14 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
-               <ul class="nav navbar-nav navbar-left">
+               <ul class="nav navbar-nav navbar-left list-group">
+                  <li class="page-scroll active">
+                     <a href="#home" >HOME</a>
+                  </li>
                   <li class="page-scroll">
-                     <a href="#home">HOME</a>
+                     <a href="userAccount.html">SIGN UP/SIGN IN</a>
                   </li>
-                  <li class="page-scroll disabled">
-                     <a href="#signup">SIGN UP/SIGN IN</a>
-                  </li>
-                  <li class="page-scroll disabled">
+                  <li class="page-scroll">
                      <a href="#offers">OFFERS FOR YOU</a>
                   </li>
                </ul>
@@ -57,10 +57,10 @@
                      <a href="#page-top"></a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#about">About</a>
+                     <a href="about.html">About</a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#contact">Contact</a>
+                     <a href="contact.html">Contact</a>
                   </li>
                </ul>
             </div>
@@ -69,8 +69,15 @@
          <!-- /.container-fluid -->
       </nav>
       <!-- Header -->
-      <header id="home" style="background-image:url(bg.jpg);background-repeat: no-repeat;background-size:cover;">
+      <!--<header class=".tab-header">
          <div class="container ">
+            <div class="col-sm-12">
+               <h3>Journey Details</h3>
+            </div>
+         </div>
+      </header>-->
+      <section>
+         <div class="container">
             <div class="row content">
                <div class="col-sm-1 ">
                   <!--  SIDE NAV AS OF NOW EMPTY -->
@@ -78,18 +85,8 @@
                <div class="col-sm-10 text-left " >
                   <!--  ACTUAL BODY OF THE WEBSITE -->
                   <div class="panel panel-white " id="row1">
-                     <br/>
-                     <div class="panel-heading text-center" >
-                        <h3  class="text-primary"> Pickup Details</h2>
-                     </div>
+		     <div class="websiteView"><br/><br/><br/><br/></div>
                      <div class="panel-body">
-                        <div class="row text-center">
-                           <div id="title" class="col s12">
-                              <h6  class="text-primary">Book A Car Anytime Anywhere</h6>
-                              <br/>
-                              <br/>
-                           </div>
-                        </div>
                         <form class="form-horizontal" role="form">
                            <div class="form-group">
                               <div class="col-sm-1"></div>
@@ -98,7 +95,7 @@
                                  <div class="col-sm-8">
                                     <select class="form-control text-center" id="pick_up_city" readonly>
                                        <option disabled >Select Pick Up City</option>
-					 <option value="Bangalore">Bangalore</option>
+                                       <option value="Bangalore">Bangalore</option>
                                        <option value="Mysore">Mysore</option>
                                        <option value="Mangalore">Mangalore</option>
                                     </select>
@@ -149,7 +146,6 @@
                            Choose Car <span class="glyphicons glyphicons-taxi"></span><span class="glyphicon glyphicon-chevron-right"></span>
                            </button>
                         </div>
-                        <br/><br/>
                      </div>
                   </div>
                </div>
@@ -157,10 +153,9 @@
                </div>
             </div>
          </div>
-         </div>
-      </header>
+      </section>
       <!-- Portfolio Grid Section -->
-      <section id="portfolio">
+      <section id="portfolio" class="websiteView">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">
@@ -214,7 +209,6 @@
                <div class="col-xs-4 portfolio-item">
                   <a href="#portfolioModal3" class="" data-toggle="modal">
                   <img src="images/website/datsun_go.png" class="img-responsive website" alt="">
-                  <img src="images/mobile/datsun_go.png" class="img-responsive mobile" alt="">
                   </a>
                </div>
                <div class="col-xs-4 portfolio-item">
@@ -236,7 +230,7 @@
          </div>
       </section>
       <!-- About Section -->
-      <section class="success" id="about">
+      <section class="success websiteView" id="about">
          <div class="container">
          <div class="row">
             <div class="col-lg-12 text-center">
@@ -251,7 +245,7 @@
          </div>
       </section>
       <!-- Contact Section -->
-      <section id="contact">
+      <section id="contact" class="websiteView">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">
@@ -321,7 +315,7 @@
          </div>
       </section>
       <!-- Footer -->
-      <footer class="text-center">
+      <footer class="text-center websiteView">
          <div class="footer-above">
             <div class="container">
                <div class="row">
@@ -398,5 +392,14 @@
       <!-- MY JS -->
       <script src="js/jquery-ui.js"></script>
       <script src="js/index.js"> </script>
+      <script type="text/javascript"> 
+         var width = $(window).width();
+              if (width >= 850) {
+                  $('.websiteView').show();
+              } else {
+                  $('.websiteView').hide();
+              }
+         
+      </script>
    </body>
 </html>
