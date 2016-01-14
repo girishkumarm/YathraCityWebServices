@@ -197,13 +197,13 @@ var handler = {
 <a href="schema.html">Schema</a><br/>
 <a href="errorcodes.html">Error Codes</a><br/>
 <b>Tester</b><BR/>
-<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
-<a href="Driversvc.html">Driver</a><br/>
-<a href="Carsvc.html">Car</a><br/>
-<a href="CountingServicesvc.html">CountingService</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="CountingServicesvc.html">CountingService</a><br/>
 <a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
 <a href="Couponssvc.html">Coupons</a><br/>
+<a href="Driversvc.html">Driver</a><br/>
+<a href="Carsvc.html">Car</a><br/>
 <a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="RegisterServicesvc.html">RegisterService</a><br/>
 <a href="YathraServicesvc.html">YathraService</a><br/>
 
 </div>
@@ -215,7 +215,7 @@ var handler = {
 <b>Endpoint</b><br/>
 <input id="endpoint" type="text" style="width:400px" value="" /><br/><br/>
 <b>Select Service </b><br/>
-<select id="sb"> <option value="-1">Select</option><OPTION value="0">RegisterService:registerUser</OPTION><OPTION value="1">Driver:registerdriver</OPTION><OPTION value="2">Driver:updateDriverAvailability</OPTION><OPTION value="3">Car:registerCar</OPTION><OPTION value="4">Car:checkCarAvailability</OPTION><OPTION value="5">Car:getCarDetails</OPTION><OPTION value="6">CountingService:countNumberOfUsers</OPTION><OPTION value="7">NumberOfUsers:getNumberOfUsers</OPTION><OPTION value="8">Coupons:coupons</OPTION><OPTION value="9">Coupons:getalltheCoupons</OPTION><OPTION value="10">Coupons:updateCoupon</OPTION><OPTION value="11">Coupons:deleteCoupons</OPTION><OPTION value="12">LoginService:loginUser</OPTION><OPTION value="13">YathraService:bookCar</OPTION><OPTION value="14">YathraService:getOTP</OPTION><OPTION value="15">YathraService:getOTPMatchResponse</OPTION></select>
+<select id="sb"> <option value="-1">Select</option><OPTION value="0">CountingService:countNumberOfUsers</OPTION><OPTION value="1">NumberOfUsers:getNumberOfUsers</OPTION><OPTION value="2">Coupons:coupons</OPTION><OPTION value="3">Coupons:getalltheCoupons</OPTION><OPTION value="4">Coupons:updateCoupon</OPTION><OPTION value="5">Coupons:deleteCoupons</OPTION><OPTION value="6">Driver:registerdriver</OPTION><OPTION value="7">Driver:updateDriverAvailability</OPTION><OPTION value="8">Car:registerCar</OPTION><OPTION value="9">Car:checkCarAvailability</OPTION><OPTION value="10">Car:getCarDetails</OPTION><OPTION value="11">LoginService:loginUser</OPTION><OPTION value="12">RegisterService:registerUser</OPTION><OPTION value="13">YathraService:bookCar</OPTION><OPTION value="14">YathraService:getOTP</OPTION><OPTION value="15">YathraService:getOTPMatchResponse</OPTION></select>
 <br/><br/>
 <div id="urlinput"> </div>
 <div id="jsoninput"> </div><br/><br/>
@@ -228,15 +228,20 @@ var handler = {
 </td></tr></table>
 </td></tr></table>
 </BODY>
-<div id="servicecontent" style="display:none"><div id="url_0">register/register-user</div><div id="type_0">POST</div><div id="urlinputs_0"></div><div id="postinput_0"><pre>{
+<div id="servicecontent" style="display:none"><div id="url_0">counting/count-number-users</div><div id="type_0">GET</div><div id="urlinputs_0"></div><div id="postinput_0"><pre></pre></div><div id="url_1">getnumberofusers/get-number-of-users</div><div id="type_1">GET</div><div id="urlinputs_1"></div><div id="postinput_1"><pre></pre></div><div id="url_2">coupons/coupons-of-tab</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
    "id":2147483647,
-   "userName":"?",
-   "phoneNumber":"?",
-   "userAccountId":"?",
-   "password":"?"
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
 }
-</pre></div><div id="url_1">driver/register-driver</div><div id="type_1">POST</div><div id="urlinputs_1"></div><div id="postinput_1"><pre>{
+</pre></div><div id="url_3">coupons/get-list-of-coupons</div><div id="type_3">GET</div><div id="urlinputs_3"></div><div id="postinput_3"><pre></pre></div><div id="url_4">coupons/update-coupons</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
    "id":2147483647,
+   "coupon":"?",
+   "fromDate":"?",
+   "toDate":"?"
+}
+</pre></div><div id="url_5">coupons/delete-coupons</div><div id="type_5">GET</div><div id="urlinputs_5">couponName,</div><div id="postinput_5"><pre></pre></div><div id="url_6">driver/register-driver</div><div id="type_6">POST</div><div id="urlinputs_6"></div><div id="postinput_6"><pre>{
+   "id":604136595,
    "driverName":"?",
    "driverPhoneNumber":"?",
    "driverLicence":"?",
@@ -246,8 +251,8 @@ var handler = {
    "carType":"?",
    "carNumber":"?"
 }
-</pre></div><div id="url_2">driver/update-driver-availability</div><div id="type_2">POST</div><div id="urlinputs_2"></div><div id="postinput_2"><pre>{
-   "id":2147483647,
+</pre></div><div id="url_7">driver/update-driver-availability</div><div id="type_7">POST</div><div id="urlinputs_7"></div><div id="postinput_7"><pre>{
+   "id":482290326,
    "driverName":"?",
    "driverPhoneNumber":"?",
    "driverLicence":"?",
@@ -256,8 +261,8 @@ var handler = {
    "availability":?,
    "carType":"?"
 }
-</pre></div><div id="url_3">cars/register-car</div><div id="type_3">POST</div><div id="urlinputs_3"></div><div id="postinput_3"><pre>{
-   "id":2147483647,
+</pre></div><div id="url_8">cars/register-car</div><div id="type_8">POST</div><div id="urlinputs_8"></div><div id="postinput_8"><pre>{
+   "id":148940173,
    "carName":"?",
    "registered":?,
    "carAvailability":?,
@@ -269,7 +274,7 @@ var handler = {
    "carType":"?",
    "carModel":"?"
 }
-</pre></div><div id="url_4">cars/check-car-availability</div><div id="type_4">POST</div><div id="urlinputs_4"></div><div id="postinput_4"><pre>{
+</pre></div><div id="url_9">cars/check-car-availability</div><div id="type_9">POST</div><div id="urlinputs_9"></div><div id="postinput_9"><pre>{
    "id":2147483647,
    "carNumber":"?",
    "carRegisteredAt":"?",
@@ -278,33 +283,28 @@ var handler = {
    "ownerLicenseNumber":"?",
    "minimunDistancePerDay":"?"
 }
-</pre></div><div id="url_5">cars/get-car-details</div><div id="type_5">POST</div><div id="urlinputs_5"></div><div id="postinput_5"><pre>{
+</pre></div><div id="url_10">cars/get-car-details</div><div id="type_10">POST</div><div id="urlinputs_10"></div><div id="postinput_10"><pre>{
    "id":2147483647,
    "registeredAt":"?",
    "carType":"?",
    "carNumber":"?",
    "carModel":"?"
 }
-</pre></div><div id="url_6">counting/count-number-users</div><div id="type_6">GET</div><div id="urlinputs_6"></div><div id="postinput_6"><pre></pre></div><div id="url_7">getnumberofusers/get-number-of-users</div><div id="type_7">GET</div><div id="urlinputs_7"></div><div id="postinput_7"><pre></pre></div><div id="url_8">coupons/coupons-of-tab</div><div id="type_8">POST</div><div id="urlinputs_8"></div><div id="postinput_8"><pre>{
-   "id":2147483647,
-   "coupon":"?",
-   "fromDate":"?",
-   "toDate":"?"
-}
-</pre></div><div id="url_9">coupons/get-list-of-coupons</div><div id="type_9">GET</div><div id="urlinputs_9"></div><div id="postinput_9"><pre></pre></div><div id="url_10">coupons/update-coupons</div><div id="type_10">POST</div><div id="urlinputs_10"></div><div id="postinput_10"><pre>{
-   "id":2147483647,
-   "coupon":"?",
-   "fromDate":"?",
-   "toDate":"?"
-}
-</pre></div><div id="url_11">coupons/delete-coupons</div><div id="type_11">GET</div><div id="urlinputs_11">couponName,</div><div id="postinput_11"><pre></pre></div><div id="url_12">login/login-user</div><div id="type_12">POST</div><div id="urlinputs_12"></div><div id="postinput_12"><pre>{
+</pre></div><div id="url_11">login/login-user</div><div id="type_11">POST</div><div id="urlinputs_11"></div><div id="postinput_11"><pre>{
    "id":2147483647,
    "yathraCityUserId":"?",
    "userAccountId":"?",
    "password":"?"
 }
+</pre></div><div id="url_12">register/register-user</div><div id="type_12">POST</div><div id="urlinputs_12"></div><div id="postinput_12"><pre>{
+   "id":2147483647,
+   "userName":"?",
+   "phoneNumber":"?",
+   "userAccountId":"?",
+   "password":"?"
+}
 </pre></div><div id="url_13">yathra/book-car</div><div id="type_13">POST</div><div id="urlinputs_13"></div><div id="postinput_13"><pre>{
-   "id":1394168723,
+   "id":2147483647,
    "userName":"?",
    "emailId":"?",
    "phoneNumber":?,
