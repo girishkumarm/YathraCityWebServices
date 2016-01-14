@@ -13,6 +13,7 @@ import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CarColumns;
 import com.yathraCity.cassandra.tables.TableNames;
+import com.yathraCity.core.BookedCarDetails;
 import com.yathraCity.core.CheckAvailabilityInput;
 import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.RegisterCarInput;
@@ -215,6 +216,25 @@ public class CarServiceDAO {
 		return result;
 	}
 
+	public void getCarDetails(BookedCarDetails input)
+	{
+		List<CarDetails> cars = null;
+		try
+		{
+			Statement getCarDetail=QueryBuilder.select().all().from(keyspace, TableNames.CARS)
+					.where(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, input.getCarLocation()))
+					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, input.getCarType()))
+					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, input.getCarNumber()));
+			
+			ResultSetFuture results=cassQuery.executeFuture(getCarDetail);
+			cars=processCarEntity(results);
+			input.setAddress(cars.get(0).getAddress());
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+		}
+	}
 	// adding the avaliable car to the list
 	private List<CarDetails> processCarEntity( ResultSetFuture results )
 	{
@@ -222,7 +242,6 @@ public class CarServiceDAO {
 		for( Row r : results.getUninterruptibly() )
 		{
 			CarDetails carDetails = new CarDetails();
-			carDetails.setCarName(r.getString(CarColumns.CAR_NAME));
 			carDetails.setCarType(r.getString(CarColumns.CAR_TYPE));
 			carDetails.setCarCapacity(r.getInt(CarColumns.CAR_CAPACITY));
 			carDetails.setCarModel(r.getString(CarColumns.CAR_MODEL));

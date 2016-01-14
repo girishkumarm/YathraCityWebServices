@@ -49,6 +49,31 @@ AND speculative_retry = '100ms'
 AND bloom_filter_fp_chance = 0.1 
 AND caching = 'keys_only';
 
+//creates the table for keeping the booking record
+CREATE TABLE booking_details(
+booking_id text,
+from_date text,
+to_date text,
+pickup_city text,
+travelling_city text,
+car_number text,
+car_agency_name text,
+car_agency_number text,
+driver_name text,
+driver_phone_numb text,
+customer_phone_number text,
+coupon text,
+customer_name text,
+address text,
+car_type text,
+car_location text,
+PRIMARY KEY ((from_date),customer_phone_number,car_number))
+WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
+AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 
+AND speculative_retry = '100ms' 
+AND bloom_filter_fp_chance = 0.1 
+AND caching = 'keys_only';
+
 //Create indexes for car_availability 
 CREATE INDEX is_car_available_index ON yathra.cars( car_availability);
 

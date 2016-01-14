@@ -33,8 +33,8 @@ public class YathraService{
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/book-car")
-	public com.yathraCity.core.ResponseMessage bookCar(com.yathraCity.core.RegisterBookingInput input){
+	@Path("/booking-car")
+	public com.yathraCity.core.ResponseMessage bookingCar(com.yathraCity.core.BookedCarDetails input){
 		com.yathraCity.core.ResponseMessage resp=null;
 		SessionUtils.clear(request);
 		ServiceExecutionContext context=null;
@@ -43,7 +43,7 @@ public class YathraService{
 			context = new ServiceExecutionContext(request);
 			YathraServiceInterface intfc =  (YathraServiceInterface) (ServiceParser.getImpl("com.yathraCity.services.YathraService"));
 			if (intfc == null) throw new ExecException(ErrorCodes.APPLICATION_ERROR,null,"Service not implemented");
-			resp =  intfc.bookCar(context,input);
+			resp =  intfc.bookingCar(context,input);
 			SessionUtils.clear(request);
 			return resp;
 		} catch (ExecException ee)

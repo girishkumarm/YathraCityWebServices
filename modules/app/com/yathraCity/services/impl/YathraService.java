@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
+import com.yathraCity.cassandra.dao.BookingDetailsDAO;
 import com.yathraCity.cassandra.pojo.CarDetails;
-import com.yathraCity.cassandra.services.BookingService;
 import com.yathraCity.cassandra.services.CarService;
 import com.yathraCity.cassandra.services.UserOTPServices;
+import com.yathraCity.core.BookedCarDetails;
 import com.yathraCity.core.CheckAvailabilityInput;
 import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.ListOfAvailableCars;
-import com.yathraCity.core.RegisterBookingInput;
 import com.yathraCity.core.RegisterCarInput;
+import com.yathraCity.core.RegisterUserResponse;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.YathraServiceInterface;
 
@@ -24,12 +25,12 @@ import com.yathraCity.services.YathraServiceInterface;
  */
 public class YathraService implements YathraServiceInterface {
 
-	private BookingService bookingService = new BookingService();
+//	private BookingService bookingService = new BookingService();
 	private CarService carBookingService = new CarService();
 	private UserOTPServices otpServices = new UserOTPServices();
 	// service to register the car
 
-	@Override
+/*	@Override
 	public ResponseMessage bookCar( ServiceExecutionContext ctx, RegisterBookingInput input ) throws ExecException
 	{
 		ResponseMessage response = new ResponseMessage();
@@ -56,7 +57,7 @@ public class YathraService implements YathraServiceInterface {
 		}
 		return response;
 	}
-
+*/
 	/*
 	 * public ListOfAvailableCars getCarDetails( ServiceExecutionContext ctx,
 	 * String pickUpPoint, String capacity )
@@ -166,6 +167,42 @@ public class YathraService implements YathraServiceInterface {
 		catch( Exception e )
 		{
 			e.printStackTrace();
+		}
+		return response;
+	}
+
+	@Override
+	public ResponseMessage bookingCar( ServiceExecutionContext ctx, BookedCarDetails input ) throws ExecException
+	{
+		ResponseMessage response=new ResponseMessage();
+		response.setMessage("booking unsuccessful");
+		response.setStatus("500");
+		boolean result=false;
+		try
+		{
+			if(input == null || input.getFromDate()== null || input.getFromDate().trim().isEmpty()
+					|| input.getToDate()== null || input.getToDate().trim().isEmpty()
+					|| input.getTravelCity() == null || input.getTravelCity().trim().isEmpty()
+					|| input.getCarLocation()==null || input.getCarLocation().trim().isEmpty()
+					|| input.getCarNumber()==null ||input.getCarNumber().trim().isEmpty()
+					|| input.getCarType() == null || input.getCarType().trim().isEmpty())
+			{
+				throw new Exception("Mandatory fields are missing to get for booking");
+			}
+			BookingDetailsDAO bookTheCar=new BookingDetailsDAO();
+			result=bookTheCar.bookCar(input);
+			if(result== true)
+			{
+				response.setMessage("successfully booked");
+				response.setStatus("200");
+				
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return response;
 		}
 		return response;
 	}

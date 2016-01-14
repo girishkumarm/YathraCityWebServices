@@ -37,46 +37,49 @@
 </p><div id="toc" class="toc">
            <div id="toctitle" class="toc-title">Contents </div>
            <div id="toccontents" class="toc-contents"><ul>
-		   			<li>1 <a href="#bookCar"> bookCar POST Interface </a></li><li>2 <a href="#getOTP"> getOTP GET Interface </a></li><li>3 <a href="#getOTPMatchResponse"> getOTPMatchResponse GET Interface </a></li>
+		   			<li>1 <a href="#bookingCar"> bookingCar POST Interface </a></li><li>2 <a href="#getOTP"> getOTP GET Interface </a></li><li>3 <a href="#getOTPMatchResponse"> getOTPMatchResponse GET Interface </a></li>
 </ul></div>
          </div>
-<h1><a name="bookCar"></a> bookCar POST Interface </h1><p>
+<h1><a name="bookingCar"></a> bookingCar POST Interface </h1><p>
    		 
    			 
-			</p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> yathra/book-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>RegisterBookingInput</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">BOOKCAR 
+			</p><p><b>Method:</b> POST</p><p><b>Relative URL:</b> yathra/booking-car</p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Request Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>input</td><td>BookedCarDetails</td><td>Input</td></tr></tbody></table></div></p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/error message</td></tr></tbody></table></div></p><p><b>Example Request:</b></p><pre style="overflow: hidden;">BOOKINGCAR 
 Host: example.com
 Authorization: Basic xxxxxxxxxxxxxxxxxxx
 Content-Type : nnn
 {
    "id":2147483647,
-   "userName":"?",
-   "emailId":"?",
-   "phoneNumber":?,
-   "numberOfPeoples":"?",
-   "bookedCarName":"?",
-   "carBookedAt":?,
-   "pickUpPoint":?,
-   "destination":"?",
-   "numberOfDays":?,
-   "bookedCarNumber":"?",
-   "bookedCarOwner":"?",
-   "discountOffered":?,
-   "bookingConfirmation":?
+   "bookingId":"?",
+   "fromDate":"?",
+   "toDate":"?",
+   "carNumber":"?",
+   "travelCity":"?",
+   "carAgency":"?",
+   "carAgencyPhoneNumber":"?",
+   "driverName":"?",
+   "drivePhoneNumber":"?",
+   "coupon":"?",
+   "customerName":"?",
+   "customerNumber":"?",
+   "pickUpCity":"?",
+   "address":"?",
+   "carLocation":"?",
+   "carType":"?"
 }
 </pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":659848922,
+   "id":25055201,
    "status":"?",
    "message":"?"
 }
 </pre><h1><a name="getOTP"></a> getOTP GET Interface </h1><p>  
 			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp/<i>phone-number</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":389890136,
+   "id":2147483647,
    "status":"?",
    "message":"?"
 }
 </pre><h1><a name="getOTPMatchResponse"></a> getOTPMatchResponse GET Interface </h1><p>  
 			</p><p><b>Method:</b> GET</p><p><b>Relative URL:</b> yathra/get-otp-match-response/<i>phone-number</i>/<i>otp</i></p><p><b>Request Headers:</b> Accept, Authorization</p><p><b>Response Headers:</b> Content-Length, Content-Type.</p><p><b>Response Structure:</b><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;"><table border="1" width="100%"><tbody><tr><th>Field Name</th><th>Type</th><th>Description</th></tr><tr><td nowrap>message</td><td>ResponseMessage</td><td>success/unsuccess</td></tr></tbody></table></div></p><p><b>Example Request:</b></pre><p><b>Example Response:</b></p><pre style="overflow: hidden;">{
-   "id":2147483647,
+   "id":133362255,
    "status":"?",
    "message":"?"
 }

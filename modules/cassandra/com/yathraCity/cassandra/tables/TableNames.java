@@ -11,4 +11,5 @@ public class TableNames
 	public final static String COUNTER_TABLE="counter_table";
 	public final static String COUPEN_DETAILS="coupen_details";
 	public final static String DRIVER_DETAILS="driver_details";
+	public final static String BOOKING_DETAILS="booking_details";
 }

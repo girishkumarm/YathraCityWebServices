@@ -5,10 +5,10 @@
 		<!-- A register service which is used to register a booking of an user 
 			to the app -->
 
-		<interface url="book-car" name="bookCar" type="POST" mode="READWRITE"
-			availableFromInsecure="yes" authUser="no" userRoles="Admin"
+         <interface url="booking-car" name="bookingCar" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<postInput name="input" class="com.yathraCity.core.RegisterBookingInput"
+			<postInput name="input" class="com.yathraCity.core.BookedCarDetails"
 				description="Input" />
 			<output name="message" class="com.yathraCity.core.ResponseMessage"
 				description="success/error message" />
@@ -23,6 +23,7 @@
 				</notes>
 			</developernotes>
 		</interface>
+
 
 
 		<!-- check car availability after confirming the booking -->

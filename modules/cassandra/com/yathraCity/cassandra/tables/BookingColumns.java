@@ -4,16 +4,20 @@ package com.yathraCity.cassandra.tables;
 public class BookingColumns
 {
 
-	public final static String USER_NAME = "userName";
-	public final static String EMAIL_ID = "emailId";
-	public final static String PHONE_NUMBER = "phoneNumber";
-	public final static String NUMBER_OF_PEOPLES = "numberOfPeoples";
-	public final static String BOOKED_CAR_NAME = "bookedCarName";
-	public final static String CAR_BOOKED_AT = "carBookedAt";
-	public final static String PICK_UP_POINT = "pickUpPoint";
-	public final static String NUMBER_OF_DAYS = "numberOfDays";
-	public final static String BOOKED_CAR_NUMBER = "bookedCarNumber";
-	public final static String BOOKED_CAR_OWNER = "bookedCarOwner";
-	public final static String DISCOUNT_OFFERED = "discountOffered";
-	public final static String BOOKING_CONFIRMATION = "bookingConfirmation";
+	public final static String BOOKING_ID = "booking_id";
+	public final static String CAR_AGENCY_NAME = "car_agency_name";
+	public final static String CAR_AGENCY_NUMBER = "car_agency_number";
+	public final static String CAR_NUMBER = "car_number";
+	public final static String C0UPON = "coupon";
+	public final static String CUSTOMER_PHONE_NUMBER = "customer_phone_number";
+	public final static String DRIVER_NAME = "driver_name";
+	public final static String CUSTOMER_NAME = "costomer_name";
+	public final static String DRIVER_PHONE_NUMBER = "driver_phone_number";
+	public final static String FROM_DATE = "from_date";
+	public final static String TO_DATE = "to_date";
+	public final static String TRAVELLING_CITY = "travelling_city";
+	public final static String PICKUP_CITY = "pickup_city";
+	public final static String ADDRESS ="addres";
+	public final static String CAR_TYPE = "car_type";
+	public final static String CAR_LOCATION ="car_location";
 }

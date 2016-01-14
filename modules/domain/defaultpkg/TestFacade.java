@@ -74,8 +74,8 @@ public class TestFacade  {
 		return (com.yathraCity.core.RegisterUserResponse) WebServiceTester.test(url, input, com.yathraCity.core.RegisterUserResponse.class, "POST");
 	}
 
-	public static com.yathraCity.core.ResponseMessage YathraService_bookCar(com.yathraCity.core.RegisterBookingInput input) throws Exception{
-		String url = BASEURL + "yathra" + "/" + "book-car" ;
+	public static com.yathraCity.core.ResponseMessage YathraService_bookingCar(com.yathraCity.core.BookedCarDetails input) throws Exception{
+		String url = BASEURL + "yathra" + "/" + "booking-car" ;
 		return (com.yathraCity.core.ResponseMessage) WebServiceTester.test(url, input, com.yathraCity.core.ResponseMessage.class, "POST");
 	}
 

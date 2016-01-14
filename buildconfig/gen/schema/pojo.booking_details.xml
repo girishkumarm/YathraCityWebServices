@@ -1,23 +1,21 @@
 <?xml version="1.0"?>
 <schema package="com.yathraCity.core" name="Core Package">
-	<Class name="RegisterBookingInput" description="input to book a car"
-		displayorder="0">
-		<property name="userName" type="String" description="userName" />
-		<property name="emailId" type="String" description="emailId" />
-		<property name="phoneNumber" type="long" description="phoneNumber" />
-		<property name="numberOfPeoples" type="String" description="numberOfPeoples" />
-		<property name="bookedCarName" type="string" description="bookedCarName" />
-		<property name="carBookedAt" type="long" description="carBookedAt" />
-		<property name="pickUpPoint" type="int" description="pickUpPoint" />
-		<property name="destination" type="String" description="destination" />
-		<property name="numberOfDays" type="int" description="numberOfDays" />
-		<property name="bookedCarNumber" type="String" description="bookedCarNumber" />
-		<property name="bookedCarOwner" type="String" description="bookedCarOwner" />
-		<property name="discountOffered" type="int" description="discountOffered" />
-		<property name="bookingConfirmation" type="boolean"
-			description="whether the booking is confirmed or not" />
+	<Class name="BookedCarDetails" description="input to register car details" displayorder="0">
+		<property name="bookingId" type="String" description="a unique booking id" />
+		<property name="fromDate" type="String" description="date of booking" />
+		<property name="toDate" type="String" description="care engaged tilll date" />
+		<property name="carNumber" type="String" description="carNumber" />
+		<property name="travelCity" type="String" description="travel city name" />
+		<property name="carAgency" type="String" description="car agency name" />
+		<property name="carAgencyPhoneNumber" type="String" description="agency phonne number" />
+		<property name="driverName" type="String" description="car driver name"/>
+		<property name="drivePhoneNumber" type="String" description="driver phone number"/>
+		<property name="coupon" type="String" description="coupon to apply discount"/>
+		<property name="customerName" type="String" description="name of the costomer"/>
+		<property name="customerNumber" type="String" description="customer's number"/>
+		<property name="pickUpCity" type="String" description="pick up city"/>
+		<property name="address" type="String" description="Customer Address"/>
+		<property name="carLocation" type="String" description="car location"/>
+		<property name="carType" type="String" description="type of the car"/>
 	</Class>
-
-
 </schema>
-	

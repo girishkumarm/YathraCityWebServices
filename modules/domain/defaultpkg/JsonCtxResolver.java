@@ -8,7 +8,7 @@ import com.sun.jersey.api.json.JSONJAXBContext;
 public class JsonCtxResolver implements ContextResolver<JAXBContext>  {
 	private JAXBContext context;
 	private Class[] types = {
-			com.yathraCity.core.RegisterBookingInput.class,
+			com.yathraCity.core.BookedCarDetails.class,
 			com.yathraCity.core.RegisterCarInput.class,
 			com.yathraCity.core.FetchCarDetails.class,
 			com.yathraCity.core.ListOfAvailableCars.class,
