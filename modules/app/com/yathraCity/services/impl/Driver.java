@@ -40,8 +40,8 @@ public class Driver implements DriverInterface {
 			details.setCarType(driverDetails.getCarType());
 			details.setCarNumber(driverDetails.getCarNumber());
 			CarDetails carDetails = carsDao.fetchUnRegisteredCarDetails(details);
-
-			if( carDetails == null )
+			
+            if( carDetails == null)
 			{
 				throw new ExecException(ErrorCodes.BAD_REQUEST, null, "CAR DOES NOT EXIST FOR THE DRIVER");
 			}

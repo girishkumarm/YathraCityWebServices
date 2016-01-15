@@ -39,26 +39,26 @@ public class BookingDetailsDAO
 		{
 		    CarServiceDAO carService=new CarServiceDAO();
 		    DriverDetailsDAO driverDetals=new DriverDetailsDAO();
-		    carService.getCarDetails(input);
 		    driverDetals.driverDetailsForBooking(input);
+		    carService.getCarDetails(input);
 			Statement insert = QueryBuilder.insertInto(keyspace,TableNames.BOOKING_DETAILS)
 					.value(BookingColumns.BOOKING_ID,uniqueBookingId())
 					.value(BookingColumns.CAR_AGENCY_NAME,input.getCarAgency())
 					.value(BookingColumns.CAR_AGENCY_NUMBER,input.getCarAgencyPhoneNumber())
 					.value(BookingColumns.CAR_NUMBER,input.getCarNumber())
 					.value(BookingColumns.C0UPON,input.getCoupon())
-					.value(BookingColumns.CUSTOMER_NAME,"fghjk")
-				    .value(BookingColumns.CUSTOMER_PHONE_NUMBER, "rtyui")
+					.value(BookingColumns.CUSTOMER_NAME,input.getCustomerName())
+				    .value(BookingColumns.CUSTOMER_PHONE_NUMBER, input.getCustomerNumber())
 				    .value(BookingColumns.DRIVER_NAME, input.getDriverName())
 				    .value(BookingColumns.DRIVER_PHONE_NUMBER,input.getDrivePhoneNumber())
 				    .value(BookingColumns.FROM_DATE, input.getFromDate())
 				    .value(BookingColumns.TO_DATE, input.getToDate())
 				    .value(BookingColumns.TRAVELLING_CITY, input.getTravelCity())
-				    .value(BookingColumns.PICKUP_CITY, "ertyui")
-				    .value(BookingColumns.ADDRESS, "ertyui")
+				    .value(BookingColumns.PICKUP_CITY, input.getPickUpCity())
+				    .value(BookingColumns.ADDRESS, input.getAddress())
 			        .value(BookingColumns.CAR_TYPE, input.getCarType())
 			        .value(BookingColumns.CAR_LOCATION,input.getCarLocation());
-			
+			System.out.println(insert.toString());
 			cassQuery.executeFuture(insert);
 			return true;
 		}

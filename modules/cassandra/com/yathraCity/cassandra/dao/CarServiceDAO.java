@@ -125,12 +125,12 @@ public class CarServiceDAO {
 		{
 			Statement get = QueryBuilder.select().all().from(keyspace, TableNames.CARS).allowFiltering()
 					.where(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, details.getRegisteredAt()))
-					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, details.getCarType()))
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
 					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
 			ResultSetFuture results = cassQuery.executeFuture(get);
+			System.out.println(get.toString());
 			cars = processCarEntity(results);
-			if( cars != null && cars.get(0) != null )
+			if( cars != null && cars.get(0) != null && cars.size()>0)
 			{
 				return cars.get(0);
 			}
@@ -219,13 +219,16 @@ public class CarServiceDAO {
 	public void getCarDetails(BookedCarDetails input)
 	{
 		List<CarDetails> cars = null;
+		
 		try
 		{
-			Statement getCarDetail=QueryBuilder.select().all().from(keyspace, TableNames.CARS)
+			Statement getCarDetail=QueryBuilder.select().all().from(keyspace, TableNames.CARS).allowFiltering()
 					.where(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, input.getCarLocation()))
 					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, input.getCarType()))
-					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, input.getCarNumber()));
-			
+					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, input.getCarNumber()))
+					.and(QueryBuilder.eq(CarColumns.CAR_DRIVER_LICENCE, input.getCarlicence())).setConsistencyLevel(ConsistencyLevel.QUORUM)
+					.enableTracing();
+			System.out.println(getCarDetail.toString());
 			ResultSetFuture results=cassQuery.executeFuture(getCarDetail);
 			cars=processCarEntity(results);
 			input.setAddress(cars.get(0).getAddress());

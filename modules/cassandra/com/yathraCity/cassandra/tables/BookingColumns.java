@@ -11,7 +11,7 @@ public class BookingColumns
 	public final static String C0UPON = "coupon";
 	public final static String CUSTOMER_PHONE_NUMBER = "customer_phone_number";
 	public final static String DRIVER_NAME = "driver_name";
-	public final static String CUSTOMER_NAME = "costomer_name";
+	public final static String CUSTOMER_NAME = "customer_name";
 	public final static String DRIVER_PHONE_NUMBER = "driver_phone_number";
 	public final static String FROM_DATE = "from_date";
 	public final static String TO_DATE = "to_date";

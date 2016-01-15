@@ -42,6 +42,7 @@ car_type text,
 price_per_kilometer int,
 car_model text,
 minimun_distance_per_day int,
+car_driver_licence text,
 PRIMARY KEY ((car_registered_at,car_type),car_number ))
 WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
 AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 

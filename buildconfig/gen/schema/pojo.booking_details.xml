@@ -17,5 +17,6 @@
 		<property name="address" type="String" description="Customer Address"/>
 		<property name="carLocation" type="String" description="car location"/>
 		<property name="carType" type="String" description="type of the car"/>
+		<property name="carlicence" type="String" description="licence"/>
 	</Class>
 </schema>

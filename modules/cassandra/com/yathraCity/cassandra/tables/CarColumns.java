@@ -18,4 +18,5 @@ public class CarColumns
 	public final static String CAR_REGISTERED = "car_registered";
 	public final static String CAR_TYPE= "car_type";
 	public final static String UUID= "uuid";
+	public final static String CAR_DRIVER_LICENCE="car_driver_licence";
 }
