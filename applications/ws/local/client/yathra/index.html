@@ -1,41 +1,28 @@
-<html lang="en"><head>
+<html lang="en">
+   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
       <title>TAB - Take A Break</title>
-      <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom CSS -->
+ 
+      <link rel="stylesheet" href="css/jquery-ui.css">
+      <link rel="stylesheet" href="css/bootstrap-select.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
       <link href="css/freelancer.css" rel="stylesheet">
-      <!-- Custom Fonts -->
       <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href="css/tab.css" rel="stylesheet">
-      <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-      <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <link rel="stylesheet" href="css/jquery-ui.css">
-      <style type="text/css"></style>
-      <style type="text/css"></style>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-      <link rel="stylesheet" href="css/bootstrap-select.css">
+      <link rel="stylesheet" type="text/css" href="css/selectric.css">
       <style>
          body {
          padding-top: 70px;
          }
       </style>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><style type="text/css"></style><style type="text/css"></style>
-      <script src="js/bootstrap-select.js"></script>
    </head>
    <body id="page-top" class="index">
       <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -76,7 +63,7 @@
          </div>
          <!-- /.container-fluid -->
       </nav>
- 	<!-- Header -->
+      <!-- Header -->
       <header class=".tab-header websiteView mainPage hide">
          <div class="container">
             <div class="col-sm-12">
@@ -84,7 +71,7 @@
             </div>
          </div>
       </header>
-     <header class=".tab-header mobileView hide">
+      <header class=".tab-header mobileView hide">
          <div class="container ">
             <div class="col-sm-12">
                <h3>Pick Up Details</h3>
@@ -108,17 +95,18 @@
                                  <div class="col-sm-4"><label class="text-primary">Select PickUp City:</label></div>
                                  <div class="col-sm-8">
                                     <div class="btn-group bootstrap-select form-control">
-<select id="country" name="country" class="form-control selectpicker" data-live-search="true" tabindex="-98">
-                                       <option value="Bangalore">Bangalore</option>
-                                       <option value="Mangalore">Mangalore</option>
-                                       <option value="Mysore">Mysore</option>
-                                       <option value="Chitradurga">Chitradurga</option>
-                                       <option value="Madikeri">Madikeri</option>
-                                       <option value="Hubli">Hubli</option>
-                                       <option value="Dharwad">Dharwad</option>
-                                       <option value="Dharmastala">Dharmastala</option>
-                                       <option value="Tirupati">Tirupati</option>
-                                    </select></div>
+                                       <select id="country" name="country" class="form-control selectpicker" data-live-search="true" tabindex="-98">
+                                          <option value="Bangalore">Bangalore</option>
+                                          <option value="Mangalore">Mangalore</option>
+                                          <option value="Mysore">Mysore</option>
+                                          <option value="Chitradurga">Chitradurga</option>
+                                          <option value="Madikeri">Madikeri</option>
+                                          <option value="Hubli">Hubli</option>
+                                          <option value="Dharwad">Dharwad</option>
+                                          <option value="Dharmastala">Dharmastala</option>
+                                          <option value="Tirupati">Tirupati</option>
+                                       </select>
+                                    </div>
                                  </div>
                               </div>
                               <div class="col-sm-1"></div>
@@ -129,17 +117,18 @@
                                  <div class="col-sm-4"><label class="text-primary">Select Visiting City:</label></div>
                                  <div class="col-sm-8">
                                     <div class="btn-group bootstrap-select form-control">
-				<select id="country" name="country" class="form-control selectpicker" data-live-search="true" tabindex="-98">
-                                       <option value="Bangalore">Bangalore</option>
-                                       <option value="Mangalore">Mangalore</option>
-                                       <option value="Mysore">Mysore</option>
-                                       <option value="Chitradurga">Chitradurga</option>
-                                       <option value="Madikeri">Madikeri</option>
-                                       <option value="Hubli">Hubli</option>
-                                       <option value="Dharwad">Dharwad</option>
-                                       <option value="Dharmastala">Dharmastala</option>
-                                       <option value="Tirupati">Tirupati</option>
-                                    </select></div>
+                                       <select id="country" name="country" class="form-control selectpicker" data-live-search="true" tabindex="-98">
+                                          <option value="Bangalore">Bangalore</option>
+                                          <option value="Mangalore">Mangalore</option>
+                                          <option value="Mysore">Mysore</option>
+                                          <option value="Chitradurga">Chitradurga</option>
+                                          <option value="Madikeri">Madikeri</option>
+                                          <option value="Hubli">Hubli</option>
+                                          <option value="Dharwad">Dharwad</option>
+                                          <option value="Dharmastala">Dharmastala</option>
+                                          <option value="Tirupati">Tirupati</option>
+                                       </select>
+                                    </div>
                                  </div>
                               </div>
                               <div class="col-sm-1"></div>
@@ -149,20 +138,18 @@
                               <div class="col-sm-10">
                                  <div class="col-sm-4"><label class="text-primary">From:</label></div>
                                  <div class="col-sm-8">
-                                    <input class="form-control from_date selectpicker hasDatepicker" id="from" type="text" placeholder="Select Date" readonly="">
+                                    <input class="form-control from_date" id="from" type="text" placeholder="Select Date" readonly="">
                                  </div>
                               </div>
-                              <div class="col-sm-1"></div>
                            </div>
                            <div class="form-group">
                               <div class="col-sm-1"></div>
                               <div class="col-sm-10">
                                  <div class="col-sm-4"><label class="text-primary">To:</label></div>
                                  <div class="col-sm-8">
-                                    <input class="form-control to_date hasDatepicker" id="to" type="text" placeholder="Select Date" readonly="">
+                                    <input class="form-control to_date" id="to" type="text" placeholder="Select Date" readonly="">
                                  </div>
                               </div>
-                              <div class="col-sm-1"></div>
                            </div>
                         </form>
                         <br>
@@ -175,13 +162,11 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-1">
-               </div>
             </div>
          </div>
       </section>
       <!-- Portfolio Grid Section -->
-      <section id="portfolio" class="websiteView">
+      <section id="portfolio" class="websiteView hide">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">
@@ -256,22 +241,23 @@
          </div>
       </section>
       <!-- About Section -->
-      <section class="success websiteView" id="about">
+      <section class="success websiteView hide" id="about">
          <div class="container">
-         <div class="row">
-            <div class="col-lg-12 text-center">
-               <h2>About</h2>
-               <hr class="star-light">
+            <div class="row">
+               <div class="col-lg-12 text-center">
+                  <h2>About</h2>
+                  <hr class="star-light">
+               </div>
+            </div>
+            <div class="row text-center">
+               <div class="col-lg-4 col-lg-offset-4">
+                  <p>Take A Break is a car rental marketplace, connecting you to all local self driver car with the best fare rate across the city.</p>
+               </div>
             </div>
          </div>
-         <div class="row text-center">
-            <div class="col-lg-4 col-lg-offset-4">
-               <p>Take A Break is a car rental marketplace, connecting you to all local self driver car with the best fare rate across the city.</p>
-            </div>
-         </div>
-      </div></section>
+      </section>
       <!-- Contact Section -->
-      <section id="contact" class="websiteView">
+      <section id="contact" class="websiteView hide">
          <div class="container">
             <div class="row">
                <div class="col-lg-12 text-center">
@@ -289,7 +275,8 @@
                            <label>Name</label>
                            <input type="text" class="form-control" placeholder="Name" id="name" required="" data-validation-required-message="Please enter your name." aria-invalid="true">
                            <p class="help-block text-danger">
-                           </p><ul class="alert" role="alert" style="display: none;">
+                           </p>
+                           <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your name.</li>
                            </ul>
                            <p></p>
@@ -300,7 +287,8 @@
                            <label>Email Address</label>
                            <input type="email" class="form-control" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." aria-invalid="true">
                            <p class="help-block text-danger">
-                           </p><ul class="alert" role="alert" style="display: none;">
+                           </p>
+                           <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your email address.</li>
                            </ul>
                            <p></p>
@@ -311,7 +299,8 @@
                            <label>Phone Number</label>
                            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number." aria-invalid="true">
                            <p class="help-block text-danger">
-                           </p><ul class="alert" role="alert" style="display: none;">
+                           </p>
+                           <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your phone number.</li>
                            </ul>
                            <p></p>
@@ -322,7 +311,8 @@
                            <label>Message</label>
                            <textarea rows="3" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message." aria-invalid="true"></textarea>
                            <p class="help-block text-danger">
-                           </p><ul class="alert" role="alert" style="display: none;">
+                           </p>
+                           <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter a message.</li>
                            </ul>
                            <p></p>
@@ -341,8 +331,8 @@
          </div>
       </section>
       <!-- Footer -->
-      <footer class="text-center websiteView">
-         <div class="footer-above">
+      <footer class="text-center">
+         <div class="footer-above  websiteView hide">
             <div class="container">
                <div class="row">
                   <div class="footer-col col-md-4">
@@ -391,31 +381,19 @@
          <span class="glyphicon glyphicon-chevron-up">
          </span></a>
       </div>
-      <!-- jQuery -->
+
       <script src="js/jquery.js"></script>
-      <!-- Bootstrap Core JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/jquery.selectric.min.js"></script>
+      <script src="js/bootstrap-select.js"></script>
       <script src="js/bootstrap.min.js"></script>
-      <!-- Plugin JavaScript -->
       <script src="js/jquery.easing.min.js"></script>
       <script src="js/classie.js"></script>
       <script src="js/cbpAnimatedHeader.js"></script>
-      <!-- Contact Form JavaScript -->
       <script src="js/jqBootstrapValidation.js"></script>
       <script src="js/contact_me.js"></script>
-      <!-- Custom Theme JavaScript -->
       <script src="js/freelancer.js"></script>
-      <!-- MY JS -->
       <script src="js/jquery-ui.js"></script>
       <script src="js/index.js"> </script>
-      <script type="text/javascript"> 
-         var width = $(window).width();
-              if (width >= 850) {
-                  $('.websiteView').removeClass("hide");
-              } else {
-                  $('.mobileView').removeClass("hide");
-              }
-         
-      </script>
-   
-
-<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>
+   </body>
+</html>

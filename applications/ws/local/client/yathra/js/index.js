@@ -35,9 +35,9 @@
 
      var width = $(window).width();
      if (width >= 850) {
-         $('.website').removeClass('hide');
+         $('.websiteView').removeClass('hide');
      } else {
-         $('.mobile').removeClass('hide');
+         $('.mobileView').removeClass('hide');
      }
 
      $('.alert').hide();

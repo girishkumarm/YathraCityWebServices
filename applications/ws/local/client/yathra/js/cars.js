@@ -1,9 +1,9 @@
  var width = $(window).width();
- if (width >= 850) {
-     $('.website').removeClass('hide');
- } else {
-     $('.mobile').removeClass('hide');
- }
+     if (width >= 850) {
+         $('.website').removeClass('hide');
+     } else {
+         $('.mobile').removeClass('hide');
+     }
  $(document).ready(function() {
      $('.hatchbackCar').click(function() {
 	localStorage.setItem("car_type", "hatchback");
