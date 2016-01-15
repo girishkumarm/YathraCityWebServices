@@ -15,12 +15,14 @@ import defaultpkg.ErrorCodes;
 public class Driver implements DriverInterface {
 
 	DriverDetailsDAO driverDetailsDao = new DriverDetailsDAO();
+	CarServiceDAO carService=new CarServiceDAO();
 	private CarServiceDAO carsDao = new CarServiceDAO();
 
 	@Override
 	public ResponseMessage registerdriver( ServiceExecutionContext ctx, DriverDetails driverDetails )
 			throws ExecException
 	{
+		
 		ResponseMessage message = new ResponseMessage();
 		try
 		{
@@ -49,7 +51,7 @@ public class Driver implements DriverInterface {
 			{
 				// register driver
 				boolean result = driverDetailsDao.addDriverDetails(driverDetails);
-
+				carService.updateDriverLicenceAndRegistration(driverDetails.getLocation(), driverDetails.getCarType(), driverDetails.getCarNumber(), driverDetails.getDriverLicence());
 				message.setStatus("400");
 				message.setMessage("Failed");
 
@@ -72,6 +74,8 @@ public class Driver implements DriverInterface {
 			ConfirmDriverAvailability driverDetails ) throws ExecException
 	{
 		ResponseMessage message = new ResponseMessage();
+		message.setMessage("BAD GATEWAY");
+		message.setStatus("500");
 		try
 		{
 			// check for the mandatory fields for the driver
@@ -82,23 +86,31 @@ public class Driver implements DriverInterface {
 			{
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
-			boolean result = driverDetailsDao.updateDriverAvailability(driverDetails);
-
-			// register car
-			FetchCarDetails details = new FetchCarDetails();
-			details.setRegisteredAt(driverDetails.getLocation());
-			details.setCarType(driverDetails.getCarType());
-			details.setCarNumber(driverDetails.getCarNumber());
 			
-			carsDao.confirmRegistration(details);
-
-			message.setStatus("400");
-			message.setMessage("Failed");
-
-			if( result == true )
+			boolean driverResults=driverDetailsDao.fetchDrivers(driverDetails);
+			if(driverResults==true)
 			{
-				message.setStatus("200");
-				message.setMessage("Driver details updated successfully");
+				boolean result = driverDetailsDao.updateDriverAvailability(driverDetails);
+	
+				// register car
+				FetchCarDetails details = new FetchCarDetails();
+				details.setRegisteredAt(driverDetails.getLocation());
+				details.setCarType(driverDetails.getCarType());
+				details.setCarNumber(driverDetails.getCarNumber());
+				
+				if(driverDetails.isAvailability()==false)
+					carsDao.unConfirmRegistration(details);
+				else
+					carsDao.confirmRegistration(details);
+		
+				message.setStatus("400");
+				message.setMessage("Failed");
+				if( result == true )
+				{
+					message.setStatus("200");
+					message.setMessage("Driver details updated successfully");
+				}
+				
 			}
 		}
 		catch( Exception e )

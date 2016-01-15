@@ -185,7 +185,9 @@ public class YathraService implements YathraServiceInterface {
 					|| input.getTravelCity() == null || input.getTravelCity().trim().isEmpty()
 					|| input.getCarLocation()==null || input.getCarLocation().trim().isEmpty()
 					|| input.getCarNumber()==null ||input.getCarNumber().trim().isEmpty()
-					|| input.getCarType() == null || input.getCarType().trim().isEmpty())
+					|| input.getCarType() == null || input.getCarType().trim().isEmpty()
+					|| input.getCustomerName()== null || input.getCustomerName().trim().isEmpty()
+					|| input.getCustomerNumber()==null || input.getCustomerNumber().trim().isEmpty())
 			{
 				throw new Exception("Mandatory fields are missing to get for booking");
 			}

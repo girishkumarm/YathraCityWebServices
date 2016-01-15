@@ -22,6 +22,7 @@ public class DriverDetailsDAO {
 	private static Logger logger = LoggerFactory.getLogger(DriverDetailsDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	
 
 	// initlizing the session and keyspace
 	public DriverDetailsDAO()
@@ -47,11 +48,13 @@ public class DriverDetailsDAO {
 					.value(DriverDetails.DRIVER_LICENCE, details.getDriverLicence())
 					.value(DriverDetails.DRIVER_NAME, details.getDriverName())
 					.value(DriverDetails.DRIVER_PHONE_NUMBER, details.getDriverPhoneNumber())
-					.value(DriverDetails.LOCATION, details.getLocation()).value(DriverDetails.AVAILABILITY, false)
+					.value(DriverDetails.LOCATION, details.getLocation())
+					.value(DriverDetails.AVAILABILITY, false)
 					.value(DriverDetails.CAR_TYPE, details.getCarType())
 					.value(DriverDetails.CAR_NUMBER, details.getCarNumber());
 			cassQuery.executeFuture(addDetails);
 	        System.out.println(addDetails.toString());
+	       
 		}
 		catch( Exception e )
 		{
@@ -70,6 +73,7 @@ public class DriverDetailsDAO {
 					.and(QueryBuilder.eq(DriverDetails.LOCATION, details.getLocation()))
 					.and(QueryBuilder.eq(DriverDetails.DRIVER_LICENCE, details.getDriverLicence()));
 			cassQuery.executeFuture(update);
+			System.out.println(update.toString());
 		}
 		catch( Exception e )
 		{
@@ -83,8 +87,7 @@ public class DriverDetailsDAO {
 		{
 			Statement get=QueryBuilder.select().all().from(keyspace, TableNames.DRIVER_DETAILS).allowFiltering()
 					.where(QueryBuilder.eq(DriverDetails.CAR_NUMBER,input.getCarNumber()))
-					.and(QueryBuilder.eq(DriverDetails.LOCATION, input.getCarLocation()))
-					.and(QueryBuilder.eq(DriverDetails.CAR_TYPE,input.getCarType()));
+					.and(QueryBuilder.eq(DriverDetails.LOCATION, input.getCarLocation()));
 			ResultSetFuture results=cassQuery.executeFuture(get);
 			System.out.println(get.toString());
 			List<DriverDetailsPojo> details= processCarEntity(results);
@@ -98,6 +101,32 @@ public class DriverDetailsDAO {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean fetchDrivers(ConfirmDriverAvailability driverDetails)
+	{
+		boolean result=false;
+		try
+		{
+			Statement get=QueryBuilder.select().all().from(keyspace,TableNames.DRIVER_DETAILS).allowFiltering()
+					.where(QueryBuilder.eq(DriverDetails.CAR_NUMBER, driverDetails.getCarNumber()))
+					.and(QueryBuilder.eq(DriverDetails.LOCATION, driverDetails.getLocation()))
+					.and(QueryBuilder.eq(DriverDetails.DRIVER_LICENCE, driverDetails.getDriverLicence()));
+			ResultSetFuture resultSetFuture = cassQuery.executeFuture(get);
+			List<DriverDetailsPojo> details=processCarEntity(resultSetFuture);
+			if(details.size()==0 || details==null)
+				return result;
+			else
+			{
+				result=true;
+				return result;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	private List<DriverDetailsPojo> processCarEntity( ResultSetFuture results )

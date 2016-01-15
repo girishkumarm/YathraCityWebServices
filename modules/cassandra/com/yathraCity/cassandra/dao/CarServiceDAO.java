@@ -47,7 +47,7 @@ public class CarServiceDAO {
 		try
 		{
 			Statement insert = QueryBuilder.insertInto(keyspace, TableNames.CARS)
-					.value(CarColumns.CAR_AVAILABILITY, carDetails.isCarAvailability())
+					.value(CarColumns.CAR_AVAILABILITY, false)
 					.value(CarColumns.CAR_NAME, carDetails.getCarName())
 					.value(CarColumns.CAR_NUMBER, carDetails.getCarNumber())
 					.value(CarColumns.CAR_REGISTERED_AT, carDetails.getCarRegisteredAt())
@@ -104,7 +104,7 @@ public class CarServiceDAO {
 					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, details.getCarType()))
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
 					.and(QueryBuilder.eq(CarColumns.CAR_AVAILABILITY, true))
-					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED, true)).setConsistencyLevel(ConsistencyLevel.QUORUM)
+					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED, false)).setConsistencyLevel(ConsistencyLevel.QUORUM)
 					.enableTracing();
 			ResultSetFuture results = cassQuery.executeFuture(get);
 			cars = processCarEntity(results);
@@ -125,7 +125,9 @@ public class CarServiceDAO {
 		{
 			Statement get = QueryBuilder.select().all().from(keyspace, TableNames.CARS).allowFiltering()
 					.where(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, details.getRegisteredAt()))
+					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, details.getCarType()))
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
+					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED, false))
 					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
 			ResultSetFuture results = cassQuery.executeFuture(get);
 			System.out.println(get.toString());
@@ -148,7 +150,7 @@ public class CarServiceDAO {
 		try
 		{
 			Statement update = QueryBuilder.update(keyspace, TableNames.CARS)
-					.with(QueryBuilder.add(CarColumns.CAR_REGISTERED, true))
+					.with(QueryBuilder.set(CarColumns.CAR_REGISTERED, true))
 					.where(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
 					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, details.getCarType()))
 					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, details.getRegisteredAt()))
@@ -161,7 +163,25 @@ public class CarServiceDAO {
 			logger.error("Error while fetching the unregistered cars from the db--->" + e.getMessage());
 		}
 	}
+	public void unConfirmRegistration( FetchCarDetails details )
+	{
+		try
+		{
+			Statement update = QueryBuilder.update(keyspace, TableNames.CARS)
+					.with(QueryBuilder.set(CarColumns.CAR_REGISTERED, false))
+					.and(QueryBuilder.set(CarColumns.CAR_AVAILABILITY, false))
+					.where(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
+					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, details.getCarType()))
+					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, details.getRegisteredAt()))
+					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
 
+			cassQuery.executeFuture(update);
+		}
+		catch( Exception e )
+		{
+			logger.error("Error while fetching the unregistered cars from the db--->" + e.getMessage());
+		}
+	}
 	// Checking the car avaliablity
 	public boolean checkCarAavailability( CheckAvailabilityInput input )
 	{
@@ -196,7 +216,7 @@ public class CarServiceDAO {
 		try
 		{
 			Statement get = QueryBuilder.update(keyspace, TableNames.CARS)
-					.with(QueryBuilder.add(CarColumns.CAR_AVAILABILITY, false))
+					.with(QueryBuilder.add(CarColumns.CAR_AVAILABILITY, true))
 					.where(QueryBuilder.eq(CarColumns.CAR_NUMBER, input.getCarNumber()))
 					.and(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, input.getCarRegisteredAt()))
 					.and(QueryBuilder.eq(CarColumns.CAR_CAPACITY, input.getCarCapacity()))
@@ -215,7 +235,26 @@ public class CarServiceDAO {
 		}
 		return result;
 	}
-
+	public void updateDriverLicenceAndRegistration(String location,String carType,String carNumber,String licence)
+	{
+		try
+		{
+			Statement updateLicence=QueryBuilder.update(keyspace, TableNames.CARS)
+					.with(QueryBuilder.set(CarColumns.CAR_DRIVER_LICENCE, licence))
+					.and(QueryBuilder.set(CarColumns.CAR_REGISTERED, true))
+					.and(QueryBuilder.set(CarColumns.CAR_AVAILABILITY, true))
+					.where(QueryBuilder.eq(CarColumns.CAR_REGISTERED_AT, location))
+					.and(QueryBuilder.eq(CarColumns.CAR_TYPE, carType))
+					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, carNumber))
+					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
+			cassQuery.executeFuture(updateLicence);	
+			System.out.println(updateLicence.toString());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 	public void getCarDetails(BookedCarDetails input)
 	{
 		List<CarDetails> cars = null;

@@ -12,12 +12,12 @@ public class BookingColumns
 	public final static String CUSTOMER_PHONE_NUMBER = "customer_phone_number";
 	public final static String DRIVER_NAME = "driver_name";
 	public final static String CUSTOMER_NAME = "customer_name";
-	public final static String DRIVER_PHONE_NUMBER = "driver_phone_number";
+	public final static String DRIVER_PHONE_NUMBER = "driver_phone_numb";
 	public final static String FROM_DATE = "from_date";
 	public final static String TO_DATE = "to_date";
 	public final static String TRAVELLING_CITY = "travelling_city";
 	public final static String PICKUP_CITY = "pickup_city";
-	public final static String ADDRESS ="addres";
+	public final static String ADDRESS ="address";
 	public final static String CAR_TYPE = "car_type";
 	public final static String CAR_LOCATION ="car_location";
 }
