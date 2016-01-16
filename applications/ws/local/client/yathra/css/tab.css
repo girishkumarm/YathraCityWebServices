@@ -11,6 +11,14 @@
     color: red;
 }
 
+#pick_up_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#visiting_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
 a:hover { 
     background-color: yellow;
 }
@@ -28,4 +36,17 @@ header .mobileView {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.websiteView{
+display:none;
+}
+
+.mobileView{
+display:none;
+}
+
+hr{
+	background-color: #18bc9c;border-width:3;
+}
+
 

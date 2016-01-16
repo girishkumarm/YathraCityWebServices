@@ -8,6 +8,13 @@ body {
     overflow-x: hidden;
 }
 
+.mobilePadding {
+ padding-top: 60px;
+ }
+.websitePadding {
+ padding-top: 60px;
+ }
+
 p {
     font-size: 20px;
 }
@@ -101,6 +108,10 @@ header .container {
     padding-bottom: 10px;
 }
 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 header img {
     display: block;
     margin: 0 auto 20px;
@@ -182,8 +193,9 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 100px 0;
-}
+    padding: 120px 0;
+   }
+
 
 section h2 {
     margin: 0;
@@ -206,7 +218,7 @@ section.success a.active {
 
 @media(max-width:767px) {
     section {
-        padding: 75px 0;
+        padding: 30px 0;
     }
 
     section.first {
