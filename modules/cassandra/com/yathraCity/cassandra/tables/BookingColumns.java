@@ -20,4 +20,6 @@ public class BookingColumns
 	public final static String ADDRESS ="address";
 	public final static String CAR_TYPE = "car_type";
 	public final static String CAR_LOCATION ="car_location";
+	public final static String BOOKING_CONFIRMED="booking_confirmed";
+	public final static String CUSTOMER_EMAIL="customer_email";
 }

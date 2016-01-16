@@ -69,9 +69,11 @@ driver_phone_numb text,
 customer_phone_number text,
 coupon text,
 customer_name text,
+customer_email text,
 address text,
 car_type text,
 car_location text,
+booking_confirmed boolean,
 PRIMARY KEY ((from_date),customer_phone_number,car_number))
 WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
 AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 
