@@ -2,25 +2,21 @@
 
      $('#search_car').click(function() {
 
-         localStorage.setItem("pick_up_city", $('#pick_up_city').val());
-         localStorage.setItem("visiting_city", $('#visiting_city').val());
-         
 	//validating the pick up city and the visiting city
 	var validation=true;
         if ($("#pick_up_city").val() == "" || $("#visiting_city").val() == "") {
              if ($("#pick_up_city").val() == "") {
                  $("#pick_up_city").toggleClass("red-placeholder");
 		 validation=false;
-             } else {
-                 localStorage.setItem("pick_up_city", $('#pick_up_city').val());
              }
              if ($("#visiting_city").val() == "") {
                  $("#visiting_city").toggleClass("red-placeholder");
                  validation=false;
-             } else {
-                 localStorage.setItem("visiting_city", $('#visiting_city').val());
              }
-         }
+         }else{
+		localStorage.setItem("pick_up_city", $('#pick_up_city').val());
+		localStorage.setItem("visiting_city", $('#visiting_city').val());
+	}
 
 
          if ($("#from").val() == "" || $("#to").val() == "") {

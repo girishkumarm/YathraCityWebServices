@@ -19,14 +19,14 @@
 		    <h3><i class="glyphicon glyphicon-arrow-left text-primary"></i></h3>
 		 </div>
 		 <div class="col-xs-8">
-		    <h3>Car Details</h3>
+		    <h3 id="agency"></h3>
 		 </div>
 	</div>
       </header>
        <header class=".tab-header navbar-fixed-top website hide">
          <div class="container ">
 		 <div class="col-xs-12">
-		    <h3>Car Details</h3>
+		    <h3 >Car Details</h3>
 		 </div>
 	</div>
       </header>
@@ -47,27 +47,27 @@
 				<ul class="list-group text-left">
 				  <hr/><div class="row">
 					<div class="col-xs-6 text-info">Fuel Type:</div>
-					<div class="col-xs-6">Diesel</div>
+					<div class="col-xs-6" id="fuel"></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">PickUp From:</div>
-					<div class="col-xs-6">Bangalore</div>
+					<div class="col-xs-6" id="pick_up_city"></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">Travelling To:</div>
-					<div class="col-xs-6">Mangalore</div>
+					<div class="col-xs-6" id="visiting_city"></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">Distance Allowed/Day:</div>
-					<div class="col-xs-6">300km</div>
+					<div class="col-xs-6" id="minimum_distance"></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">Minimum Fare/Day:</div>
-					<div class="col-xs-6"><i class="fa fa-inr" style="font-size:15px"> 3000</i></div>
+					<div class="col-xs-6" ><i class="fa fa-inr" style="font-size:15px" id="minimum_fare"></i></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">Driver Bata Charges/Day:</div>
-					<div class="col-xs-6"><i class="fa fa-inr" style="font-size:15px"> 300</i></div>
+					<div class="col-xs-6"><i class="fa fa-inr" style="font-size:15px" id="driver_bata"></i></div>
 				  </div><hr/>
 				  <div class="row">
 					<div class="col-xs-6 text-info">Coupons Applied:</div>
@@ -156,19 +156,5 @@
       <!-- MY JS -->
       <script src="../js/general/jquery-ui.js"></script>
       <script src="../js/rentCars/orderDetails.js"> </script>
-<script type="text/javascript"> 
-var width = $(window).width();
-     if (width >= 850) {
-         $('.websiteView').show();
-     } else {
-         $('.websiteView').hide();
-     }
-$(document).ready(function() {
-         		$('.bookCarButton').click(function() {
-         			window.location.href = "confirmBooking.html";
-         		});
-         	});
-
-</script>
    </body>
 </html>

@@ -3,8 +3,6 @@ package com.yathraCity.cassandra.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
@@ -19,7 +17,6 @@ import com.yathraCity.services.config.Configurator;
 
 public class BookingDetailsDAO
 {
-	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
@@ -42,10 +39,6 @@ public class BookingDetailsDAO
 		
 		try
 		{
-		    CarServiceDAO carService=new CarServiceDAO();
-		    DriverDetailsDAO driverDetals=new DriverDetailsDAO();
-		    driverDetals.driverDetailsForBooking(input);
-		    carService.getCarDetails(input);
 			Statement insert = QueryBuilder.insertInto(keyspace,TableNames.BOOKING_DETAILS)
 					.value(BookingColumns.BOOKING_ID,uniqueBookingId())
 					.value(BookingColumns.CAR_AGENCY_NAME,input.getCarAgency())

@@ -1,11 +1,7 @@
 var HTTPUtil = {
-	GET : function(endpoint, username, sessionId, callback) {
+	GET : function(endpoint, callback) {
 		$.ajax({
 			type : "GET",
-			headers : {
-				'username' : username,
-				'sessionId' : sessionId
-			},
 			url : endpoint,
 			dataType : "json",
 			async : false
@@ -15,13 +11,9 @@ var HTTPUtil = {
 			callback(msg, undefined);
 		});
 	},
-	POST : function(endpoint, username, sessionId, dataBody, callback) {
+	POST : function(endpoint, dataBody, callback) {
 		$.ajax({
 			type : "POST",
-			headers : {
-				'username' : username,
-				'sessionId' : sessionId
-			},
 			url : endpoint,
 			dataType : "json",
 			data : JSON.stringify(dataBody),
