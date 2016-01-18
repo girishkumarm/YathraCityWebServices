@@ -1,5 +1,7 @@
 package com.yathraCity.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.CarServiceDAO;
@@ -18,13 +20,15 @@ public class Driver implements DriverInterface {
 	DriverDetailsDAO driverDetailsDao = new DriverDetailsDAO();
 	CarServiceDAO carService = new CarServiceDAO();
 	private CarServiceDAO carsDao = new CarServiceDAO();
-
+	private static Logger logger = LoggerFactory.getLogger( Driver.class );
+	ResponseMessage message = new ResponseMessage();
+	
 	@Override
 	public ResponseMessage registerdriver( ServiceExecutionContext ctx, DriverDetails driverDetails )
 			throws ExecException
 	{
 
-		ResponseMessage message = new ResponseMessage();
+		
 		message.setStatus("500");
 		message.setMessage("Register Driver Failed");
 		try
@@ -82,7 +86,8 @@ public class Driver implements DriverInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding the Driver"
+					+ e.getMessage() );
 		}
 		return message;
 	}
@@ -91,7 +96,6 @@ public class Driver implements DriverInterface {
 	public ResponseMessage updateDriverAvailability( ServiceExecutionContext ctx,
 			ConfirmDriverAvailability driverDetails ) throws ExecException
 	{
-		ResponseMessage message = new ResponseMessage();
 		message.setMessage("Update Failed");
 		message.setStatus("500");
 		try
@@ -146,7 +150,8 @@ public class Driver implements DriverInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding the updating the driver avaliablity"
+					+ e.getMessage() );
 		}
 		return message;
 	}

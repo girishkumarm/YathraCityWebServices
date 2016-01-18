@@ -3,6 +3,8 @@ package com.yathraCity.cassandra.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
@@ -19,7 +21,7 @@ public class BookingDetailsDAO
 {
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
-
+	private static Logger logger = LoggerFactory.getLogger(BookingDetailsDAO.class);
 	// initlizing the session and keyspace
 	public BookingDetailsDAO()
 	{
@@ -64,7 +66,8 @@ public class BookingDetailsDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while checking the booking car"
+					+ e.getMessage() );
 			return false;
 		}
 	}
@@ -92,7 +95,8 @@ public class BookingDetailsDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while booking details for mailing"
+					+ e.getMessage() );
 		}
 		return unConfirmedBookingDetails;
 	}
@@ -109,7 +113,8 @@ public class BookingDetailsDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while getting all the booking details"
+					+ e.getMessage() );
 		}
 		return unConfirmedBookingDetails;
 	}
@@ -130,7 +135,8 @@ public class BookingDetailsDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while not confirmed booking"
+					+ e.getMessage() );
 		}
 		return unConfirmedBookingDetails;
 	}

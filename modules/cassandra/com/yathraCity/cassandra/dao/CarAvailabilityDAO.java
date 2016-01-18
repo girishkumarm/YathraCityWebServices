@@ -2,6 +2,8 @@ package com.yathraCity.cassandra.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
@@ -20,6 +22,8 @@ public class CarAvailabilityDAO {
 
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	private static Logger logger = LoggerFactory.getLogger(CarAvailabilityDAO.class);
+
 
 	// initlizing the session and keyspace
 	public CarAvailabilityDAO()
@@ -50,7 +54,8 @@ public class CarAvailabilityDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding the avaliablity"
+					+ e.getMessage() );
 			return false;
 		}
 	}
@@ -70,7 +75,8 @@ public class CarAvailabilityDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while fetching the car avaliablity"
+					+ e.getMessage() );
 		}
 		return carAvailability;
 	}
@@ -87,7 +93,8 @@ public class CarAvailabilityDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while deleting the caar avaliablity"
+					+ e.getMessage() );
 		}
 	}
 
@@ -103,7 +110,8 @@ public class CarAvailabilityDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while deleting avaliablity"
+					+ e.getMessage() );
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.yathraCity.cassandra.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.yathraCity.cassandra.session.CassandraQuery;
@@ -16,6 +18,7 @@ import com.yathraCity.services.config.Configurator;
  */
 public class UpdateCouponDAO 
 {
+	private static Logger logger = LoggerFactory.getLogger(UpdateCouponDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 	//initlization of the keyspace and session
@@ -48,7 +51,8 @@ public class UpdateCouponDAO
 		
 		}catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while updating the cupon"
+					+ e.getMessage() );
 			return msg;
 		}
 		

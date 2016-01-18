@@ -2,6 +2,8 @@ package com.yathraCity.cassandra.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
@@ -19,6 +21,7 @@ public class DriverDetailsDAO {
 
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
+	private static Logger logger = LoggerFactory.getLogger(DriverDetailsDAO.class);
 
 	// initlizing the session and keyspace
 	public DriverDetailsDAO()
@@ -53,7 +56,8 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding the driver details"
+					+ e.getMessage() );
 		}
 		return true;
 	}
@@ -72,7 +76,8 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while updating the driver avaliablity"
+					+ e.getMessage() );
 		}
 		return true;
 	}
@@ -95,7 +100,8 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while getting the driver details for booking"
+					+ e.getMessage() );
 		}
 	}
 
@@ -117,7 +123,8 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while fetching the drivers"
+					+ e.getMessage() );
 		}
 		return null;
 	}

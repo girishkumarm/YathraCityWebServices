@@ -1,5 +1,7 @@
 package com.yathraCity.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.services.UserService;
@@ -17,7 +19,7 @@ import defaultpkg.ErrorCodes;
 public class LoginService implements LoginServiceInterface {
 
 	private UserService loginUserService = new UserService();
-
+	private static Logger logger = LoggerFactory.getLogger( LoginService.class );
 	//Authanticating the user by entering the crediantials
 	@Override
 	public LoginResponse loginUser( ServiceExecutionContext ctx, LoginInput input ) throws ExecException
@@ -48,20 +50,19 @@ public class LoginService implements LoginServiceInterface {
 			{
 				response.setFlag("true");
 				response.setMessage("Successfully logged in");
-				return response;
 			}
 			else
 			{
 				response.setFlag("false");
 				response.setMessage("not logged-in");
-				return response;
 			}
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			return null;
+			logger.error( "Error while logging in the coupen"
+					+ e.getMessage() );
 		}
+		return response;
 	}
 
 }

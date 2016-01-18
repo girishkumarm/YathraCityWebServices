@@ -1,5 +1,7 @@
 package com.yathraCity.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
@@ -13,7 +15,8 @@ public class CarBookingService implements CarBookingServiceInterface {
 
 	private BookingDetailsDAO bookTheCar = new BookingDetailsDAO();
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
-
+	private static Logger logger = LoggerFactory.getLogger( CarBookingService.class );
+	
 	@Override
 	public ResponseMessage bookingCar( ServiceExecutionContext ctx, BookedCarDetails input ) throws ExecException
 	{
@@ -52,8 +55,8 @@ public class CarBookingService implements CarBookingServiceInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			return response;
+			logger.error( "Error while booking thhe car"
+					+ e.getMessage() );
 		}
 		return response;
 	}

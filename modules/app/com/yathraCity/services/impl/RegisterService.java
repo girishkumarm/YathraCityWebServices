@@ -1,6 +1,8 @@
 package com.yathraCity.services.impl;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.services.UserService;
@@ -17,15 +19,15 @@ import defaultpkg.ErrorCodes;
  */
 public class RegisterService implements RegisterServiceInterface
 {
-
+	RegisterUserResponse response = new RegisterUserResponse();
 	private UserService registerUserService = new UserService();
+	private static Logger logger = LoggerFactory.getLogger( RegisterService.class );
 	
 	//registartion of new user
 	@Override
 	public RegisterUserResponse registerUser( ServiceExecutionContext ctx, RegisterUser input ) throws ExecException
 	{
 		boolean result = false;
-		RegisterUserResponse response = new RegisterUserResponse();
 		response.setFlag( "false" );
 		response.setMessage( "Failed to execute registerUser service" );
 		try
@@ -58,7 +60,8 @@ public class RegisterService implements RegisterServiceInterface
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while registration of the user"
+					+ e.getMessage() );
 		}
 		return response;
 	}

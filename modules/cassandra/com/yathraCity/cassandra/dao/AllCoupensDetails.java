@@ -2,6 +2,8 @@ package com.yathraCity.cassandra.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
@@ -20,6 +22,7 @@ import com.yathraCity.services.config.Configurator;
  */
 public class AllCoupensDetails 
 {
+	private static Logger logger = LoggerFactory.getLogger(AllCoupensDetails.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 	//initilizing the session and keyspace
