@@ -1,27 +1,30 @@
  var width = $(window).width();
- if (width >= 850) {
-     $('.website').removeClass('hide');
- } else {
-     $('.mobile').removeClass('hide');
- }
+     if (width >= 850) {
+         $('.website').removeClass('hide');
+     } else {
+         $('.mobile').removeClass('hide');
+     }
  $(document).ready(function() {
+
+      $('.glyphicon-arrow-left').click(function(){
+        parent.history.back();
+    });
+
+
      $('.hatchbackCar').click(function() {
 	localStorage.setItem("car_type", "hatchback");
-	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
      $('.suvCar').click(function() {
 	localStorage.setItem("car_type", "suv");
-	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
      $('.sedanCar').click(function() {
 	localStorage.setItem("car_type", "sedan");
-	localStorage.setItem("car_name", $(this).attr("id"));
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";

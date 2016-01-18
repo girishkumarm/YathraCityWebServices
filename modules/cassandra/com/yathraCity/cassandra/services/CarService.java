@@ -73,7 +73,7 @@ public class CarService {
 	 * }
 	 */
 
-	public List<CarDetails> getAvailableCars( FetchCarDetails details )
+	/*public List<CarDetails> getAvailableCars( FetchCarDetails details )
 	{
 		List<CarDetails> result = null;
 		try
@@ -95,9 +95,9 @@ public class CarService {
 			e.printStackTrace();
 		}
 		return result;
-	}
+	}*/
 
-	public boolean checkCarAavailability( CheckAvailabilityInput input )
+	/*public boolean checkCarAavailability( CheckAvailabilityInput input )
 	{
 		boolean result = false;
 		try
@@ -116,5 +116,5 @@ public class CarService {
 			logger.error("Error while checking CarAavailability from the cassandra db -->" + e.getMessage());
 		}
 		return result;
-	}
+	}*/
 }

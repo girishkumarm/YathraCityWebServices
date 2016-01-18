@@ -30,6 +30,20 @@ AND caching = 'keys_only';
 
 INSERT INTO otps (otp, phone_number) VALUES ('OTP','PHONE_NUMBER') USING TTL 300;
 
+
+//carAvailability table
+CREATE TABLE car_availability(
+car_number text,
+from_date text,
+to_date text,
+PRIMARY KEY ((car_number),from_date ))
+WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
+AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 
+AND speculative_retry = '100ms' 
+AND bloom_filter_fp_chance = 0.1 
+AND caching = 'keys_only';
+
+
 //car table
 CREATE TABLE cars(
 car_availability boolean,
@@ -43,7 +57,8 @@ price_per_kilometer int,
 car_model text,
 minimun_distance_per_day int,
 car_driver_licence text,
-PRIMARY KEY ((car_registered_at,car_type),car_number ))
+car_agency text,
+PRIMARY KEY ((car_registered_at,car_type),car_name,car_number ))
 WITH compression = { 'sstable_compression' : 'LZ4Compressor', 'chunk_length_kb' : '64' } 
 AND compaction = { 'class' : 'LeveledCompactionStrategy', 'sstable_size_in_mb' : '160' } 
 AND speculative_retry = '100ms' 

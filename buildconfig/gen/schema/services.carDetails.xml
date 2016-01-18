@@ -42,7 +42,7 @@
 
 
 		<!-- get all cars available to book -->
-		<interface url="get-car-details" name="getCarDetails" type="POST"
+		<interface url="get-car-details" name="getAvailableCarDetails" type="POST"
 			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
 			MaxCallsPerSessionPerMinute="100" availableTo="ws">
 			<postInput name="input" class="com.yathraCity.core.FetchCarDetails"
