@@ -1,0 +1,33 @@
+* {   margin:0;   padding:0; }
+.clear {   clear:both;   height:0; }
+p {   margin-bottom:10px; }
+table tr th,table tr td { text-align:left;  padding:4px 15px; border:1px dotted #1279C6; }
+table { }
+ul {   list-style:none; }
+a:link,a:hover {   text-decoration:none; }
+a:link,a:hover,a:visited {   color:#1279C6; }
+.contentPadding {   margin:10px 20px 20px; }
+.separator {   color:#E86F00; }
+.text {   overflow:auto;   white-space:pre;   font-size:12px; }
+
+.wikiMainBody { font-size:1em;    min-height:35em;   background-color:#FFF;  padding:10px;  width:100%;   margin:10px 0 0; }
+.wikiMainBody code,tt {   font-family:'Courier New',Courier,monospace; }
+.wikiMainBody div.toc {   border:solid #DEDEDF 1px;   background:#EEE;   padding:10px; }
+.wikiMainBody div.toc-contents ul {   list-style-type:none; }
+.wikiMainBody div.toc-title {   padding-bottom:5px;   font-weight:700; }
+.wikiMainBody h1,h2,h3,h4,h5,h6 {   color:#000;   margin:0;   margin-bottom:.6em;   padding-top:.6em; }
+.wikiMainBody h1,h2 {   border-bottom:1px solid #AAA;   font-weight:400; }
+.wikiMainBody h3,h4,h5,h6 {   font-weight:700; }
+.wikiMainBody h1 {   font-size:1.8em; }
+.wikiMainBody h2 {   font-size:1.6em; }
+.wikiMainBody h3 {   font-size:1.4em; }
+.wikiMainBody h4 {   font-size:1.2em; }
+.wikiMainBody h5 {   font-size:1.1em; }
+.wikiMainBody h6 {   font-size:1em; }
+.wikiMainBody ol {   margin-top:.4em;   margin-bottom:.5em;   padding-left:2em;   font-size:inherit;   list-style-type:decimal; }
+.wikiMainBody ol li {   padding-left:0; }
+.wikiMainBody p {   line-height:1.2em;   margin:.4em 0 .5em;   margin-bottom:.6em; }
+.wikiMainBody pre {   margin:.4em 0 .5em;   background-color:#F9F9F9;   border:1px dashed #2F6FAB;   font-family:'Courier New',Courier,monospace;   overflow-x:scroll; }
+.wikiMainBody table {   margin:.4em 0 .5em;   font-size:inherit;   border-collapse:collapse; }
+.wikiMainBody ul li {   pading-left:0; }
+.wikiMainBody ul {   margin-top:.4em;   margin-bottom:.5em;   padding-left:2em;   font-size:inherit;   list-style-type:disc; }
