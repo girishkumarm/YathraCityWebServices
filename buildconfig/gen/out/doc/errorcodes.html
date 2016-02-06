@@ -1,0 +1,41 @@
+<HEAD>
+<link href="global.css" media="screen" rel="stylesheet" type="text/css">    
+<script type="text/javascript" src="jquery.js"></script>
+</HEAD>
+<BODY>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; ">
+<tr>
+<td colspan="2"> 
+<h1>InBlox API </h1>
+</td>
+</tr>
+<tr>
+<td width="200" valign="top"> <div >
+<br/><br/>
+<a href="home.html">Home</a><br/>
+<a href="commons.html">Commons</a><br/>
+<a href="constructs.html">Constructs</a><br/>
+<b>Error Codes</b><BR/>
+<a href="tester.html">Tester</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
+<a href="Driversvc.html">Driver</a><br/>
+<a href="CarBookingServicesvc.html">CarBookingService</a><br/>
+<a href="Carsvc.html">Car</a><br/>
+<a href="CountingServicesvc.html">CountingService</a><br/>
+<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
+<a href="OTPServicesvc.html">OTPService</a><br/>
+<a href="Couponssvc.html">Coupons</a><br/>
+<a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="SendMailToCustomerssvc.html">SendMailToCustomers</a><br/>
+
+</div>
+</td>
+<td valign="top">
+<!--BEGIN CONTENT AREA-->
+<h1>Status and Error Codes</h1>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; "><tr style="background:#eee;font-weight:bold"><td>CODE</td><td>TYPE</td><td>NAME</td><td>TEXT</td><td>ACTION</td><td>HINT</td></tr><tr><td>ERR_100</td><td>400</td><td>INVALID_EMAIL_ID</td><td>Invalid Parameter</td><td></td><td>Enter Valid emailId</td></tr><tr><td>ERR_101</td><td>400</td><td>INVALID_MESSAGE_UID</td><td>Invalid Parameter</td><td></td><td>Enter Valid messageUID</td></tr><tr><td>ERR_102</td><td>400</td><td>INVALID_NUMBER_OF_RESULTS_TO_RETURN</td><td>Invalid Parameter</td><td></td><td>Enter Valid numOfResultsToReturn</td></tr><tr><td>ERR_103</td><td>400</td><td>INVALID_FOLDERNAME</td><td>Invalid Parameter</td><td></td><td>Enter Valid folderName</td></tr><tr><td>ERR_115</td><td>400</td><td>INVALID_TAG</td><td>Invalid Parameter</td><td></td><td>Enter Valid Tag</td></tr><tr><td>ERR_115</td><td>400</td><td>INVALID_BUCKETLABEL</td><td>Invalid Parameter</td><td></td><td>Enter Valid bucketLabel</td></tr><tr><td>ERR_116</td><td>400</td><td>INVALID_LONGVALUE</td><td>Invalid Parameter</td><td></td><td>Enter Valid snoozedAt value</td></tr><tr><td>ERR_104</td><td>400</td><td>INVALID_FILENAME</td><td>Invalid Parameter</td><td></td><td>Attachment filePath while sending mail</td></tr><tr><td>ERR_105</td><td>400</td><td>INVALID_STATUS</td><td>Invalid Parameter</td><td></td><td>Enter Valid Status</td></tr><tr><td>ERR_106</td><td>400</td><td>INVALID_MAILPROVIDER</td><td>Invalid Parameter</td><td></td><td>Enter Valid mailProvider</td></tr><tr><td>ERR_107</td><td>400</td><td>MISSING_FIELD</td><td>Missing field/s</td><td></td><td>Enter All the Mandatory fields</td></tr><tr><td>ERR_108</td><td>400</td><td>BAD_REQUEST</td><td>Bad request</td><td></td><td>Check the input</td></tr><tr><td>ERR_109</td><td>400</td><td>USER_ALREADY_EXISTS</td><td>User already added</td><td></td><td>Duplicate entry</td></tr><tr><td>ERR_110</td><td>400</td><td>INVALID_ID</td><td>Enter valid ids(UUID)</td><td></td><td>Enter Valid UUID format</td></tr><tr><td>ERR_111</td><td>400</td><td>INVALID_ACTION</td><td>Invalid Parameter</td><td></td><td>Enter either add or remove action</td></tr><tr><td>ERR_112</td><td>400</td><td>INVALID_VALUE</td><td>Invalid Parameter</td><td></td><td>Enter either true or false</td></tr><tr><td>ERR_116</td><td>400</td><td>INVALID_INBLOX_USER_ID</td><td>Invalid primary account</td><td></td><td>primary account mismatch</td></tr><tr><td>ERR_115</td><td>400</td><td>SIMULTANEOUS_CONNECTIONS</td><td>Too many simultaneous connections</td><td></td><td>Too many simultaneous connections</td></tr><tr><td>ERR_120</td><td>400</td><td>INVALID_SESSION_TOKEN</td><td>inblox user id not found</td><td></td><td>couldn't find the provided inblox user id</td></tr><tr><td>ERR_121</td><td>400</td><td>INVALID_DEVELOPER_KEY</td><td>inblox user id not found</td><td></td><td>couldn't find the provided inblox user id</td></tr><tr><td>ERR_113</td><td>404</td><td>RECORD_NOT_FOUND</td><td>No record found</td><td></td><td>No record found</td></tr><tr><td>ERR_114</td><td>404</td><td>USER_NOT_FOUND</td><td>user not registered</td><td></td><td>User not found</td></tr><tr><td>ERR_117</td><td>404</td><td>INBLOX_USER_ID_NOT_FOUND</td><td>inblox user id not found</td><td></td><td>couldn't find the provided inblox user id</td></tr><tr><td>ERR_118</td><td>404</td><td>ACTIVE_SESSION_TOKEN_NOT_FOUND</td><td>no active session token for the requested user</td><td></td><td>request for a new session token</td></tr><tr><td>ERR_122</td><td>404</td><td>DEVELOPER_KEY_NOT_FOUND</td><td>no active session token for the requested user</td><td></td><td>request for a new session token</td></tr><tr><td>ERR_119</td><td>404</td><td>MANDATORY_HEADER_NOT_FOUND</td><td>one of the mandatory header fields is not found</td><td></td><td></td></tr><tr><td>SUCCESS_200</td><td>200</td><td>SUCCESS</td><td>one of the mandatory header fields is not found</td><td></td><td></td></tr></table>
+<!--END CONTENT AREA-->
+</td></tr></table>
+</BODY>
+<div id="servicecontent" style="display:none">$SERVICEDATA$</div>
+</HTML>
