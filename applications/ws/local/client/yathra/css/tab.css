@@ -11,10 +11,59 @@
     color: red;
 }
 
+#pick_up_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#visiting_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
 a:hover { 
     background-color: yellow;
 }
 
 .buttonColor{
 	background: #FDF5E6;
+}
+
+header .websiteView {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header .mobileView {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.websiteView{
+display:none;
+}
+
+.mobileView{
+display:none;
+}
+
+hr{
+	background-color: #18bc9c;border-width:2;
+}
+
+.divider {
+    text-align:center;
+}
+
+.divider hr {
+    margin-left:auto;
+    margin-right:auto;
+    width:40%;
+
+}
+
+.left {
+    float:left;
+}
+
+.right {
+    float:right;
 }

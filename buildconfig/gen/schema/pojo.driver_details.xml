@@ -5,6 +5,7 @@
 		displayorder="0">
 
 		<property name="driverName" type="String" description="driver ph number" />
+		<property name="carName" type="String" description="driver ph number" />
 		<property name="driverPhoneNumber" type="String"
 			description="phone number of the driver" />
 		<property name="driverLicence" type="String" description="licence of the driver" />
@@ -21,6 +22,7 @@
 		description="input pojo which describes all the required information of the driver to confirm his availability"
 		displayorder="0">
 		<property name="driverName" type="String" description="driver name" />
+		<property name="carName" type="String" description="driver ph number" />
 		<property name="driverPhoneNumber" type="String"
 			description="phone number of the driver" />
 		<property name="driverLicence" type="String" description="licence of the driver" />

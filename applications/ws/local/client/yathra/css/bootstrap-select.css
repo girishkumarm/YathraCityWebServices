@@ -10,6 +10,7 @@
   /*IE9 and below*/
 }
 .bootstrap-select > .dropdown-toggle {
+  background-color : transparent;
   width: 100%;
   padding-right: 25px;
   z-index: 1;
@@ -31,20 +32,21 @@
   width: 100% !important;
   z-index: 2;
 }
+.bootstrap-select > button {
+  color: #18bc9c;
+}
+.btn{
+ border: none;
+}
 .has-error .bootstrap-select .dropdown-toggle,
 .error .bootstrap-select .dropdown-toggle {
-  border-color: #b94a48;
+  border-color: #fff;
 }
 .bootstrap-select.fit-width {
   width: auto !important;
 }
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
   width: 220px;
-}
-.bootstrap-select .dropdown-toggle:focus {
-  outline: thin dotted #333333 !important;
-  outline: 5px auto -webkit-focus-ring-color !important;
-  outline-offset: -2px;
 }
 .bootstrap-select.form-control {
   margin-bottom: 0;
