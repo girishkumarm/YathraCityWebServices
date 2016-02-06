@@ -109,17 +109,18 @@
 
  });
 
-
+ $('.from_date').click('input', function() {
+         $('input').blur();
+     });
+ $('.to_date').click('input', function() {
+         $('input').blur();
+     });
  //for the calender to choose the dates of pick up and drop
  $(function() {
      $(".to_date").datepicker({
-
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1,
-         onClose: function(selectedDate) {
-             $("#to").datepicker("option", "minDate", selectedDate);
-         }
+         numberOfMonths: 1
      });
 
  });
@@ -127,10 +128,7 @@
      $(".from_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1,
-         onClose: function(selectedDate) {
-             $("#from").datepicker("option", "minDate", selectedDate);
-         }
+         numberOfMonths: 1
      });
 
  });

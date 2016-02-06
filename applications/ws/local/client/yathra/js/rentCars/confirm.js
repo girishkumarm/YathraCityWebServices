@@ -39,13 +39,15 @@ var bookCar = function(name,email,phone) {
 
     console.log(inputObject);
 
-    HTTPUtil.POST("http://localhost:8080/ws_yathra_dev/rest/booking/booking-car", inputObject, function(res, err) {
+    HTTPUtil.POST("http://192.168.48.245:8080/ws_yathra_dev/rest/booking/booking-car", inputObject, function(res, err) {
 
         if (res === null) {
             console.log("Couldn't able to fetch the answer for the given question")
         } else {
             console.log(res);
+		window.location.href = "confirmMessage.html";
         }
     });
+    
 
 }

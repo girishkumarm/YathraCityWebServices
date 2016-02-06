@@ -12,19 +12,19 @@
 
 
      $('.hatchbackCar').click(function() {
-	localStorage.setItem("car_type", "hatchback");
+	localStorage.setItem("car_type", "Hatchback");
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
      $('.suvCar').click(function() {
-	localStorage.setItem("car_type", "suv");
+	localStorage.setItem("car_type", "Suv");
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
      });
      $('.sedanCar').click(function() {
-	localStorage.setItem("car_type", "sedan");
+	localStorage.setItem("car_type", "Sedan");
 	localStorage.setItem("car_image", $(this).attr("src"));
 	localStorage.setItem("car_name", $(this).attr("alt"));
         window.location.href = "carDetails.html";
