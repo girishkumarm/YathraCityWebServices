@@ -23,6 +23,7 @@ $(document).ready(function() {
 	     }
 	$(document).ready(function() {
 		$('.bookCarButton').click(function() {
+			 getCarAvailability();
 			window.location.href = "confirmBooking.html";
 		});
 	 });
@@ -38,3 +39,26 @@ $(document).ready(function() {
 	    });
 
 });
+
+
+var getCarAvailability = function() {
+
+    var inputObject = {};
+    inputObject.registeredAt = localStorage.getItem("pick_up_city");
+    inputObject.carName=localStorage.getItem("car_name");
+    inputObject.fromDate = localStorage.getItem("from_date");
+    inputObject.toDate = localStorage.getItem("to_date");
+    inputObject.carType=localStorage.getItem("car_type");
+    inputObject.carNumber=localStorage.getItem("car_number");
+
+    HTTPUtil.POST("http://localhost:8080/ws_yathra_dev/rest/cars/get-car-details", inputObject, function(res, err) {
+console.log(inputObject);
+        if (res === null) {
+            console.log("Couldn't able to fetch the answer for the given question");
+		window.location.href = "carDetails.html";
+        } else {
+		window.location.href = "confirmBooking.html";
+        }
+    });
+
+}
