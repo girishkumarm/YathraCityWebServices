@@ -1,0 +1,371 @@
+<HEAD>
+<link href="global.css" media="screen" rel="stylesheet" type="text/css">    
+</HEAD>
+<BODY>
+<table width="98%" border="1" style="margin:5px;border-collapse:collapse; ">
+<tr>
+<td colspan="2"> 
+<h1>InBlox API </h1>
+</td>
+</tr>
+<tr>
+<td width="200" valign="top"> <div >
+<br/><br/>
+<a href="home.html">Home</a><br/>
+<b>Commons</b><BR/>
+<a href="constructs.html">Constructs</a><br/>
+<a href="errorcodes.html">Error Codes</a><br/>
+<a href="tester.html">Tester</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="CountingServicesvc.html">CountingService</a><br/>
+<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
+<a href="Couponssvc.html">Coupons</a><br/>
+<a href="Driversvc.html">Driver</a><br/>
+<a href="Carsvc.html">Car</a><br/>
+<a href="LoginServicesvc.html">LoginService</a><br/>
+<a href="RegisterServicesvc.html">RegisterService</a><br/>
+<a href="YathraServicesvc.html">YathraService</a><br/>
+
+</div>
+</td>
+<td>
+<!--BEGIN CONTENT AREA-->
+<div class="contentPadding">
+
+<div class="wikiMainBody"><h1>RESTful Interfaces of the InBlox API Specification - Common Behaviors</h1>
+
+<p><b>Version</b>: 0.1
+
+</p><p><b>Last Updated</b>: 5 Feb 2016 09:59:18 GMT
+
+</p><p>This document specifies constraints that apply to all of the 
+requests and responses that occur in the RESTful Interfaces supported by the 
+InBlox API, hereinafter referred to as the "API".
+ 
+
+</p><div id="toc" class="toc">
+           <div id="toctitle" class="toc-title">Contents</div>
+           <div id="toccontents" class="toc-contents"><ul><li>1 <a href="#Imperative_Terms_In_Specifications"> Imperative Specification Terms</a></li>
+<li>2 <a href="#Transport_Protocol"> Transport Protocol </a></li>
+<li>3 <a href="#Media_Types"> Media Types </a></li>
+<li>4 <a href="#Request_Headers"> Request Headers </a></li>
+<li>5 <a href="#Request_Parameters"> Request Parameters </a></li>
+<li>6 <a href="#Response_Headers"> Response Headers </a></li>
+<li>7 <a href="#Standard_HTTP_Status_Codes"> Standard HTTP Status Codes </a></li>
+<li>8 <a href="#Error_Response_Message_Bodies"> Error Response Message Bodies </a></li>
+<ul><li>8.1 <a href="#Introduction"> Introduction </a></li>
+<li>8.2 <a href="#Data_Models"> Data Models </a></li>
+<ul><li>8.2.1 <a href="#Messages_Data_Model"> Messages Data Model </a></li>
+<li>8.2.2 <a href="#Message_Data_Model"> Message Data Model </a></li>
+</ul></ul><li>9 <a href="#Version_Request_Type"> Version Request Type </a></li>
+<ul><li>9.1 <a href="#Introduction"> Introduction </a></li>
+<li>9.2 <a href="#Version_Data_Model"> Version Data Model </a></li>
+</ul></ul></div>
+         </div><p><br>
+
+</p><h1><a name="Imperative_Terms_In_Specifications"></a> Imperative Specification Terms </h1>
+<p>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", 
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this 
+document, and all other documents that comprise the specification of the
+ RESTful Interfaces, are to be interpreted as described in "Key words 
+for use in RFCs to Indicate Requirement Levels" (<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>).
+
+</p><h1><a name="Transport_Protocol"></a> Transport Protocol </h1>
+<p>
+All API Interfaces are based on the Hypertext Transfer Protocol, 
+version 1.1 (<a href="http://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a>).  Each request is authenticated using HTTP 
+Basic Authentication (<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>).  Therefore, requests sent from clients 
+on the public Internet (and not on a secure channel such as a VPN) <b>MUST</b> use the <i>https</i> protocol.
+
+</p><h1><a name="Media_Types"></a> Media Types </h1>
+<p>
+Resource representations and request bodies are normally encoded in JSON, as specified in <a href="http://www.ietf.org/rfc/rfc4267.txt">RFC 4267</a>.
+
+</p><p>The API <b>MUST</b> provide representations of all resources available in JSON. 
+The API <b>MUST</b> accept requests from clients encoded in JSON.  </p>
+<h1><a name="Request_Headers"></a> Request Headers </h1>
+<p>
+In requests made to services implementing the InBlox 
+API, several HTTP headers are used:
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> Header
+</th><th> Supported Values
+</th><th> Description of Use
+</th><th> Required
+</th></tr>
+<tr><td> Accept
+</td><td> Comma-delimited list of media types or media type patterns.
+</td><td> Indicates to the server which media type(s) this client is prepared to accept.
+</td><td> Recommended, on requests that produce a response message body.
+</td></tr>
+<tr><td> Authorization
+</td><td> "Basic" plus username and password (per <a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>).
+</td><td> Identifies the authorized user making the request.
+</td><td> Yes, on all requests.
+</td></tr>
+<tr><td> Content-Length
+</td><td> Length (in bytes) of the request message body.
+</td><td> Describes the size of the message body.
+</td><td> Yes, on requests containing a message body.
+</td></tr>
+<tr><td> Content-Type
+</td><td> Media type describing the request message body. For example, text/plain, application/json
+</td><td> Describes the representation and syntax of the request message body.
+</td><td> Yes, on requests containing a message body.
+</td></tr>
+<tr><td> Host
+</td><td> Identifies the origin host receiving the message.
+</td><td> Required to allow support of multiple origin hosts at a single IP address.
+</td><td> Yes, on all requests.  Note that since a single space may spread its 
+URIs across multiple hosts, this may need to be re-set for each request.
+</td></tr>
+</tbody></table>
+</div></div>
+
+</p><p>Note that, since all interactions with RESTful Interfaces of the InBlox APIs are 
+stateless, no <i>Cookie</i> header (or any other mechanism to provide a session identifier) is used.
+
+</p><h1><a name="Request_Parameters"></a> Request Parameters </h1>
+<p>
+Since the URI space is controlled by the server, client programs MUST 
+NOT make any assumptions regarding the meaning of request parameters.
+
+</p><h1><a name="Response_Headers"></a> Response Headers </h1>
+<p>
+In responses returned by the API, several HTTP headers are used:
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> Header
+</th><th> Supported Values
+</th><th> Description of Use
+</th><th> Required
+</th></tr>
+<tr><td> Content-Length
+</td><td> Length (in bytes) of the response message body.
+</td><td> Describes the size of the message body.
+</td><td> Yes, on responses containing a message body.
+</td></tr>
+<tr><td> Content-Type
+</td><td> Media type describing the response message body.
+</td><td> Describes the representation and syntax of the response message body.
+</td><td> Yes, on responses containing a message body.
+</td></tr>
+<tr><td> Location
+</td><td> Canonical URI of a newly created resource.
+</td><td> Returns a new URI that can be used to request a representation of the newly created resource.
+</td><td> Yes, on responses to requests that create new server side resources accessible via a URI.
+</td></tr>
+</tbody></table>
+</div></div>
+<p>
+
+</p><h1><a name="Standard_HTTP_Status_Codes"></a> Standard HTTP Status Codes </h1>
+<p>
+The API will return standard HTTP response 
+codes, under the following conditions.
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> HTTP Status
+</th><th> Description
+</th></tr>
+<tr><td> 200 OK
+</td><td> The request was successfully completed.  If this request 
+created a new resource that is addressable with a URI, and a response 
+body is returned containing a representation of the new resource, a 200 
+status will be returned with a <i>Location</i> header containing the canonical URI for the newly created resource.
+</td></tr>
+<tr><td> 201 Created
+</td><td> A request that created a new resource was completed, and no 
+response body containing a representation of the new resource is being 
+returned.  A <i>Location</i> header containing the canonical URI for the newly created resource should also be returned.
+</td></tr>
+<tr><td> 202 Accepted
+</td><td> The request has been accepted for processing, but the 
+processing has not been completed.  Per the HTTP/1.1 specification, the 
+returned entity (if any) <b>SHOULD</b> include an indication of the 
+request's current status, and either a pointer to a status monitor or 
+some estimate of when the user can expect the request to be fulfilled.
+</td></tr>
+<tr><td> 204 No Content
+</td><td> The server fulfilled the request, but does not need to return a response message body.
+</td></tr>
+<tr><td> 400 Bad Request
+</td><td> The request could not be processed because it contains missing
+ or invalid information (such as a validation error in an input field or a 
+missing required value).
+</td></tr>
+<tr><td> 401 Unauthorized
+</td><td> The authentication credentials included with this request are missing or invalid. 
+</td></tr>
+<tr><td> 403 Forbidden
+</td><td> The server recognized the user's credentials, but the user does not possess authorization to perform this request.
+</td></tr>
+<tr><td> 404 Not Found
+</td><td> The request specified a URI of a resource that does not exist.
+</td></tr>
+<tr><td> 405 Method Not Allowed
+</td><td> The HTTP verb specified in the request (DELETE, GET, HEAD, POST, PUT) is not supported for this request URI.
+</td></tr>
+<tr><td> 406 Not Acceptable
+</td><td> The resource identified by this request is not capable of 
+generating a representation corresponding to one of the media types in 
+the <i>Accept</i> header of the request.
+</td></tr>
+<tr><td> 409 Conflict
+</td><td> A create or update request could not be completed, because 
+it would cause a conflict in the current state of the resources 
+supported by the server (for example, an attempt to create a new 
+resource with a unique identifier which is already assigned to an existing 
+resource).
+</td></tr>
+<tr><td> 500 Internal Server Error
+</td><td> The server encountered an unexpected condition, which prevented it from fulfilling the request.
+</td></tr>
+<tr><td> 501 Not Implemented
+</td><td> The server does not support the functionality required to fulfill the request.
+</td></tr>
+<tr><td> 503 Service Unavailable
+</td><td> The server is currently unable to handle the request due to temporary overloading or maintenance of the server.
+</td></tr>
+</tbody></table>
+</div></div>
+<p>
+
+</p><h1><a name="Error_Response_Message_Bodies"></a> Error Response Message Bodies </h1>
+<h2><a name="Introduction"></a> Introduction </h2>
+<p>
+Successful requests will return an HTTP status code of 200 
+(OK), 201 (Created), or 204 (No Content), to indicate the requested
+ action has been successfully performed.  In addition, the response might 
+include a response message body (with an appropriate media type) 
+containing a representation of the requested information.  However, it 
+is possible for a number of things to go wrong.  The underlying 
+causes are described (as discussed in the previous section) by 
+HTTP status codes in the range 400-499 for client side errors and 
+500-599 for server side problems.  The description of each request 
+type <b>SHOULD</b> list the possible status codes returned by the request type.
+
+</p><p>If a response is returned with an error status code (400-499 or 500-599), the server <b>SHOULD</b> also return a response message body containing a <i>messages</i> data model, containing zero or more <i>message</i>
+ data models, describing the error.
+
+</p><h2><a name="Data_Models"></a> Data Models </h2>
+<p>
+The following generic data models are used to communicate error and status information.
+Note that these data models, while discussed in the context of reporting
+ error conditions, are also suitable for a general event logging 
+interface.
+
+</p><h3><a name="Messages_Data_Model"></a> Messages Data Model </h3>
+<p>
+The entire list of messages included in an error response are encapsulated in a <i>messages</i> data model.  
+The media type is <i>application/json</i>.
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> Field Name
+</th><th> Type
+</th><th> Occurs
+</th><th> Description
+</th></tr>
+<tr><td> messages
+</td><td> Message
+</td><td> 0..n
+</td><td> Zero or more <i>message</i> data models for each error response.
+</td></tr>
+</tbody></table>
+</div></div>
+<h3><a name="Message_Data_Model"></a> Message Data Model </h3>
+<p>
+An individual <i>message</i> contains the following fields:
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> Field Name
+</th><th> Type
+</th><th> Occurs
+</th><th> Description
+</th></tr>
+<tr><td> action
+</td><td> String
+</td><td> 0..1
+</td><td> Symbolic identifier of the action being performed by the service implementation that triggered the creation of this message.
+</td></tr>
+<tr><td> code
+</td><td> String
+</td><td> 0..1
+</td><td> Symbolic error code identifying the type of error reported by this message.
+</td></tr>
+<tr><td> field
+</td><td> String
+</td><td> 0..1
+</td><td> Name of the input field (from the request data model) with which 
+this message is associated.  If not specified, this message should 
+be considered global to the entire request.
+</td></tr>
+<tr><td> hint
+</td><td> String
+</td><td> 0..1
+</td><td> Localized text further describing the nature of the problem, 
+possibly including potential workarounds the API user could try.
+</td></tr>
+<tr><td> severity
+</td><td> String
+</td><td> 0..1
+</td><td> Label indicating the severity of the error condition 
+represented by this message (SEVERE, WARNING, CONFIG, INFO, FINE, FINER,
+ FINEST), in decreasing order of severity.
+</td></tr>
+<tr><td> source
+</td><td> String
+</td><td> 0..1
+</td><td> Symbolic identifier of the service implementation component that triggered this message. 
+</td></tr>
+<tr><td> stack-trace
+</td><td> String
+</td><td> 0..1
+</td><td> Stack trace associated with this message.
+</td></tr>
+<tr><td> text</td><td> String
+</td><td> 1
+</td><td> Localized text describing the nature of the problem reported by this message.
+</td></tr>
+</tbody></table>
+</div></div>
+<p><b>SECURITY NOTE</b>: The <i>action</i>, <i>source</i>, and <i>stack-trace</i> fields may convey sensitive information about the service implementation, and generally <b>WILL NOT</b> be included in messages returned to third party clients outside the InBlox firewall.  However, they <b>MAY</b> be used in messages transmitted between internal application components.
+
+</p><h1><a name="Version_Request_Type"></a> Version Request Type </h1>
+<h2><a name="Introduction"></a> Introduction </h2>
+<p>
+Each instance of an API request <b>MUST</b> include a
+ request type that allows a client to determine the version of the particular API instance.
+ The version should consist of the specification 
+version(s) supported by this API instance, as well as an
+ implementation version.  This 
+request type <b>SHOULD</b> have a URI matching <i>{ServiceURI}/versions</i>.
+
+</p><h2><a name="Version_Data_Model"></a> Version Data Model </h2>
+<p>The data model contains the following fields:
+
+</p><div style="overflow-x: auto;"><div style="margin: 0px 2px 0px 2px;">
+<table -="" border="1" width="100%"><tbody><tr><th> Field Name
+</th><th> Type
+</th><th> Occurs
+</th><th> Description
+</th></tr>
+<tr><td> <b>implementation_version</b></td><td> String
+</td><td> 1
+</td><td> Implementation version identifier for this service instance.
+</td></tr>
+<tr><td> <b>specification_version</b></td><td> String
+</td><td> 1
+</td><td> Comma-delimited list of the specification version(s) supported by this service instance.
+</td></tr>
+</tbody></table>
+</div></div>
+    <div class="clear"></div>
+  </div>
+
+            <!--END CONTENT AREA-->
+
+</td></tr></table>
+</BODY>
+</HTML>

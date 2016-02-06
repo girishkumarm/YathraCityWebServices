@@ -1,3 +1,0 @@
-mysql.url=localhost:3306/test?autoReconnect=true
-mysql.userid=root
-mysql.password=root
