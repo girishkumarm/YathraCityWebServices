@@ -9,6 +9,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
@@ -21,12 +23,13 @@ public class SendMailToCustomers implements SendMailToCustomersInterface {
 
 	BookingDetailsDAO details = new BookingDetailsDAO();
 	List<BookedCarDetails> bookingDetails = null;
-
+	ResponseMessage respMessage = new ResponseMessage();
+	private static Logger logger = LoggerFactory.getLogger( SendMailToCustomers.class );
+	
 	@Override
 	public ResponseMessage mailCustomer( ServiceExecutionContext ctx, ConfirmBookedCarDetails input )
 			throws ExecException
 	{
-		ResponseMessage respMessage = new ResponseMessage();
 		respMessage.setMessage("bad gateway");
 		respMessage.setStatus("500");
 		try
@@ -99,13 +102,15 @@ public class SendMailToCustomers implements SendMailToCustomersInterface {
 			}
 			catch( MessagingException e )
 			{
-				throw new RuntimeException(e);
+				logger.error( "Error while sending mail"
+						+ e.getMessage() );
 			}
 
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while confirming the user"
+					+ e.getMessage() );
 		}
 		return respMessage;
 	}

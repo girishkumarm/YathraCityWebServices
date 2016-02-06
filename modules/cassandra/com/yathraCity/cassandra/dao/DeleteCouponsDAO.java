@@ -17,7 +17,7 @@ import com.yathraCity.services.config.Configurator;
  */
 public class DeleteCouponsDAO 
 {
-	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
+	private static Logger logger = LoggerFactory.getLogger(DeleteCouponsDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
@@ -49,7 +49,8 @@ public class DeleteCouponsDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while deleting the coupens"
+					+ e.getMessage() );
 			return msg;
 		}
 	}

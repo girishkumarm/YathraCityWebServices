@@ -31,27 +31,22 @@ var getCarDetails = function() {
 
     var inputObject = {};
     inputObject.registeredAt = localStorage.getItem("pick_up_city");
-    inputObject.carName=localStorage.getItem("car_name");
-    //inputObject.carName = "Indica";
+    //inputObject.carName=localStorage.getItem("car_name");
+    inputObject.carName = "Indica";
     inputObject.fromDate = localStorage.getItem("from_date");
     inputObject.toDate = localStorage.getItem("to_date");
-    inputObject.carType=localStorage.getItem("car_type");
-    //inputObject.carType = "Hatchback";
+    //inputObject.carType=localStorage.getItem("car_type");
+    inputObject.carType = "Hatchback";
+
+    console.log(inputObject);
 
     HTTPUtil.POST("http://localhost:8080/ws_yathra_dev/rest/cars/get-car-details", inputObject, function(res, err) {
-console.log(inputObject);
+
         if (res === null) {
             console.log("Couldn't able to fetch the answer for the given question")
         } else {
             carDetails = res.car;
             console.log(res);
-	    if(carDetails.length>0){
-		$('.carDetailsDiv').html("");
-	    }else{
-		var carImage=localStorage.getItem("car_image");
-	        carImage=carImage.replace("mobile", "website");
-	        $('.carimage').attr("src",carImage);
-	    }
             for (var index = 0; index < carDetails.length; index++) {
                 var carDetailsData = "";
                 carDetailsData = "<hr/><div class=\"car-list-item row container\" id=" + index + "><div class=\"list-group col-xs-12\"><div class=\"col-xs-6\"><h5 class=\"text-success\">" + carDetails[index].carAgency + "</h5><div>" + carDetails[index].carCapacity + "+1 Seats</div><div>" + carDetails[index].carModel + "</div></div><div class=\"col-xs-6\"><h5 class=\"text-info\"><i class=\"fa fa-inr\" style=\"font-size:15px\"></i>" + carDetails[index].pricePerKilometer + "/km</h5><div>" + carDetails[index].minimunDistancePerDay + "km/day</div></div></div></div>";

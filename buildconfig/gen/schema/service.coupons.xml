@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="Coupons" baseurl="coupons">
+
+		<interface url="coupons-of-tab" name="coupons" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="couponsDetails" class="com.yathraCity.core.CouponDetails"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+		<interface url="get-list-of-coupons" name="getalltheCoupons"
+			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
+			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<output name="count" class="com.yathraCity.core.ListOfCouponsUsed"
+				description="list of all the coupons" />
+			<description> <![CDATA[ ]]>
+			</description>
+
+			<developernotes>
+				<notes> <![CDATA[ ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+		<interface url="update-coupons" name="updateCoupon" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="couponsDetails" class="com.yathraCity.core.CouponDetails"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/unsuccess" />
+			<description> <![CDATA[ ]]>
+			</description>
+			<developernotes>
+				<notes> <![CDATA[ ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+		<interface url="delete-coupons" name="deleteCoupons" type="GET"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<urlinput>
+				<property name="couponName" type="String" description="coupon name" />
+			</urlinput>
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/unsuccess" />
+
+			<description> <![CDATA[ ]]>
+			</description>
+
+			<developernotes>
+				<notes> <![CDATA[ ]]>
+				</notes>
+			</developernotes>
+		</interface>
+	</service>
+</schema>
+
+ 
+ 

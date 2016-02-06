@@ -21,7 +21,7 @@ import com.yathraCity.services.config.Configurator;
 
 public class CarServiceDAO {
 
-	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
+	private static Logger logger = LoggerFactory.getLogger(CarServiceDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 

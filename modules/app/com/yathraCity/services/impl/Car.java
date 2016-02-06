@@ -4,11 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.CarAvailabilityDAO;
 import com.yathraCity.cassandra.dao.CarServiceDAO;
+import com.yathraCity.cassandra.dao.UserDAO;
 import com.yathraCity.cassandra.pojo.CarAvailabilityDetails;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.core.CheckAvailabilityInput;
@@ -22,6 +25,8 @@ public class Car implements CarInterface {
 
 	private CarServiceDAO carsDao = new CarServiceDAO();
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
+	private static Logger logger = LoggerFactory.getLogger( Car.class );
+	
 
 	@Override
 	public ResponseMessage registerCar( ServiceExecutionContext ctx, RegisterCarInput input ) throws ExecException
@@ -56,7 +61,8 @@ public class Car implements CarInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding cars"
+					+ e.getMessage() );
 		}
 		return response;
 	}
@@ -91,7 +97,8 @@ public class Car implements CarInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while checking the avaliable cars"
+					+ e.getMessage() );
 		}
 		return response;
 	}
@@ -193,7 +200,8 @@ public class Car implements CarInterface {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while getting cars"
+					+ e.getMessage() );
 		}
 		return listOfAvaliableCars;
 	}

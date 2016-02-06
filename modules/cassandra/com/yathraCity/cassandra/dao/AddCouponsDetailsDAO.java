@@ -19,7 +19,7 @@ import com.yathraCity.services.config.Configurator;
  */
 public class AddCouponsDetailsDAO {
 
-	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
+	private static Logger logger = LoggerFactory.getLogger(AddCouponsDetailsDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
@@ -54,7 +54,8 @@ public class AddCouponsDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error( "Error while adding the cupon"
+					+ e.getMessage() );
 		}
 		if( coupen == true )
 		{

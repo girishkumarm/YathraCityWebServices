@@ -15,7 +15,7 @@ import com.yathraCity.services.config.Configurator;
 
 public class DeleteCoupensExpiredDAO 
 {
-	private static Logger logger = LoggerFactory.getLogger(UserDAO.class);
+	private static Logger logger = LoggerFactory.getLogger(DeleteCoupensExpiredDAO.class);
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
 
@@ -52,7 +52,8 @@ public class DeleteCoupensExpiredDAO
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error( "Error while deleting the coupen expaired"
+					+ e.getMessage() );
 			return msg;
 		}
 	}

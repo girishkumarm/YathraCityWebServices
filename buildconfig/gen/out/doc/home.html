@@ -16,14 +16,16 @@
 <a href="constructs.html">Constructs</a><br/>
 <a href="errorcodes.html">Error Codes</a><br/>
 <a href="tester.html">Tester</a><br/>
-<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="CountingServicesvc.html">CountingService</a><br/>
-<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
-<a href="Couponssvc.html">Coupons</a><br/>
+<BR/><BR/><b style="color:#ccccff">SERVICES</b><BR/><a href="RegisterServicesvc.html">RegisterService</a><br/>
 <a href="Driversvc.html">Driver</a><br/>
+<a href="CarBookingServicesvc.html">CarBookingService</a><br/>
 <a href="Carsvc.html">Car</a><br/>
+<a href="CountingServicesvc.html">CountingService</a><br/>
+<a href="NumberOfUserssvc.html">NumberOfUsers</a><br/>
+<a href="OTPServicesvc.html">OTPService</a><br/>
+<a href="Couponssvc.html">Coupons</a><br/>
 <a href="LoginServicesvc.html">LoginService</a><br/>
-<a href="RegisterServicesvc.html">RegisterService</a><br/>
-<a href="YathraServicesvc.html">YathraService</a><br/>
+<a href="SendMailToCustomerssvc.html">SendMailToCustomers</a><br/>
 
 </div>
 </td>
@@ -34,7 +36,7 @@
 
 <p><b>Version</b>: 0.1
 
-</p><p><b>Last Updated</b>: 5 Feb 2016 09:59:18 GMT</p>
+</p><p><b>Last Updated</b>: 6 Feb 2016 05:16:47 GMT</p>
 
 <h3>Introduction</h3>
 
@@ -57,25 +59,26 @@ The starting point is a URI, supplied by InBlox. The specification of the InBlox
 </li></ul><p>
 This API operates on the following primary resource types:
 </p><ul>
-<li>BookedCarDetails:input to register car details</li>
-<li>RegisterCarInput:input to register car details</li>
-<li>FetchCarDetails:for fetching the car details</li>
-<li>ListOfAvailableCars:AvailableCars</li>
-<li>CheckAvailabilityInput:input to register car details</li>
-<li>TotalNumberOfUsers:car avaliable on that particular day</li>
-<li>Message:car avaliable on that particular day</li>
 <li>CouponDetails:car avaliable on that particular day</li>
 <li>ListOfCouponsUsed:LoginResponse which describes the user is real or not</li>
+<li>LoginInput:input pojo which describes all the required information of the user</li>
+<li>LoginResponse:LoginResponse which describes the user is real or not</li>
 <li>DriverDetails:input pojo which describes all the required information of the driver</li>
 <li>ConfirmDriverAvailability:input pojo which describes all the required information of the driver to confirm his availability</li>
+<li>ConfirmBookedCarDetails:input to register car details</li>
 <li>ResponseMessage:ResponseMessage for acknowledging the services</li>
 <li>LogInput:input to log</li>
 <li>LogInputList:input to log</li>
 <li>RequestObject:request fields</li>
-<li>LoginInput:input pojo which describes all the required information of the user</li>
-<li>LoginResponse:LoginResponse which describes the user is real or not</li>
+<li>TotalNumberOfUsers:car avaliable on that particular day</li>
+<li>Message:car avaliable on that particular day</li>
+<li>BookedCarDetails:input to register car details</li>
 <li>RegisterUser:input pojo which describes all the required information of the user</li>
 <li>RegisterUserResponse:RegisterUserResponse</li>
+<li>RegisterCarInput:input to register car details</li>
+<li>FetchCarDetails:for fetching the car details</li>
+<li>ListOfAvailableCars:AvailableCars</li>
+<li>CheckAvailabilityInput:input to register car details</li>
 
 </ul>
 <h3>Specifications</h3>
@@ -87,14 +90,16 @@ behaviors and construct models, and individual sections for each service specifi
 
 <li><a href="commons.html" class="internal">Common Behaviors</a></li>
 <li> <a href="constructs.html" class="internal">Construct Models</a></li>
+<li><a href="RegisterServicesvc.html">RegisterService Services</a></li>
+<li><a href="Driversvc.html">Driver Services</a></li>
+<li><a href="CarBookingServicesvc.html">CarBookingService Services</a></li>
+<li><a href="Carsvc.html">Car Services</a></li>
 <li><a href="CountingServicesvc.html">CountingService Services</a></li>
 <li><a href="NumberOfUserssvc.html">NumberOfUsers Services</a></li>
+<li><a href="OTPServicesvc.html">OTPService Services</a></li>
 <li><a href="Couponssvc.html">Coupons Services</a></li>
-<li><a href="Driversvc.html">Driver Services</a></li>
-<li><a href="Carsvc.html">Car Services</a></li>
 <li><a href="LoginServicesvc.html">LoginService Services</a></li>
-<li><a href="RegisterServicesvc.html">RegisterService Services</a></li>
-<li><a href="YathraServicesvc.html">YathraService Services</a></li>
+<li><a href="SendMailToCustomerssvc.html">SendMailToCustomers Services</a></li>
 
 
 </ul><p>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="Car" baseurl="cars">
+
+		<interface url="register-car" name="registerCar" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.RegisterCarInput"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+		<interface url="check-car-availability" name="checkCarAvailability"
+			type="POST" mode="READWRITE" availableFromInsecure="yes" authUser="no"
+			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input"
+				class="com.yathraCity.core.CheckAvailabilityInput" description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+
+		<!-- get all cars available to book -->
+		<interface url="get-car-details" name="getAvailableCarDetails" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.FetchCarDetails"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ListOfAvailableCars"
+				description="list of the cars avaliable" />
+			<description> <![CDATA[ ]]>
+			</description>
+			<developernotes>
+				<notes> <![CDATA[ ]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+	</service>
+</schema>

@@ -15,83 +15,73 @@
    <body id="page-top" class="index">
       <header class=".tab-header navbar-fixed-top mobile hide">
          <div class="container ">
-            <div class="col-xs-2">
-               <h3><i class="glyphicon glyphicon-arrow-left text-primary"></i></h3>
-            </div>
-            <div class="col-xs-8">
-               <h3 id="agency"></h3>
-            </div>
-         </div>
+		 <div class="col-xs-2">
+		    <h3><i class="glyphicon glyphicon-arrow-left text-primary"></i></h3>
+		 </div>
+		 <div class="col-xs-8">
+		    <h3 id="agency"></h3>
+		 </div>
+	</div>
       </header>
-      <header class=".tab-header navbar-fixed-top website hide">
+       <header class=".tab-header navbar-fixed-top website hide">
          <div class="container ">
-            <div class="col-xs-12">
-               <h3 >Car Details</h3>
-            </div>
-         </div>
+		 <div class="col-xs-12">
+		    <h3 >Car Details</h3>
+		 </div>
+	</div>
       </header>
-      <div class="container " style="padding-top:50">
+      <div class="container "><br/><br/>
          <div class="col-sm-12 text-center ">
-            <div class="row col-sm-12 ">
-               <div class="col-sm-4"></div>
-               <div class="col-sm-4">
-                  <div href="#portfolioModal1 col-md-6" class="" data-toggle="modal">
-                     <img src="" class="img-responsive carimage" id="1" alt="">
+                  <div class="row col-sm-12 ">
+                     <div class="col-sm-4"></div>
+		     <div class="col-sm-4">
+                        <div href="#portfolioModal1 col-md-6" class="" data-toggle="modal">
+                           <img src="" class="img-responsive carimage" id="1" alt="">
+                        </div>
+                        <div class="title text-primary col-sm-6 carname text-primary"></div>
+                     </div>
+		     <div class="col-sm-4"></div>
                   </div>
-                  <div class="title text-primary col-sm-6 carname text-primary"></div>
+                  <div class="row col-sm-12">
+		     <div class="col-sm-12"><br/>
+				<ul class="list-group text-left">
+				  <hr/><div class="row">
+					<div class="col-xs-6 text-info">Fuel Type:</div>
+					<div class="col-xs-6" id="fuel"></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">PickUp From:</div>
+					<div class="col-xs-6" id="pick_up_city"></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">Travelling To:</div>
+					<div class="col-xs-6" id="visiting_city"></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">Distance Allowed/Day:</div>
+					<div class="col-xs-6" id="minimum_distance"></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">Minimum Fare/Day:</div>
+					<div class="col-xs-6" ><i class="fa fa-inr" style="font-size:15px" id="minimum_fare"></i></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">Driver Bata Charges/Day:</div>
+					<div class="col-xs-6"><i class="fa fa-inr" style="font-size:15px" id="driver_bata"></i></div>
+				  </div><hr/>
+				  <div class="row">
+					<div class="col-xs-6 text-info">Coupons Applied:</div>
+					<div class="col-xs-6">None</div>
+				  </div><hr/>
+				</ul>
+			</div>
+                  </div>
+		  <div class="row col-sm-12 ">
+			<button id="search_car" type="button" class="btn btn-success btn-lg btn-block bookCarButton">Confirm Car</button><hr/>
+		  </div>
                </div>
-               <div class="col-sm-4"></div>
-            </div>
-            <div class="row col-sm-12">
-               <div class="col-sm-12">
-                  <br/>
-                  <ul class="list-group text-left">
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Fuel Type:</div>
-                        <div class="col-xs-6" id="fuel"></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">PickUp From:</div>
-                        <div class="col-xs-6" id="pick_up_city"></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Travelling To:</div>
-                        <div class="col-xs-6" id="visiting_city"></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Distance Allowed/Day:</div>
-                        <div class="col-xs-6" id="minimum_distance"></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Minimum Fare/Day:</div>
-                        <div class="col-xs-6" ><i class="fa fa-inr" style="font-size:15px" id="minimum_fare"></i></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Driver Bata Charges/Day:</div>
-                        <div class="col-xs-6"><i class="fa fa-inr" style="font-size:15px" id="driver_bata"></i></div>
-                     </div>
-                     <hr/>
-                     <div class="row">
-                        <div class="col-xs-6 text-info">Coupons Applied:</div>
-                        <div class="col-xs-6">None</div>
-                     </div>
-                     <hr/>
-                  </ul>
-               </div>
-            </div>
-            <div class="row col-sm-12 ">
-               <button id="search_car" type="button" class="btn btn-success btn-lg btn-block bookCarButton">Confirm Car</button>
-               <hr/>
             </div>
          </div>
-      </div>
-      </div>
       </div>
       <!-- Footer -->
       <footer class="text-center websiteView">
@@ -155,12 +145,16 @@
          <span class="glyphicon glyphicon-chevron-up">
          </a>
       </div>
-      <script src="../js/general/httputil.js"></script>
       <script src="../js/general/jquery.js"></script>
       <script src="../js/general/bootstrap.min.js"></script>
+      <script src="../js/general/jquery.easing.min.js"></script>
       <script src="../js/general/classie.js"></script>
       <script src="../js/general/cbpAnimatedHeader.js"></script>
+      <script src="../js/general/jqBootstrapValidation.js"></script>
+      <script src="../js/general/contact_me.js"></script>
       <script src="../js/general/freelancer.js"></script>
+      <!-- MY JS -->
+      <script src="../js/general/jquery-ui.js"></script>
       <script src="../js/rentCars/orderDetails.js"> </script>
    </body>
 </html>

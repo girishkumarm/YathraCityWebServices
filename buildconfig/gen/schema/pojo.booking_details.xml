@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.core" name="Core Package">
+	<Class name="BookedCarDetails" description="input to register car details" displayorder="0">
+		<property name="bookingId" type="String" description="a unique booking id" />
+		<property name="fromDate" type="String" description="date of booking" />
+		<property name="toDate" type="String" description="care engaged tilll date" />
+		<property name="carNumber" type="String" description="carNumber" />
+		<property name="travelCity" type="String" description="travel city name" />
+		<property name="carAgency" type="String" description="car agency name" />
+		<property name="carAgencyPhoneNumber" type="String" description="agency phonne number" />
+		<property name="driverName" type="String" description="car driver name"/>
+		<property name="drivePhoneNumber" type="String" description="driver phone number"/>
+		<property name="coupon" type="String" description="coupon to apply discount"/>
+		<property name="customerName" type="String" description="name of the costomer"/>
+		<property name="customerNumber" type="String" description="customer's number"/>
+		<property name="pickUpCity" type="String" description="pick up city"/>
+		<property name="address" type="String" description="Customer Address"/>
+		<property name="carLocation" type="String" description="car location"/>
+		<property name="carType" type="String" description="type of the car"/>
+		<property name="carlicence" type="String" description="licence"/>
+		<property name="customerEmail" type="String" description="customerEmail"/>
+	</Class>
+</schema>

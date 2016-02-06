@@ -2,6 +2,8 @@ package com.yathraCity.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.pojo.CouponsPojo;
@@ -23,15 +25,21 @@ import defaultpkg.ErrorCodes;
  * @author ashwing
  *         param coupon details
  */
-public class Coupons implements CouponsInterface {
-
+public class Coupons implements CouponsInterface 
+{
+	ResponseMessage response = new ResponseMessage();
+	DeleteCouponesExpireService delete = new DeleteCouponesExpireService();
+	ListOfAllCoupons listOfAllCoupons = new ListOfAllCoupons();
+	UpdateCouponsService update = new UpdateCouponsService();
+	com.yathraCity.cassandra.services.CouponDetails newCoupon = new com.yathraCity.cassandra.services.CouponDetails();
+	private static Logger logger = LoggerFactory.getLogger( Coupons.class );
 	// Adding the new coupon by giving the coupon details
 	@Override
 	public ResponseMessage coupons( ServiceExecutionContext ctx, CouponDetails couponsDetails ) throws ExecException
 	{
-		com.yathraCity.cassandra.services.CouponDetails newCoupon = new com.yathraCity.cassandra.services.CouponDetails();
-		ResponseMessage response = new ResponseMessage();
 		response.setMessage("could not add the new coupon");
+		response.setMessage("coupen is not added");
+		response.setStatus("500");
 		try
 		{
 			if( couponsDetails == null || couponsDetails.getCoupon() == null
@@ -43,35 +51,31 @@ public class Coupons implements CouponsInterface {
 			}
 			// adding coupon in the DB
 			boolean couponmsg = newCoupon.addingCouponsToDB(couponsDetails);
-			if( couponmsg == false )
-			{
-
-				return response;
-			}
-			else
+			if( couponmsg == true )
 			{
 				response.setMessage("couponadded successfully");
-				return response;
+				response.setStatus("200");
 			}
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			return response;
+			logger.error( "Error while adding the coupen"
+					+ e.getMessage() );
 		}
+		return response;
 	}
 
 	// Getting all the coupons
 	@Override
 	public ListOfCouponsUsed getalltheCoupons( ServiceExecutionContext ctx ) throws ExecException
 	{
+		ListOfCouponsUsed coupons = new ListOfCouponsUsed();
 		try
 		{
-			ListOfCouponsUsed coupons = new ListOfCouponsUsed();
+			
 			List<CouponsPojo> allCoupons = new ArrayList<CouponsPojo>();
 			List<CouponDetails> mycoupons = new ArrayList<CouponDetails>();
 			// getting all th coupons in the DB
-			ListOfAllCoupons listOfAllCoupons = new ListOfAllCoupons();
 			allCoupons = listOfAllCoupons.couponListMeth();
 
 			for( CouponsPojo couponDetails : allCoupons )
@@ -86,13 +90,14 @@ public class Coupons implements CouponsInterface {
 				mycoupons.add(newCoupons);
 			}
 			coupons.setlistOfCoupons(mycoupons);
-			return coupons;
+			
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			return null;
+			logger.error( "Error while getting the coupen"
+					+ e.getMessage() );
 		}
+		return coupons;
 	}
 
 	// Update coupon details by passing the coupon details
@@ -100,10 +105,9 @@ public class Coupons implements CouponsInterface {
 	public ResponseMessage updateCoupon( ServiceExecutionContext ctx, CouponDetails couponsDetails )
 			throws ExecException
 	{
-		ResponseMessage response = new ResponseMessage();
+		
 		response.setMessage("didnt get updated");
-
-		UpdateCouponsService update = new UpdateCouponsService();
+		response.setStatus("500");
 		boolean msg = false;
 		try
 		{
@@ -117,21 +121,18 @@ public class Coupons implements CouponsInterface {
 			}
 			// updating the coupons in the DB
 			msg = update.updateCoupnesMethod(couponsDetails);
-			if( msg == false )
-			{
-				return response;
-			}
-			else
+			if( msg == true )
 			{
 				response.setMessage("updated successfully");
-				return response;
+				response.setStatus("200");
 			}
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			return response;
+			logger.error( "Error while updating the coupen"
+					+ e.getMessage() );
 		}
+		return response;
 	}
 
 	// deleting the coupon name by its name
@@ -139,8 +140,6 @@ public class Coupons implements CouponsInterface {
 	public ResponseMessage deleteCoupons( ServiceExecutionContext ctx, String couponName ) throws ExecException
 	{
 		boolean msg = false;
-		ResponseMessage response = new ResponseMessage();
-		DeleteCouponesExpireService delete = new DeleteCouponesExpireService();
 		try
 		{
 			if( couponName == null || couponName.trim().isEmpty() )
@@ -152,16 +151,13 @@ public class Coupons implements CouponsInterface {
 			if( msg == true )
 			{
 				response.setMessage("successfully deleted");
-			}
-			else
-			{
-				response.setMessage("not deleted");
+				response.setStatus("200");
 			}
 		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
-			response.setMessage("not deleted");
+			logger.error( "Error while deleting the coupen"
+					+ e.getMessage() );
 		}
 		return response;
 	}

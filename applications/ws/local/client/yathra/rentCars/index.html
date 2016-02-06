@@ -21,7 +21,7 @@
    </head>
    <body id="page-top" class="index">
       <!-- Navigation -->
-      <nav class="navbar navbar-shrink navbar-default navbar-fixed-top">
+      <nav class="navbar navbar-default navbar-fixed-top mobileView">
          <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -37,7 +37,7 @@
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                <ul class="nav navbar-nav navbar-left list-group">
                   <li class="page-scroll">
-                     <a href="#page-top">HOME</a>
+                     <a href="#home">HOME</a>
                   </li>
                   <li class="page-scroll">
                      <a href="userAccount.html">SIGN UP/SIGN IN</a>
@@ -51,13 +51,10 @@
                      <a href="#page-top"></a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#tabCars">TAB Cars</a>
+                     <a href="about.html">About</a>
                   </li>
                   <li class="page-scroll">
-                     <a href="#about">About</a>
-                  </li>
-                  <li class="page-scroll">
-                     <a href="#contact">Contact</a>
+                     <a href="contact.html">Contact</a>
                   </li>
                </ul>
             </div>
@@ -136,8 +133,8 @@
                <div class="panel panel-white " id="row1">
                   <div class="panel-body">
                      <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="control-group">
-                           <div class="form-group-md form-group-sm col-xs-12 floating-label-form-group ">
+                        <div class="row control-group">
+                           <div class="form-group-md col-xs-12 floating-label-form-group controls">
                               <h5 id="pickuplabel" class="help-block text-success"></h5>
                               <h6><input list="pickup" id="pick_up_city" class="form-control text-info" placeholder="Pickup City"></h6>
                               <datalist id="pickup">
@@ -154,11 +151,10 @@
                               <h5 id="pickupwarning" class="help-block text-danger"></h5>
                            </div>
                         </div>
-                        <div class="control-group">
-                           <div class="form-group-md form-group-sm col-xs-12 floating-label-form-group controls">
+                        <div class="row control-group ">
+                           <div class="form-group-md col-xs-12 floating-label-form-group controls">
                               <h5 id="visitinglabel" class="help-block text-success"></h5>
                               <h6><input list="visiting" id="visiting_city" class="form-control text-info" placeholder="Visiting City"></h6>
-                              <h5 id="visitingwarning" class="help-block text-danger"></h5>
                               <datalist id="visiting">
                                   <option value="Bangalore"></option>
                                  <option value="Mangalore"></option>
@@ -170,19 +166,20 @@
                                  <option value="Dharmastala"></option>
                                  <option value="Tirupati"></option>
                               </datalist>
+                              <h5 id="visitingwarning" class="help-block text-danger"></h5>
                            </div>
                         </div>
-                        <div class="control-group">
-                           <div class="form-group-md form-group-sm col-xs-12 floating-label-form-group controls">
+                        <div class="row control-group">
+                           <div class="form-group-md col-xs-12 floating-label-form-group controls">
                               <h5 id="journeyDate" class="help-block text-success"></h5>
-                              <h6><input class="form-control from_date text-info form-control-static" id="from" type="text" placeholder="Journey Date" ></h6>
-                              <h5 class="help-block text-danger " id="journeyDateWarning"></h5>
+                              <h6><input class="form-control from_date text-info" id="from" type="text" placeholder="Journey Date" readonly="true" ></h6>
+                              <h5 class="help-block text-danger" id="journeyDateWarning"></h5>
                            </div>
                         </div>
-                        <div class="control-group">
-                           <div class="form-group-md form-group-sm col-xs-12 floating-label-form-group controls">
+                        <div class="row control-group">
+                           <div class="form-group-md col-xs-12 floating-label-form-group controls">
                               <h5 id="returnDate" class="help-block text-success"></h5>
-                              <h6><input class="form-control to_date text-info form-control-static" id="to" type="text" placeholder="Return Date"  ></h6>	
+                              <h6><input class="form-control to_date text-info" id="to" type="text" placeholder="Return Date" readonly="true" ></h6>	
                               <h5 class="help-block text-danger" id="returnDateWarning"></h5>
                            </div>
                         </div>
@@ -190,7 +187,7 @@
                         <div id="success"></div>
                         <div class="row">
                            <div class="form-group col-xs-12">
-                              <br/><center><button type="button" class="btn btn-success" id="search_car">Choose Tab Cars</button></center>
+                              <button type="button" class="btn btn-success btn-lg btn-block" id="search_car">Choose Tab Cars</button>
                            </div>
                         </div>
                      </form>
@@ -417,3 +414,4 @@
       <script src="../js/general/freelancer.js"></script>
    </body>
 </html>
+

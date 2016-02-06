@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<project name="inblox_client_webapp" basedir="../..">
+
+	<description>This is the build file that does the www and webservice
+		deployments</description>
+	<target name="deployws">
+		<buildwar warfilename="ws_${serverType}.war" folder="applications/ws/${buildEnv}" projectname="InBlox" doctag="ws">
+			<!-- THIS IS THE SOURCE FILESET FOR ALL THE COMPILES. AUTOMATICALLY INCLUDES <folder>/src -->
+			<srcfileset>
+			</srcfileset>
+			<clientfileset>
+				<fileset dir="buildconfig/gen/out/doc" />
+			</clientfileset>
+			<!-- THIS IS SET OF PATHS WHERE THE LIB JARS ARE FOR DEPLOYMENT -->
+			<libfileset>
+				<fileset dir="modules/lib" includes="**/*.jar" excludes="servlet-api.jar" />
+			</libfileset>
+		</buildwar>
+	</target>
+	
+	<target name="deploywww">
+		<buildwar warfilename="www_${serverType}.war" folder="applications/www"  projectname="InBlox" checkUIErrors="false">
+			<!-- THIS IS THE SOURCE FILESET FOR ALL THE COMPILES. AUTOMATICALLY INCLUDES <folder>/src -->
+			<srcfileset>
+				<src path="modules/dummy" />
+			</srcfileset>
+			<clientfileset>
+				<fileset dir="applications/www/out" />
+			</clientfileset>
+			<!-- THIS IS SET OF PATHS WHERE THE LIB JARS ARE FOR DEPLOYMENT -->
+			<libfileset>
+				<fileset dir="modules/lib" includes="**/*.jar" />
+			</libfileset>
+		</buildwar>
+	</target>
+</project>
