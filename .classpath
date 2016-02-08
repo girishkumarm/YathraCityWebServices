@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="modules/app"/>
 	<classpathentry kind="src" path="modules/cassandra"/>
-	<classpathentry kind="src" path="modules/domain"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
