@@ -13,6 +13,7 @@ import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.BookingColumns;
 import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.core.BookedCarDetails;
+import com.yathraCity.core.CancelBooking;
 import com.yathraCity.core.ConfirmBookedCarDetails;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;
@@ -117,6 +118,27 @@ public class BookingDetailsDAO
 					+ e.getMessage() );
 		}
 		return unConfirmedBookingDetails;
+	}
+	
+	public String getAllBookingDetailsOfTheParticularCar(CancelBooking bookingDetails)
+	{
+		String carNumb=null;
+		try
+		{
+			Statement getDetails=QueryBuilder.select().all().from(keyspace, TableNames.BOOKING_DETAILS)
+					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
+					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, bookingDetails.getCustomerNumber()));
+			ResultSetFuture result=cassQuery.executeFuture(getDetails);
+			Row r=(Row) result.getUninterruptibly();
+			carNumb=r.getString(BookingColumns.CAR_NUMBER);
+			
+		}
+		catch(Exception e)
+		{
+			logger.error( "Error while getting all the booking details"
+					+ e.getMessage() );
+		}
+		return carNumb;
 	}
 	
 	public List<BookedCarDetails> getAllBookingDetailsNotConfirmed(ConfirmBookedCarDetails bookingDetails)

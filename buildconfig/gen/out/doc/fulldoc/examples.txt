@@ -16,6 +16,13 @@ BookedCarDetails.carLocation
 BookedCarDetails.carType
 BookedCarDetails.carlicence
 BookedCarDetails.customerEmail
+CancelBooking.fromDate
+CancelBooking.toDate
+CancelBooking.travelCity
+CancelBooking.customerName
+CancelBooking.customerNumber
+CancelBooking.pickUpCity
+CancelBooking.customerEmail
 RegisterCarInput.carName
 RegisterCarInput.carAgency
 RegisterCarInput.registered
