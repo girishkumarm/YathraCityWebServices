@@ -45,6 +45,8 @@ public class CarServiceDAO {
 		boolean result = false;
 		try
 		{
+			System.out.println("Adding Car:\n" + new Gson().toJson(carDetails));
+			
 			Statement insert = QueryBuilder.insertInto(keyspace, TableNames.CARS)
 					.value(CarColumns.CAR_AVAILABILITY, false).value(CarColumns.CAR_NAME, carDetails.getCarName())
 					.value(CarColumns.CAR_NUMBER, carDetails.getCarNumber())
@@ -59,6 +61,7 @@ public class CarServiceDAO {
 					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
 			cassQuery.executeFuture(insert);
 			result = true;
+			System.out.println("true");
 		}
 		catch( Exception e )
 		{

@@ -1,0 +1,217 @@
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <meta name="google-signin-client_id" content="442770233118-oc6qolicjp6gvc9luop5r7ijb9apj8ot.apps.googleusercontent.com">
+      <title>TAB - Take A Break</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="../css/jquery-ui.css">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link href="../css/freelancer.css" rel="stylesheet">
+      <link href="../css/tab.css" rel="stylesheet">
+      <script src="../js/general/platform.js" async defer></script>
+   </head>
+   <body id="page-top" class="index">
+      <!-- Navigation -->
+     <nav class="navbar navbar-shrink navbar-default navbar-fixed-top">
+   <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#page-top">TAB</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+         <ul class="nav navbar-nav navbar-left list-group">
+            <li class="page-scroll signUpTab">
+               <a href="userAccount.html">SIGN UP/SIGN IN</a>
+            </li>
+            <li class="page-scroll userTab bb-card__contacts filter_list-items hide">
+               <center><span class="bb-card__contacts__picture-holder">
+                  <img class="img-circle userImg" style="height:100%;width:100%">
+                  </span>
+                  <span class="bb-card__contacts__info">
+                  <span class="userName"></span>
+                  </span>
+               </center>
+            </li>
+            <li class="page-scroll">
+               <a href="#page-top">HOME</a>
+            </li>
+            <li class="page-scroll">
+               <a href="#offers">OFFERS FOR YOU</a>
+            </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li class="hidden active">
+               <a href="#page-top"></a>
+            </li>
+            <li class="page-scroll">
+               <a href="about.html">About</a>
+            </li>
+            <li class="page-scroll">
+               <a href="contact.html">Contact</a>
+            </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right hide logout">
+            <li class="page-scroll">
+               <a onclick="signOut();" class="gSignout">Sign out</a>
+            </li>
+         </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+   </div>
+   <!-- /.container-fluid -->
+</nav>
+<!-- Header -->
+<header class=".tab-header websiteView mainPage hide">
+   <div class="container">
+      <div class="col-sm-12">
+         <h3>Pick Up Details</h3>
+      </div>
+   </div>
+</header>
+<div class=""  >
+   <section style="background-image: url(bg.jpg);">
+      <br/>
+      <div class="container">
+         <div class="row content">
+            <div class="col-sm-1 ">
+               <!--  SIDE NAV AS OF NOW EMPTY -->
+            </div>
+            <div class="col-sm-10 text-left ">
+               <!--  ACTUAL BODY OF THE WEBSITE -->
+               <div class="panel panel-white " id="row1">
+                  <div class="panel-body">
+                     <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="control-group">
+                           <div class="form-group-md form-group-md col-xs-12 floating-label-form-group ">
+                              <h5 id="pickuplabel" class="help-block text-success"></h5>
+                              <h6><input list="pickup" id="pick_up_city" class="form-control text-info" placeholder="Pickup City"></h6>
+                              <datalist id="pickup">
+                                 <option value="Bangalore"></option>
+                                 <option value="Mangalore"></option>
+                                 <option value="Mysore"></option>
+                                 <option value="Chitradurga"></option>
+                                 <option value="Madikeri"></option>
+                                 <option value="Hubli"></option>
+                                 <option value="Dharwad"></option>
+                                 <option value="Dharmastala"></option>
+                                 <option value="Tirupati"></option>
+                              </datalist>
+                              <h5 id="pickupwarning" class="help-block text-danger"></h5>
+                           </div>
+                        </div>
+                        <div class="control-group">
+                           <div class="form-group-md form-group-md col-xs-12 floating-label-form-group controls">
+                              <h5 id="visitinglabel" class="help-block text-success"></h5>
+                              <h6><input list="visiting" id="visiting_city" class="form-control text-info" placeholder="Visiting City"></h6>
+                              <h5 id="visitingwarning" class="help-block text-danger"></h5>
+                              <datalist id="visiting">
+                                 <option value="Bangalore"></option>
+                                 <option value="Mangalore"></option>
+                                 <option value="Mysore"></option>
+                                 <option value="Chitradurga"></option>
+                                 <option value="Madikeri"></option>
+                                 <option value="Hubli"></option>
+                                 <option value="Dharwad"></option>
+                                 <option value="Dharmastala"></option>
+                                 <option value="Tirupati"></option>
+                              </datalist>
+                           </div>
+                        </div>
+                        <div class="control-group">
+                           <div class="form-group-md form-group-md col-xs-12 floating-label-form-group controls">
+                              <h5 id="journeyDate" class="help-block text-success"></h5>
+                              <h6><input class="form-control from_date text-info form-control-static" id="from" type="text" placeholder="Journey Date" ></h6>
+                              <h5 class="help-block text-danger " id="journeyDateWarning"></h5>
+                           </div>
+                        </div>
+                        <div class="control-group">
+                           <div class="form-group-md form-group-md col-xs-12 floating-label-form-group controls">
+                              <h5 id="returnDate" class="help-block text-success"></h5>
+                              <h6><input class="form-control to_date text-info form-control-static" id="to" type="text" placeholder="Return Date"  ></h6>
+                              <h5 class="help-block text-danger" id="returnDateWarning"></h5>
+                           </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                           <div class="form-group col-xs-12">
+                              <br/>
+                              <center><button type="button" class="btn btn-success" id="search_car">Choose Tab Cars</button></center>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="g-signin2 hide" data-onsuccess="onSignIn"></div>
+   <!-- Footer -->
+   <footer class="text-center">
+      <div class="footer-below">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  Copyright © Take A Break 2016
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+</div>
+      <!-- Javascript to support date picker -->
+	<!-- JAVASCRIPTS -->
+      <script src="../js/general/jquery.js"></script>
+      <script src="../js/general/bootstrap-select.js"></script>
+      <script src="../js/general/bootstrap.min.js"></script>
+      <script src="../js/general/jquery-ui.js"></script>
+      <!-- current page java script -->
+      <script src="../js/rentCars/index.js"> </script>
+      <script src="../js/general/freelancer.js"></script>
+      <script>
+	var sigoutWork = function() {
+	    $(".userTab").addClass("hide");
+	    $(".logout").addClass("hide");
+	    $(".signUpTab").removeClass("hide");
+	}
+
+	var googleSignedIn = localStorage.getItem("google_sign_in");
+	if (googleSignedIn == "true") {
+	    $(".signUpTab").addClass("hide");
+	    $(".userTab").removeClass("hide");
+	    $(".logout").removeClass("hide");
+	    $(".userImg").attr("src", localStorage.getItem("user_image_url"));
+	    $(".userName").text(localStorage.getItem("user_name"));
+	} else {
+	    sigoutWork();
+	}
+
+	function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function() {
+		console.log('User signed out.');
+		$(".gSignout").addClass("hide");
+		localStorage.setItem("google_sign_in", "false");
+		localStorage.setItem("user_name", "");
+		localStorage.setItem("user_image_url", "");
+		localStorage.setItem("user_email_id", "");
+		sigoutWork();
+	    });
+	}
+
+	function onSignIn(googleUser) {}
+      </script>
+   </body>
+</html>
