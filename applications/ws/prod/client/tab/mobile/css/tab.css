@@ -1,0 +1,117 @@
+.bb-card__contacts {
+    height: 48px;
+    width: 100%;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+.filter_list-items {
+    padding: 15px 5px;
+    height: 50px;
+    cursor: pointer;
+}
+ul li {
+    list-style-type: none;
+}
+
+
+.bb-card__contacts__picture-holder {
+    /* display: inline-block; */
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+}
+
+.bb-card__contacts__info {
+    margin-top: 2px;
+    width: calc(100% - 40px);
+    padding: px;
+    display: inline-block;
+    color: #FBEFF1;
+    /* margin: 2px; */
+    padding: 5px 15px;
+}
+
+
+.bb-card__contacts__info__name {
+    width: calc(100% - 10px);
+    overflow: hidden;
+    /* padding: 6px 10px; */
+    display: inline-block;
+    color: #FBEFF1;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hide
+{
+	display:none;
+}
+
+#from.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#to.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#pick_up_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+#visiting_city.red-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+
+a:hover { 
+    background-color: yellow;
+}
+
+.buttonColor{
+	background: #FDF5E6;
+}
+
+header .websiteView {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header .mobileView {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.websiteView{
+display:none;
+}
+
+.mobileView{
+display:none;
+}
+
+hr{
+	background-color: #18bc9c;border-width:2;
+}
+
+.divider {
+    text-align:center;
+}
+
+.divider hr {
+    margin-left:auto;
+    margin-right:auto;
+    width:40%;
+
+}
+
+.left {
+    float:left;
+}
+
+.right {
+    float:right;
+}

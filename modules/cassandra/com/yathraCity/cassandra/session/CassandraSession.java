@@ -2,7 +2,6 @@ package com.yathraCity.cassandra.session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.HostDistance;
 import com.datastax.driver.core.PoolingOptions;
@@ -46,18 +45,26 @@ public class CassandraSession {
 
 	public synchronized Session getKeyspaceSession() throws Exception
 	{
-		if( cluster == null )
+		try
 		{
-			connectKeySpaceSession();
+			if( cluster == null )
+			{
+				connectKeySpaceSession();
+			}
+			if( keyspaceSession == null )
+			{
+				System.out.println(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
+				if( isClusterClosed() )
+					keyspaceSession = cluster
+							.connect(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
+			}
+			if( isClusterClosed() && this.keyspaceSession.isClosed() )
+				isKeySpaceSessionClosed();
 		}
-		if( keyspaceSession == null )
+		catch( Exception e )
 		{
-			System.out.println(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
-			if( isClusterClosed() )
-				keyspaceSession = cluster.connect(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
+			e.printStackTrace();
 		}
-		if( isClusterClosed() && this.keyspaceSession.isClosed() )
-			isKeySpaceSessionClosed();
 
 		return keyspaceSession;
 	}

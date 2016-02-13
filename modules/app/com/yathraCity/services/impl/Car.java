@@ -11,7 +11,6 @@ import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.CarAvailabilityDAO;
 import com.yathraCity.cassandra.dao.CarServiceDAO;
-import com.yathraCity.cassandra.dao.UserDAO;
 import com.yathraCity.cassandra.pojo.CarAvailabilityDetails;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.core.CheckAvailabilityInput;

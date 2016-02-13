@@ -1,0 +1,211 @@
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <meta name="google-signin-client_id" content="442770233118-oc6qolicjp6gvc9luop5r7ijb9apj8ot.apps.googleusercontent.com">
+      <title>TAB - Take A Break</title>
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <link href="../css/freelancer.css" rel="stylesheet">
+      <link href="../css/tab.css" rel="stylesheet">
+      <link rel="stylesheet" href="../css/jquery-ui.css">
+      <script src="../js/general/platform.js" async defer></script>
+   </head>
+   <body id="page-top" class="index" >
+      <!-- Navigation -->
+      <header class=".tab-header">
+         <div class="container ">
+            <div class="col-xs-12">
+               <h3 id="accountsHeader" style="padding:30px">Login / Sign Up</h3>
+            </div>
+         </div>
+      </header>
+      <div class="container ">
+         <!-- Contact Section -->
+         <section class="hide">
+            <div class="row">
+               <div class="col-lg-8 col-lg-offset-2">
+                  <form name="sentMessage" id="signInForm" novalidate="" class="error hide">
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Email Address</label>
+                           <input type="email" class="form-control" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your email address.</li>
+                           </ul>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Password</label>
+                           <input type="tel" class="form-control" placeholder="Password" id="phone" required="" data-validation-required-message="Please enter your password." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your password.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <br>
+                     <div class="row">
+                        <center>
+                           <div class="form-group col-md-12">
+                              <button type="submit" class="btn btn-success btn-block">Login</button>
+                           </div>
+                           <div><a id="signUpLInk" class="text-info">Not yet registered? Sign Up here..</a></div>
+                        </center>
+                     </div>
+                  </form>
+                  <form name="sentMessage" id="signUpForm" novalidate="" class="error hide">
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Email Address</label>
+                           <input type="email" class="form-control" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your email address.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Phone Number</label>
+                           <input type="email" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your Phone Number." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your Phone number.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Password</label>
+                           <input type="tel" class="form-control" placeholder="Password" id="password" required="" data-validation-required-message="Please enter your password." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your password.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="row control-group error">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                           <label>Confirm Password</label>
+                           <input type="tel" class="form-control" placeholder="Confirm Password" id="password" required="" data-validation-required-message="Please enter your password again." aria-invalid="true">
+                           <p class="help-block text-danger">
+                           <ul class="alert" role="alert">
+                              <li>Please enter your password again.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <br>
+                     <div id="success"></div>
+                     <div class="row">
+                        <center>
+                           <div class="form-group col-md-12">
+                              <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                           </div>
+                           <div><a id="signInLInk" class="text-info">Already registered? Login here..</a></div>
+                        </center>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </section>
+         <div class="row accounts">
+            <section class="text-center">
+               <h4 class="text-danger">Google	</h4>
+               <br/>
+               <div class="form-group col-lg-12">
+                  <center><div class="g-signin2" data-onsuccess="onSignIn"></div></center>
+               </div>
+               <div class="divider col-lg-12">
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-8">
+                     <hr class="left text-success"/>
+                     or
+                     <hr class="right" />
+                  </div>
+                  <div class="col-lg-2"></div>
+               </div>
+               <div class="col-lg-12">
+                  <br/>
+                  <h4 class="text-success">TAB</h4>
+                  <div class="col-lg-12"style="padding-top:30px;padding-bottom:50px">
+                     <div class="col-lg-4"></div>
+                     <button class="btn btn-success btn-md col-lg-4 sign-in"/>Sign In
+                  </div>
+                  <div class="col-lg-12"style="padding-bottom:50px">
+                     <div class="col-lg-4"></div>
+                     <button class="btn btn-success btn-md col-lg-4 sign-up"/>Sign up
+                  </div>
+               </div>
+            </section>
+         </div>
+      </div>
+      <script src="../js/general/jquery.js"></script>
+      <script src="../js/general/bootstrap.min.js"></script>
+      <script src="../js/general/jquery.easing.min.js"></script>
+      <script src="../js/general/classie.js"></script>
+      <script src="../js/general/cbpAnimatedHeader.js"></script>
+      <script src="../js/general/jqBootstrapValidation.js"></script>
+      <script src="../js/general/contact_me.js"></script>
+      <script src="../js/general/freelancer.js"></script>
+      <script src="../js/general/jquery-ui.js"></script>
+      <script type="text/javascript"> 
+         var width = $(window).width();
+              if (width >= 850) {
+                  $('.websiteView').show();
+              } else {
+                  $('.websiteView').hide();
+              }
+         $('.alert').hide();
+         
+         
+      </script>
+      <script>
+	function onSignIn(googleUser) {
+	    var profile = googleUser.getBasicProfile();
+	    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	    console.log('Name: ' + profile.getName());
+	    console.log('Image URL: ' + profile.getImageUrl());
+	    console.log('Email: ' + profile.getEmail());
+	    console.log('all: ' + profile);
+	    localStorage.setItem("google_sign_in", "true");
+	    localStorage.setItem("user_name", profile.getName());
+	    localStorage.setItem("user_image_url", profile.getImageUrl());
+	    localStorage.setItem("user_email_id", profile.getEmail());
+	    $(".gSignout").removeClass("hide");
+	     window.location.href = "index.html"
+	}
+
+	$(document).ready(function() {
+
+	    $('.sign-in').click(function() {
+		$("section").removeClass("hide");
+		$("#signInForm").removeClass("hide");
+		$(".accounts").addClass("hide");
+		$("#accountsHeader").html("SIGN IN");
+	    });
+	    $('.sign-up').click(function() {
+		$("section").removeClass("hide");
+		$("#signUpForm").removeClass("hide");
+		$(".accounts").addClass("hide");
+		$("#accountsHeader").html("SIGN UP");
+	    });
+	    $('#signInLInk').click(function() {
+		$("#signUpForm").addClass("hide");
+		$("#signInForm").removeClass("hide");
+		$("#accountsHeader").html("SIGN IN");
+	    });
+	    $('#signUpLInk').click(function() {
+		$("#signInForm").addClass("hide");
+		$("#signUpForm").removeClass("hide");
+		$("#accountsHeader").html("SIGN UP");
+	    });
+	});
+      </script>
+   </body>
+</html>
