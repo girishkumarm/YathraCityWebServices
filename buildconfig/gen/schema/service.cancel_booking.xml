@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<schema package="com.yathraCity.services" name="Core Package">
+	<service name="CarCancelingService" baseurl="canceling">
+
+		<!-- A register service which is used to register a booking of an user 
+			to the app -->
+
+		<interface url="cancel-booking" name="cancelBooking" type="POST"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<postInput name="input" class="com.yathraCity.core.CancelBooking"
+				description="Input" />
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
+				description="success/error message" />
+			<description>
+   		 <![CDATA[
+   			 ]]>
+			</description>
+			<developernotes>
+				<notes>
+  		  <![CDATA[
+    		 ]]>
+				</notes>
+			</developernotes>
+		</interface>
+		
+		<interface url="fetch-all-bookings" name="fetchAllBookings" type="GET"
+			mode="READWRITE" availableFromInsecure="yes" authUser="no" userRoles="Admin"
+			MaxCallsPerSessionPerMinute="100" availableTo="ws">
+			<output name="filterList" class="com.yathraCity.core.BookingList"
+				description="FiltersList" />
+			<description>
+				<![CDATA[
+				]]>
+			</description>
+			<developernotes>
+				<notes>
+				<![CDATA[
+					]]>
+				</notes>
+			</developernotes>
+		</interface>
+
+	</service>
+</schema>

@@ -6,6 +6,7 @@ import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
 import com.yathraCity.cassandra.dao.CarAvailabilityDAO;
+import com.yathraCity.cassandra.dao.DriverDetailsDAO;
 import com.yathraCity.cassandra.pojo.CarAvailabilityDetails;
 import com.yathraCity.core.BookedCarDetails;
 import com.yathraCity.core.ResponseMessage;
@@ -16,6 +17,7 @@ public class CarBookingService implements CarBookingServiceInterface {
 	private BookingDetailsDAO bookTheCar = new BookingDetailsDAO();
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
 	private static Logger logger = LoggerFactory.getLogger( CarBookingService.class );
+	private DriverDetailsDAO driverDetails=new DriverDetailsDAO();
 	
 	@Override
 	public ResponseMessage bookingCar( ServiceExecutionContext ctx, BookedCarDetails input ) throws ExecException
@@ -37,6 +39,7 @@ public class CarBookingService implements CarBookingServiceInterface {
 			{
 				throw new Exception("Mandatory fields are missing to get for booking");
 			}
+			driverDetails.driverDetailsForBooking(input);
 			result = bookTheCar.bookCar(input);
 
 			CarAvailabilityDetails addAvailability = new CarAvailabilityDetails();

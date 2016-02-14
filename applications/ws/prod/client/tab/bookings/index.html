@@ -1,0 +1,219 @@
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>TAB - Take A Break</title>
+      <link href="../css/bootstrap.min.css" rel="stylesheet">
+      <link href="../css/tab.css" rel="stylesheet">
+      <link rel="stylesheet" href="../css/jquery-ui.css">
+      <link href="../css/sb-admin.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/table.css">
+<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   </head>
+   <body id="page-top" class="index" >
+      <body>
+         <div>
+            <div class="panel panel-primary" id="row1">
+               <div class="panel-heading">
+                  <h2>
+                     <i class="glyphicon glyphicon-user"></i> TABCARS Bookings Information
+                  </h2>
+               </div>
+               <div class="panel-body">
+                  <div class="col-lg-12">
+                     <!-- Page Heading -->
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <h3 class="page-header">Booking Info</h3>
+                           <ol class="breadcrumb">
+                              <div class="row">
+                                 <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-primary">
+                                       <div class="panel-heading count1">
+                                          <div class="row">
+                                             <div class="col-xs-3">
+                                                <i class="fa fa-user fa-5x"></i>
+                                             </div>
+                                             <div class="col-xs-9 text-right">
+                                                <div id="count1" class="huge">176</div>
+                                                <div>Total Booking Made</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-green">
+                                       <div class="panel-heading count2">
+                                          <div class="row">
+                                             <div class="col-xs-3">
+                                                <i class="fa fa-mobile fa-5x"></i>
+                                             </div>
+                                             <div class="col-xs-9 text-right">
+                                                <div class="huge" id="count2">148</div>
+                                                <div>Successful Booking</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-red">
+                                       <div class="panel-heading count3">
+                                          <div class="row">
+                                             <div class="col-xs-3">
+                                                <i class="fa fa-warning fa-5x"></i>
+                                             </div>
+                                             <div class="col-xs-9 text-right">
+                                                <div class="huge" id="count3">28</div>
+                                                <div>Bookings Cancelled</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-yellow">
+                                       <div class="panel-heading count4">
+                                          <div class="row">
+                                             <div class="col-xs-3">
+                                                <i class="fa fa-search fa-5x"></i>
+                                             </div>
+                                             <div class="col-xs-9 text-right">
+                                                <div class="huge" id="count4">0</div>
+                                                <div>Bookings Awaited</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </ol>
+                        </div>
+                     </div>
+                     <br><br>
+                     <!-- /.row -->
+                     <!-- user info display row -->
+                     <div class="row">
+                        <div id="modules-panel" class="col-lg-12">
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                 <h3 class="panel-title">
+                                    <i class="fa fa-th-large fa-fw"></i>Booking Details
+                                 </h3>
+                              </div>
+                              <div class="panel-body">
+                                 <div id="modules-list" class="list-group">
+                                    <div class="table-responsive" id="toop-tip">
+                                       <p id="tiptitle" title="press"></p>
+                                       <div class="scroll">
+                                          <div class="table-responsive" id="toop-tip">
+                                             <table id="myTable" cellspacing="10" width="100%">
+                                                <thead color="blue">
+                                                   <tr>
+                                                      <th>Car Number</th>
+							<th>Driver Name</th>
+							<th>Driver Phone Number</th>
+							<th>Customer Name</th>
+							<th>Customer Phone Number</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Confirm Booking</th>
+							<th>Cancell Booking</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody id="mytbody" class="rowData">
+                                                   <tr>
+                                                      <td>KA 05 2343</td>
+                                                      <td>KIRAN</td>
+                                                      <td>9972254541</td>
+                                                      <td>ARUN</td>
+                                                      <td>9738769973</td>
+                                                      <td>BANGALORE</td>
+                                                      <td>MYSORE</td>
+                                                      <td id="confirm"><button class="btn btn-sm btn-success"/>Confirm</td>
+                                                      <td id="cancel"><button class="btn btn-sm btn-danger"/>Cancel</td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end of row -->
+                  </div>
+               </div>
+            </div>
+            <!-- end of main row -->
+         </div>
+<script src="../js/jquery.js"></script>
+<script src="../js/httputil.js"></script>
+<script src="../js/tabBase.js"></script>
+      <script src="../js/bookings.js"></script>
+   <script>
+getBookings();
+$('td')
+    .click(
+        function() {
+
+            if ($(this).attr("id") == "cancel") {
+		var cancelBookingInput = {};
+                cancelBookingInput.fromDate = $(this).attr("fromDate");
+                cancelBookingInput.carNumber = $(this).attr("carNumber");
+                cancelBookingInput.customerPhoneNumber = $(this).attr(
+                    "customerNumber");
+
+                console.log($(this).attr("id"));
+                var row_index = $(this).parent().index();
+                document.getElementById("myTable").deleteRow(
+                    row_index + 1);
+
+                    HTTPUtil
+                        .POST(
+                            TAB.ENDPOINT + "/canceling/cancel-booking",
+                            cancelBookingInput,
+                            function(res, err) {
+                                if (res === null) {
+                                    alert("Unable to cancel booking");
+                                } else {
+
+                                    console.log(res);
+
+                                }
+
+                            });
+
+            } else if ($(this).attr("id") == "confirm") {
+		var confirmBookingInput = {};
+		confirmBookingInput.fromDate = $(this).attr("fromDate");
+                confirmBookingInput.carNumber = $(this).attr("carNumber");
+                confirmBookingInput.customerNumber = $(this).attr(
+                    "customerNumber");
+                var row_index = $(this).parent().index();
+                document.getElementById("myTable").deleteRow(row_index + 1);
+
+                    HTTPUtil.POST(TAB.ENDPOINT + "/mailing/mail-customer",
+                        confirmBookingInput,
+                        function(res, err) {
+                            if (res === null) {
+                                alert("Unable to cancel booking");
+                            } else {
+
+                                console.log(res);
+
+                            }
+
+                        });
+
+            }
+        });
+</script>
+   </body>
+</html>
