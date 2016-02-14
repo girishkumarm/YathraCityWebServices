@@ -44,7 +44,7 @@ public class BookingDetailsDAO {
 		try
 		{
 			Statement insert = QueryBuilder.insertInto(keyspace, TableNames.BOOKING_DETAILS)
-					.value(BookingColumns.BOOKING_ID, uniqueBookingId())
+					.value(BookingColumns.BOOKING_ID, "WAITING")
 					.value(BookingColumns.CAR_AGENCY_NAME, input.getCarAgency())
 					.value(BookingColumns.CAR_AGENCY_NUMBER, input.getCarAgencyPhoneNumber())
 					.value(BookingColumns.CAR_NUMBER, input.getCarNumber())
@@ -81,7 +81,7 @@ public class BookingDetailsDAO {
 			confirmBooking(bookingDetails);
 
 			Statement getDetails = QueryBuilder.select().all().from(keyspace, TableNames.BOOKING_DETAILS)
-					.allowFiltering().where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
+					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
 					.and(QueryBuilder.eq(BookingColumns.CAR_NUMBER, bookingDetails.getCarNumber()))
 					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, bookingDetails.getCustomerNumber()));
 			ResultSetFuture result = cassQuery.executeFuture(getDetails);
@@ -101,9 +101,28 @@ public class BookingDetailsDAO {
 		{
 			Statement update = QueryBuilder.update(keyspace, TableNames.BOOKING_DETAILS)
 					.with(QueryBuilder.set(BookingColumns.BOOKING_CONFIRMED, true))
+					.and(QueryBuilder.set(BookingColumns.BOOKING_ID, "CONFIRMED"))
 					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
 					.and(QueryBuilder.eq(BookingColumns.CAR_NUMBER, bookingDetails.getCarNumber()))
 					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, bookingDetails.getCustomerNumber()));
+			cassQuery.executeFuture(update);
+		}
+		catch( Exception e )
+		{
+			logger.error("Error while booking details for mailing" + e.getMessage());
+		}
+	}
+	
+	public void cancelBooking( String fromDate,String carNumber,String customerNumber )
+	{
+		try
+		{
+			Statement update = QueryBuilder.update(keyspace, TableNames.BOOKING_DETAILS)
+					.with(QueryBuilder.set(BookingColumns.BOOKING_CONFIRMED, false))
+					.and(QueryBuilder.set(BookingColumns.BOOKING_ID, "CANCELLED"))
+					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, fromDate))
+					.and(QueryBuilder.eq(BookingColumns.CAR_NUMBER, carNumber))
+					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, customerNumber));
 			cassQuery.executeFuture(update);
 		}
 		catch( Exception e )
@@ -128,7 +147,6 @@ public class BookingDetailsDAO {
 		}
 		return carBooked;
 	}
-
 
 	public List<BookedCarDetails> getAllBookingDetailsNotConfirmed( ConfirmBookedCarDetails bookingDetails )
 	{
@@ -165,6 +183,7 @@ public class BookingDetailsDAO {
 			car.setAddress(r.getString(BookingColumns.ADDRESS));
 			car.setCarAgency(r.getString(BookingColumns.CAR_AGENCY_NAME));
 			car.setCarNumber(r.getString(BookingColumns.CAR_NUMBER));
+			car.setCarLocation(r.getString(BookingColumns.CAR_LOCATION));
 			car.setCarAgencyPhoneNumber(r.getString(BookingColumns.CAR_AGENCY_NUMBER));
 			car.setPickUpCity(r.getString(BookingColumns.PICKUP_CITY));
 			car.setTravelCity(r.getString(BookingColumns.TRAVELLING_CITY));
@@ -174,6 +193,9 @@ public class BookingDetailsDAO {
 			car.setFromDate(r.getString(BookingColumns.FROM_DATE));
 			car.setToDate(r.getString(BookingColumns.TO_DATE));
 			car.setCustomerEmail(r.getString(BookingColumns.CUSTOMER_EMAIL));
+			car.setCustomerName(r.getString(BookingColumns.CUSTOMER_NAME));
+			car.setCustomerNumber(r.getString(BookingColumns.CUSTOMER_NUMBER));
+			car.setBookingId(r.getString(BookingColumns.BOOKING_ID));
 			carDetails.add(car);
 		}
 		return carDetails;

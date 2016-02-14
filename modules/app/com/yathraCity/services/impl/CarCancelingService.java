@@ -21,18 +21,19 @@ public class CarCancelingService implements CarCancelingServiceInterface {
 	public ResponseMessage cancelBooking( ServiceExecutionContext ctx, CancelBooking input ) throws ExecException
 	{
 		ResponseMessage response = new ResponseMessage();
-		
+
 		try
 		{
 			response.setMessage("booking cancellation failed");
 			response.setStatus("500");
-			if( input == null || input.getCustomerPhoneNumber() == null || input.getCustomerPhoneNumber().trim().isEmpty()
-					|| input.getCarNumber() == null || input.getCarNumber().trim().isEmpty() || input.getFromDate() == null
+			if( input == null || input.getCustomerPhoneNumber() == null
+					|| input.getCustomerPhoneNumber().trim().isEmpty() || input.getCarNumber() == null
+					|| input.getCarNumber().trim().isEmpty() || input.getFromDate() == null
 					|| input.getFromDate().trim().isEmpty() )
 			{
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
-			
+			bookingDetails.cancelBooking(input.getFromDate(), input.getCarNumber(), input.getCustomerPhoneNumber());
 			cancelBooking.deleteEntryInCarAvaliablity(input.getFromDate(), input.getCarNumber());
 
 			response.setMessage("successfully cancelled");

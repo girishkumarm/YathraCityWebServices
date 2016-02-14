@@ -22,4 +22,5 @@ public class BookingColumns
 	public final static String CAR_LOCATION ="car_location";
 	public final static String BOOKING_CONFIRMED="booking_confirmed";
 	public final static String CUSTOMER_EMAIL="customer_email";
+	public final static String CUSTOMER_NUMBER="customer_phone_number";
 }
