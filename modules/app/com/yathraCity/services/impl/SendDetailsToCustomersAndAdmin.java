@@ -35,7 +35,7 @@ public class SendDetailsToCustomersAndAdmin implements SendDetailsToCustomersAnd
 		respMessage.setStatus("500");
 		try
 		{
-			bookingDetails = details.getBookingDetailsForMailing(input);
+			bookingDetails = details.confirmAndGetBookingDetailsForMailing(input);
 			if( bookingDetails == null || bookingDetails.size() <= 0 )
 			{
 				respMessage.setMessage("NOT FOUND BOOKING DETAILS");

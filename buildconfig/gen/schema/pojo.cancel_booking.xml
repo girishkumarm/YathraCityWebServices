@@ -2,11 +2,7 @@
 <schema package="com.yathraCity.core" name="Core Package">
 	<Class name="CancelBooking" description="details for canceling the booking" displayorder="0">
 		<property name="fromDate" type="String" description="date of booking" />
-		<property name="toDate" type="String" description="care engaged tilll date" />
-		<property name="travelCity" type="String" description="travel city name" />
-		<property name="customerName" type="String" description="name of the costomer"/>
-		<property name="customerNumber" type="String" description="customer's number"/>
-		<property name="pickUpCity" type="String" description="pick up city"/>
-		<property name="customerEmail" type="String" description="customerEmail"/>
+		<property name="carNumber" type="String" description="customerEmail"/>
+		<property name="customerPhoneNumber" type="String" description="customer number"/>
 	</Class>
 </schema>

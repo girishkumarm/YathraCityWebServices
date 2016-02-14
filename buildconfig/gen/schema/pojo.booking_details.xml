@@ -20,4 +20,8 @@
 		<property name="carlicence" type="String" description="licence"/>
 		<property name="customerEmail" type="String" description="customerEmail"/>
 	</Class>
+	
+	<Class name="BookingList" description="" displayorder="0">
+		<array name="bookingList" valueClass="BookedCarDetails" description="booking list" />
+	</Class>
 </schema>

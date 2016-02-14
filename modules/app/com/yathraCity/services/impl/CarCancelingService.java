@@ -1,55 +1,66 @@
 package com.yathraCity.services.impl;
 
+import java.util.List;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
 import com.yathraCity.cassandra.dao.CancelingDAO;
+import com.yathraCity.core.BookedCarDetails;
+import com.yathraCity.core.BookingList;
 import com.yathraCity.core.CancelBooking;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CarCancelingServiceInterface;
 import defaultpkg.ErrorCodes;
 
-public class CarCancelingService implements CarCancelingServiceInterface
-{
-	private CancelingDAO cancelBooking=new CancelingDAO();
-	private BookingDetailsDAO cancel=new BookingDetailsDAO();
-	private String carNumb;
-	private boolean result=false;
-    private ResponseMessage response=new ResponseMessage();
-	
+public class CarCancelingService implements CarCancelingServiceInterface {
+
+	private CancelingDAO cancelBooking = new CancelingDAO();
+	private BookingDetailsDAO bookingDetails = new BookingDetailsDAO();
+
 	@Override
 	public ResponseMessage cancelBooking( ServiceExecutionContext ctx, CancelBooking input ) throws ExecException
 	{
-		response.setMessage("booking canclation failed");
-		response.setStatus("500");
-		if(input== null || input.getCustomerEmail() == null || input.getCustomerEmail().isEmpty()
-				|| input.getCustomerName()==null || input.getCustomerName().isEmpty()
-				|| input.getCustomerNumber()==null || input.getCustomerNumber().isEmpty()
-				|| input.getFromDate()==null || input.getFromDate().isEmpty()
-				|| input.getPickUpCity()==null || input.getPickUpCity().isEmpty()
-				|| input.getToDate()==null || input.getToDate().isEmpty()
-				|| input.getTravelCity()== null || input.getTravelCity().isEmpty())
-		{
-			throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
-		}
+		ResponseMessage response = new ResponseMessage();
+		
 		try
 		{
-			carNumb=cancel.getAllBookingDetailsOfTheParticularCar(input);
-			result=cancelBooking.deleteEntryInCarAvaliablity(input, carNumb);
-			if(result==true)
+			response.setMessage("booking cancellation failed");
+			response.setStatus("500");
+			if( input == null || input.getCustomerPhoneNumber() == null || input.getCustomerPhoneNumber().trim().isEmpty()
+					|| input.getCarNumber() == null || input.getCarNumber().trim().isEmpty() || input.getFromDate() == null
+					|| input.getFromDate().trim().isEmpty() )
 			{
-				response.setMessage("details not found");
-				response.setStatus("404");
+				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
-			response.setMessage("succellfully canceled");
+			
+			cancelBooking.deleteEntryInCarAvaliablity(input.getFromDate(), input.getCarNumber());
+
+			response.setMessage("successfully cancelled");
 			response.setStatus("200");
 		}
-		catch(Exception e)
+		catch( Exception e )
 		{
 			e.printStackTrace();
 		}
 		return response;
-		
+
+	}
+
+	@Override
+	public BookingList fetchAllBookings( ServiceExecutionContext ctx ) throws ExecException
+	{
+		BookingList lists = new BookingList();
+		List<BookedCarDetails> carBooked = null;
+		try
+		{
+			carBooked = bookingDetails.getAllBookingDetails();
+			lists.setbookingList(carBooked);
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+		}
+		return lists;
 	}
 
 }
