@@ -1,4 +1,4 @@
-package com.yathraCity.services.impl;
+package com.yathraCity.services.core;
 
 
 import java.util.Date;

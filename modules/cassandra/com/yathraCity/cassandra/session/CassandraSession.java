@@ -53,7 +53,6 @@ public class CassandraSession {
 			}
 			if( keyspaceSession == null )
 			{
-				System.out.println(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
 				if( isClusterClosed() )
 					keyspaceSession = cluster
 							.connect(Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Keyspace));
@@ -137,7 +136,6 @@ public class CassandraSession {
 			String password = Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_PASSWORD);
 
 			String listOfNodes = Configurator.getInstance().getProperty(ConfigKey.CASSANDRA_Node);
-			System.out.println("nodesssssssssssssss " + listOfNodes);
 			String[] nodes = listOfNodes.split(",");
 			cluster = Cluster.builder().withPoolingOptions(poolingOpts).addContactPoints(nodes)
 					.withRetryPolicy(DowngradingConsistencyRetryPolicy.INSTANCE)

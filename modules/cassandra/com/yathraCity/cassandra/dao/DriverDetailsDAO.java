@@ -51,7 +51,6 @@ public class DriverDetailsDAO {
 					.value(DriverDetails.CAR_TYPE, details.getCarType())
 					.value(DriverDetails.CAR_NUMBER, details.getCarNumber());
 			cassQuery.executeFuture(addDetails);
-			System.out.println(addDetails.toString());
 
 		}
 		catch( Exception e )
@@ -72,7 +71,6 @@ public class DriverDetailsDAO {
 					.and(QueryBuilder.eq(DriverDetails.LOCATION, details.getLocation()))
 					.and(QueryBuilder.eq(DriverDetails.DRIVER_LICENCE, details.getDriverLicence()));
 			cassQuery.executeFuture(update);
-			System.out.println(update.toString());
 		}
 		catch( Exception e )
 		{
@@ -90,7 +88,6 @@ public class DriverDetailsDAO {
 					.where(QueryBuilder.eq(DriverDetails.CAR_NUMBER, input.getCarNumber()))
 					.and(QueryBuilder.eq(DriverDetails.LOCATION, input.getCarLocation()));
 			ResultSetFuture results = cassQuery.executeFuture(get);
-			System.out.println(get.toString());
 			List<DriverDetailsPojo> details = processCarEntity(results);
 			input.setCarAgency(details.get(0).getAgencyName());
 			input.setCarAgencyPhoneNumber(details.get(0).getAgencyPhoneNumber());

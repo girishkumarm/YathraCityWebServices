@@ -45,8 +45,6 @@ public class CarServiceDAO {
 		boolean result = false;
 		try
 		{
-			System.out.println("Adding Car:\n" + new Gson().toJson(carDetails));
-			
 			Statement insert = QueryBuilder.insertInto(keyspace, TableNames.CARS)
 					.value(CarColumns.CAR_AVAILABILITY, false).value(CarColumns.CAR_NAME, carDetails.getCarName())
 					.value(CarColumns.CAR_NUMBER, carDetails.getCarNumber())
@@ -61,7 +59,6 @@ public class CarServiceDAO {
 					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
 			cassQuery.executeFuture(insert);
 			result = true;
-			System.out.println("true");
 		}
 		catch( Exception e )
 		{
@@ -106,10 +103,8 @@ public class CarServiceDAO {
 					.and(QueryBuilder.eq(CarColumns.CAR_NAME, details.getCarName()))
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, details.getCarNumber()))
 					.setConsistencyLevel(ConsistencyLevel.QUORUM).enableTracing();
-			System.out.println(get);
 			ResultSetFuture results = cassQuery.executeFuture(get);
 			cars = processCarEntity(results);
-			System.out.println(new Gson().toJson(cars));
 			if( cars != null && cars.size() > 0 && cars.get(0) != null )
 			{
 				return cars.get(0);
@@ -158,7 +153,6 @@ public class CarServiceDAO {
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, carNumber)).setConsistencyLevel(ConsistencyLevel.QUORUM)
 					.enableTracing();
 			cassQuery.executeFuture(updateLicence);
-			System.out.println(updateLicence.toString());
 		}
 		catch( Exception e )
 		{

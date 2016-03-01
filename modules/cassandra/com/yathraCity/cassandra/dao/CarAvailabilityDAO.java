@@ -48,7 +48,6 @@ public class CarAvailabilityDAO {
 					.value(CarAvailabilityColumns.CAR_NUMBER, input.getCarNumber())
 					.value(CarAvailabilityColumns.BOOKED_FROM_DATE, input.getFromDate())
 					.value(CarAvailabilityColumns.BOOKED_TILL_DATE, input.getToDate());
-			System.out.println(insert.toString());
 			cassQuery.executeFuture(insert);
 			return true;
 		}

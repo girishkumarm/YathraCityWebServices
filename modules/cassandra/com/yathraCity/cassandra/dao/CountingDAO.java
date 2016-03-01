@@ -39,8 +39,6 @@ public class CountingDAO
 		Statement update=QueryBuilder.update(keyspace,TableNames.COUNTER_TABLE )
 				.with(QueryBuilder.incr(NumberOfUserse.COUNTER_VALUE))
 				.where(QueryBuilder.eq(NumberOfUserse.URL,"xyz"));
-		System.out.println("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-		System.out.println( update.toString() );
 		cassQuery.executeFuture( update );
 	}
 

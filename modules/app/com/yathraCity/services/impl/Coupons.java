@@ -82,11 +82,8 @@ public class Coupons implements CouponsInterface
 			{
 				CouponDetails newCoupons = new CouponDetails();
 				newCoupons.setCoupon(couponDetails.getCoupenName());
-				System.out.println(couponDetails.getCoupenName());
 				newCoupons.setFromDate(couponDetails.getValidFrom());
-				System.out.println(couponDetails.getValidFrom());
 				newCoupons.setToDate(couponDetails.getValidTo());
-				System.out.println(couponDetails.getValidTo());
 				mycoupons.add(newCoupons);
 			}
 			coupons.setlistOfCoupons(mycoupons);

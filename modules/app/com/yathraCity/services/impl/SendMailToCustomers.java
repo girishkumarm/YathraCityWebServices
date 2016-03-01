@@ -20,6 +20,7 @@ import com.yathraCity.core.ConfirmBookedCarDetails;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.SendMailToCustomersInterface;
 import com.yathraCity.services.config.Email;
+import com.yathraCity.services.utils.ConfirmationMessageUtil;
 
 public class SendMailToCustomers implements SendMailToCustomersInterface {
 
@@ -44,37 +45,24 @@ public class SendMailToCustomers implements SendMailToCustomersInterface {
 			}
 			respMessage.setMessage("sucess");
 			respMessage.setStatus("200");
-			System.out.println("bookingDetails : "+new Gson().toJson(bookingDetails));
 
-			// Body html which need to be sent in the mail
-			String bodyHtml = "<h1>TAB</h1><h2>Thank you for booking<h2>" + "booking details:" + "your travel date:"
-					+ bookingDetails.get(0).getFromDate() + "your return date:" + bookingDetails.get(0).getToDate()
-					+ "source :" + bookingDetails.get(0).getPickUpCity() + "destination:"
-					+ bookingDetails.get(0).getTravelCity()
-					+ "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey"
-					+ "text/html";
+			String bodyHtml = ConfirmationMessageUtil.getConfirmationMessage(bookingDetails.get(0));
 
 			// body of the email
-			String bodyText = "email body";
+			String bodyText = "";
 
 			// from address or the email id of the person from whom mail has to
 			// be
 			// sent
-			String userName = "girishkumarm710@gmail.com";
+			String userName = "tabcarsconfirmation@gmail.com";
 
 			// password
-			String passWord = "9738769973";
+			String passWord = "tabcars890";
 
 			// to address or the receipent of the mail
 			String receipent = bookingDetails.get(0).getCustomerEmail();
-			
-			System.out.println("bodyhtml : "+bodyHtml);
-			System.out.println("userName : "+userName);
-			System.out.println("passWord : "+passWord);
-			System.out.println("receipent : "+receipent);
-			System.out.println("bodyText : "+bodyText);
 
-			Email.getInstance().sendEmail(bodyHtml, bodyText, userName, passWord, receipent, "Tab Cars COnfirmation");
+			Email.getInstance().sendEmail(bodyHtml, bodyText, userName, passWord, receipent, "Tab Cars Booking Confirmation");
 
 		}
 		catch( Exception e )

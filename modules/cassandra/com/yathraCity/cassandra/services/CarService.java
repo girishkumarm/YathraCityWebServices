@@ -1,13 +1,9 @@
 package com.yathraCity.cassandra.services;
 
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.yathraCity.cassandra.dao.CarServiceDAO;
 import com.yathraCity.cassandra.dao.UserDAO;
-import com.yathraCity.cassandra.pojo.CarDetails;
-import com.yathraCity.core.CheckAvailabilityInput;
-import com.yathraCity.core.FetchCarDetails;
 import com.yathraCity.core.RegisterCarInput;
 
 // this is the api which act as an interface between the services and the dao
@@ -46,75 +42,4 @@ public class CarService {
 		return result;
 
 	}
-
-	/*
-	 * public List<CarDetails> getAvailableCars( String pickUpPoint, int
-	 * capacity )
-	 * {
-	 * List<CarDetails> result = null;
-	 * try
-	 * {
-	 * // checking for all the mandatory fields required in the service
-	 * if( pickUpPoint == null || pickUpPoint.trim().isEmpty() || capacity == 0)
-	 * {
-	 * throw new Exception( "Mandatory fields are missing to book the car" );
-	 * }
-	 * // call dao to get all available cars
-	 * result = carBookingServiceDAO.fetchAvailableCarsOfCity( pickUpPoint,
-	 * capacity );
-	 * }
-	 * catch( Exception e )
-	 * {
-	 * logger.error(
-	 * "Error while inserting the user data into the cassandra db while registering user--->"
-	 * + e.getMessage() );
-	 * }
-	 * return result;
-	 * }
-	 */
-
-	/*public List<CarDetails> getAvailableCars( FetchCarDetails details )
-	{
-		List<CarDetails> result = null;
-		try
-		{
-			// checking for all the mandatory fields required in the service
-			if( details.getCarType() == null || details.getRegisteredAt() == null
-					|| details.getCarType().trim().isEmpty() || details.getRegisteredAt().trim().isEmpty() )
-			{
-				throw new Exception("Mandatory fields are missing to get OTP");
-			}
-			CarServiceDAO fetchingCars = new CarServiceDAO();
-			result = fetchingCars.fetchAvailableCarsOfCity(details);
-		}
-		catch( Exception e )
-		{
-
-			logger.error("Error while inserting the user data into the cassandra db while registering user--->"
-					+ e.getMessage());
-			e.printStackTrace();
-		}
-		return result;
-	}*/
-
-	/*public boolean checkCarAavailability( CheckAvailabilityInput input )
-	{
-		boolean result = false;
-		try
-		{
-			if( input == null || input.getCarCapacity() == 0 || input.getCarNumber() == null
-					|| input.getCarNumber().trim().isEmpty() || input.getCarRegisteredAt() == null
-					|| input.getCarRegisteredAt().trim().isEmpty() )
-			{
-				throw new Exception("Mandatory fields are missing to book the car");
-			}
-			// call dao to get info of availability of car
-			result = carBookingServiceDAO.checkCarAavailability(input);
-		}
-		catch( Exception e )
-		{
-			logger.error("Error while checking CarAavailability from the cassandra db -->" + e.getMessage());
-		}
-		return result;
-	}*/
 }

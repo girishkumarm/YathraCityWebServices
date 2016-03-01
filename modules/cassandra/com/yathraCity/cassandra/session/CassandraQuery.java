@@ -21,11 +21,8 @@ public class CassandraQuery {
 		Session session = null;
 		try
 		{
-			System.out.println("getting cassandra session");
 			session = CassandraSession.getInstance().getKeyspaceSession();
-			System.out.println("After getting cassandra session");
 			results = session.executeAsync(query.toString());
-			System.out.println("Executing query:"+query.toString());
 		}
 		catch( InvalidQueryException e )
 		{

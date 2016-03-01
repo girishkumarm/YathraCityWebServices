@@ -62,7 +62,6 @@ public class BookingDetailsDAO {
 					.value(BookingColumns.CAR_LOCATION, input.getCarLocation())
 					.value(BookingColumns.BOOKING_CONFIRMED, false)
 					.value(BookingColumns.CUSTOMER_EMAIL, input.getCustomerEmail());
-			System.out.println(insert.toString());
 			cassQuery.executeFuture(insert);
 			return true;
 		}

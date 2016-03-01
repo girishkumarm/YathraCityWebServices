@@ -67,14 +67,9 @@ public class AllCoupensDetails
 		for(Row r:result.getUninterruptibly())
 		{
 			CouponsPojo coupens=new CouponsPojo();
-			System.out.println("inserting");
 			coupens.setCoupenName(r.getString(CoupenDetailsColumn.COUPEN_NAME));
-			System.out.println(r.getString(CoupenDetailsColumn.COUPEN_NAME));
 			coupens.setValidFrom(r.getString(CoupenDetailsColumn.VALIDITY_FROM));
-			System.out.println(r.getString(CoupenDetailsColumn.VALIDITY_FROM));
 			coupens.setValidTo(r.getString(CoupenDetailsColumn.VALID_TO));
-			System.out.println(r.getString(CoupenDetailsColumn.VALID_TO));
-			System.out.println("outing");
 			myAllCoupen.add(coupens);
 		}
 		return myAllCoupen;

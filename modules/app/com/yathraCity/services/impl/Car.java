@@ -123,7 +123,6 @@ public class Car implements CarInterface {
 			{
 				// fetch all the cars of a location
 				listOfCars = carsDao.fetchAvailableCarsOfCity(input);
-				System.out.println("size : " + listOfCars.size());
 			}
 			else
 			{
@@ -138,13 +137,11 @@ public class Car implements CarInterface {
 
 			if( listOfCars != null )
 			{
-				System.out.println(new Gson().toJson(listOfCars));
 				for( CarDetails c : listOfCars )
 				{
 					// check if the car is available
 					if( c.isAvailable() && c.isRegistered() )
 					{
-						System.out.println("Available");
 						// check if the car is already booked are not
 						List<CarAvailabilityDetails> carAvailability = carAvailabilityDAO
 								.fetchCarAvailabilty(c.getCarNumber());
@@ -154,7 +151,6 @@ public class Car implements CarInterface {
 							// booking clashes
 							for( CarAvailabilityDetails details : carAvailability )
 							{
-								System.out.println("Car availability is not empty");
 								if( !details.getFromDate().equals(input.getFromDate())
 										&& !details.getToDate().equals(input.getFromDate()) )
 								{
@@ -174,7 +170,6 @@ public class Car implements CarInterface {
 											|| (bookingFromDate.compareTo(from) * bookingToDate.compareTo(from)) <= 0
 											|| (bookingFromDate.compareTo(to) * bookingToDate.compareTo(to)) <= 0 )
 									{
-										System.out.println("Inside if loop");
 										// this car is already booked on the
 										// given
 										// dates
@@ -188,7 +183,6 @@ public class Car implements CarInterface {
 						}
 						else
 						{
-							System.out.println("Adding car");
 							avaliableCars.add(getCarDetails(c));
 						}
 					}

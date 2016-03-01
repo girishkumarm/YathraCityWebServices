@@ -59,7 +59,6 @@ public class UserDAO
 					.value( UserColumns.PHONE_NUMBER, user.getPhoneNumber() )
 					.value( UserColumns.PASSWORD, user.getPassword() ).setConsistencyLevel( ConsistencyLevel.QUORUM )
 					.enableTracing();
-			System.out.println( insert.toString() );
 			cassQuery.executeFuture( insert );
 			result = true;
 			return result;
