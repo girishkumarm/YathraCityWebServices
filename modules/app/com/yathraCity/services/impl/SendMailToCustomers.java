@@ -1,17 +1,8 @@
 package com.yathraCity.services.impl;
 
 import java.util.List;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.gson.Gson;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
@@ -21,6 +12,7 @@ import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.SendMailToCustomersInterface;
 import com.yathraCity.services.config.Email;
 import com.yathraCity.services.utils.ConfirmationMessageUtil;
+import defaultpkg.ErrorCodes;
 
 public class SendMailToCustomers implements SendMailToCustomersInterface {
 
@@ -62,12 +54,19 @@ public class SendMailToCustomers implements SendMailToCustomersInterface {
 			// to address or the receipent of the mail
 			String receipent = bookingDetails.get(0).getCustomerEmail();
 
-			Email.getInstance().sendEmail(bodyHtml, bodyText, userName, passWord, receipent, "Tab Cars Booking Confirmation");
+			Email.getInstance().sendEmail(bodyHtml, bodyText, userName, passWord, receipent,
+					"Tab Cars Booking Confirmation");
 
+		}
+		catch( ExecException m )
+		{
+			logger.error("Error while confirming the user" + m.getMessage());
+			throw m;
 		}
 		catch( Exception e )
 		{
 			logger.error("Error while confirming the user" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return respMessage;
 	}

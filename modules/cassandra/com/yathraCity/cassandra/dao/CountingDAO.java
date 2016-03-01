@@ -3,8 +3,6 @@ package com.yathraCity.cassandra.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Assignment;
-import com.datastax.driver.core.querybuilder.Clause;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.NumberOfUserse;

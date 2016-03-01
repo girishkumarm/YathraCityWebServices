@@ -3,7 +3,6 @@ package com.yathraCity.services.webapp.init;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
 import com.yathraCity.services.config.Configurator;
 
 public class WebAppInit implements ServletContextListener

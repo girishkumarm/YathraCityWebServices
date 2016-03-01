@@ -1,9 +1,5 @@
 package com.yathraCity.services.webapp.init;
 
-import com.yathraCity.core.FetchCarDetails;
-import com.yathraCity.services.config.Configurator;
-import com.yathraCity.services.impl.Car;
-
 public class Test {
 
 	public static void main( String[] args )

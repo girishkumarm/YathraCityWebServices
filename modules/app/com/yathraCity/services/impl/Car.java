@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.gson.Gson;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.CarAvailabilityDAO;
@@ -19,13 +18,13 @@ import com.yathraCity.core.ListOfAvailableCars;
 import com.yathraCity.core.RegisterCarInput;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CarInterface;
+import defaultpkg.ErrorCodes;
 
 public class Car implements CarInterface {
 
 	private CarServiceDAO carsDao = new CarServiceDAO();
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
-	private static Logger logger = LoggerFactory.getLogger( Car.class );
-	
+	private static Logger logger = LoggerFactory.getLogger(Car.class);
 
 	@Override
 	public ResponseMessage registerCar( ServiceExecutionContext ctx, RegisterCarInput input ) throws ExecException
@@ -58,10 +57,15 @@ public class Car implements CarInterface {
 				response.setMessage("car registred");
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while adding cars" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while adding cars"
-					+ e.getMessage() );
+			logger.error("Error while adding cars" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}
@@ -94,10 +98,15 @@ public class Car implements CarInterface {
 				response.setMessage("Car is still Available");
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while checking the avaliable cars" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while checking the avaliable cars"
-					+ e.getMessage() );
+			logger.error("Error while checking the avaliable cars" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}
@@ -191,10 +200,15 @@ public class Car implements CarInterface {
 			listOfAvaliableCars.setcar(avaliableCars);
 
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while getting cars" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while getting cars"
-					+ e.getMessage() );
+			logger.error("Error while getting cars" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return listOfAvaliableCars;
 	}

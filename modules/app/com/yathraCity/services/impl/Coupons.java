@@ -25,14 +25,15 @@ import defaultpkg.ErrorCodes;
  * @author ashwing
  *         param coupon details
  */
-public class Coupons implements CouponsInterface 
-{
+public class Coupons implements CouponsInterface {
+
 	ResponseMessage response = new ResponseMessage();
 	DeleteCouponesExpireService delete = new DeleteCouponesExpireService();
 	ListOfAllCoupons listOfAllCoupons = new ListOfAllCoupons();
 	UpdateCouponsService update = new UpdateCouponsService();
 	com.yathraCity.cassandra.services.CouponDetails newCoupon = new com.yathraCity.cassandra.services.CouponDetails();
-	private static Logger logger = LoggerFactory.getLogger( Coupons.class );
+	private static Logger logger = LoggerFactory.getLogger(Coupons.class);
+
 	// Adding the new coupon by giving the coupon details
 	@Override
 	public ResponseMessage coupons( ServiceExecutionContext ctx, CouponDetails couponsDetails ) throws ExecException
@@ -57,10 +58,15 @@ public class Coupons implements CouponsInterface
 				response.setStatus("200");
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while adding the coupen" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while adding the coupen"
-					+ e.getMessage() );
+			logger.error("Error while adding the coupen" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}
@@ -72,7 +78,7 @@ public class Coupons implements CouponsInterface
 		ListOfCouponsUsed coupons = new ListOfCouponsUsed();
 		try
 		{
-			
+
 			List<CouponsPojo> allCoupons = new ArrayList<CouponsPojo>();
 			List<CouponDetails> mycoupons = new ArrayList<CouponDetails>();
 			// getting all th coupons in the DB
@@ -87,12 +93,17 @@ public class Coupons implements CouponsInterface
 				mycoupons.add(newCoupons);
 			}
 			coupons.setlistOfCoupons(mycoupons);
-			
+
+		}
+		catch( ExecException m )
+		{
+			logger.error("Error while getting the coupen" + m.getMessage());
+			throw m;
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while getting the coupen"
-					+ e.getMessage() );
+			logger.error("Error while getting the coupen" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return coupons;
 	}
@@ -102,7 +113,7 @@ public class Coupons implements CouponsInterface
 	public ResponseMessage updateCoupon( ServiceExecutionContext ctx, CouponDetails couponsDetails )
 			throws ExecException
 	{
-		
+
 		response.setMessage("didnt get updated");
 		response.setStatus("500");
 		boolean msg = false;
@@ -124,10 +135,15 @@ public class Coupons implements CouponsInterface
 				response.setStatus("200");
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while updating the coupen" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while updating the coupen"
-					+ e.getMessage() );
+			logger.error("Error while updating the coupen" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}
@@ -153,8 +169,7 @@ public class Coupons implements CouponsInterface
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while deleting the coupen"
-					+ e.getMessage() );
+			logger.error("Error while deleting the coupen" + e.getMessage());
 		}
 		return response;
 	}

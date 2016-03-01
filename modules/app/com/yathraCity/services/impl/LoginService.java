@@ -8,19 +8,20 @@ import com.yathraCity.cassandra.services.UserService;
 import com.yathraCity.core.LoginInput;
 import com.yathraCity.core.LoginResponse;
 import com.yathraCity.services.LoginServiceInterface;
-
 import defaultpkg.ErrorCodes;
 
 /**
  * login service
+ * 
  * @author ashwing
- * param user credentials
+ *         param user credentials
  */
 public class LoginService implements LoginServiceInterface {
 
 	private UserService loginUserService = new UserService();
-	private static Logger logger = LoggerFactory.getLogger( LoginService.class );
-	//Authanticating the user by entering the crediantials
+	private static Logger logger = LoggerFactory.getLogger(LoginService.class);
+
+	// Authanticating the user by entering the crediantials
 	@Override
 	public LoginResponse loginUser( ServiceExecutionContext ctx, LoginInput input ) throws ExecException
 	{
@@ -37,11 +38,12 @@ public class LoginService implements LoginServiceInterface {
 			}
 
 			// check whether the email id is valid
-//			if( CheckIfMailIdIsValid.isEmail(input.getUserAccountId()) )
-//			{
-//				response.setMessage("Not a valid Email Id");
-//				throw new ExecException(ErrorCodes.INVALID_EMAIL_ID, null, "Not a valid Email Id");
-//			}
+			// if( CheckIfMailIdIsValid.isEmail(input.getUserAccountId()) )
+			// {
+			// response.setMessage("Not a valid Email Id");
+			// throw new ExecException(ErrorCodes.INVALID_EMAIL_ID, null, "Not a
+			// valid Email Id");
+			// }
 
 			// check the user is valid and his/her password matches
 			result = loginUserService.checkUserExistence(input);
@@ -57,10 +59,15 @@ public class LoginService implements LoginServiceInterface {
 				response.setMessage("not logged-in");
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while logging in the coupen" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while logging in the coupen"
-					+ e.getMessage() );
+			logger.error("Error while logging in the coupen" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}

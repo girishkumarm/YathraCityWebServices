@@ -1,10 +1,13 @@
 package com.yathraCity.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.services.UserOTPServices;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.OTPServiceInterface;
+import defaultpkg.ErrorCodes;
 
 /**
  * Car registration with the details
@@ -15,6 +18,7 @@ import com.yathraCity.services.OTPServiceInterface;
 public class OTPService implements OTPServiceInterface {
 
 	private UserOTPServices otpServices = new UserOTPServices();
+	private static Logger logger = LoggerFactory.getLogger(OTPService.class);
 
 	@Override
 	public ResponseMessage getOTP( ServiceExecutionContext ctx, String phoneNumber ) throws ExecException
@@ -42,9 +46,15 @@ public class OTPService implements OTPServiceInterface {
 			}
 
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while fetching otp" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error("Error while fetching otp" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}
@@ -73,9 +83,15 @@ public class OTPService implements OTPServiceInterface {
 			}
 
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while fetching otp" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error("Error while fetching otp" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 	}

@@ -1,6 +1,8 @@
 package com.yathraCity.services.impl;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
@@ -16,6 +18,7 @@ public class CarCancelingService implements CarCancelingServiceInterface {
 
 	private CancelingDAO cancelBooking = new CancelingDAO();
 	private BookingDetailsDAO bookingDetails = new BookingDetailsDAO();
+	private static Logger logger = LoggerFactory.getLogger(CarCancelingService.class);
 
 	@Override
 	public ResponseMessage cancelBooking( ServiceExecutionContext ctx, CancelBooking input ) throws ExecException
@@ -39,9 +42,15 @@ public class CarCancelingService implements CarCancelingServiceInterface {
 			response.setMessage("successfully cancelled");
 			response.setStatus("200");
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while Cancelling the booking" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			e.printStackTrace();
+			logger.error("Error while Cancelling the booking" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return response;
 

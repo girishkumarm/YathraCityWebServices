@@ -13,7 +13,6 @@ import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.BookingColumns;
 import com.yathraCity.cassandra.tables.TableNames;
 import com.yathraCity.core.BookedCarDetails;
-import com.yathraCity.core.CancelBooking;
 import com.yathraCity.core.ConfirmBookedCarDetails;
 import com.yathraCity.services.config.ConfigKey;
 import com.yathraCity.services.config.Configurator;

@@ -20,15 +20,14 @@ public class Driver implements DriverInterface {
 	DriverDetailsDAO driverDetailsDao = new DriverDetailsDAO();
 	CarServiceDAO carService = new CarServiceDAO();
 	private CarServiceDAO carsDao = new CarServiceDAO();
-	private static Logger logger = LoggerFactory.getLogger( Driver.class );
+	private static Logger logger = LoggerFactory.getLogger(Driver.class);
 	ResponseMessage message = new ResponseMessage();
-	
+
 	@Override
 	public ResponseMessage registerdriver( ServiceExecutionContext ctx, DriverDetails driverDetails )
 			throws ExecException
 	{
 
-		
 		message.setStatus("500");
 		message.setMessage("Register Driver Failed");
 		try
@@ -84,10 +83,15 @@ public class Driver implements DriverInterface {
 				}
 			}
 		}
+		catch( ExecException m )
+		{
+			logger.error("Error while adding the Driver" + m.getMessage());
+			throw m;
+		}
 		catch( Exception e )
 		{
-			logger.error( "Error while adding the Driver"
-					+ e.getMessage() );
+			logger.error("Error while adding the Driver" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
 		}
 		return message;
 	}
@@ -150,8 +154,7 @@ public class Driver implements DriverInterface {
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while adding the updating the driver avaliablity"
-					+ e.getMessage() );
+			logger.error("Error while adding the updating the driver avaliablity" + e.getMessage());
 		}
 		return message;
 	}

@@ -9,7 +9,6 @@ import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.google.gson.Gson;
 import com.yathraCity.cassandra.pojo.CarDetails;
 import com.yathraCity.cassandra.session.CassandraQuery;
 import com.yathraCity.cassandra.tables.CarColumns;
