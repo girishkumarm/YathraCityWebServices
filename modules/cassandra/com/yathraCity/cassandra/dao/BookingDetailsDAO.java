@@ -92,14 +92,36 @@ public class BookingDetailsDAO {
 		}
 		return unConfirmedBookingDetails;
 	}
+	
+	public List<BookedCarDetails> getBookingDetailsForMailing( ConfirmBookedCarDetails bookingDetails )
+	{
+		List<BookedCarDetails> unConfirmedBookingDetails = null;
+		try
+		{
+			confirmBooking(bookingDetails);
+
+			Statement getDetails = QueryBuilder.select().all().from(keyspace, TableNames.BOOKING_DETAILS)
+					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
+					.and(QueryBuilder.eq(BookingColumns.CAR_NUMBER, bookingDetails.getCarNumber()))
+					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, bookingDetails.getCustomerNumber()));
+			ResultSetFuture result = cassQuery.executeFuture(getDetails);
+			unConfirmedBookingDetails = processBookingDetails(result);
+
+		}
+		catch( Exception e )
+		{
+			logger.error("Error while booking details for mailing" + e.getMessage());
+		}
+		return unConfirmedBookingDetails;
+	}
 
 	public void confirmBooking( ConfirmBookedCarDetails bookingDetails )
 	{
 		try
 		{
 			Statement update = QueryBuilder.update(keyspace, TableNames.BOOKING_DETAILS)
-					.with(QueryBuilder.set(BookingColumns.BOOKING_CONFIRMED, true))
-					.and(QueryBuilder.set(BookingColumns.BOOKING_ID, "CONFIRMED"))
+					.with(QueryBuilder.set(BookingColumns.BOOKING_CONFIRMED, false))
+					.and(QueryBuilder.set(BookingColumns.BOOKING_ID, "WAITING"))
 					.where(QueryBuilder.eq(BookingColumns.FROM_DATE, bookingDetails.getFromDate()))
 					.and(QueryBuilder.eq(BookingColumns.CAR_NUMBER, bookingDetails.getCarNumber()))
 					.and(QueryBuilder.eq(BookingColumns.CUSTOMER_PHONE_NUMBER, bookingDetails.getCustomerNumber()));
