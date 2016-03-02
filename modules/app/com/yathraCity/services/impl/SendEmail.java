@@ -19,7 +19,6 @@ import com.yathraCity.core.ResponseMessage;
 
 public class SendEmail {
 
-	BookingDetailsDAO details = new BookingDetailsDAO();
 	List<BookedCarDetails> bookingDetails = null;
 	ResponseMessage mailMessage = new ResponseMessage();
 	private static Logger logger = LoggerFactory.getLogger(SendMailToCustomers.class);
@@ -30,7 +29,6 @@ public class SendEmail {
 		try
 		{
 
-			bookingDetails = details.confirmAndGetBookingDetailsForMailing(input);
 			if( bookingDetails == null || bookingDetails.size() <= 0 )
 			{
 				mailMessage.setMessage("NOT FOUND BOOKING DETAILS");
