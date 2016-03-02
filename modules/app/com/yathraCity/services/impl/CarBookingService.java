@@ -8,6 +8,7 @@ import com.yathraCity.cassandra.dao.BookingDetailsDAO;
 import com.yathraCity.cassandra.dao.CarAvailabilityDAO;
 import com.yathraCity.cassandra.dao.DriverDetailsDAO;
 import com.yathraCity.cassandra.pojo.CarAvailabilityDetails;
+import com.yathraCity.cassandra.pojo.DriverDetailsPojo;
 import com.yathraCity.core.BookedCarDetails;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CarBookingServiceInterface;
@@ -41,7 +42,23 @@ public class CarBookingService implements CarBookingServiceInterface {
 			{
 				throw new Exception("Mandatory fields are missing to get for booking");
 			}
-			driverDetails.driverDetailsForBooking(input);
+			DriverDetailsPojo driverDet = driverDetails.getDriverDetailsForBooking(input);
+
+			if( driverDet != null )
+			{
+				if( driverDet.getDriverPhoneNumber() != null )
+				{
+					input.setDrivePhoneNumber(driverDet.getDriverPhoneNumber());
+				}
+				if( driverDet.getAgencyPhoneNumber() != null )
+				{
+					input.setCarAgencyPhoneNumber(driverDet.getAgencyPhoneNumber());
+				}
+				if( driverDet.getDriverName() != null )
+				{
+					input.setDriverName(driverDet.getDriverName());
+				}
+			}
 
 			// book a car
 			result = bookTheCar.bookCar(input);

@@ -55,8 +55,7 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while adding the driver details"
-					+ e.getMessage() );
+			logger.error("Error while adding the driver details" + e.getMessage());
 		}
 		return true;
 	}
@@ -74,13 +73,12 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while updating the driver avaliablity"
-					+ e.getMessage() );
+			logger.error("Error while updating the driver avaliablity" + e.getMessage());
 		}
 		return true;
 	}
 
-	public void driverDetailsForBooking( BookedCarDetails input )
+	public DriverDetailsPojo getDriverDetailsForBooking( BookedCarDetails input )
 	{
 		try
 		{
@@ -88,18 +86,26 @@ public class DriverDetailsDAO {
 					.where(QueryBuilder.eq(DriverDetails.CAR_NUMBER, input.getCarNumber()))
 					.and(QueryBuilder.eq(DriverDetails.LOCATION, input.getCarLocation()));
 			ResultSetFuture results = cassQuery.executeFuture(get);
-			List<DriverDetailsPojo> details = processCarEntity(results);
-			input.setCarAgency(details.get(0).getAgencyName());
-			input.setCarAgencyPhoneNumber(details.get(0).getAgencyPhoneNumber());
-			input.setDrivePhoneNumber(details.get(0).getDriverPhoneNumber());
-			input.setDriverName(details.get(0).getDriverName());
-			input.setCarlicence(details.get(0).getDriverLicence());
+			List<DriverDetailsPojo> details = processDriverEntity(results);
+
+			if( details != null && details.get(0) != null )
+			{
+				return details.get(0);
+			}
+			/*
+			 * input.setCarAgency(details.get(0).getAgencyName());
+			 * input.setCarAgencyPhoneNumber(details.get(0).getAgencyPhoneNumber
+			 * ());
+			 * input.setDrivePhoneNumber(details.get(0).getDriverPhoneNumber());
+			 * input.setDriverName(details.get(0).getDriverName());
+			 * input.setCarlicence(details.get(0).getDriverLicence());
+			 */
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while getting the driver details for booking"
-					+ e.getMessage() );
+			logger.error("Error while getting the driver details for booking" + e.getMessage());
 		}
+		return null;
 	}
 
 	public DriverDetailsPojo fetchDrivers( ConfirmDriverAvailability driverDetails )
@@ -112,7 +118,7 @@ public class DriverDetailsDAO {
 					.and(QueryBuilder.eq(DriverDetails.LOCATION, driverDetails.getLocation()))
 					.and(QueryBuilder.eq(DriverDetails.DRIVER_LICENCE, driverDetails.getDriverLicence()));
 			ResultSetFuture resultSetFuture = cassQuery.executeFuture(get);
-			result = processCarEntity(resultSetFuture);
+			result = processDriverEntity(resultSetFuture);
 			if( result != null && result.size() > 0 && result.get(0) != null )
 			{
 				return result.get(0);
@@ -120,13 +126,12 @@ public class DriverDetailsDAO {
 		}
 		catch( Exception e )
 		{
-			logger.error( "Error while fetching the drivers"
-					+ e.getMessage() );
+			logger.error("Error while fetching the drivers" + e.getMessage());
 		}
 		return null;
 	}
 
-	private List<DriverDetailsPojo> processCarEntity( ResultSetFuture results )
+	private List<DriverDetailsPojo> processDriverEntity( ResultSetFuture results )
 	{
 		List<DriverDetailsPojo> details = new ArrayList<DriverDetailsPojo>();
 		for( Row r : results.getUninterruptibly() )
