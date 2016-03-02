@@ -12,46 +12,41 @@ import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
-import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.BookingDetailsDAO;
 import com.yathraCity.core.BookedCarDetails;
 import com.yathraCity.core.ConfirmBookedCarDetails;
 import com.yathraCity.core.ResponseMessage;
-import com.yathraCity.services.SendDetailsToCustomersAndAdminInterface;
 
-public class SendDetailsToCustomersAndAdmin implements SendDetailsToCustomersAndAdminInterface {
+public class SendEmail {
 
 	BookingDetailsDAO details = new BookingDetailsDAO();
 	List<BookedCarDetails> bookingDetails = null;
-	ResponseMessage respMessage = new ResponseMessage();
+	ResponseMessage mailMessage = new ResponseMessage();
 	private static Logger logger = LoggerFactory.getLogger(SendMailToCustomers.class);
 
-	@Override
-	public ResponseMessage mailDetailsToCustomerAndAdmin( ServiceExecutionContext ctx, ConfirmBookedCarDetails input )
-			throws ExecException
+	public ResponseMessage mailDetailsToCustomerAndAdmin( ConfirmBookedCarDetails input ) throws ExecException
 	{
 
-		respMessage.setMessage("bad gateway");
-		respMessage.setStatus("500");
 		try
 		{
+
 			bookingDetails = details.confirmAndGetBookingDetailsForMailing(input);
 			if( bookingDetails == null || bookingDetails.size() <= 0 )
 			{
-				respMessage.setMessage("NOT FOUND BOOKING DETAILS");
-				respMessage.setStatus("400");
+				mailMessage.setMessage("NOT FOUND BOOKING DETAILS");
+				mailMessage.setStatus("400");
 			}
-			respMessage.setMessage("sucess");
-			respMessage.setStatus("200");
+			mailMessage.setMessage("sucess");
+			mailMessage.setStatus("200");
 
 			// Recipient's email ID needs to be mentioned.
 			String to = bookingDetails.get(0).getCustomerEmail();// change
 																	// accordingly
 
 			// Sender's email ID needs to be mentioned
-			String from = "care.tab.booking@gmail.com";// change accordingly
-			final String username = "care.tab.booking";// change accordingly
-			final String password = "takeabreak";// change accordingly
+			String from = "tabcarsconfirmation@gmail.com";// change accordingly
+			final String username = "tabcarsconfirmation";// change accordingly
+			final String password = "tabcars890";// change accordingly
 
 			// Assuming you are sending email through relay.jangosmtp.net
 			String host = "smtp.gmail.com";
@@ -80,8 +75,9 @@ public class SendDetailsToCustomersAndAdmin implements SendDetailsToCustomersAnd
 				message.setFrom(new InternetAddress(from));
 
 				// Set To: header field of the header.
-				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-
+				message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+				message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("ashwingadam@gmail.com"));
+				message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("girishkumarm710@gmail.com"));
 				// Set Subject: header field
 				message.setSubject("Booking Confirmation");
 
@@ -96,24 +92,34 @@ public class SendDetailsToCustomersAndAdmin implements SendDetailsToCustomersAnd
 
 				// Send message
 				Transport.send(message);
-				to="ashwingadam@gmail.com";
-				message.setContent(
-						"<h1>TAB</h1><h2>Thank you for booking<h2>" + "booking details:" + "your travel date:"
-								+ bookingDetails.get(0).getFromDate() + "your return date:"
-								+ bookingDetails.get(0).getToDate() + "source :" + bookingDetails.get(0).getPickUpCity()
-								+ "destination:" + bookingDetails.get(0).getTravelCity()
-								+ "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey",
-						"text/html");
-				to="girish@gmail.com";
-				message.setContent(
-						"<h1>TAB</h1><h2>Thank you for booking<h2>" + "booking details:" + "your travel date:"
-								+ bookingDetails.get(0).getFromDate() + "your return date:"
-								+ bookingDetails.get(0).getToDate() + "source :" + bookingDetails.get(0).getPickUpCity()
-								+ "destination:" + bookingDetails.get(0).getTravelCity()
-								+ "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey",
-						"text/html");
-				System.out.println("Sent message successfully....");
-
+				/*
+				 * to="ashwingadam@gmail.com";
+				 * message.setContent(
+				 * "<h1>TAB</h1><h2>Thank you for booking<h2>" +
+				 * "booking details:" + "your travel date:"
+				 * + bookingDetails.get(0).getFromDate() + "your return date:"
+				 * + bookingDetails.get(0).getToDate() + "source :" +
+				 * bookingDetails.get(0).getPickUpCity()
+				 * + "destination:" + bookingDetails.get(0).getTravelCity()
+				 * +
+				 * "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey"
+				 * ,
+				 * "text/html");
+				 * Transport.send(message);
+				 * to="girish@gmail.com";
+				 * message.setContent(
+				 * "<h1>TAB</h1><h2>Thank you for booking<h2>" +
+				 * "booking details:" + "your travel date:"
+				 * + bookingDetails.get(0).getFromDate() + "your return date:"
+				 * + bookingDetails.get(0).getToDate() + "source :" +
+				 * bookingDetails.get(0).getPickUpCity()
+				 * + "destination:" + bookingDetails.get(0).getTravelCity()
+				 * +
+				 * "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey"
+				 * ,
+				 * "text/html");
+				 * Transport.send(message);
+				 */
 			}
 			catch( MessagingException e )
 			{
@@ -125,7 +131,7 @@ public class SendDetailsToCustomersAndAdmin implements SendDetailsToCustomersAnd
 		{
 			logger.error("Error while confirming the user" + e.getMessage());
 		}
-		return respMessage;
+		return mailMessage;
 	}
 
 }

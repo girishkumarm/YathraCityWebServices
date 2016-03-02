@@ -1,5 +1,6 @@
 package com.yathraCity.services.impl;
 
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
@@ -10,12 +11,14 @@ import com.yathraCity.cassandra.dao.DriverDetailsDAO;
 import com.yathraCity.cassandra.pojo.CarAvailabilityDetails;
 import com.yathraCity.cassandra.pojo.DriverDetailsPojo;
 import com.yathraCity.core.BookedCarDetails;
+import com.yathraCity.core.ConfirmBookedCarDetails;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CarBookingServiceInterface;
 import defaultpkg.ErrorCodes;
 
 public class CarBookingService implements CarBookingServiceInterface {
-
+	
+	List<BookedCarDetails> bookingDetails = null;
 	private BookingDetailsDAO bookTheCar = new BookingDetailsDAO();
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
 	private static Logger logger = LoggerFactory.getLogger(CarBookingService.class);
@@ -26,6 +29,7 @@ public class CarBookingService implements CarBookingServiceInterface {
 	public ResponseMessage bookingCar( ServiceExecutionContext ctx, BookedCarDetails input ) throws ExecException
 	{
 		ResponseMessage response = new ResponseMessage();
+		ResponseMessage mailMessage = new ResponseMessage();
 		response.setMessage("booking unsuccessful");
 		response.setStatus("500");
 		boolean result = false;
@@ -75,9 +79,14 @@ public class CarBookingService implements CarBookingServiceInterface {
 			{
 				response.setMessage("successfully booked");
 				response.setStatus("200");
-
+				
+				ConfirmBookedCarDetails confirmBookedCarDetails=new ConfirmBookedCarDetails();
+				confirmBookedCarDetails.setCarNumber(input.getCarNumber());
+				confirmBookedCarDetails.setCustomerNumber(input.getCustomerNumber());
+				confirmBookedCarDetails.setFromDate(input.getFromDate());
+				SendEmail sendEmail=new SendEmail();
+				sendEmail.mailDetailsToCustomerAndAdmin(confirmBookedCarDetails);
 			}
-
 		}
 		catch( ExecException m )
 		{
