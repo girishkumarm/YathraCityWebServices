@@ -81,7 +81,7 @@ console.log(registerDriverInput);
 function changeFunc() {
     var selectBox = document.getElementById("carType");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    if (selectedValue == "HatchBack") {
+    if (selectedValue == "Hatchback") {
         $("." + selectedValue).removeClass("hide");
         $(".Sedan").addClass("hide");
         $(".Suv").addClass("hide");

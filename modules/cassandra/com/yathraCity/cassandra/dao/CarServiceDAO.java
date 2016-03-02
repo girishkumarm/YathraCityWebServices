@@ -151,6 +151,7 @@ public class CarServiceDAO {
 					.and(QueryBuilder.eq(CarColumns.CAR_NAME, carName))
 					.and(QueryBuilder.eq(CarColumns.CAR_NUMBER, carNumber)).setConsistencyLevel(ConsistencyLevel.QUORUM)
 					.enableTracing();
+			System.out.println(updateLicence.toString());
 			cassQuery.executeFuture(updateLicence);
 		}
 		catch( Exception e )
