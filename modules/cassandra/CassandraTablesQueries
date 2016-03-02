@@ -121,4 +121,4 @@ CREATE INDEX uuid_for_driver ON yathra.driver_details( uuid);
 
 CREATE TABLE counter_table( counter_value counter, url text,primary key(url) );
 
-CREATE TABLE coupen_details( coupen_name text,valid_from text,valid_to text,primary key(coupen_name,valid_to));
+CREATE TABLE coupen_details( coupen_name text,valid_from text,valid_to text,discount text,primary key(coupen_name));

@@ -19,6 +19,7 @@ public class CarBookingService implements CarBookingServiceInterface {
 	private CarAvailabilityDAO carAvailabilityDAO = new CarAvailabilityDAO();
 	private static Logger logger = LoggerFactory.getLogger(CarBookingService.class);
 	private DriverDetailsDAO driverDetails = new DriverDetailsDAO();
+	// private DriverDetailsDAO driverDetails = new DriverDetailsDAO();
 
 	@Override
 	public ResponseMessage bookingCar( ServiceExecutionContext ctx, BookedCarDetails input ) throws ExecException
@@ -41,8 +42,12 @@ public class CarBookingService implements CarBookingServiceInterface {
 				throw new Exception("Mandatory fields are missing to get for booking");
 			}
 			driverDetails.driverDetailsForBooking(input);
+
+			// book a car
 			result = bookTheCar.bookCar(input);
 
+			// add the car booked to the availability list and block it on that
+			// day
 			CarAvailabilityDetails addAvailability = new CarAvailabilityDetails();
 			addAvailability.setCarNumber(input.getCarNumber());
 			addAvailability.setFromDate(input.getFromDate());

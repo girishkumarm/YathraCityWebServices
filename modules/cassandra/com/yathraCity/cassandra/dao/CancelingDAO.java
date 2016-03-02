@@ -1,7 +1,5 @@
 package com.yathraCity.cassandra.dao;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.yathraCity.cassandra.session.CassandraQuery;
@@ -14,7 +12,6 @@ public class CancelingDAO
 {
 	private static CassandraQuery cassQuery = null;
 	private String keyspace;
-	private static Logger logger = LoggerFactory.getLogger(CancelingDAO.class);
 	// initlizing the session and keyspace
 	public CancelingDAO()
 	{

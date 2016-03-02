@@ -36,7 +36,12 @@ public class CarCancelingService implements CarCancelingServiceInterface {
 			{
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
+
+			// cancell booking of a car
 			bookingDetails.cancelBooking(input.getFromDate(), input.getCarNumber(), input.getCustomerPhoneNumber());
+
+			// remove car details from the availability list for unblocking the
+			// car
 			cancelBooking.deleteEntryInCarAvaliablity(input.getFromDate(), input.getCarNumber());
 
 			response.setMessage("successfully cancelled");

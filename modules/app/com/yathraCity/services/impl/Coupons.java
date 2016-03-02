@@ -6,12 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.razorthink.runtime.ExecException;
 import com.razorthink.runtime.ServiceExecutionContext;
-import com.yathraCity.cassandra.pojo.CouponsPojo;
-import com.yathraCity.cassandra.services.DeleteCouponesExpireService;
-import com.yathraCity.cassandra.services.ListOfAllCoupons;
-import com.yathraCity.cassandra.services.UpdateCouponsService;
+import com.yathraCity.cassandra.dao.CouponsDAO;
+import com.yathraCity.cassandra.pojo.Coupon;
 import com.yathraCity.core.CouponDetails;
-import com.yathraCity.core.ListOfCouponsUsed;
+import com.yathraCity.core.CouponsList;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.CouponsInterface;
 import defaultpkg.ErrorCodes;
@@ -28,10 +26,7 @@ import defaultpkg.ErrorCodes;
 public class Coupons implements CouponsInterface {
 
 	ResponseMessage response = new ResponseMessage();
-	DeleteCouponesExpireService delete = new DeleteCouponesExpireService();
-	ListOfAllCoupons listOfAllCoupons = new ListOfAllCoupons();
-	UpdateCouponsService update = new UpdateCouponsService();
-	com.yathraCity.cassandra.services.CouponDetails newCoupon = new com.yathraCity.cassandra.services.CouponDetails();
+	CouponsDAO couponDAO = new CouponsDAO();
 	private static Logger logger = LoggerFactory.getLogger(Coupons.class);
 
 	// Adding the new coupon by giving the coupon details
@@ -51,8 +46,8 @@ public class Coupons implements CouponsInterface {
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
 			// adding coupon in the DB
-			boolean couponmsg = newCoupon.addingCouponsToDB(couponsDetails);
-			if( couponmsg == true )
+			boolean couponFlag = couponDAO.addCoupons(couponsDetails);
+			if( couponFlag == true )
 			{
 				response.setMessage("couponadded successfully");
 				response.setStatus("200");
@@ -73,23 +68,24 @@ public class Coupons implements CouponsInterface {
 
 	// Getting all the coupons
 	@Override
-	public ListOfCouponsUsed getalltheCoupons( ServiceExecutionContext ctx ) throws ExecException
+	public CouponsList getalltheCoupons( ServiceExecutionContext ctx ) throws ExecException
 	{
-		ListOfCouponsUsed coupons = new ListOfCouponsUsed();
+		CouponsList coupons = new CouponsList();
 		try
 		{
 
-			List<CouponsPojo> allCoupons = new ArrayList<CouponsPojo>();
+			List<Coupon> allCoupons = new ArrayList<Coupon>();
 			List<CouponDetails> mycoupons = new ArrayList<CouponDetails>();
 			// getting all th coupons in the DB
-			allCoupons = listOfAllCoupons.couponListMeth();
+			allCoupons = couponDAO.getListOfAllCoupenDetails();
 
-			for( CouponsPojo couponDetails : allCoupons )
+			for( Coupon couponDetails : allCoupons )
 			{
 				CouponDetails newCoupons = new CouponDetails();
 				newCoupons.setCoupon(couponDetails.getCoupenName());
 				newCoupons.setFromDate(couponDetails.getValidFrom());
 				newCoupons.setToDate(couponDetails.getValidTo());
+				newCoupons.setDiscount(couponDetails.getDiscount());
 				mycoupons.add(newCoupons);
 			}
 			coupons.setlistOfCoupons(mycoupons);
@@ -128,7 +124,7 @@ public class Coupons implements CouponsInterface {
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
 			// updating the coupons in the DB
-			msg = update.updateCoupnesMethod(couponsDetails);
+			msg = couponDAO.updateCoupon(couponsDetails);
 			if( msg == true )
 			{
 				response.setMessage("updated successfully");
@@ -160,7 +156,7 @@ public class Coupons implements CouponsInterface {
 				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
 			// deleting from DB
-			msg = delete.deleteMeth(couponName);
+			msg = couponDAO.deleteCoupens(couponName);
 			if( msg == true )
 			{
 				response.setMessage("successfully deleted");
