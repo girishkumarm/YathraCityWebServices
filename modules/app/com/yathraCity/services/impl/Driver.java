@@ -61,8 +61,8 @@ public class Driver implements DriverInterface {
 			else
 			{
 				// check if the car is already registered
-				if( !carDetails.isRegistered() )
-				{
+				/*if( !carDetails.isRegistered() )
+				{*/
 					// register driver
 					driverDetailsDao.addDriverDetails(driverDetails);
 
@@ -73,14 +73,14 @@ public class Driver implements DriverInterface {
 
 					message.setStatus("200");
 					message.setMessage("successfully saved");
-				}
+				/*}
 				else
 				{
 					message.setStatus("500");
 					message.setMessage("CAR IS ALREADY REGISTERED FOR OTHER DRIVER");
 					throw new ExecException(ErrorCodes.MISSING_FIELD, null,
 							"CAR IS ALREADY REGISTERED FOR OTHER DRIVER");
-				}
+				}*/
 			}
 		}
 		catch( ExecException m )
