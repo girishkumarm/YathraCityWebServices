@@ -47,7 +47,7 @@ public class DriverDetailsDAO {
 					.value(DriverDetails.DRIVER_LICENCE, details.getDriverLicence())
 					.value(DriverDetails.DRIVER_NAME, details.getDriverName())
 					.value(DriverDetails.DRIVER_PHONE_NUMBER, details.getDriverPhoneNumber())
-					.value(DriverDetails.LOCATION, details.getLocation()).value(DriverDetails.AVAILABILITY, false)
+					.value(DriverDetails.LOCATION, details.getLocation()).value(DriverDetails.AVAILABILITY, true)
 					.value(DriverDetails.CAR_TYPE, details.getCarType())
 					.value(DriverDetails.CAR_NUMBER, details.getCarNumber());
 			cassQuery.executeFuture(addDetails);

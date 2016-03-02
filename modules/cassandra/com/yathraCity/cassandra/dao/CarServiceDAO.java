@@ -45,10 +45,10 @@ public class CarServiceDAO {
 		try
 		{
 			Statement insert = QueryBuilder.insertInto(keyspace, TableNames.CARS)
-					.value(CarColumns.CAR_AVAILABILITY, false).value(CarColumns.CAR_NAME, carDetails.getCarName())
+					.value(CarColumns.CAR_AVAILABILITY, true).value(CarColumns.CAR_NAME, carDetails.getCarName())
 					.value(CarColumns.CAR_NUMBER, carDetails.getCarNumber())
 					.value(CarColumns.CAR_REGISTERED_AT, carDetails.getCarRegisteredAt())
-					.value(CarColumns.CAR_REGISTERED, false)
+					.value(CarColumns.CAR_REGISTERED, true)
 					.value(CarColumns.MINIMUM_DISTANCE_PER_DAY, carDetails.getMinimunDistancePerDay())
 					.value(CarColumns.PRICE_PER_KILOMETER, carDetails.getPricePerKilometer())
 					.value(CarColumns.CAR_TYPE, carDetails.getCarType())

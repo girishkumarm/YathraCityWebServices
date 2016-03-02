@@ -75,51 +75,26 @@ public class SendEmail {
 				message.setFrom(new InternetAddress(from));
 
 				// Set To: header field of the header.
-				message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-				message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("ashwingadam@gmail.com"));
-				message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("girishkumarm710@gmail.com"));
+				message.addRecipients(Message.RecipientType.TO, InternetAddress.parse("girishkumarm710@gmail.com"));
+				//message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("ashwingadam@gmail.com"));
+				//message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("girishkumarm710@gmail.com"));
 				// Set Subject: header field
-				message.setSubject("Booking Confirmation");
+				message.setSubject("Booking Arrived");
 
 				// Now set the actual message
-				message.setContent(
-						"<h1>TAB</h1><h2>Thank you for booking<h2>" + "booking details:" + "your travel date:"
-								+ bookingDetails.get(0).getFromDate() + "your return date:"
-								+ bookingDetails.get(0).getToDate() + "source :" + bookingDetails.get(0).getPickUpCity()
-								+ "destination:" + bookingDetails.get(0).getTravelCity()
-								+ "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey",
-						"text/html");
+				message.setContent("<h1>TAB</h1><br/><h2>Booking Details<h2><br/><br/><br/>" + "<table>" + "<tr>"
+						+ "<td>Customer Name</td>" + "<td>" + bookingDetails.get(0).getCustomerName() + "</td>"
+						+ "</tr>" + "<tr>" + "<td>Customer Number</td>" + "<td>"
+						+ bookingDetails.get(0).getCustomerNumber() + "</td>" + "</tr>" + "<tr>"
+						+ "<td>Pickup City</td>" + "<td>" + bookingDetails.get(0).getPickUpCity() + "</td>" + "</tr>"
+						+ "<tr>" + "<td>Travelling To</td>" + "<td>" + bookingDetails.get(0).getTravelCity() + "</td>"
+						+ "</tr>" + "<tr>" + "<td>Car Type</td>" + "<td>" + bookingDetails.get(0).getCarType() + "</td>"
+						+ "</tr>" + "<tr>" + "<td>Driver Name</td>" + "<td>" + bookingDetails.get(0).getDriverName()
+						+ "</td>" + "</tr>" + "<tr>" + "<td>Driver Phone Number</td>" + "<td>"
+						+ bookingDetails.get(0).getDrivePhoneNumber() + "</td>" + "</tr>" + " </table>", "text/html");
 
 				// Send message
 				Transport.send(message);
-				/*
-				 * to="ashwingadam@gmail.com";
-				 * message.setContent(
-				 * "<h1>TAB</h1><h2>Thank you for booking<h2>" +
-				 * "booking details:" + "your travel date:"
-				 * + bookingDetails.get(0).getFromDate() + "your return date:"
-				 * + bookingDetails.get(0).getToDate() + "source :" +
-				 * bookingDetails.get(0).getPickUpCity()
-				 * + "destination:" + bookingDetails.get(0).getTravelCity()
-				 * +
-				 * "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey"
-				 * ,
-				 * "text/html");
-				 * Transport.send(message);
-				 * to="girish@gmail.com";
-				 * message.setContent(
-				 * "<h1>TAB</h1><h2>Thank you for booking<h2>" +
-				 * "booking details:" + "your travel date:"
-				 * + bookingDetails.get(0).getFromDate() + "your return date:"
-				 * + bookingDetails.get(0).getToDate() + "source :" +
-				 * bookingDetails.get(0).getPickUpCity()
-				 * + "destination:" + bookingDetails.get(0).getTravelCity()
-				 * +
-				 * "this is a confirmation mail for the car,all the car details will be sent 1 day prior to your journey"
-				 * ,
-				 * "text/html");
-				 * Transport.send(message);
-				 */
 			}
 			catch( MessagingException e )
 			{
