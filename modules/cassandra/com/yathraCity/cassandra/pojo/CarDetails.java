@@ -25,6 +25,7 @@ public class CarDetails {
 	private int pricePerKilometer;
 	private String carName;
 	private boolean registered;
+	private boolean ac;
 	private String licenseNumber;
 
 	public boolean isRegistered()
@@ -277,6 +278,16 @@ public class CarDetails {
 	public void setLicenseNumber( String licenseNumber )
 	{
 		this.licenseNumber = licenseNumber;
+	}
+
+	public boolean isAc()
+	{
+		return ac;
+	}
+
+	public void setAc( boolean ac )
+	{
+		this.ac = ac;
 	}
 
 }

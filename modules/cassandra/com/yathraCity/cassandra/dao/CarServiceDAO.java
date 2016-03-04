@@ -51,7 +51,7 @@ public class CarServiceDAO {
 					.value(CarColumns.CAR_REGISTERED, true)
 					.value(CarColumns.MINIMUM_DISTANCE_PER_DAY, carDetails.getMinimunDistancePerDay())
 					.value(CarColumns.PRICE_PER_KILOMETER, carDetails.getPricePerKilometer())
-					.value(CarColumns.CAR_TYPE, carDetails.getCarType())
+					.value(CarColumns.CAR_TYPE, carDetails.getCarType()).value(CarColumns.AC, carDetails.isAc())
 					.value(CarColumns.CAR_MODEL, carDetails.getCarModel())
 					.value(CarColumns.CAR_CAPACITY, carDetails.getCarCapacity())
 					.value(CarColumns.CAR_AGENCY, carDetails.getCarAgency())
@@ -180,6 +180,7 @@ public class CarServiceDAO {
 			carDetails.setCarModel(r.getString(CarColumns.CAR_MODEL));
 			carDetails.setCarName(r.getString(CarColumns.CAR_NAME));
 			carDetails.setCarAgency(r.getString(CarColumns.CAR_AGENCY));
+			carDetails.setAc(r.getBool(CarColumns.AC));
 			cars.add(carDetails);
 		}
 		return cars;

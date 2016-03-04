@@ -19,6 +19,7 @@
 		<property name="carType" type="String"
 			description="type of car (sean/hatchback/xuv)" />
 		<property name="carModel" type="String" description="type of car model" />
+		<property name="ac" type="Boolean" description="ac or not" />
 	</Class>
 
 	<Class name="FetchCarDetails" description="for fetching the car details"

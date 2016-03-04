@@ -4,6 +4,7 @@ public class CarColumns {
 
 	public final static String CAR_AVAILABILITY = "car_availability";
 	public final static String CAR_MODEL = "car_model";
+	public final static String AC = "ac";
 	public final static String CAR_NUMBER = "car_number";
 	public final static String CAR_NAME = "car_name";
 	public final static String CAR_REGISTERED_AT = "car_registered_at";
