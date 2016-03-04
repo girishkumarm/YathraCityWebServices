@@ -16,7 +16,8 @@ $(document).ready(function() {
             $("#carCapacity").val() == undefined || $("#carCapacity").val() == "" ||
             $("#address").val() == undefined || $("#address").val() == "" ||
             $("#carNumber").val() == undefined || $("#carNumber").val() == "" ||
-            $("#carModel").val() == undefined || $("#carModel").val() == "") {
+            $("#carModel").val() == undefined || $("#carModel").val() == "" ||
+	    $("#ac").val() == undefined || $("#ac").val() == "") {
 
             $(".mandatoryText").removeClass("hide");
             return;
@@ -40,6 +41,7 @@ var registerCar = function(name, email, phone) {
     registerCarInput.carModel = $("#carModel").val();
     registerCarInput.carType = localStorage.getItem("register_car_type");
     registerCarInput.carName = localStorage.getItem("register_car_name");
+    registerCarInput.ac = $("#ac").val();
 
     var registerDriverInput = {};
     registerDriverInput.driverName = $("#driverName").val();

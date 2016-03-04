@@ -48,7 +48,11 @@ console.log(inputObject);
 	    }
 	 if(carDetails.length>0){
             for (var index = 0; index < carDetails.length; index++) {
-                carDetailsData = "<hr/><div class=\"car-list-item row container\" id=" + index + "><div class=\"list-group col-xs-12\"><div class=\"col-xs-6\"><h5 class=\"text-success\">" + carDetails[index].carAgency + "</h5><div>" + carDetails[index].carCapacity + "+1 Seats</div><div>" + carDetails[index].carModel + "</div></div><div class=\"col-xs-6\"><h5 class=\"text-info\"><i class=\"fa fa-inr\" style=\"font-size:15px\"></i>" + carDetails[index].pricePerKilometer + "/km</h5><div>" + carDetails[index].minimunDistancePerDay + "km/day</div></div></div></div>";
+		var ac="NON-AC";
+		if(carDetails[index].ac==true){
+			ac="AC";
+		}
+                carDetailsData = "<hr/><div class=\"car-list-item row container\" id=" + index + "><div class=\"list-group col-xs-12\"><div class=\"col-xs-6\"><h5 class=\"text-success\">" + carDetails[index].carAgency + "</h5><div>" + carDetails[index].carCapacity + "+1 Seats</div><div>" + carDetails[index].carModel + "</div></div><div class=\"col-xs-6\"><h5 class=\"text-info\"><i class=\"fa fa-inr\" style=\"font-size:15px\"></i>" + carDetails[index].pricePerKilometer + "/km</h5><div>" + carDetails[index].minimunDistancePerDay + "km/day</div></div><span class=\"badge\">"+ac+"</span></div></div>";
 
                 $('.carDetailsDiv').prepend(carDetailsData);
             }}else{

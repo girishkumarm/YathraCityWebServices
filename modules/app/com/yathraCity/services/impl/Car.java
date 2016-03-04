@@ -228,6 +228,7 @@ public class Car implements CarInterface {
 		car.setCarModel(details.getCarModel());
 		car.setCarCapacity(details.getCarCapacity());
 		car.setCarAgency(details.getCarAgency());
+		car.setAc(details.isAc());
 		return car;
 	}
 
