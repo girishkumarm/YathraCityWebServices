@@ -96,7 +96,12 @@ AND speculative_retry = '100ms'
 AND bloom_filter_fp_chance = 0.1 
 AND caching = 'keys_only';
 
-
+//auto increment
+CREATE TABLE yathra.count_views
+(counter_value counter,
+url_name varchar,
+PRIMARY KEY (url_name)
+);
 
 //driver table
 CREATE TABLE driver_details(

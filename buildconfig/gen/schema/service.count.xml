@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <schema package="com.yathraCity.services" name="Core Package">
-	<service name="CountingService" baseurl="counting">
+	<service name="CountingUsers" baseurl="counting">
 	
 	
 	
 		<interface url="count-number-users" name="countNumberOfUsers"
 			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
-			<output name="count" class="com.yathraCity.core.Message"
+			<output name="message" class="com.yathraCity.core.ResponseMessage"
 				description="success/unsuccess" />
 			<description> <![CDATA[ ]]>
 			</description>
@@ -17,10 +17,6 @@
 			</developernotes>
 		</interface>
 		
-		
-		
-	</service>
-	<service name="NumberOfUsers" baseurl="getnumberofusers">
 	<interface url="get-number-of-users" name="getNumberOfUsers"
 			type="GET" mode="READWRITE" availableFromInsecure="yes" authUser="no"
 			userRoles="Admin" MaxCallsPerSessionPerMinute="100" availableTo="ws">
