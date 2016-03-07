@@ -35,6 +35,7 @@ $('.bookCar').click(function(){
 
 var bookCar = function(name,email,phone) {
 
+    $(".loader").removeClass("hide");
     var inputObject = {};
     inputObject.fromDate = localStorage.getItem("from_date");
     inputObject.toDate=localStorage.getItem("to_date");
@@ -56,6 +57,7 @@ var bookCar = function(name,email,phone) {
             console.log("Couldn't able to fetch the answer for the given question")
         } else {
             console.log(res);
+		$(".loader").addClass("hide");
 		window.location.href = "confirmMessage.html";
         }
     });

@@ -23,6 +23,7 @@ public class CarDetails {
 	private String carRegisteredAt;
 	private int minimunDistancePerDay;
 	private int pricePerKilometer;
+	private int total_cars;
 	private String carName;
 	private boolean registered;
 	private boolean ac;
@@ -288,6 +289,16 @@ public class CarDetails {
 	public void setAc( boolean ac )
 	{
 		this.ac = ac;
+	}
+
+	public int getTotal_cars()
+	{
+		return total_cars;
+	}
+
+	public void setTotal_cars( int total_cars )
+	{
+		this.total_cars = total_cars;
 	}
 
 }

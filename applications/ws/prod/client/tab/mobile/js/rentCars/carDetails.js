@@ -1,4 +1,4 @@
-var carDetails=[];
+	var carDetails=[];
 
 $(document).ready(function() {
 
@@ -63,6 +63,7 @@ console.log(inputObject);
 
 		}
         }
+$(".loader").addClass("hide");
 
 
         $('.car-list-item').click(function() {

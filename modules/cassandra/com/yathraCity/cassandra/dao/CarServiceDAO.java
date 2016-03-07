@@ -180,6 +180,7 @@ public class CarServiceDAO {
 			carDetails.setCarName(r.getString(CarColumns.CAR_NAME));
 			carDetails.setCarAgency(r.getString(CarColumns.CAR_AGENCY));
 			carDetails.setAc(r.getBool(CarColumns.AC));
+			carDetails.setTotal_cars(r.getInt(CarColumns.TOTAL_CARS));
 			cars.add(carDetails);
 		}
 		return cars;

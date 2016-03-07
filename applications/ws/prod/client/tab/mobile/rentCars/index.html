@@ -13,8 +13,10 @@
       <link href="../css/freelancer.css" rel="stylesheet">
       <link href="../css/tab.css" rel="stylesheet">
       <script src="../js/general/platform.js" async defer></script>
+<link href="../css/loader.css" rel="stylesheet">
    </head>
    <body id="page-top" class="index">
+<div class="loader"></div>
       <!-- Navigation -->
      <nav class="navbar navbar-shrink navbar-default navbar-fixed-top">
    <div class="container">
@@ -181,6 +183,7 @@
       <script src="../js/rentCars/index.js"> </script>
       <script src="../js/general/freelancer.js"></script>
       <script>
+	$(".loader").addClass("hide");
 	var sigoutWork = function() {
 	    $(".userTab").addClass("hide");
 	    $(".logout").addClass("hide");

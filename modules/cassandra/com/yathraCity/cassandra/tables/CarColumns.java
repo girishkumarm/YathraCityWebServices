@@ -16,4 +16,5 @@ public class CarColumns {
 	public final static String CAR_TYPE = "car_type";
 	public final static String CAR_DRIVER_LICENCE = "car_driver_licence";
 	public final static String CAR_AGENCY = "car_agency";
+	public final static String TOTAL_CARS = "total_cars";
 }

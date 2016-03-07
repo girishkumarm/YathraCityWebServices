@@ -148,6 +148,16 @@ public class Car implements CarInterface {
 			{
 				for( CarDetails c : listOfCars )
 				{
+					// check total cars available from the agency
+					int totalCars = 1;
+					if( c != null && c.getTotal_cars() != 0 )
+					{
+						totalCars = c.getTotal_cars();
+					}
+
+					// cars booked before checking
+					int carBooked = 0;
+
 					// check if the car is available
 					if( c.isAvailable() && c.isRegistered() )
 					{
@@ -182,7 +192,9 @@ public class Car implements CarInterface {
 										// this car is already booked on the
 										// given
 										// dates
-										if( input.getCarNumber() != null && !input.getCarNumber().trim().isEmpty() )
+										carBooked++;
+										if( input.getCarNumber() != null && !input.getCarNumber().trim().isEmpty()
+												&& carBooked == totalCars )
 										{
 											throw new Exception("Sorry The car is already booked by some one else");
 										}
