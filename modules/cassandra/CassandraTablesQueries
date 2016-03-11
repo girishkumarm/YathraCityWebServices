@@ -103,6 +103,14 @@ url_name varchar,
 PRIMARY KEY (url_name)
 );
 
+//contact(
+CREATE TABLE contact(
+name text,
+email_id text,
+phone_number text,
+message text,
+PRIMARY KEY ((email_id,name),message));
+
 //driver table
 CREATE TABLE driver_details(
 driver_phone_number text,

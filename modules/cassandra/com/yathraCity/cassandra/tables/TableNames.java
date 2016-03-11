@@ -12,4 +12,5 @@ public class TableNames {
 	public final static String DRIVER_DETAILS = "driver_details";
 	public final static String BOOKING_DETAILS = "booking_details";
 	public final static String CAR_AVAILABILITY = "car_availability";
+	public final static String CONTACT="contact";
 }
