@@ -23,17 +23,17 @@ $('.bookCar').click(function(){
 
 		if($('#name').val()==""){
 			$('.name-alert').attr('style','display: block');
-		}else{
+		}else if($('#name').val()==""){
 			$('.name-alert').attr('style','display: none');
 		}
 		if($('#phone').val()==""){
 			$('.num-alert').attr('style','display: block');
-		}else{
+		}else if($('#name').val()==""){
 			$('.name-alert').attr('style','display: none');
 		}
 		if($('#email').val()==""){
 			$('.email-alert').attr('style','display: block');
-		}else{
+		}else if($('#name').val()==""){
 			$('.name-alert').attr('style','display: none');
 		}
 
