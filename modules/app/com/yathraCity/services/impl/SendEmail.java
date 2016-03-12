@@ -76,6 +76,7 @@ public class SendEmail {
 
 				// Set To: header field of the header.
 				message.addRecipients(Message.RecipientType.TO, InternetAddress.parse("girishkumarm710@gmail.com"));
+				message.addRecipients(Message.RecipientType.CC, InternetAddress.parse("ashwin.gadam@gmail.com"));
 				//message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("ashwingadam@gmail.com"));
 				//message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse("girishkumarm710@gmail.com"));
 				// Set Subject: header field
