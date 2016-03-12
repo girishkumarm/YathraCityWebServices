@@ -4,6 +4,7 @@ var width = $(window).width();
       if (width >= 850) {
           $('.websiteView').show();
       } else {
+	  document.location.replace("http://tabcars.in/mobile/rentCars/confirmBooking.html");
           $('.websiteView').hide();
       }
      $('.alert').hide();

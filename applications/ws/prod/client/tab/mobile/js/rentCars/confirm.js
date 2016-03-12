@@ -14,6 +14,7 @@ $(".phone").addClass(" floating-label-form-group-with-focus");
 var width = $(window).width();
       if (width >= 850) {
           $('.websiteView').show();
+	  document.location.replace("http://tabcars.in/website/rentCars/confirmBooking.html");
       } else {
           $('.websiteView').hide();
       }

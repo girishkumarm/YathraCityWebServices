@@ -51,6 +51,7 @@
          $('body').addClass('websitePadding');
          $('.websiteView').show();
          $('.websiteView').removeClass('hide');
+	document.location.replace('http://tabcars.in/website/rentCars/index.html');
      } else {
          $('body').addClass('mobilePadding');
          $('.mobileView').show();

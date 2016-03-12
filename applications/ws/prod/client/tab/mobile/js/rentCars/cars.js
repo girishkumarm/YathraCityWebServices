@@ -1,6 +1,7 @@
  var width = $(window).width();
      if (width >= 850) {
          $('.website').removeClass('hide');
+	document.location.replace("http://tabcars.in/website/rentCars/cars.html");
      } else {
          $('.mobile').removeClass('hide');
      }
