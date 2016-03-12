@@ -25,34 +25,27 @@
          <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
+               <button type="button" class="navbar-toggle collapsed"
+                  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                  aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span> <span
+                  class="icon-bar"></span> <span class="icon-bar"></span> <span
+                  class="icon-bar"></span>
                </button>
                <a class="navbar-brand" href="#page-top">TAB</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+            <div class="navbar-collapse collapse"
+               id="bs-example-navbar-collapse-1" aria-expanded="false"
+               style="height: 1px;">
                <ul class="nav navbar-nav navbar-left list-group">
-                  <li class="page-scroll">
-                     <a href="#page-top">HOME</a>
-                  </li>
-                  <li class="page-scroll">
-                     <a href="#offers">OFFERS FOR YOU</a>
-                  </li>
+                  <li class="page-scroll"><a href="#page-top">HOME</a></li>
+                  <li class="page-scroll"><a href="#offers">OFFERS FOR YOU</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li class="hidden active">
-                     <a href="#page-top"></a>
-                  </li>
-                  <li class="page-scroll">
-                     <a href="#tabCars">TAB Cars</a>
-                  </li>
-                  <li class="page-scroll">
-                     <a href="#contact">Contact</a>
-                  </li>
+                  <li class="hidden active"><a href="#page-top"></a></li>
+                  <li class="page-scroll"><a href="#tabCars">TAB Cars</a></li>
+                  <li class="page-scroll"><a href="#contact">Contact</a></li>
                </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -63,24 +56,29 @@
          <!-- Header -->
          <section style="background-image: url(bg.jpg);">
             <div class="container">
-               <header class="tab-header mainPage col-lg-6">
+               <header class="tab-header mainPage col-lg-5 ">
                   <div class="container">
-                     <div class="col-md-6">
-                        <h3>Pick Up Details</h3>
+                     <div class="col-md-5">
+                        <center>
+                           <h3>Pick Up Details</h3>
+                        </center>
                      </div>
                   </div>
                </header>
             </div>
-            <div class="container"  >
-               <div class="col-lg-6 text-left ">
+            <div class="container">
+               <div class="col-lg-5 text-left ">
                   <!--  ACTUAL BODY OF THE WEBSITE -->
                   <div class="panel panel-white " id="row1">
                      <div class="panel-body">
                         <form name="sentMessage" id="contactForm" novalidate>
                            <div class="control-group">
                               <div class="form-group-lg col-lg-12 floating-label-form-group ">
-                                 <h5 id="pickuplabel" class="help-block text-success"></h5>
-                                 <h6><input list="pickup" id="pick_up_city" class="form-control text-info" placeholder="Pickup City"></h6>
+                                 <h5 id="pickuplabel" class="help-block text-success">Pickup City</h5>
+                                 <h6>
+                                    <input list="pickup" id="pick_up_city"
+                                       class="form-control text-info floating-label-form-group-with-value" placeholder="Pickup City" value="Bangalore">
+                                 </h6>
                                  <datalist id="pickup">
                                     <option value="Bangalore"></option>
                                     <option value="Mangalore"></option>
@@ -96,9 +94,13 @@
                               </div>
                            </div>
                            <div class="control-group">
-                              <div class="form-group-lg col-lg-12 floating-label-form-group controls">
+                              <div
+                                 class="form-group-lg col-lg-12 floating-label-form-group controls">
                                  <h5 id="visitinglabel" class="help-block text-success"></h5>
-                                 <h6><input list="visiting" id="visiting_city" class="form-control text-info" placeholder="Visiting City"></h6>
+                                 <h6>
+                                    <input list="visiting" id="visiting_city"
+                                       class="form-control text-info" placeholder="Visiting City">
+                                 </h6>
                                  <h5 id="visitingwarning" class="help-block text-danger"></h5>
                                  <datalist id="visiting">
                                     <option value="Bangalore"></option>
@@ -114,16 +116,26 @@
                               </div>
                            </div>
                            <div class="control-group">
-                              <div class="form-group-lg col-lg-12 floating-label-form-group controls">
+                              <div
+                                 class="form-group-lg col-lg-12 floating-label-form-group controls">
                                  <h5 id="journeyDate" class="help-block text-success"></h5>
-                                 <h6><input class="form-control from_date text-info form-control-static" id="from" type="text" placeholder="Journey Date" ></h6>
+                                 <h6>
+                                    <input
+                                       class="form-control from_date text-info form-control-static"
+                                       id="from" type="text" placeholder="Journey Date">
+                                 </h6>
                                  <h5 class="help-block text-danger " id="journeyDateWarning"></h5>
                               </div>
                            </div>
                            <div class="control-group">
-                              <div class="form-group-lg  col-lg-12 floating-label-form-group controls">
+                              <div
+                                 class="form-group-lg  col-lg-12 floating-label-form-group controls">
                                  <h5 id="returnDate" class="help-block text-success"></h5>
-                                 <h6><input class="form-control to_date text-info form-control-static" id="to" type="text" placeholder="Return Date"  ></h6>
+                                 <h6>
+                                    <input
+                                       class="form-control to_date text-info form-control-static"
+                                       id="to" type="text" placeholder="Return Date">
+                                 </h6>
                                  <h5 class="help-block text-danger" id="returnDateWarning"></h5>
                               </div>
                            </div>
@@ -131,8 +143,11 @@
                            <div id="success"></div>
                            <div class="row">
                               <div class="form-group col-lg-12">
-                                 <br/>
-                                 <center><button type="button" class="btn btn-success" id="search_car">Choose Tab Cars</button></center>
+                                 <br />
+                                 <center>
+                                    <button type="button" class="btn btn-success" id="search_car">Choose
+                                    Tab Cars</button>
+                                 </center>
                               </div>
                            </div>
                         </form>
@@ -153,33 +168,39 @@
             </div>
             <div class="row website">
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal1" class="" data-toggle="modal">
-                  <img src="../images/website/ford_classic.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal1" class="" data-toggle="modal"> <img
+                     src="../images/website/ford_classic.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal2" class="" data-toggle="modal">
-                  <img src="../images/website/mahindra_scorpio.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal2" class="" data-toggle="modal"> <img
+                     src="../images/website/mahindra_scorpio.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal3" class="" data-toggle="modal">
-                  <img src="../images/website/datsun_go.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal3" class="" data-toggle="modal"> <img
+                     src="../images/website/datsun_go.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal4" class="" data-toggle="modal">
-                  <img src="../images/website/honda_accord_large.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal4" class="" data-toggle="modal"> <img
+                     src="../images/website/honda_accord_large.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal5" class="" data-toggle="modal">
-                  <img src="../images/website/toyota_fortuner.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal5" class="" data-toggle="modal"> <img
+                     src="../images/website/toyota_fortuner.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
                <div class="col-lg-4 portfolio-item">
-                  <a href="#portfolioModal6" class="" data-toggle="modal">
-                  <img src="../images/website/toyota_liva.png" class="img-responsive website" alt="">
+                  <a href="#portfolioModal6" class="" data-toggle="modal"> <img
+                     src="../images/website/toyota_liva.png"
+                     class="img-responsive website" alt="">
                   </a>
                </div>
             </div>
@@ -198,13 +219,16 @@
                <div class="col-lg-8 col-lg-offset-2">
                   <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                   <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                  <form name="sentMessage" id="contactForm" novalidate="" class="error">
+                  <form name="sentMessage" id="contactForm" novalidate=""
+                     class="error">
                      <div class="row control-group error">
-                        <div class="form-group col-lg-12 floating-label-form-group controls">
-                           <label>Name</label>
-                           <input type="text" class="form-control" placeholder="Name" id="name" required="" data-validation-required-message="Please enter your name." aria-invalid="true">
-                           <p class="help-block text-danger">
-                           </p>
+                        <div
+                           class="form-group col-lg-12 floating-label-form-group controls">
+                           <label>Name</label> <input type="text" class="form-control"
+                              placeholder="Name" id="name" required=""
+                              data-validation-required-message="Please enter your name."
+                              aria-invalid="true">
+                           <p class="help-block text-danger"></p>
                            <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your name.</li>
                            </ul>
@@ -212,11 +236,14 @@
                         </div>
                      </div>
                      <div class="row control-group error">
-                        <div class="form-group col-lg-12 floating-label-form-group controls">
-                           <label>Email Address</label>
-                           <input type="email" class="form-control" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." aria-invalid="true">
-                           <p class="help-block text-danger">
-                           </p>
+                        <div
+                           class="form-group col-lg-12 floating-label-form-group controls">
+                           <label>Email Address</label> <input type="email"
+                              class="form-control" placeholder="Email Address" id="email"
+                              required=""
+                              data-validation-required-message="Please enter your email address."
+                              aria-invalid="true">
+                           <p class="help-block text-danger"></p>
                            <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your email address.</li>
                            </ul>
@@ -224,11 +251,14 @@
                         </div>
                      </div>
                      <div class="row control-group error">
-                        <div class="form-group col-lg-12 floating-label-form-group controls">
-                           <label>Phone Number</label>
-                           <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number." aria-invalid="true">
-                           <p class="help-block text-danger">
-                           </p>
+                        <div
+                           class="form-group col-lg-12 floating-label-form-group controls">
+                           <label>Phone Number</label> <input type="tel"
+                              class="form-control" placeholder="Phone Number" id="phone"
+                              required=""
+                              data-validation-required-message="Please enter your phone number."
+                              aria-invalid="true">
+                           <p class="help-block text-danger"></p>
                            <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter your phone number.</li>
                            </ul>
@@ -236,11 +266,14 @@
                         </div>
                      </div>
                      <div class="row control-group error">
-                        <div class="form-group col-lg-12 floating-label-form-group controls">
+                        <div
+                           class="form-group col-lg-12 floating-label-form-group controls">
                            <label>Message</label>
-                           <textarea rows="3" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message." aria-invalid="true"></textarea>
-                           <p class="help-block text-danger">
-                           </p>
+                           <textarea rows="3" class="form-control" placeholder="Message"
+                              id="message" required=""
+                              data-validation-required-message="Please enter a message."
+                              aria-invalid="true"></textarea>
+                           <p class="help-block text-danger"></p>
                            <ul class="alert" role="alert" style="display: none;">
                               <li>Please enter a message.</li>
                            </ul>
@@ -261,19 +294,22 @@
       </section>
       <!-- Footer -->
       <footer class="text-center">
-<div class="footer-above">
+         <div class="footer-above">
             <div class="container">
                <div class="row">
                   <div class="footer-col col-md-4">
                      <h3>Location</h3>
-                     <p>234 jayanagar 1st Block<br>Bangalore, 560011</p>
+                     <p>
+                        234 jayanagar 1st Block<br>Bangalore, 560011
+                     </p>
                   </div>
                   <div class="footer-col col-md-4">
                      <h3>Around the Web</h3>
                      <ul style="list-style-type: none;">
                         <li style="display: inline; margin: 10px; margin-left: 0px;">
-                           <a class="grey-text text-lighten-3" href="http://fb.com/peersome">
-                           <img style="height: 2.5rem; width: 2.5rem;"
+                           <a class="grey-text text-lighten-3"
+                              href="http://fb.com/peersome"> <img
+                              style="height: 2.5rem; width: 2.5rem;"
                               src="http://i.imgur.com/84qlKB1.png" alt="facebook">
                            </a>
                         </li>
@@ -300,16 +336,10 @@
                   </div>
                   <div class="footer-col col-md-4">
                      <h3>About Take A Break</h3>
-                     <p >Take A Break is a car rental marketplace, connecting you to all local self driver car with the best fare rate across the city.</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="footer-below">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     Copyright © Take A Break 2016
+                     <p>Take A Break is a car rental marketplace, connecting you
+                        to all local self driver car with the best fare rate across the
+                        city.
+                     </p>
                   </div>
                </div>
             </div>
@@ -319,8 +349,11 @@
       <!-- Javascript to support date picker -->
       <script src="../js/general/jquery-ui.js"></script>
       <!-- current page java script -->
-      <script src="../js/rentCars/index.js"> </script>
+      <script src="../js/rentCars/index.js"></script>
       <script src="../js/general/freelancer.js"></script>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- TabCars --> 
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8550053866997322" data-ad-slot="6134903491" data-ad-format="auto">
+      </ins> 
+      <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
    </body>
 </html>
-

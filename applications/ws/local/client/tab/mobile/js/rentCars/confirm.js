@@ -25,12 +25,16 @@ var width = $(window).width();
     });
 
 $('.bookCar').click(function(){
-	if($('#name').val()!="" && $('#phone').val()!=""){
+	if($('#name').val()=="" && $('#phone').val()=="" && $('#email').val()==""){
+		$('.alert').attr('style','display: block');
+
+	}else{
 		bookCar($('#name').val(),$('#email').val(),$('#phone').val());
 	}
     });
 
 });
+
 
 
 var bookCar = function(name,email,phone) {

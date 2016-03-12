@@ -14,7 +14,7 @@
                  validation=false;
              }
          }else{
-		localStorage.setItem("pick_up_city", $('#pick_up_city').val());
+		localStorage.setItem("pick_up_city", "Bangalore");
 		localStorage.setItem("visiting_city", $('#visiting_city').val());
 	}
 
@@ -120,7 +120,8 @@
      $(".to_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+         minDate: 0
      });
 
  });
@@ -128,7 +129,8 @@
      $(".from_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+         minDate: 0
      });
 
  });
