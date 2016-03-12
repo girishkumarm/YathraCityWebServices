@@ -1,5 +1,5 @@
 TAB = {
  
-	"ENDPOINT":"http://63.142.255.127:8080/ws_inblox_prod/rest"
+	"ENDPOINT":"http://localhost:8080/ws_tab_dev/rest"
 
 }
