@@ -7,35 +7,46 @@ import com.razorthink.runtime.ServiceExecutionContext;
 import com.yathraCity.cassandra.dao.ContactUsDAO;
 import com.yathraCity.core.ResponseMessage;
 import com.yathraCity.services.ContactUsInterface;
+import defaultpkg.ErrorCodes;
 
 public class ContactUs implements ContactUsInterface {
 
 	private ResponseMessage response = new ResponseMessage();
 	private static Logger logger = LoggerFactory.getLogger(ContactUs.class);
+	private final ContactUsDAO contact = new ContactUsDAO();
 
 	@Override
 	public ResponseMessage contactUs( ServiceExecutionContext ctx, com.yathraCity.core.ContactUs contactUs )
 			throws ExecException
 	{
-		if( contactUs == null || contactUs.getEmailId() == null || contactUs.getEmailId().isEmpty()
-				|| contactUs.getName() == null || contactUs.getName().isEmpty() || contactUs.getMessage().isEmpty()
-				|| contactUs.getMessage() == null )
-			try
+		response.setMessage("internal server error");
+		response.setStatus("500");
+		try
+		{
+			if( contactUs == null || contactUs.getEmailId() == null || contactUs.getEmailId().isEmpty()
+					|| contactUs.getName() == null || contactUs.getName().isEmpty() || contactUs.getMessage().isEmpty()
+					|| contactUs.getMessage() == null )
 			{
-				response.setMessage("internal server error");
-				response.setStatus("500");
-				ContactUsDAO contact = new ContactUsDAO();
-				boolean result = contact.storeMessage(contactUs);
-				if( result == true )
-				{
-					response.setMessage("success");
-					response.setStatus("200");
-				}
+				throw new ExecException(ErrorCodes.MISSING_FIELD, null, "Mandatory Fields are missing");
 			}
-			catch( Exception e )
+
+			boolean result = contact.storeMessage(contactUs);
+			if( result == true )
 			{
-				logger.error("Error while storing the message from the user" + e.getMessage());
+				response.setMessage("success");
+				response.setStatus("200");
 			}
+		}
+		catch( ExecException m )
+		{
+			logger.error("Error while saving the message from the user" + m.getMessage());
+			throw m;
+		}
+		catch( Exception e )
+		{
+			logger.error("Error while saving the message from the user" + e.getMessage());
+			throw new ExecException(ErrorCodes.APPLICATION_ERROR, e, e.getMessage());
+		}
 		return response;
 	}
 
