@@ -168,8 +168,10 @@ public class Car implements CarInterface {
 						{
 							// if the car is already booked match for the
 							// booking clashes
+							int totalLoops = 0;
 							for( CarAvailabilityDetails details : carAvailability )
 							{
+								totalLoops++;
 								if( !details.getFromDate().equals(input.getFromDate())
 										&& !details.getToDate().equals(input.getFromDate()) )
 								{
@@ -193,10 +195,28 @@ public class Car implements CarInterface {
 										// given
 										// dates
 										carBooked++;
-										if( input.getCarNumber() != null && !input.getCarNumber().trim().isEmpty()
-												&& carBooked == totalCars )
+										if( input.getCarNumber() != null && !input.getCarNumber().trim().isEmpty() )
 										{
-											throw new Exception("Sorry The car is already booked by some one else");
+											if( carAvailability.size() == totalLoops )
+											{
+												if( carBooked < totalCars )
+												{
+													avaliableCars.add(getCarDetails(c));
+												}
+											}
+											else
+												throw new Exception("Sorry The car is already booked by some one else");
+										}
+									}
+								}
+								else
+								{
+									carBooked++;
+									if( carAvailability.size() == totalLoops )
+									{
+										if( carBooked < totalCars )
+										{
+											avaliableCars.add(getCarDetails(c));
 										}
 									}
 								}

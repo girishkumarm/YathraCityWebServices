@@ -89,7 +89,7 @@ hr.star-primary:after {
 header {
     text-align: center;
     color: #fff;
-    background: #18bc9c;
+    background:#428bca;
 }
 
 .topDiv{
@@ -99,8 +99,9 @@ header {
 }
 
 header .container {
-    padding-top: 10px;
-    padding-bottom: 10px;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .mainPage {

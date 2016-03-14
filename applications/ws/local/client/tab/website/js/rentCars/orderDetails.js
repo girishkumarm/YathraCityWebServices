@@ -19,6 +19,7 @@ $(document).ready(function() {
 	     if (width >= 850) {
 		 $('.websiteView').show();
 	     } else {
+		 document.location.replace("http://tabcars.in/mobile/rentCars/orderDetails.html");
 		 $('.websiteView').hide();
 	     }
 	$(document).ready(function() {

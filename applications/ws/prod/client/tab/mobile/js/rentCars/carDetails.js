@@ -8,6 +8,7 @@ $(document).ready(function() {
 
     if ($(window).width() >= 850) {
         carImage = carImage.replace("mobile", "webisite");
+	document.location.replace("http://tabcars.in/website/rentCars/carDetails.html");
     } else {
         carImage = carImage.replace("website", "mobile");
     }

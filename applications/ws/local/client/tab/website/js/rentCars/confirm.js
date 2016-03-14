@@ -4,6 +4,7 @@ var width = $(window).width();
       if (width >= 850) {
           $('.websiteView').show();
       } else {
+	  document.location.replace("http://tabcars.in/mobile/rentCars/confirmBooking.html");
           $('.websiteView').hide();
       }
      $('.alert').hide();
@@ -13,8 +14,31 @@ var width = $(window).width();
 
     });
 
+$('#name').click(function(){
+        $('.alert').attr('style','display: none');
+
+    });
+
 $('.bookCar').click(function(){
-	if($('#name').val()!="" && $('#phone').val()!=""){
+	if($('#name').val()=="" || $('#phone').val()=="" || $('#email').val()==""){
+
+		if($('#name').val()==""){
+			$('.name-alert').attr('style','display: block');
+		}else{
+			$('.name-alert').attr('style','display: none');
+		}
+		if($('#phone').val()==""){
+			$('.num-alert').attr('style','display: block');
+		}else{
+			$('.name-alert').attr('style','display: none');
+		}
+		if($('#email').val()==""){
+			$('.email-alert').attr('style','display: block');
+		}else{
+			$('.name-alert').attr('style','display: none');
+		}
+
+	}else{
 		bookCar($('#name').val(),$('#email').val(),$('#phone').val());
 	}
     });

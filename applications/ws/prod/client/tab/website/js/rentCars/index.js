@@ -14,7 +14,7 @@
                  validation=false;
              }
          }else{
-		localStorage.setItem("pick_up_city", $('#pick_up_city').val());
+		localStorage.setItem("pick_up_city", "Bangalore");
 		localStorage.setItem("visiting_city", $('#visiting_city').val());
 	}
 
@@ -37,7 +37,7 @@
          var from = new Date($("#from").val()).getTime();
          var to = new Date($("#to").val()).getTime();
 
-         if (to < from || to < new Date().getTime() || from < new Date().getTime()) {
+         if (to < from ) {
              alert("Please Select Proper Dates");
          } else {
              localStorage.setItem("to_date", $('#to').val());
@@ -52,6 +52,7 @@
          $('.websiteView').show();
          $('.websiteView').removeClass('hide');
      } else {
+	 document.location.replace('http://tabcars.in/mobile/rentCars/index.html');
          $('body').addClass('mobilePadding');
          $('.mobileView').show();
          $('.mobileView').removeClass('hide');
@@ -91,9 +92,6 @@
          }
 
      });
-     $('#to').click('input', function() {
-         $("#returnDate").html("Return Date");
-     });
 
      $("#from").keyup(function() {
 
@@ -114,13 +112,21 @@
      });
  $('.to_date').click('input', function() {
          $('input').blur();
+	if ($("#from").val() == "") {
+		$("#returnDate").html("");
+                 $("#from").toggleClass("red-placeholder");
+		 $(".ui-datepicker").hide();
+             }else{
+			$("#returnDate").html("Return Date");
+		}
      });
  //for the calender to choose the dates of pick up and drop
  $(function() {
      $(".to_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+         minDate: 0
      });
 
  });
@@ -128,7 +134,8 @@
      $(".from_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+         minDate: 0
      });
 
  });

@@ -2,6 +2,7 @@
      if (width >= 850) {
          $('.website').removeClass('hide');
      } else {
+	 document.location.replace("http://tabcars.in/mobile/rentCars/cars.html");
          $('.mobile').removeClass('hide');
      }
  $(document).ready(function() {

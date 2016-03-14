@@ -9,17 +9,20 @@
       <link href="../css/bootstrap.min.css" rel="stylesheet">
       <link href="../css/freelancer.css" rel="stylesheet">
       <link href="../css/tab.css" rel="stylesheet">
-      <link rel="stylesheet" href="../css/jquery-ui.css">
    </head>
    <body id="page-top" class="index " >
-      <section class="success navbar-fixed-top" id="about" style="padding:15px">
-         <div class="container">
-         <div class="row">
-            <div class="col-lg-12 text-center">
-               <h3>About</h3>
+      <header class=".tab-header navbar-fixed-top">
+         <div class="container ">
+            <div class="col-xs-2">
+               <h3>
+                  <i class="glyphicon glyphicon-arrow-left text-primary"></i>
+               </h3>
+            </div>
+            <div class="col-xs-8">
+               <h3>About TAB</h3>
             </div>
          </div>
-      </section>
+      </header>
       <!-- Footer -->
       <footer class="text-left" style="padding-top:20%"> 
          <div class="footer-above">
@@ -84,7 +87,9 @@
               } else {
                   $('.websiteView').hide();
               }
-         
+         $('.glyphicon-arrow-left').click(function(){
+        parent.history.back();
+    });
       </script>
    </body>
 </html>

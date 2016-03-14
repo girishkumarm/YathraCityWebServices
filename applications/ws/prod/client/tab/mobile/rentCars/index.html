@@ -18,7 +18,7 @@
    <body id="page-top" class="index">
 <div class="loader"></div>
       <!-- Navigation -->
-     <nav class="navbar navbar-shrink navbar-default navbar-fixed-top">
+     <nav class="navbar navbar-shrink navbar-default navbar-fixed-top" id="navigator">
    <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header page-scroll">
@@ -74,16 +74,13 @@
    <!-- /.container-fluid -->
 </nav>
 <!-- Header -->
-<header class=".tab-header websiteView mainPage hide">
+<header class=".tab-header " >
    <div class="container">
       <div class="col-sm-12">
          <h3>Pick Up Details</h3>
       </div>
    </div>
 </header>
-<div class=""  >
-   <section style="background-image: url(bg.jpg);">
-      <br/>
       <div class="container">
          <div class="row content">
             <div class="col-sm-1 ">
@@ -96,8 +93,8 @@
                      <form name="sentMessage" id="contactForm" novalidate>
                         <div class="control-group">
                            <div class="form-group-md form-group-md col-xs-12 floating-label-form-group ">
-                              <h5 id="pickuplabel" class="help-block text-success"></h5>
-                              <h6><input list="pickup" id="pick_up_city" class="form-control text-info" placeholder="Pickup City"></h6>
+                              <h5 id="pickuplabel" class="help-block text-success">Pickup City</h5>
+                              <h6><input list="pickup" id="pick_up_city" class="form-control text-info floating-label-form-group-with-value" placeholder="Pickup City" value="Bangalore"></h6>
                               <datalist id="pickup">
                                  <option value="Bangalore"></option>
                                  <option value="Mangalore"></option>
@@ -115,7 +112,7 @@
                         <div class="control-group">
                            <div class="form-group-md form-group-md col-xs-12 floating-label-form-group controls">
                               <h5 id="visitinglabel" class="help-block text-success"></h5>
-                              <h6><input list="visiting" id="visiting_city" class="form-control text-info" placeholder="Visiting City"></h6>
+                              <h6><input list="visiting" id="visiting_city" class="form-control text-info" placeholder="Visiting City (Any One)"></h6>
                               <h5 id="visitingwarning" class="help-block text-danger"></h5>
                               <datalist id="visiting">
                                  <option value="Bangalore"></option>
@@ -158,21 +155,6 @@
             </div>
          </div>
       </div>
-   </section>
-   <div class="g-signin2 hide" data-onsuccess="onSignIn"></div>
-   <!-- Footer -->
-   <footer class="text-center">
-      <div class="footer-below">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12">
-                  Copyright © Take A Break 2016
-               </div>
-            </div>
-         </div>
-      </div>
-   </footer>
-</div>
       <!-- Javascript to support date picker -->
 	<!-- JAVASCRIPTS -->
       <script src="../js/general/jquery.js"></script>
@@ -181,7 +163,6 @@
       <script src="../js/general/jquery-ui.js"></script>
       <!-- current page java script -->
       <script src="../js/rentCars/index.js"> </script>
-      <script src="../js/general/freelancer.js"></script>
       <script>
 	$(".loader").addClass("hide");
 	var sigoutWork = function() {

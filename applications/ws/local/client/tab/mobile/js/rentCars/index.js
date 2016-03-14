@@ -36,8 +36,8 @@
 
          var from = new Date($("#from").val()).getTime();
          var to = new Date($("#to").val()).getTime();
-
-         if (to < from || to < new Date().getTime() || from < new Date().getTime()) {
+	console.log(to + " ---- " + from + " --- " + new Date().getTime());
+         if (to < from) {
              alert("Please Select Proper Dates");
          } else {
              localStorage.setItem("to_date", $('#to').val());
@@ -51,6 +51,7 @@
          $('body').addClass('websitePadding');
          $('.websiteView').show();
          $('.websiteView').removeClass('hide');
+	document.location.replace('http://tabcars.in/website/rentCars/index.html');
      } else {
          $('body').addClass('mobilePadding');
          $('.mobileView').show();
@@ -91,10 +92,6 @@
          }
 
      });
-     $('#to').click('input', function() {
-         $("#returnDate").html("Return Date");
-     });
-
      $("#from").keyup(function() {
 
          if (!this.value) {
@@ -114,21 +111,63 @@
      });
  $('.to_date').click('input', function() {
          $('input').blur();
+	if ($("#from").val() == "") {
+		$("#returnDate").html("");
+                 $("#from").toggleClass("red-placeholder");
+		 $(".ui-datepicker").hide();
+             }else{
+			$("#returnDate").html("Return Date");
+		}
      });
  //for the calender to choose the dates of pick up and drop
  $(function() {
      $(".to_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+	minDate: 0
      });
 
  });
+
+$(document).click(function(e){
+
+    if( $(e.target).closest(".navbar-toggle").length > 0 ) {
+        return false;
+    }
+	var div1 = document.getElementById("bs-example-navbar-collapse-1");
+	var clas = div1.getAttribute("class");
+	if(clas=="navbar-collapse collapse in")
+	$(".navbar-toggle").click();
+});
+
+
  $(function() {
      $(".from_date").datepicker({
          defaultDate: "+1w",
          changeMonth: true,
-         numberOfMonths: 1
+         numberOfMonths: 1,
+	minDate: 0
      });
 
  });
+
+$("#visiting_city").on('input', function () {
+    var val = this.value;
+    if($('#visiting option').filter(function(){
+        return this.value === val;        
+    }).length) {
+        //send ajax request
+         $('input').blur();
+    }
+});
+
+$("#pick_up_city").on('input', function () {
+    var val = this.value;
+    if($('#pickup option').filter(function(){
+        return this.value === val;        
+    }).length) {
+        //send ajax request
+         $('input').blur();
+    }
+});
